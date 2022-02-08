@@ -1,0 +1,6 @@
+[AbnormityInfo]
+INFO_1=2022-1-6 10:22:17 return severs interface
+INFO_2=2022-1-6 10:27:32 return severs interface
+
+[setup]
+total=2

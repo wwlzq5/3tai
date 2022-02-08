@@ -1,0 +1,6 @@
+[OperationInfo]
+INFO_1=2021-11-18 9:14:24 Start Check
+INFO_2=2021-11-18 9:14:28 Stop Check
+
+[setup]
+total=2

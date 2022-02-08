@@ -1,0 +1,16 @@
+[CheckInfo]
+INFO_1=2022-2-8 15:11:30 into onlyshow
+INFO_2=2022-2-8 15:11:36 into onlyshow
+INFO_3=2022-2-8 15:11:53 into onlyshow
+INFO_4=2022-2-8 15:12:1 into onlyshow
+INFO_5=2022-2-8 15:12:8 into onlyshow
+INFO_6=2022-2-8 15:12:17 into onlyshow
+INFO_7=2022-2-8 15:12:26 into onlyshow
+INFO_8=2022-2-8 15:12:36 into onlyshow
+INFO_9=2022-2-8 15:12:43 ClosingState
+INFO_10=2022-2-8 15:12:43 UnconnectedState
+INFO_11=2022-2-8 15:15:47 ClosingState
+INFO_12=2022-2-8 15:15:47 UnconnectedState
+
+[setup]
+total=12

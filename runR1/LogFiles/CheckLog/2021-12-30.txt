@@ -1,0 +1,14 @@
+[CheckInfo]
+INFO_1=2021-12-30 14:4:15 Camera:13 overtime
+INFO_2=2021-12-30 14:4:15 Camera:15 overtime
+INFO_3=2021-12-30 14:4:15 Camera:14 overtime
+INFO_4=2021-12-30 14:4:17 Camera:15 overtime
+INFO_5=2021-12-30 14:4:17 Camera:14 overtime
+INFO_6=2021-12-30 14:4:17 Camera:13 overtime
+INFO_7=2021-12-30 14:4:19 Camera:15 overtime
+INFO_8=2021-12-30 14:4:20 Camera:14 overtime
+INFO_9=2021-12-30 14:4:20 Camera:13 overtime
+INFO_10=2021-12-30 14:4:20 Camera:12 overtime
+
+[setup]
+total=10

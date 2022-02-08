@@ -1,0 +1,7 @@
+[OperationInfo]
+INFO_1=2022-1-21 17:9:32 into Clamping Interface 3
+INFO_2=2022-1-21 17:14:32 into Clamping Interface 3
+INFO_3=2022-1-21 17:30:28 into Clamping Interface 3
+
+[setup]
+total=3

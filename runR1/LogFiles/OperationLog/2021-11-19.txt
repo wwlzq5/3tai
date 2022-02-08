@@ -1,0 +1,6 @@
+[OperationInfo]
+INFO_1=2021-11-19 15:24:58 Close ModelDlg!
+INFO_2=2021-11-19 15:24:58 CloseCam
+
+[setup]
+total=2

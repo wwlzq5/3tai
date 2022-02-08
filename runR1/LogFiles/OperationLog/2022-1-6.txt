@@ -1,0 +1,14 @@
+[OperationInfo]
+INFO_1=2022-1-6 10:21:50 Close ModelDlg!
+INFO_2=2022-1-6 10:21:50 CloseCam
+INFO_3=2022-1-6 10:26:52 Close ModelDlg!
+INFO_4=2022-1-6 10:26:52 CloseCam
+INFO_5=2022-1-6 10:27:53 Close ModelDlg!
+INFO_6=2022-1-6 10:27:53 CloseCam
+INFO_7=2022-1-6 10:30:40 Close ModelDlg!
+INFO_8=2022-1-6 10:30:40 CloseCam
+INFO_9=2022-1-6 10:33:12 Close ModelDlg!
+INFO_10=2022-1-6 10:33:12 CloseCam
+
+[setup]
+total=10

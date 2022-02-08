@@ -1,0 +1,6 @@
+[AbnormityInfo]
+INFO_1=2021-12-29 16:6:26 into TestPage
+INFO_2=2021-12-29 16:8:44 return severs interface
+
+[setup]
+total=2

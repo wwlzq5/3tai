@@ -1,0 +1,21 @@
+[CheckInfo]
+INFO_1=2021-12-17 16:6:17 connect Severs success!
+INFO_2=2021-12-17 16:7:50 connect Severs success!
+INFO_3=2021-12-17 16:13:4 connect Severs success!
+INFO_4=2021-12-17 16:15:49 connect Severs success!
+INFO_5=2021-12-17 16:16:49 connect Severs success!
+INFO_6=2021-12-17 16:17:49 connect Severs success!
+INFO_7=2021-12-17 16:18:49 connect Severs success!
+INFO_8=2021-12-17 16:19:49 connect Severs success!
+INFO_9=2021-12-17 16:20:49 connect Severs success!
+INFO_10=2021-12-17 16:21:49 connect Severs success!
+INFO_11=2021-12-17 16:22:49 connect Severs success!
+INFO_12=2021-12-17 16:23:49 connect Severs success!
+INFO_13=2021-12-17 16:24:49 connect Severs success!
+INFO_14=2021-12-17 16:25:49 connect Severs success!
+INFO_15=2021-12-17 16:26:49 connect Severs success!
+INFO_16=2021-12-17 16:27:49 connect Severs success!
+INFO_17=2021-12-17 16:28:49 connect Severs success!
+
+[setup]
+total=17

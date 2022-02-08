@@ -1,0 +1,5 @@
+[CheckInfo]
+INFO_1=2022-2-7 10:21:56 NetWoek Connect failed
+
+[setup]
+total=1

@@ -1,0 +1,8 @@
+[OperationInfo]
+INFO_1=2021-11-12 10:33:13 In to Alg PageCamraNo:0
+INFO_2=2021-11-12 10:33:13 Start Check
+INFO_3=2021-11-12 10:33:50 In to Alg PageCamraNo:0
+INFO_4=2021-11-12 10:34:47 In to Alg PageCamraNo:2
+
+[setup]
+total=4

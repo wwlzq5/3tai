@@ -1,0 +1,39 @@
+[ErrorRecord]
+Error_1=2.2.117.56 2021-11-25 09:29:04 Normal image locates Row is: 34Col is: 40
+Error_2=2.2.117.56 2021-11-25 09:29:05 Normal image locates Row is: 431Col is: 202
+Error_3=2.2.117.56 2021-11-25 09:29:06 Normal image locates Row is: 34Col is: 37
+Error_4=2.2.117.56 2021-11-25 09:29:07 Normal image locates Row is: 431Col is: 221
+Error_5=2.2.117.56 2021-11-25 09:29:08 Normal image locates Row is: 34Col is: 33
+Error_6=2.2.117.56 2021-11-25 09:29:09 Normal image locates Row is: 431Col is: 210
+Error_7=2.2.117.56 2021-11-25 09:29:10 Normal image locates Row is: 34Col is: 43
+Error_8=2.2.117.56 2021-11-25 09:29:11 Normal image locates Row is: 431Col is: 221
+Error_9=2.2.117.56 2021-11-25 09:29:12 Normal image locates Row is: 34Col is: 28
+Error_10=2.2.117.56 2021-11-25 09:29:13 Normal image locates Row is: 431Col is: 216
+Error_11=2.2.117.56 2021-11-25 09:29:14 Normal image locates Row is: 34Col is: 40
+Error_12=2.2.117.56 2021-11-25 09:29:15 Normal image locates Row is: 431Col is: 221
+Error_13=2.2.117.56 2021-11-25 09:29:16 Normal image locates Row is: 34Col is: 40
+Error_14=2.2.117.56 2021-11-25 09:29:17 Normal image locates Row is: 431Col is: 227
+Error_15=2.2.117.56 2021-11-25 09:29:18 Normal image locates Row is: 34Col is: 37
+Error_16=2.2.117.56 2021-11-25 09:29:19 Normal image locates Row is: 431Col is: 202
+Error_17=2.2.117.56 2021-11-25 09:29:20 Normal image locates Row is: 34Col is: 33
+Error_18=2.2.117.56 2021-11-25 09:29:21 Normal image locates Row is: 431Col is: 221
+Error_19=2.2.117.56 2021-11-25 09:29:22 Normal image locates Row is: 34Col is: 43
+Error_20=2.2.117.56 2021-11-25 09:29:23 Normal image locates Row is: 431Col is: 210
+Error_21=2.2.117.56 2021-11-25 09:29:24 Normal image locates Row is: 34Col is: 28
+Error_22=2.2.117.56 2021-11-25 09:29:25 Normal image locates Row is: 431Col is: 221
+Error_23=2.2.117.56 2021-11-25 09:29:26 Normal image locates Row is: 34Col is: 40
+Error_24=2.2.117.56 2021-11-25 09:29:27 Normal image locates Row is: 431Col is: 216
+Error_25=2.2.117.56 2021-11-25 09:29:28 Normal image locates Row is: 34Col is: 40
+Error_26=2.2.117.56 2021-11-25 09:29:30 Normal image locates Row is: 431Col is: 221
+Error_27=2.2.117.56 2021-11-25 09:29:31 Normal image locates Row is: 34Col is: 37
+Error_28=2.2.117.56 2021-11-25 09:29:32 Normal image locates Row is: 431Col is: 227
+Error_29=2.2.117.56 2021-11-25 09:29:33 Normal image locates Row is: 34Col is: 33
+Error_30=2.2.117.56 2021-11-25 09:29:34 Normal image locates Row is: 431Col is: 202
+Error_31=2.2.117.56 2021-11-25 09:29:35 Normal image locates Row is: 34Col is: 43
+Error_32=2.2.117.56 2021-11-25 09:29:36 Normal image locates Row is: 431Col is: 221
+Error_33=2.2.117.56 2021-11-25 09:29:37 Normal image locates Row is: 34Col is: 28
+Error_34=2.2.117.56 2021-11-25 09:29:38 Normal image locates Row is: 431Col is: 210
+Error_35=2.2.117.56 2021-11-25 09:29:39 Normal image locates Row is: 34Col is: 40
+
+[setup]
+total=35

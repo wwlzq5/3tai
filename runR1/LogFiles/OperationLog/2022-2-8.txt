@@ -1,0 +1,30 @@
+[OperationInfo]
+INFO_1=2022-2-8 10:34:16 \x52a0\x8f7d\x6a21\x677f:1234
+INFO_2=2022-2-8 10:34:16 Into Alg PageCamraNo:1
+INFO_3=2022-2-8 10:34:27 Close ModelDlg!
+INFO_4=2022-2-8 10:34:27 CloseCam
+INFO_5=2022-2-8 11:35:0 \x52a0\x8f7d\x6a21\x677f:123
+INFO_6=2022-2-8 11:36:14 Start Check
+INFO_7=2022-2-8 11:37:27 Start Check
+INFO_8=2022-2-8 11:37:36 Stop Check
+INFO_9=2022-2-8 11:44:46 Start Check
+INFO_10=2022-2-8 11:45:29 Start Check
+INFO_11=2022-2-8 11:46:18 Start Check
+INFO_12=2022-2-8 11:46:19 Stop Check
+INFO_13=2022-2-8 11:46:21 Close ModelDlg!
+INFO_14=2022-2-8 11:46:21 CloseCam
+INFO_15=2022-2-8 11:51:34 Start Check
+INFO_16=2022-2-8 11:51:38 Stop Check
+INFO_17=2022-2-8 11:51:40 Close ModelDlg!
+INFO_18=2022-2-8 11:51:40 CloseCam
+INFO_19=2022-2-8 16:11:52 Start Check
+INFO_20=2022-2-8 16:11:57 Stop Check
+INFO_21=2022-2-8 16:11:59 Into Alg PageCamraNo:5
+INFO_22=2022-2-8 16:16:56 Start Check
+INFO_23=2022-2-8 16:16:59 Stop Check
+INFO_24=2022-2-8 16:17:11 Into Alg PageCamraNo:7
+INFO_25=2022-2-8 16:22:33 Close ModelDlg!
+INFO_26=2022-2-8 16:22:33 CloseCam
+
+[setup]
+total=26

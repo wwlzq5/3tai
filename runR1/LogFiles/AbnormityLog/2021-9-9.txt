@@ -1,0 +1,5 @@
+[AbnormityInfo]
+INFO_1=2021-9-9 14:53:5 \x83b7\x53d6\x7248\x672c
+
+[setup]
+total=1

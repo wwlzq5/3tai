@@ -1,0 +1,24 @@
+[OperationInfo]
+INFO_1=2022-2-8 10:1:19 into Clamping Interface 3
+INFO_2=2022-2-8 10:6:19 into Clamping Interface 3
+INFO_3=2022-2-8 10:50:32 into Clamping Interface 3
+INFO_4=2022-2-8 10:55:32 into Clamping Interface 3
+INFO_5=2022-2-8 13:59:26 into Clamping Interface 3
+INFO_6=2022-2-8 14:4:26 into Clamping Interface 3
+INFO_7=2022-2-8 15:8:56 into lock Interface
+INFO_8=2022-2-8 15:9:4 into Clamping Interface 2
+INFO_9=2022-2-8 15:11:33 into Clamping Interface 3
+INFO_10=2022-2-8 15:11:40 into lock Interface
+INFO_11=2022-2-8 15:11:44 into lock Interface
+INFO_12=2022-2-8 15:11:48 into Clamping Interface 2
+INFO_13=2022-2-8 15:11:56 into Clamping Interface 2
+INFO_14=2022-2-8 15:12:5 into Clamping Interface 2
+INFO_15=2022-2-8 15:12:10 into lock Interface
+INFO_16=2022-2-8 15:12:15 into Clamping Interface 3
+INFO_17=2022-2-8 15:12:21 into lock Interface
+INFO_18=2022-2-8 15:12:25 into Clamping Interface 2
+INFO_19=2022-2-8 15:12:27 into lock Interface
+INFO_20=2022-2-8 15:12:31 into Clamping Interface 3
+
+[setup]
+total=20

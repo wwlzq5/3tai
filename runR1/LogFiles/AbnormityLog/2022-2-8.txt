@@ -1,0 +1,28 @@
+[AbnormityInfo]
+INFO_1=2022-2-8 10:33:53 into Management
+INFO_2=2022-2-8 10:33:54 into CarveSetting
+INFO_3=2022-2-8 10:34:6 into TestPage
+INFO_4=2022-2-8 10:34:8 into AlgPage
+INFO_5=2022-2-8 10:34:9 into TestPage
+INFO_6=2022-2-8 10:34:11 into AlgPage
+INFO_7=2022-2-8 10:34:12 into Management
+INFO_8=2022-2-8 10:34:16 into AlgPage
+INFO_9=2022-2-8 10:34:20 into CarveSetting
+INFO_10=2022-2-8 11:34:55 into Management
+INFO_11=2022-2-8 11:35:1 into CarveSetting
+INFO_12=2022-2-8 15:5:19 return severs interface
+INFO_13=2022-2-8 15:8:50 return severs interface
+INFO_14=2022-2-8 15:11:30 return severs interface
+INFO_15=2022-2-8 15:11:36 return severs interface
+INFO_16=2022-2-8 15:11:53 return severs interface
+INFO_17=2022-2-8 15:12:1 return severs interface
+INFO_18=2022-2-8 15:12:8 return severs interface
+INFO_19=2022-2-8 15:12:16 return severs interface
+INFO_20=2022-2-8 15:12:26 return severs interface
+INFO_21=2022-2-8 15:12:36 return severs interface
+INFO_22=2022-2-8 16:11:59 into AlgPage
+INFO_23=2022-2-8 16:17:11 into AlgPage
+INFO_24=2022-2-8 16:17:13 into CarveSetting
+
+[setup]
+total=24

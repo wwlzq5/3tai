@@ -1,0 +1,23 @@
+[AbnormityInfo]
+INFO_1=2021-12-6 15:50:19 into TestPage
+INFO_2=2021-12-6 15:50:43 into TestPage
+INFO_3=2021-12-6 15:56:56 into TestPage
+INFO_4=2021-12-6 15:57:11 into Management
+INFO_5=2021-12-6 15:57:12 into TestPage
+INFO_6=2021-12-6 15:57:18 into Management
+INFO_7=2021-12-6 15:57:19 into TestPage
+INFO_8=2021-12-6 16:39:37 into TestPage
+INFO_9=2021-12-6 16:55:33 into TestPage
+INFO_10=2021-12-6 17:17:55 into TestPage
+INFO_11=2021-12-6 17:19:39 into TestPage
+INFO_12=2021-12-6 17:36:27 into TestPage
+INFO_13=2021-12-6 17:40:0 into TestPage
+INFO_14=2021-12-6 17:43:23 into Management
+INFO_15=2021-12-6 17:43:24 into TestPage
+INFO_16=2021-12-6 17:45:3 into TestPage
+INFO_17=2021-12-6 17:48:7 into TestPage
+INFO_18=2021-12-6 17:48:46 into TestPage
+INFO_19=2021-12-6 17:59:11 into TestPage
+
+[setup]
+total=19

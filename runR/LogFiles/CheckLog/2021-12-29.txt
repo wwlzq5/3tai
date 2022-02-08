@@ -1,0 +1,5 @@
+[CheckInfo]
+INFO_1=2021-12-29 16:7:19 connect Severs success!
+
+[setup]
+total=1

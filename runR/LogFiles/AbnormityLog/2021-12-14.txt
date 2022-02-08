@@ -1,0 +1,42 @@
+[AbnormityInfo]
+INFO_1=2021-12-14 10:19:20 into TestPage
+INFO_2=2021-12-14 10:19:26 into CarveSetting
+INFO_3=2021-12-14 10:19:43 into Management
+INFO_4=2021-12-14 10:19:44 into TestPage
+INFO_5=2021-12-14 10:19:46 into CarveSetting
+INFO_6=2021-12-14 10:19:47 into Management
+INFO_7=2021-12-14 10:19:47 into TestPage
+INFO_8=2021-12-14 10:20:49 return severs interface
+INFO_9=2021-12-14 10:21:4 into CarveSetting
+INFO_10=2021-12-14 10:21:8 return severs interface
+INFO_11=2021-12-14 11:30:10 into Management
+INFO_12=2021-12-14 11:30:10 into CarveSetting
+INFO_13=2021-12-14 11:39:2 return severs interface
+INFO_14=2021-12-14 11:41:26 return severs interface
+INFO_15=2021-12-14 11:42:25 return severs interface
+INFO_16=2021-12-14 11:43:7 return severs interface
+INFO_17=2021-12-14 11:43:22 return severs interface
+INFO_18=2021-12-14 11:44:31 return severs interface
+INFO_19=2021-12-14 11:44:48 return severs interface
+INFO_20=2021-12-14 13:37:28 return severs interface
+INFO_21=2021-12-14 13:44:18 into AlgPage
+INFO_22=2021-12-14 13:44:19 into TestPage
+INFO_23=2021-12-14 14:0:4 return severs interface
+INFO_24=2021-12-14 14:4:42 return severs interface
+INFO_25=2021-12-14 14:6:29 return severs interface
+INFO_26=2021-12-14 14:6:38 return severs interface
+INFO_27=2021-12-14 14:8:8 return severs interface
+INFO_28=2021-12-14 14:13:15 return severs interface
+INFO_29=2021-12-14 14:15:52 return severs interface
+INFO_30=2021-12-14 14:17:56 return severs interface
+INFO_31=2021-12-14 14:18:30 return severs interface
+INFO_32=2021-12-14 14:18:40 return severs interface
+INFO_33=2021-12-14 16:12:18 into TestPage
+INFO_34=2021-12-14 16:12:19 into Management
+INFO_35=2021-12-14 16:12:21 into CarveSetting
+INFO_36=2021-12-14 16:12:37 into TestPage
+INFO_37=2021-12-14 16:12:46 into Management
+INFO_38=2021-12-14 16:12:48 return severs interface
+
+[setup]
+total=38

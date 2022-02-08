@@ -1,0 +1,8 @@
+[OperationInfo]
+INFO_1=2021-12-17 16:14:5 Close ModelDlg!
+INFO_2=2021-12-17 16:14:5 CloseCam
+INFO_3=2021-12-17 17:1:42 Into Alg PageCamraNo:1
+INFO_4=2021-12-17 17:1:47 Start Check
+
+[setup]
+total=4

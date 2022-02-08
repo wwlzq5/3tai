@@ -1,0 +1,9 @@
+[CheckInfo]
+INFO_1=2021-12-17 16:5:24 into onlyshow
+INFO_2=2021-12-17 17:1:8 into onlyshow
+INFO_3=2021-12-17 17:1:36 into onlyshow
+INFO_4=2021-12-17 17:1:43 into onlyshow
+INFO_5=2021-12-17 17:1:48 into onlyshow
+
+[setup]
+total=5

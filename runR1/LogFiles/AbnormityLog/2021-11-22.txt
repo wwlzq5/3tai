@@ -1,0 +1,9 @@
+[AbnormityInfo]
+INFO_1=2021-11-22 13:49:3 into 3
+INFO_2=2021-11-22 13:49:7 into 1
+INFO_3=2021-11-22 13:49:13 into 3
+INFO_4=2021-11-22 13:49:27 into 1
+INFO_5=2021-11-22 13:49:28 into 3
+
+[setup]
+total=5
