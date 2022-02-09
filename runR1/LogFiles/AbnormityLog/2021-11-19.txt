@@ -1,5 +1,0 @@
-[AbnormityInfo]
-INFO_1=2021-11-19 15:22:32 into 3
-
-[setup]
-total=1

@@ -1211,7 +1211,7 @@ void Widget_CarveImage::slots_updateActiveImg(int nCamNo,int nImgNo,double dCost
 				sAlgCInp.nParam = pWidgetCarveInfo->ui.spinBox_Ro->value();
 				pMainFrm->m_cBottleRotateCarve.Check(sAlgCInp, &pAlgCheckResult);
 			}
- 			*pImageShown = pImageShown->mirrored(true,true);
+ 			*pImageShown = pImageShown->mirrored();
 			pixmapShow = QPixmap::fromImage(*pImageShown);
 
 			int pViewWidth = pView->geometry().width();
@@ -1268,7 +1268,7 @@ void Widget_CarveImage::slots_updateActiveImg(int nCamNo,int nImgNo,double dCost
 
 				pMainFrm->m_cBottleRotateCarve.Check(sAlgCInp, &pAlgCheckResult);
 			}
-			*pImageShown = pImageShown->mirrored(true,true);
+			*pImageShown = pImageShown->mirrored();
 			pixmapShow = QPixmap::fromImage(*pImageShown);
 		
 			int pViewWidth = pView->geometry().width()-5;

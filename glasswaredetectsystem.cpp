@@ -192,8 +192,6 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 	{
 		return;
 	}
-	
-	
 	if(SigInfo->nErrorCode != GBOK)
 	{
 		s_GBERRORINFO ErrorInfo;
@@ -309,6 +307,7 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		pGrabElement = (CGrabElement *) nQueue[tempCamera].listGrab.first();
 		nQueue[tempCamera].listGrab.removeFirst();
 		memcpy(pGrabElement->SourceImage->bits(),pImageBuffer,nWidth*nHeight);
+		*pGrabElement->SourceImage = pGrabElement->SourceImage->mirrored(true,true);
 		pGrabElement->bHaveImage=TRUE;
 		pGrabElement->nCheckRet = FALSE;
 		pGrabElement->cErrorParaList.clear();
@@ -1987,7 +1986,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 	{
 		m_tcpSocket->abort();
 		m_tcpSocket->connectToHost("192.168.250.202",8088);
-		if(pMainFrm->m_tcpSocket->waitForConnected(3000))
+		if(pMainFrm->m_tcpSocket->waitForConnected(1000))
 		{
 			n_NetConnectState = true;
 			pMainFrm->Logfile.write(tr("NetWoek Connect success"),CheckLog);

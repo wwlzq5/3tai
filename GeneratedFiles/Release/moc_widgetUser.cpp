@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widgetUser.h'
 **
-** Created: Tue Jan 25 10:01:46 2022
+** Created: Tue Feb 8 17:47:32 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -1,8 +1,0 @@
-[Data]
-Operation_1="2.2.117.56 2021-08-29 09:25:29 Cam2_enable or unable the inspection item[\xc9\xed\xb6\xa8\xce\xbb]:MyGroupBoxProcess::enableItem,"
-Operation_2="2.2.117.56 2021-08-29 09:25:30 Cam2_enable or unable the inspection item[\xc9\xed\xc6\xd5\xc7\xf8]:MyGroupBoxProcess::enableItem,"
-Operation_3=2.2.117.56 2021-08-29 09:25:31 Cam2_CDlgMainWindow::checkTest
-Operation_4=2.2.117.56 2021-08-29 09:25:32 Cam2_CDlgMainWindow::saveModel
-
-[setup]
-total=4

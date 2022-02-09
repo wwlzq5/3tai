@@ -1,8 +1,0 @@
-[CheckInfo]
-INFO_1=2022-1-6 10:21:15 ClosingState
-INFO_2=2022-1-6 10:21:16 UnconnectedState
-INFO_3=2022-1-6 10:22:17 into onlyshow
-INFO_4=2022-1-6 10:27:32 into onlyshow
-
-[setup]
-total=4

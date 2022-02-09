@@ -1,6 +1,0 @@
-[CheckInfo]
-INFO_1=2021-10-23 16:47:39 send data
-INFO_2=2021-10-23 16:52:5 send data
-
-[setup]
-total=2

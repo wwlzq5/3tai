@@ -1,9 +1,0 @@
-[OperationInfo]
-INFO_1=2021-12-17 16:5:28 into Clamping Interface
-INFO_2=2021-12-17 17:1:11 into Clamping Interface
-INFO_3=2021-12-17 17:1:39 into Clamping Interface
-INFO_4=2021-12-17 17:1:44 into Clamping Interface
-INFO_5=2021-12-17 17:1:49 into Clamping Interface
-
-[setup]
-total=5

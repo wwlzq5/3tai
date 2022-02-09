@@ -1,5 +1,0 @@
-[CheckInfo]
-INFO_1=2021-11-9 17:2:20 bianhao:4232
-
-[setup]
-total=1
