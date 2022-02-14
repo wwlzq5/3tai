@@ -547,7 +547,14 @@ void Widget_CarveImage::slots_save()
 	m_pHorizonV->setVisible(false);
 	m_pHorizonV1->setVisible(false);
 	m_pHorizonV2->setVisible(false);
-
+	pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
+	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
+	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
+}
+void Widget_CarveImage::SetSaveStatus()
+{
+	pWidgetCarveInfo->ui.pushButton_save->setEnabled(true);
+	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(true);
 }
 void Widget_CarveImage::slots_CopyROI()
 {
@@ -1532,6 +1539,9 @@ void Widget_CarveImage::slots_setToCamera()
 			StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 		}
 	}
+	pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
+	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
+	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
 	pMainFrm->Logfile.write(QString("set camera%1 param,TriggerType:%2,ShuterTime:%3,TriggerDelay:%4!").arg(iCameraSN).arg(iTriggerType).arg(iShuterTime).arg(iTriggerDelay),OperationLog);
 }
 void Widget_CarveImage::slots_startTest()

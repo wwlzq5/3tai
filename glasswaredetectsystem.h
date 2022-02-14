@@ -58,6 +58,7 @@ public:
 	~GlasswareDetectSystem();
 protected:
 	virtual void paintEvent(QPaintEvent *event);
+	virtual void keyPressEvent(QKeyEvent *event);
 public:
 	void Init();
 	void InitImage();//初始化图像

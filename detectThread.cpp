@@ -40,19 +40,14 @@ void DetectThread::ProcessHanlde(int Camera)
 		pMainFrm->nQueue[Camera].mDetectLocker.unlock();
 		iCamera = DetectElement.iCameraNormal;
 		//旋转原始图片
-		if (90 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle || 180 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle|| 270 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle)
-		{
-			pMainFrm->RoAngle(DetectElement.ImageNormal->SourceImage->bits(),pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),\
-				DetectElement.ImageNormal->nWidth,DetectElement.ImageNormal->nHeight,pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle);
-		}
-		else
-		{
-			long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
-			memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
-		}
+		
+		long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
+		*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = DetectElement.ImageNormal->SourceImage->copy();
+
+		//memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
 		//裁剪原始图片
 		pMainFrm->m_mutexmCarve[iCamera].lock();
-		long lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;
+		lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;
 		if (lImageSize != DetectElement.ImageNormal->myImage->byteCount())
 		{
 			pMainFrm->Logfile.write(tr("ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3").arg(iCamera).arg(lImageSize).arg(DetectElement.ImageNormal->myImage->byteCount()),AbnormityLog);
@@ -60,6 +55,8 @@ void DetectThread::ProcessHanlde(int Camera)
 			delete DetectElement.ImageNormal->SourceImage;
 			delete DetectElement.ImageNormal;
 			DetectElement.ImageNormal = NULL;
+			DetectElement.ImageNormal->myImage = NULL;
+			DetectElement.ImageNormal->SourceImage = NULL;
 			pMainFrm->m_mutexmCarve[iCamera].unlock();
 			return;
 		}
@@ -396,24 +393,23 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 	pMainFrm->m_cCombine.AddResult(nSignalNo,iCamera,tmpResult);
 	if (pMainFrm->m_cCombine.ConbineResult(nSignalNo,0,comResult))//图像都拍完后结果综合
 	{
-		//for	(int i = nSignalNo - 5; i<nSignalNo ;i++)
-		//{
-		//	if (!pMainFrm->m_cCombine.IsReject((i+256)%256))
-		//	{
-		//		pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2]++;
-		//		s_ResultInfo sResultInfo;
-		//		sResultInfo.tmpResult = pMainFrm->m_cCombine.m_Rlts[(i+256)%256].iResult;
-		//		sResultInfo.nImgNo = (i+256)%256;
-		//		sResultInfo.nIOCardNum = 0;
-		//		if (pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
-		//		{
-		//			//暂时使用无用变量作为总的综合踢废数目 by zl
-		//			pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2] += 1;
-		//			pMainFrm->m_vIOCard[sResultInfo.nIOCardNum]->SendResult(sResultInfo);
-		//		}
-		//		pMainFrm->m_cCombine.SetReject((i+256)%256);
-		//	}
-		//}
+		for	(int i = nSignalNo - 5; i<nSignalNo ;i++)
+		{
+			if (!pMainFrm->m_cCombine.IsReject((i+256)%256))
+			{
+				pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2]++;
+				s_ResultInfo sResultInfo;
+				sResultInfo.tmpResult = pMainFrm->m_cCombine.m_Rlts[(i+256)%256].iResult;
+				sResultInfo.nImgNo = (i+256)%256;
+				sResultInfo.nIOCardNum = 0;
+				if (pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
+				{
+					pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2] += 1;
+					pMainFrm->m_vIOCard[sResultInfo.nIOCardNum]->SendResult(sResultInfo);
+				}
+				pMainFrm->m_cCombine.SetReject((i+256)%256);
+			}
+		}
 
 		for	(int i = nSignalNo; i < nSignalNo + 5;i++)
 		{

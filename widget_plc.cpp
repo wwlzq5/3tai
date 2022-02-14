@@ -140,7 +140,7 @@ void Widget_PLC::slots_Pushbuttonread()
 void Widget_PLC::EnterPLC()
 {
 	QByteArray st;
-	SendMessage(92,st,1,2,228);//暂时获取界面显示的所有数据2*6+8*4+8*9+4+3*4+10*8 120+80+12
+	SendMessage(92,st,1,2,240);//228+12   //暂时获取界面显示的所有数据2*6+8*4+8*9+4+3*4+10*8 120+80+12
 	if(pMainFrm->nUserWidget->nPermission == 3)
 	{
 		ui.lineEdit->setEnabled(false);
@@ -252,7 +252,7 @@ int Widget_PLC::SendMessage(int address,QByteArray& send,int state,int id,int Da
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 242)//228+14
+	if (v_receive.size() == 254)//242+12
 	{
 		double v_douTemp = 0;
 		int v_Itmp = 0;
@@ -399,6 +399,15 @@ void Widget_PLC::slots_readFromPLC()
 		v_bit+=4;
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_39->setText(QString::number(v_Itmp));
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		ui.comboBox->setCurrentIndex(v_Itmp);
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		ui.comboBox_2->setCurrentIndex(v_Itmp);
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		ui.comboBox_3->setCurrentIndex(v_Itmp);
 		v_bit+=4;
 	}else if(v_receive.size() == 18)
 	{
@@ -583,8 +592,15 @@ void Widget_PLC::slots_Pushbuttonsave()
 	DataToByte(TempData,st);
 	TempData = ui.lineEdit_39->text().toInt();
 	DataToByte(TempData,st);
+	TempData = ui.comboBox->currentIndex();
+	DataToByte(TempData,st);
+	TempData = ui.comboBox_2->currentIndex();
+	DataToByte(TempData,st);
+	TempData = ui.comboBox_3->currentIndex();
+	DataToByte(TempData,st);
+
 	//总数
-	SendMessage(92,st,2,1,228);//120+44+64=228
+	SendMessage(92,st,2,1,240);//120+44+64=228+12
 }
 template<typename T>
 void Widget_PLC::DataToByte(T& xx, QByteArray& st)

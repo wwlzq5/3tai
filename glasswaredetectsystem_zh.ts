@@ -227,24 +227,24 @@
         <translation type="obsolete">队列2综合，图像号：%1，结果：%2</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="58"/>
+        <location filename="detectThread.cpp" line="53"/>
         <source>ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3</source>
         <translation type="unfinished">图像尺寸不合适（检测线程），相机%1,图像大小%2，图像内存大小%3</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="467"/>
-        <location filename="detectThread.cpp" line="483"/>
+        <location filename="detectThread.cpp" line="463"/>
+        <location filename="detectThread.cpp" line="479"/>
         <source>SaveImageByTime\</source>
         <translation>按时间保存图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="468"/>
+        <location filename="detectThread.cpp" line="464"/>
         <source>normal image\</source>
         <translation>正常图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="468"/>
-        <location filename="detectThread.cpp" line="484"/>
+        <location filename="detectThread.cpp" line="464"/>
+        <location filename="detectThread.cpp" line="480"/>
         <source>\camera%1</source>
         <translation>\\相机%1</translation>
     </message>
@@ -253,7 +253,7 @@
         <translation type="obsolete">创建路径失败!</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="484"/>
+        <location filename="detectThread.cpp" line="480"/>
         <source>stress image\</source>
         <translation>应力图像\\</translation>
     </message>
@@ -470,12 +470,12 @@
         <translation type="obsolete">获取版本</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="574"/>
+        <location filename="glasswaredetectsystem.cpp" line="585"/>
         <source>Good</source>
         <translation>合格</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="584"/>
+        <location filename="glasswaredetectsystem.cpp" line="595"/>
         <source>Unknown Defect</source>
         <translation>未知缺陷</translation>
     </message>
@@ -514,17 +514,17 @@
         <translation type="obsolete">正常相机设置出错！____相机%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="884"/>
+        <location filename="glasswaredetectsystem.cpp" line="895"/>
         <source>DeviceName:%1</source>
         <translation type="unfinished">设备名称：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="884"/>
+        <location filename="glasswaredetectsystem.cpp" line="895"/>
         <source>ErrorCode:%2</source>
         <translation type="unfinished">错误代码：%2</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="884"/>
+        <location filename="glasswaredetectsystem.cpp" line="895"/>
         <source>ErrorDescription:%3</source>
         <translation type="unfinished">错误描述：%3</translation>
     </message>
@@ -557,50 +557,50 @@
         <translation type="unfinished">后壁</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1992"/>
+        <location filename="glasswaredetectsystem.cpp" line="2011"/>
         <source>NetWoek Connect success</source>
         <oldsource>connect success!</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1995"/>
+        <location filename="glasswaredetectsystem.cpp" line="2014"/>
         <source>NetWoek Connect failed</source>
         <oldsource>connect failed!</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1068"/>
+        <location filename="glasswaredetectsystem.cpp" line="1079"/>
         <source>IOCard success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1355"/>
+        <location filename="glasswaredetectsystem.cpp" line="1366"/>
         <source>Remaining days of use?%1 </source>
         <translation>剩余使用天数：%1 </translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2078"/>
+        <location filename="glasswaredetectsystem.cpp" line="2098"/>
         <source>Encryption verification failed, will exit the program!</source>
         <translation type="unfinished">加密验证失败,即将退出程序!</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2088"/>
+        <location filename="glasswaredetectsystem.cpp" line="2108"/>
         <source>The authorization to use the equipment is about to expire 
 , please contact business personnel!</source>
         <translation type="unfinished">设备使用授权即将到期\n请联系商务人员！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2112"/>
+        <location filename="glasswaredetectsystem.cpp" line="2132"/>
         <source>License expired or dongle abnormal! Error code: 22</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：22</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2128"/>
+        <location filename="glasswaredetectsystem.cpp" line="2148"/>
         <source>License expired or dongle abnormal! Error code: %1</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2134"/>
+        <location filename="glasswaredetectsystem.cpp" line="2154"/>
         <source>Encryption authentication failed!</source>
         <translation type="unfinished">加密验证失败！</translation>
     </message>
@@ -609,17 +609,17 @@
         <translation type="obsolete">模点失败率: %1 / %2</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1066"/>
+        <location filename="glasswaredetectsystem.cpp" line="1077"/>
         <source>Error in init IOCard</source>
         <translation>初始化IO卡错误</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1088"/>
+        <location filename="glasswaredetectsystem.cpp" line="1099"/>
         <source>----load model error----</source>
         <translation>加载模板错误</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1106"/>
+        <location filename="glasswaredetectsystem.cpp" line="1117"/>
         <source>----camera%1 load model error----</source>
         <translation type="unfinished">相机%1加载模板错误</translation>
     </message>
@@ -645,13 +645,13 @@
         <translation type="obsolete">持续好</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1350"/>
+        <location filename="glasswaredetectsystem.cpp" line="1361"/>
         <source>Speed:</source>
         <oldsource>Speed+</oldsource>
         <translation>速度：</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1451"/>
+        <location filename="glasswaredetectsystem.cpp" line="1462"/>
         <source>Error in image carve </source>
         <translation>图像剪切错误</translation>
     </message>
@@ -765,7 +765,7 @@
         <translation type="obsolete">初始化检测！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1351"/>
+        <location filename="glasswaredetectsystem.cpp" line="1362"/>
         <source>Time:</source>
         <oldsource>Time</oldsource>
         <translation type="unfinished">时间:</translation>
@@ -813,18 +813,18 @@
         <translation type="obsolete">错误描述:%3</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="884"/>
+        <location filename="glasswaredetectsystem.cpp" line="895"/>
         <source>ErrorRemark:%4
 </source>
         <translation type="unfinished">错误描述：%4</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="885"/>
-        <location filename="glasswaredetectsystem.cpp" line="1557"/>
-        <location filename="glasswaredetectsystem.cpp" line="2078"/>
-        <location filename="glasswaredetectsystem.cpp" line="2112"/>
-        <location filename="glasswaredetectsystem.cpp" line="2128"/>
-        <location filename="glasswaredetectsystem.cpp" line="2134"/>
+        <location filename="glasswaredetectsystem.cpp" line="896"/>
+        <location filename="glasswaredetectsystem.cpp" line="1572"/>
+        <location filename="glasswaredetectsystem.cpp" line="2098"/>
+        <location filename="glasswaredetectsystem.cpp" line="2132"/>
+        <location filename="glasswaredetectsystem.cpp" line="2148"/>
+        <location filename="glasswaredetectsystem.cpp" line="2154"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -873,7 +873,7 @@
         <translation type="obsolete">相机：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1806"/>
+        <location filename="glasswaredetectsystem.cpp" line="1821"/>
         <source>Please Stop Detection First!</source>
         <translation type="unfinished">请停止检测！</translation>
     </message>
@@ -892,7 +892,7 @@
         <translation type="obsolete">退出系统！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1350"/>
+        <location filename="glasswaredetectsystem.cpp" line="1361"/>
         <source>Coder Number</source>
         <translation>编码器计数</translation>
     </message>
@@ -913,15 +913,15 @@
         <translation type="obsolete">提示</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1519"/>
-        <location filename="glasswaredetectsystem.cpp" line="1801"/>
-        <location filename="glasswaredetectsystem.cpp" line="1806"/>
+        <location filename="glasswaredetectsystem.cpp" line="1534"/>
+        <location filename="glasswaredetectsystem.cpp" line="1816"/>
+        <location filename="glasswaredetectsystem.cpp" line="1821"/>
         <source>Infomation</source>
         <translation type="unfinished">系统信息</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1519"/>
-        <location filename="glasswaredetectsystem.cpp" line="1801"/>
+        <location filename="glasswaredetectsystem.cpp" line="1534"/>
+        <location filename="glasswaredetectsystem.cpp" line="1816"/>
         <source>Please Stop Test First!</source>
         <translation type="unfinished">请先停止检测！</translation>
     </message>
@@ -930,18 +930,18 @@
         <translation type="obsolete">应力图像%1错误，相机%2不是正常图像！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1557"/>
+        <location filename="glasswaredetectsystem.cpp" line="1572"/>
         <source>No Model,Please Load Model!</source>
         <translation type="unfinished">当前没有模板，请先选择模版！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1561"/>
+        <location filename="glasswaredetectsystem.cpp" line="1576"/>
         <source>Stop</source>
         <oldsource>Stop detect</oldsource>
         <translation type="unfinished">停止检测</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1582"/>
+        <location filename="glasswaredetectsystem.cpp" line="1597"/>
         <source>Start</source>
         <oldsource>Start detect</oldsource>
         <translation type="unfinished">开始检测</translation>
@@ -959,7 +959,7 @@
         <translation type="obsolete">停止&amp;结束检测线程！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1683"/>
+        <location filename="glasswaredetectsystem.cpp" line="1698"/>
         <source>Directory change</source>
         <translation type="unfinished">qss路径变化</translation>
     </message>
@@ -968,12 +968,12 @@
         <translation type="obsolete">qss文件变化，重新加载</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1709"/>
+        <location filename="glasswaredetectsystem.cpp" line="1724"/>
         <source>Information</source>
         <translation type="unfinished">信息</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1709"/>
+        <location filename="glasswaredetectsystem.cpp" line="1724"/>
         <source>Load Language pack [glasswaredetectsystem_zh.qm] fail!</source>
         <translation type="unfinished">加载语言包[glasswaredetectsystem_zh.qm]失败！</translation>
     </message>
@@ -994,12 +994,12 @@
         <translation type="obsolete">进入算法设置界面</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1795"/>
+        <location filename="glasswaredetectsystem.cpp" line="1810"/>
         <source>Exit</source>
         <translation type="unfinished">退出</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1796"/>
+        <location filename="glasswaredetectsystem.cpp" line="1811"/>
         <source>Are you sure to exit?</source>
         <translation type="unfinished">确定退出？</translation>
     </message>
@@ -1293,27 +1293,27 @@
         <translation>停止刷新</translation>
     </message>
     <message>
-        <location filename="myimageshowitem.cpp" line="351"/>
+        <location filename="myimageshowitem.cpp" line="347"/>
         <source>----È¡³öÏÔÊ¾Í¼ÏñÒì³£----</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="myimageshowitem.cpp" line="414"/>
+        <location filename="myimageshowitem.cpp" line="410"/>
         <source>SaveImage/</source>
         <translation>保存图像/</translation>
     </message>
     <message>
-        <location filename="myimageshowitem.cpp" line="415"/>
+        <location filename="myimageshowitem.cpp" line="411"/>
         <source>Camera%1/</source>
         <translation>相机%1/</translation>
     </message>
     <message>
-        <location filename="myimageshowitem.cpp" line="418"/>
+        <location filename="myimageshowitem.cpp" line="414"/>
         <source>Save Image</source>
         <translation>保存图像</translation>
     </message>
     <message>
-        <location filename="myimageshowitem.cpp" line="420"/>
+        <location filename="myimageshowitem.cpp" line="416"/>
         <source>Images (*.bmp *.png *.jpg)</source>
         <translation></translation>
     </message>
@@ -1477,7 +1477,7 @@
         <translation type="obsolete">初始化检测！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="598"/>
+        <location filename="glasswaredetectsystem.cpp" line="609"/>
         <source>Glass Bottle Detect System</source>
         <translation>玻璃瓶在线检测系统</translation>
     </message>
@@ -1867,7 +1867,7 @@
     <message>
         <location filename="widget_Management.cpp" line="433"/>
         <source>Copying [%1] fail!</source>
-        <translation>复制[%1]失败！</translation>
+        <translation type="unfinished">复制[%1]失败！</translation>
     </message>
     <message>
         <location filename="widget_Management.cpp" line="447"/>
@@ -2075,31 +2075,31 @@
         <translation type="obsolete">熄灭报警灯</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="449"/>
+        <location filename="widget_test.ui" line="321"/>
         <source>Alarm Infomation</source>
         <translation>报警信息</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="444"/>
+        <location filename="widget_test.ui" line="316"/>
         <source>Alarm Frequency(DAY)</source>
         <oldsource>Alarm Frequency</oldsource>
         <translation>报警频率(天)</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="648"/>
+        <location filename="widget_test.ui" line="520"/>
         <source>ChoseCamera</source>
         <translation>选择相机</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="674"/>
+        <location filename="widget_test.ui" line="546"/>
         <source>ChoseErrorTpye</source>
         <translation>选择缺陷类型</translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="83"/>
-        <location filename="widget_test.ui" line="312"/>
-        <location filename="widget_test.ui" line="498"/>
-        <location filename="widget_test.ui" line="721"/>
+        <location filename="widget_test.ui" line="187"/>
+        <location filename="widget_test.ui" line="370"/>
+        <location filename="widget_test.ui" line="593"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
@@ -2108,7 +2108,7 @@
         <translation type="obsolete">设置图片刷新：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="299"/>
+        <location filename="widget_test.ui" line="174"/>
         <source>TextLabel</source>
         <translation> </translation>
     </message>
@@ -2117,71 +2117,67 @@
         <translation type="obsolete">显示缺陷类型</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="132"/>
+        <location filename="widget_test.ui" line="135"/>
         <source>CameraOffLine</source>
         <translation>相机掉线监视</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="203"/>
         <source>CameraContinueReject</source>
-        <translation>相机连剔监视</translation>
+        <translation type="obsolete">相机连剔监视</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="227"/>
         <source>RejectNumber:</source>
-        <translation>连剔报警个数</translation>
+        <translation type="obsolete">连剔报警个数</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="381"/>
+        <location filename="widget_test.ui" line="253"/>
         <source>Equipment maintenance alarm</source>
         <translation>设备维护报警</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="581"/>
+        <location filename="widget_test.ui" line="453"/>
         <source>No Save</source>
         <translation>不保存</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="586"/>
+        <location filename="widget_test.ui" line="458"/>
         <source>All Image(specified)</source>
         <oldsource>All Image</oldsource>
         <translation>所有图像</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="591"/>
+        <location filename="widget_test.ui" line="463"/>
         <source>Failur Image(specified)</source>
         <oldsource>Failur Image</oldsource>
         <translation>缺陷图像</translation>
     </message>
     <message utf8="true">
-        <location filename="widget_test.ui" line="1001"/>
+        <location filename="widget_test.ui" line="899"/>
         <source>后光延迟:</source>
         <oldsource>理论后光延迟:</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1079"/>
         <source>set</source>
-        <translation type="unfinished">设置</translation>
+        <translation type="obsolete">设置</translation>
     </message>
     <message utf8="true">
-        <location filename="widget_test.ui" line="1103"/>
+        <location filename="widget_test.ui" line="973"/>
         <source>网络重连</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="573"/>
+        <location filename="widget_test.ui" line="445"/>
         <source>Save Image:</source>
         <oldsource>Save Image：</oldsource>
         <translation>保存图像：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="162"/>
         <source>MissNumber:</source>
-        <translation>缺图报警个数</translation>
+        <translation type="obsolete">缺图报警个数</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="604"/>
+        <location filename="widget_test.ui" line="476"/>
         <source>Specified Number:</source>
         <oldsource>Specified Number：</oldsource>
         <translation>保存数量：</translation>
@@ -2218,19 +2214,19 @@
         <translation type="obsolete">报警百分比：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="657"/>
-        <location filename="widget_test.ui" line="683"/>
+        <location filename="widget_test.ui" line="529"/>
+        <location filename="widget_test.ui" line="555"/>
         <source>Chose All</source>
         <translation>全选</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="664"/>
-        <location filename="widget_test.ui" line="690"/>
+        <location filename="widget_test.ui" line="536"/>
+        <location filename="widget_test.ui" line="562"/>
         <source>Chose None</source>
         <translation>全不选</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="552"/>
+        <location filename="widget_test.ui" line="424"/>
         <source>SaveFailureNormalImage</source>
         <oldsource>SaveNormalFailureImage</oldsource>
         <translation>按时间保存正常缺陷图像</translation>
@@ -2248,27 +2244,27 @@
         <translation type="obsolete">报警上限：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="559"/>
+        <location filename="widget_test.ui" line="431"/>
         <source>SaveFailureStressImage</source>
         <translation>按时间保存应力缺陷图像</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="630"/>
+        <location filename="widget_test.ui" line="502"/>
         <source>CameraChoose</source>
         <translation>相机选择</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="637"/>
+        <location filename="widget_test.ui" line="509"/>
         <source>FailureChoose</source>
         <translation>缺陷选择</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="776"/>
+        <location filename="widget_test.ui" line="648"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="789"/>
+        <location filename="widget_test.ui" line="661"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -2321,17 +2317,16 @@
         <translation type="obsolete">光电4-5距离：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1072"/>
+        <location filename="widget_test.ui" line="1003"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1173"/>
         <source>Advance</source>
-        <translation>高级</translation>
+        <translation type="obsolete">高级</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1126"/>
+        <location filename="widget_test.ui" line="1088"/>
         <source>Continue Kick</source>
         <translation>持续剔废</translation>
     </message>
@@ -2340,27 +2335,27 @@
         <translation type="obsolete">隔瓶剔废</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1238"/>
+        <location filename="widget_test.ui" line="1062"/>
         <source>Continue Good</source>
         <translation>持续好</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1096"/>
+        <location filename="widget_test.ui" line="990"/>
         <source>Normal</source>
         <translation>正常剔废</translation>
     </message>
     <message utf8="true">
-        <location filename="widget_test.ui" line="1186"/>
+        <location filename="widget_test.ui" line="1075"/>
         <source>产品间距(0.3):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1212"/>
+        <location filename="widget_test.ui" line="1029"/>
         <source>Set to Card</source>
         <translation>设置到卡</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1160"/>
+        <location filename="widget_test.ui" line="1114"/>
         <source>Save to File</source>
         <translation>保存到文件</translation>
     </message>
@@ -2375,12 +2370,12 @@
         <translation type="obsolete">光电2-3距离：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="863"/>
+        <location filename="widget_test.ui" line="768"/>
         <source>Channel1:</source>
         <translation>第1路:</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="870"/>
+        <location filename="widget_test.ui" line="741"/>
         <source>Channel4:</source>
         <translation>第4路:</translation>
     </message>
@@ -2389,35 +2384,45 @@
         <translation type="obsolete">卡一：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="884"/>
+        <location filename="widget_test.ui" line="932"/>
         <source>Channel2:</source>
         <translation>第2路:</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1199"/>
+        <location filename="widget_test.ui" line="1042"/>
         <source>Channel3:</source>
         <translation>第3路:</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="949"/>
+        <location filename="widget_test.ui" line="755"/>
         <source>Channel6:</source>
         <oldsource>Channel6：</oldsource>
         <translation>第6路:</translation>
     </message>
+    <message utf8="true">
+        <location filename="widget_test.ui" line="966"/>
+        <source>服务器高级设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_test.ui" line="1016"/>
+        <source>夹持高级设置</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <location filename="widget_test.ui" line="1140"/>
+        <location filename="widget_test.ui" line="1049"/>
         <source>Channel5:</source>
         <oldsource>Channel7:</oldsource>
         <translation>第5路:</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1225"/>
+        <location filename="widget_test.ui" line="1101"/>
         <source>Kick Width:</source>
         <oldsource>Kick Width：</oldsource>
         <translation>剔废宽度：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="994"/>
+        <location filename="widget_test.ui" line="775"/>
         <source>Kick Delay:</source>
         <oldsource>Kick Delay：</oldsource>
         <translation>剔废延时：</translation>
@@ -2436,32 +2441,32 @@
         <translation type="obsolete">接口卡1</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="973"/>
-        <location filename="widget_test.cpp" line="941"/>
+        <location filename="widget_test.ui" line="949"/>
+        <location filename="widget_test.cpp" line="944"/>
         <source>Frequency:</source>
         <translation>一相行频：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="908"/>
-        <location filename="widget_test.cpp" line="944"/>
+        <location filename="widget_test.ui" line="885"/>
+        <location filename="widget_test.cpp" line="947"/>
         <source>IN0:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="877"/>
-        <location filename="widget_test.cpp" line="947"/>
+        <location filename="widget_test.ui" line="789"/>
+        <location filename="widget_test.cpp" line="950"/>
         <source>IN1:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="987"/>
-        <location filename="widget_test.cpp" line="950"/>
+        <location filename="widget_test.ui" line="837"/>
+        <location filename="widget_test.cpp" line="953"/>
         <source>IN2:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1039"/>
-        <location filename="widget_test.cpp" line="953"/>
+        <location filename="widget_test.ui" line="813"/>
+        <location filename="widget_test.cpp" line="956"/>
         <source>IN3:</source>
         <translation></translation>
     </message>
@@ -2479,50 +2484,50 @@
         <translation type="obsolete">接口卡1输出</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="966"/>
-        <location filename="widget_test.cpp" line="957"/>
+        <location filename="widget_test.ui" line="861"/>
+        <location filename="widget_test.cpp" line="960"/>
         <source>OUT0:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="891"/>
-        <location filename="widget_test.cpp" line="960"/>
+        <location filename="widget_test.ui" line="892"/>
+        <location filename="widget_test.cpp" line="963"/>
         <source>OUT1:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1032"/>
-        <location filename="widget_test.cpp" line="963"/>
+        <location filename="widget_test.ui" line="806"/>
+        <location filename="widget_test.cpp" line="966"/>
         <source>OUT2:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1018"/>
-        <location filename="widget_test.cpp" line="966"/>
+        <location filename="widget_test.ui" line="782"/>
+        <location filename="widget_test.cpp" line="969"/>
         <source>OUT3:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="980"/>
-        <location filename="widget_test.cpp" line="969"/>
+        <location filename="widget_test.ui" line="878"/>
+        <location filename="widget_test.cpp" line="972"/>
         <source>OUT4:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="915"/>
-        <location filename="widget_test.cpp" line="972"/>
+        <location filename="widget_test.ui" line="820"/>
+        <location filename="widget_test.cpp" line="975"/>
         <source>OUT5:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="388"/>
-        <location filename="widget_test.cpp" line="558"/>
-        <location filename="widget_test.cpp" line="571"/>
+        <location filename="widget_test.ui" line="260"/>
+        <location filename="widget_test.cpp" line="561"/>
+        <location filename="widget_test.cpp" line="574"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="485"/>
+        <location filename="widget_test.ui" line="357"/>
         <source>Maintenance Completed</source>
         <translation>保养完成</translation>
     </message>
@@ -2531,14 +2536,14 @@
         <translation type="obsolete">卡二：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="922"/>
-        <location filename="widget_test.cpp" line="975"/>
+        <location filename="widget_test.ui" line="748"/>
+        <location filename="widget_test.cpp" line="978"/>
         <source>OUT6:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1025"/>
-        <location filename="widget_test.cpp" line="978"/>
+        <location filename="widget_test.ui" line="844"/>
+        <location filename="widget_test.cpp" line="981"/>
         <source>OUT7:</source>
         <translation></translation>
     </message>
@@ -2559,7 +2564,7 @@
         <translation type="obsolete">所有缺陷</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="351"/>
+        <location filename="widget_test.cpp" line="358"/>
         <source>Login Hold Time</source>
         <translation>自动退出登录时间</translation>
     </message>
@@ -2577,7 +2582,7 @@
         <translation type="obsolete">光电1-2距离：</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="355"/>
+        <location filename="widget_test.cpp" line="362"/>
         <source>Save Mode</source>
         <translation>保存图像设置</translation>
     </message>
@@ -2586,9 +2591,9 @@
         <translation type="obsolete">统计报警设置</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="359"/>
+        <location filename="widget_test.cpp" line="366"/>
         <source>Camera Surveillance</source>
-        <translation>相机监视</translation>
+        <translation type="unfinished">相机监视</translation>
     </message>
     <message>
         <source>IOCard1 Set.  IOCard OffSet:%1</source>
@@ -2605,7 +2610,7 @@
         <translation type="obsolete">接口卡测试</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="363"/>
+        <location filename="widget_test.cpp" line="370"/>
         <source>IOCard Delay</source>
         <translation type="unfinished">接口卡延时设置</translation>
     </message>
@@ -2624,12 +2629,12 @@ Please check the camera and restart the software!</source>
 请检查相机并重启软件！</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="490"/>
+        <location filename="widget_test.cpp" line="493"/>
         <source>Camera Offline monitoring start</source>
         <translation>相机掉线监视开始</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="372"/>
+        <location filename="widget_test.cpp" line="375"/>
         <source>Equipment Maintenance Alarm Set</source>
         <translation>设备维护报警设置</translation>
     </message>
@@ -2639,38 +2644,38 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished">初始化IO卡错误</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="121"/>
-        <location filename="widget_test.cpp" line="123"/>
+        <location filename="widget_test.cpp" line="117"/>
+        <location filename="widget_test.cpp" line="119"/>
         <source>message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="121"/>
+        <location filename="widget_test.cpp" line="117"/>
         <source>connect success!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="123"/>
+        <location filename="widget_test.cpp" line="119"/>
         <source>connect failed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="485"/>
+        <location filename="widget_test.cpp" line="488"/>
         <source>Camera Offline monitoring already start</source>
         <translation>相机掉线监视已经开始</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="497"/>
+        <location filename="widget_test.cpp" line="500"/>
         <source>Camera Offline monitoring already stop</source>
         <translation>相机掉线监视已经停止</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="502"/>
+        <location filename="widget_test.cpp" line="505"/>
         <source>Camera Offline monitoring stop</source>
         <translation>相机掉线监视停止</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="569"/>
+        <location filename="widget_test.cpp" line="572"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
@@ -2745,8 +2750,8 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">禁止读取！</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="755"/>
-        <location filename="widget_test.cpp" line="787"/>
+        <location filename="widget_test.cpp" line="758"/>
+        <location filename="widget_test.cpp" line="790"/>
         <source>The set value is out of range!</source>
         <translation>设定数值越界！</translation>
     </message>
@@ -2936,7 +2941,7 @@ Please check the camera and restart the software!</source>
     </message>
     <message>
         <location filename="Widget_CarveImage.cpp" line="502"/>
-        <location filename="Widget_CarveImage.cpp" line="1553"/>
+        <location filename="Widget_CarveImage.cpp" line="1563"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -2949,18 +2954,18 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">相机：%1</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1067"/>
-        <location filename="Widget_CarveImage.cpp" line="1093"/>
+        <location filename="Widget_CarveImage.cpp" line="1074"/>
+        <location filename="Widget_CarveImage.cpp" line="1100"/>
         <source>Error in image Carve!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1404"/>
+        <location filename="Widget_CarveImage.cpp" line="1411"/>
         <source>Go Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1553"/>
+        <location filename="Widget_CarveImage.cpp" line="1563"/>
         <source>Please stop detect!</source>
         <translation>请先停止测试!</translation>
     </message>
@@ -2991,8 +2996,8 @@ Please check the camera and restart the software!</source>
         <translation>剪切图像失败！</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1235"/>
-        <location filename="Widget_CarveImage.cpp" line="1296"/>
+        <location filename="Widget_CarveImage.cpp" line="1242"/>
+        <location filename="Widget_CarveImage.cpp" line="1303"/>
         <source>Camera %1</source>
         <translation>相机%1</translation>
     </message>
@@ -3001,7 +3006,7 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">剪切</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1414"/>
+        <location filename="Widget_CarveImage.cpp" line="1421"/>
         <source>test grey</source>
         <translation>灰度检测</translation>
     </message>
@@ -3014,12 +3019,12 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">请先停止检测！</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1544"/>
+        <location filename="Widget_CarveImage.cpp" line="1554"/>
         <source>Start Test</source>
         <translation>开始测试</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1565"/>
+        <location filename="Widget_CarveImage.cpp" line="1575"/>
         <source>Stop Test</source>
         <translation>停止测试</translation>
     </message>
@@ -4096,12 +4101,12 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="819"/>
+        <location filename="widget_plc.ui" line="881"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="832"/>
+        <location filename="widget_plc.ui" line="894"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4116,193 +4121,222 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="387"/>
+        <location filename="widget_plc.ui" line="474"/>
         <source>队列2阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="264"/>
+        <location filename="widget_plc.ui" line="277"/>
         <source>队列2阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="496"/>
+        <location filename="widget_plc.ui" line="453"/>
         <source>队列2测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="335"/>
+        <location filename="widget_plc.ui" line="318"/>
         <source>队列3阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="271"/>
+        <location filename="widget_plc.ui" line="349"/>
         <source>队列3测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="417"/>
+        <location filename="widget_plc.ui" line="540"/>
         <source>队列3阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="516"/>
+        <location filename="widget_plc.ui" line="373"/>
         <source>后堵瓶测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="523"/>
+        <location filename="widget_plc.ui" line="527"/>
         <source>后堵瓶阈值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="570"/>
+        <location filename="widget_plc.ui" line="580"/>
         <source>输送线停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="540"/>
+        <location filename="widget_plc.ui" line="460"/>
         <source>理瓶器启动延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="670"/>
+        <location filename="widget_plc.ui" line="733"/>
         <source>读取</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="328"/>
+        <location filename="widget_plc.ui" line="311"/>
         <source>队列1阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="373"/>
+        <location filename="widget_plc.ui" line="570"/>
         <source>队列1阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="380"/>
+        <location filename="widget_plc.ui" line="363"/>
         <source>队列1测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="466"/>
+        <location filename="widget_plc.ui" line="481"/>
         <source>前倒瓶测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="620"/>
+        <location filename="widget_plc.ui" line="600"/>
         <source>夹瓶比列因子</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="291"/>
+        <location filename="widget_plc.ui" line="294"/>
         <source>前倒瓶阈值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="366"/>
+        <location filename="widget_plc.ui" line="400"/>
         <source>前输送线加速时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="349"/>
+        <location filename="widget_plc.ui" line="342"/>
         <source>前输送线减速时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="755"/>
+        <location filename="widget_plc.ui" line="818"/>
         <source>输送线电机减速比</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="342"/>
+        <location filename="widget_plc.ui" line="325"/>
         <source>前输送线频率</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="748"/>
+        <location filename="widget_plc.ui" line="811"/>
         <source>板链节距</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="725"/>
+        <location filename="widget_plc.ui" line="788"/>
         <source>主动齿轮数</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="530"/>
+        <location filename="widget_plc.ui" line="467"/>
         <source>输送线电机最大频率</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="716"/>
+        <location filename="widget_plc.ui" line="779"/>
         <source>特殊参数设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="735"/>
+        <location filename="widget_plc.ui" line="798"/>
         <source>夹瓶电机减速比</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="762"/>
+        <location filename="widget_plc.ui" line="825"/>
         <source>夹瓶带齿轮数</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="772"/>
+        <location filename="widget_plc.ui" line="835"/>
         <source>夹瓶皮带节距</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="610"/>
+        <location filename="widget_plc.ui" line="623"/>
         <source>前倒瓶剔除吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="560"/>
+        <location filename="widget_plc.ui" line="380"/>
         <source>前输送线启动延迟</source>
         <oldsource>前倒瓶剔除编码器延迟行</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="550"/>
+        <location filename="widget_plc.ui" line="407"/>
         <source>理瓶器停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="580"/>
+        <location filename="widget_plc.ui" line="356"/>
         <source>瓶底光源吹气间隔</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="600"/>
+        <location filename="widget_plc.ui" line="587"/>
         <source>瓶底光源吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="590"/>
+        <location filename="widget_plc.ui" line="607"/>
         <source>前倒瓶剔除编码器延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="634"/>
+        <location filename="widget_plc.ui" line="630"/>
+        <source>输送线变频器品牌</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="638"/>
+        <location filename="widget_plc.ui" line="659"/>
+        <location filename="widget_plc.ui" line="680"/>
+        <source>丹佛斯</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="643"/>
+        <location filename="widget_plc.ui" line="664"/>
+        <location filename="widget_plc.ui" line="685"/>
+        <source>台达</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="651"/>
+        <source>理瓶器变频器品牌</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="672"/>
+        <source>前输送变频器品牌</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="697"/>
         <source>连续不踢废数量</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="681"/>
+        <location filename="widget_plc.ui" line="744"/>
         <source>机型</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="694"/>
+        <location filename="widget_plc.ui" line="757"/>
         <source>左手机</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="707"/>
+        <location filename="widget_plc.ui" line="770"/>
         <source>右手机</source>
         <translation type="unfinished"></translation>
     </message>

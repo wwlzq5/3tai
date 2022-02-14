@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Widget_CarveImage.h'
 **
-** Created: Tue Feb 8 17:47:31 2022
+** Created: Mon Feb 14 13:58:31 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Widget_CarveImage[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      26,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -46,19 +46,20 @@ static const uint qt_meta_data_Widget_CarveImage[] = {
      424,   18,   18,   18, 0x0a,
      446,   18,   18,   18, 0x0a,
      464,   18,   18,   18, 0x0a,
-     496,   18,  492,   18, 0x0a,
-     510,   18,   18,   18, 0x0a,
+     492,   18,   18,   18, 0x0a,
+     512,   18,  508,   18, 0x0a,
      526,   18,   18,   18, 0x0a,
-     541,   18,   18,   18, 0x0a,
-     554,   18,   18,   18, 0x0a,
-     565,   18,   18,   18, 0x0a,
-     578,   18,   18,   18, 0x0a,
-     591,   18,   18,   18, 0x0a,
-     611,  605,   18,   18, 0x0a,
-     640,   18,   18,   18, 0x0a,
-     653,   18,   18,   18, 0x0a,
-     673,   18,   18,   18, 0x0a,
-     691,   18,   18,   18, 0x0a,
+     542,   18,   18,   18, 0x0a,
+     557,   18,   18,   18, 0x0a,
+     570,   18,   18,   18, 0x0a,
+     581,   18,   18,   18, 0x0a,
+     594,   18,   18,   18, 0x0a,
+     607,   18,   18,   18, 0x0a,
+     627,  621,   18,   18, 0x0a,
+     656,   18,   18,   18, 0x0a,
+     669,   18,   18,   18, 0x0a,
+     689,   18,   18,   18, 0x0a,
+     707,   18,   18,   18, 0x0a,
 
        0        // eod
 };
@@ -77,8 +78,8 @@ static const char qt_meta_stringdata_Widget_CarveImage[] = {
     "nCamNo,nImgNo\0slots_updateActiveImg(int,int)\0"
     "nCamNo\0slots_updateActiveImg(int)\0"
     "slots_readDelayPara()\0slots_startTest()\0"
-    "slots_spinBoxValueChanged()\0int\0"
-    "slots_carve()\0slots_CopyROI()\0"
+    "slots_spinBoxValueChanged()\0SetSaveStatus()\0"
+    "int\0slots_carve()\0slots_CopyROI()\0"
     "slots_cancel()\0slots_save()\0slots_up()\0"
     "slots_down()\0slots_left()\0slots_right()\0"
     "index\0slots_StressModeChanged(int)\0"
@@ -105,20 +106,21 @@ void Widget_CarveImage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 10: _t->slots_readDelayPara(); break;
         case 11: _t->slots_startTest(); break;
         case 12: _t->slots_spinBoxValueChanged(); break;
-        case 13: { int _r = _t->slots_carve();
+        case 13: _t->SetSaveStatus(); break;
+        case 14: { int _r = _t->slots_carve();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 14: _t->slots_CopyROI(); break;
-        case 15: _t->slots_cancel(); break;
-        case 16: _t->slots_save(); break;
-        case 17: _t->slots_up(); break;
-        case 18: _t->slots_down(); break;
-        case 19: _t->slots_left(); break;
-        case 20: _t->slots_right(); break;
-        case 21: _t->slots_StressModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 22: _t->slots_grey(); break;
-        case 23: _t->slots_setToCamera(); break;
-        case 24: _t->slots_timerTest(); break;
-        case 25: _t->slots_UpdateGrayInfo(); break;
+        case 15: _t->slots_CopyROI(); break;
+        case 16: _t->slots_cancel(); break;
+        case 17: _t->slots_save(); break;
+        case 18: _t->slots_up(); break;
+        case 19: _t->slots_down(); break;
+        case 20: _t->slots_left(); break;
+        case 21: _t->slots_right(); break;
+        case 22: _t->slots_StressModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 23: _t->slots_grey(); break;
+        case 24: _t->slots_setToCamera(); break;
+        case 25: _t->slots_timerTest(); break;
+        case 26: _t->slots_UpdateGrayInfo(); break;
         default: ;
         }
     }
@@ -156,9 +158,9 @@ int Widget_CarveImage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 26)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 26;
+        _id -= 27;
     }
     return _id;
 }

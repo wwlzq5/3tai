@@ -156,6 +156,13 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
 }
+void GlasswareDetectSystem::keyPressEvent(QKeyEvent *event)
+{
+	if (event->key() == Qt::Key_Escape) 
+	{
+		return;
+	}
+}
 void GlasswareDetectSystem::Init()
 {
 	InitParameter();
@@ -285,11 +292,6 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 				tempCamera += m_sSystemInfo.iRealCamCount;
 			}
 		}
-		/*m_sRealCamInfo[tempCamera].m_iGrabImageCount++;
-		if(m_sRealCamInfo[tempCamera].m_iGrabImageCount>2)
-		{
-			return;
-		}*/
 	}else{
 		if(m_sRealCamInfo[iRealCameraSN].m_iGrabImageCount%2 == 0)
 		{
@@ -301,13 +303,19 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 	}
 	
 	CGrabElement *pGrabElement = NULL;
-
 	if(nQueue[tempCamera].listGrab.count()>0)
 	{
+		pMainFrm->nQueue[tempCamera].mGrabLocker.lock();
 		pGrabElement = (CGrabElement *) nQueue[tempCamera].listGrab.first();
 		nQueue[tempCamera].listGrab.removeFirst();
 		memcpy(pGrabElement->SourceImage->bits(),pImageBuffer,nWidth*nHeight);
-		*pGrabElement->SourceImage = pGrabElement->SourceImage->mirrored(true,true);
+		pMainFrm->nQueue[tempCamera].mGrabLocker.unlock();
+		
+		if(m_sSystemInfo.m_iSystemType != 2)//夹持使用镜像，前后壁使用原始图
+		{
+			*pGrabElement->SourceImage = pGrabElement->SourceImage->mirrored();
+		}
+
 		pGrabElement->bHaveImage=TRUE;
 		pGrabElement->nCheckRet = FALSE;
 		pGrabElement->cErrorParaList.clear();
@@ -391,11 +399,8 @@ void GlasswareDetectSystem::InitParameter()
 	Sleep(1000);
 
 	m_tcpSocket = new QTcpSocket();
-#ifdef FOURCOMPUTER
 	m_tcpSocket->connectToHost("192.168.250.202",8088);
-#else
-	m_tcpSocket->connectToHost("192.168.250.204",8088);
-#endif
+
 	//m_tcpSocket->connectToHost("127.0.0.1",8088);
 	if(m_tcpSocket->waitForConnected(3000))
 	{
@@ -480,9 +485,12 @@ void GlasswareDetectSystem::onServerDataReady()
 			
 			break;
 		case FRONTSTATE://根据服务器返回的账号权限，隐藏弹窗，设置按钮属性,仅服务器使用
-			/*nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-			loginState(nClearName.toInt());
-			nUserWidget->nPermission = nClearName.toInt();*/
+			if(m_sSystemInfo.m_iSystemType == 2)
+			{
+				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
+				loginState(nClearName.toInt());
+				nUserWidget->nPermission = nClearName.toInt();
+			}
 			break;
 		case CONNECT:
 			//n_StartTime = QTime::currentTime().minute();
@@ -527,16 +535,19 @@ void GlasswareDetectSystem::onServerDataReady()
 			widget_Management->SeverDelete(nAddModeName);
 			break;
 		case ONLYSHOWSEVER:
-			nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-			if(nClearName == "LIMIT")
+			if(m_sSystemInfo.m_iSystemType == 2)
 			{
-				title_widget->setState(false);
-				nUserWidget->nPermission = 3;
-			}else{
-				title_widget->setState(true);
-				nUserWidget->nPermission = 2;
+				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
+				if(nClearName == "LIMIT")
+				{
+					title_widget->setState(false);
+					nUserWidget->nPermission = 3;
+				}else{
+					title_widget->setState(true);
+					nUserWidget->nPermission = 2;
+				}
+				show();
 			}
-			show();
 			break;
 		}
 		buffer = m_buffer.right(totalLen - nCount);  
@@ -768,9 +779,9 @@ void GlasswareDetectSystem::ReadCorveConfig()
 		strSession = QString("/pointy/Grab_%1").arg(i);
 		m_sCarvedCamInfo[i].i_ImageY = iniCarveSet.value(strSession,i).toInt();
 		strSession = QString("/width/Grab_%1").arg(i);
-		m_sCarvedCamInfo[i].m_iImageWidth = iniCarveSet.value(strSession,i).toInt();
+		m_sCarvedCamInfo[i].m_iImageWidth = iniCarveSet.value(strSession,500).toInt();
 		strSession = QString("/height/Grab_%1").arg(i);
-		m_sCarvedCamInfo[i].m_iImageHeight = iniCarveSet.value(strSession,i).toInt();
+		m_sCarvedCamInfo[i].m_iImageHeight = iniCarveSet.value(strSession,500).toInt();
 		strSession = QString("/convert/Grab_%1").arg(i);
 		m_sCarvedCamInfo[i].m_iToRealCamera = iniCarveSet.value(strSession,i).toInt();
 
@@ -1454,10 +1465,20 @@ void GlasswareDetectSystem::CarveImage(uchar* pRes,uchar* pTar,int iResWidth,int
 
 void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 {
-	if (iLastPage == current_page && iLastPage != 9)
+	if (iLastPage == current_page)
 	{
 		return;
 	}
+	if(iLastPage == 3 && (current_page == 0 || current_page == 1 || current_page == 2))
+	{
+		s_Status  sReturnStatus;
+		sReturnStatus = m_cBottleModel.CloseModelDlg();
+		if (0 != sReturnStatus.nErrorID)
+		{
+			return ;
+		}
+	}
+	
 	switch (current_page)
 	{
 	case 0:
@@ -1492,26 +1513,20 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		pMainFrm->Logfile.write(("into AlgPage"),AbnormityLog);
 		break;
 	case 4:
-		//iLastPage = 4;
 		slots_OnBtnStar();
 		break;
 	case 5:
 		slots_OnExit();
 		break;
-	case 9://只有夹持需要这个功能 
-#ifdef FOURCOMPUTER
+	case 9://只有夹持需要这个功能
 		hide();
 		SendDataToSever(nUserWidget->nPermission,ONLYSHOWSEVER);
-#else
-		SendDataToSever(0,MAININTERFACE);
-#endif
 		pMainFrm->Logfile.write(("return severs interface"),AbnormityLog);
 		break;
 	case 10:
 		nUserWidget->show();
 	}
 }
-
 void GlasswareDetectSystem::slots_OnBtnStar()
 {
 	if (m_sSystemInfo.m_bIsTest)
@@ -1546,8 +1561,8 @@ void GlasswareDetectSystem::slots_OnBtnStar()
 			}
 			m_sRunningInfo.nGSoap_ErrorTypeCount[0]=0;
 			m_sRunningInfo.nGSoap_ErrorCamCount[0]=0;
-			/*m_sRunningInfo.nGSoap_ErrorTypeCount[2]=0;
-			m_sRunningInfo.nGSoap_ErrorCamCount[2]=0;*/
+			m_sRunningInfo.nGSoap_ErrorTypeCount[2]=0;
+			m_sRunningInfo.nGSoap_ErrorCamCount[2]=0;
 
 			pMainFrm->Logfile.write(("Start Check"),OperationLog);
 			m_sRunningInfo.m_bCheck = true;
@@ -1806,14 +1821,18 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 			QMessageBox::information(this,tr("Infomation"),tr("Please Stop Detection First!"));
 			return;		
 		}
-		/*m_tcpSocket->disconnectFromHost();
-		m_tcpSocket->waitForDisconnected();
-		if(nSeverExe) 
+		//m_tcpSocket->disconnectFromHost();
+		//m_tcpSocket->waitForDisconnected();
+		if(m_sSystemInfo.m_iSystemType == 2)
 		{
-			nSeverExe->close();
+			if(nSeverExe) 
+			{
+				nSeverExe->close();
+			}
+			delete nSeverExe;
+			nSeverExe = 0;
 		}
-		delete nSeverExe;
-		nSeverExe = 0;*/
+		
 
 
 		EquipRuntime::Instance()->EquipExitLogFile();
@@ -2004,6 +2023,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 		{
 			nUserWidget->nScreenCount=0;
 			nUserWidget->show();
+			title_widget->setState(false);
 			//SendDataToSever(3,LOCKSCREEN);
 		}
 	}else{

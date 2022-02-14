@@ -30,11 +30,11 @@ WidgetTest::WidgetTest(QWidget *parent)
 	ui.comboBox->insertItem(1,tr("Only Bad Images Are Refreshed"));
 	ui.comboBox->insertItem(2,tr("All Not Refresh"));
 
-	ui.label_MissNumber->setText("");
-	ui.spinBox_OffLineNumber->setVisible(false);
-	ui.checkBox_CameraContinueReject->setVisible(false);
-	ui.label_rejectNumber->setVisible(false);
-	ui.spinBox_RejectNo->setVisible(false);
+	//ui.label_MissNumber->setText("");
+	//ui.spinBox_OffLineNumber->setVisible(false);
+	//ui.checkBox_CameraContinueReject->setVisible(false);
+	//ui.label_rejectNumber->setVisible(false);
+	//ui.spinBox_RejectNo->setVisible(false);
 
 	QSettings iniCarveSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
 	QString strSession;
@@ -83,7 +83,7 @@ WidgetTest::~WidgetTest()
 {
 	delete widget_ErrorType;
 	delete widget_Camera;
-	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
+	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2 && pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
 		m_vIOCard->CloseIOCard();
 	}
@@ -110,11 +110,7 @@ void WidgetTest::slot_readIoCard()
 }
 void WidgetTest::slot_ConnectSever()
 {
-#ifdef FOURCOMPUTER
 	pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
-#else
-	m_plc->m_pSocket->connectToHost("192.168.250.204",8088);
-#endif
 	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
 	if(pMainFrm->m_tcpSocket->waitForConnected(3000) && m_plc->m_pSocket->waitForConnected(3000))
 	{
@@ -135,9 +131,9 @@ void WidgetTest::slots_intoWidget()
 	timerUpdateIOCardCounter->start();
 
 	ui.checkBox_CameraOffLine->setChecked(pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance);
-	ui.checkBox_CameraContinueReject->setChecked(pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance);
-	ui.spinBox_OffLineNumber->setValue(pMainFrm->m_sSystemInfo.iCamOfflineNo);
-	ui.spinBox_RejectNo->setValue(pMainFrm->m_sSystemInfo.iCamContinueRejectNumber);
+	//ui.checkBox_CameraContinueReject->setChecked(pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance);
+	//ui.spinBox_OffLineNumber->setValue(pMainFrm->m_sSystemInfo.iCamOfflineNo);
+	//ui.spinBox_RejectNo->setValue(pMainFrm->m_sSystemInfo.iCamContinueRejectNumber);
 
 	if (pMainFrm->m_sSystemInfo.m_iSaveNormalErrorImageByTime)
 	{
@@ -263,6 +259,17 @@ void WidgetTest::init()
 	connect(ui.btn_ClearAlarm,SIGNAL(clicked()),this,SLOT(slots_EquipAlarmClear()));
 	connect(EquipRuntime::Instance(),SIGNAL(SendAlarms(int,bool)),this,SLOT(slots_SetEquipAlarmSatus(int,bool)));
 	initInformation();
+
+	if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
+	{
+		ui.label_20->setText(QString::fromLocal8Bit("光电1-5:"));
+	}else if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
+	{
+		ui.label_20->setText(QString::fromLocal8Bit("光电2-3:"));
+		ui.label_5->setText(QString::fromLocal8Bit("光电3-5:"));
+	}else{
+		ui.label_20->setText(QString::fromLocal8Bit("光电4-5:"));
+	}
 }
 
 void WidgetTest::initEquipAlarmTablewidget()
@@ -364,10 +371,6 @@ void WidgetTest::initWidgetName()
 	ui.widget_IOCardSet->widgetName->setMaximumHeight(25);
 	ui.widget_IOCounter->addWidget(ui.widget_IOCardSet->widgetName);
 
-	/*ui.verticalLayout_2->setWidgetName(tr("Plc Set"));
-	ui.verticalLayout_2->widgetName->setMaximumHeight(25);
-	ui.verticalLayout_2->addWidget(ui.verticalLayout_2->widgetName);*/
-
 	//modif 2020-11-05 Joge
 	ui.widget_EquipAlarm->setWidgetName(tr("Equipment Maintenance Alarm Set"));
 }
@@ -465,9 +468,9 @@ void WidgetTest::slots_OKCameraSurveillance()
 {
 
 	pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance = ui.checkBox_CameraOffLine->isChecked();
-	pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance = ui.checkBox_CameraContinueReject->isChecked();
-	pMainFrm->m_sSystemInfo.iCamOfflineNo = ui.spinBox_OffLineNumber->value();
-	pMainFrm->m_sSystemInfo.iCamContinueRejectNumber = ui.spinBox_RejectNo->value();
+	//pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance = ui.checkBox_CameraContinueReject->isChecked();
+	//pMainFrm->m_sSystemInfo.iCamOfflineNo = ui.spinBox_OffLineNumber->value();
+	//pMainFrm->m_sSystemInfo.iCamContinueRejectNumber = ui.spinBox_RejectNo->value();
 
 
 	QSettings iniStatisSet(pMainFrm->m_sConfigInfo.m_strConfigPath,QSettings::IniFormat);
@@ -981,12 +984,12 @@ void WidgetTest::slots_updateIOcardCounter()
 		//ui.label_23->setText(QString::fromLocal8Bit("接口卡补踢总数：")+QString::number(0));		//接口卡补踢总数
 		ui.label_15->setText(QString::fromLocal8Bit("综合过检总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[0])); //综合过检总数
 		ui.label_24->setText(QString::fromLocal8Bit("综合过检踢废：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0]));  //综合过检踢废
-		//ui.label_28->setText(QString::fromLocal8Bit("补踢过检总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2])); //补踢过检总数
-		//ui.label_29->setText(QString::fromLocal8Bit("补踢踢废总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2]));  //补踢踢废总数
+		ui.label_28->setText(QString::fromLocal8Bit("补踢过检总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2])); //补踢过检总数
+		ui.label_29->setText(QString::fromLocal8Bit("补踢踢废总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2]));  //补踢踢废总数
 		pMainFrm->nIOCard[12] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[0];
 		pMainFrm->nIOCard[13] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0];
-		//pMainFrm->nIOCard[14] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2];
-		//pMainFrm->nIOCard[15] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2];
+		pMainFrm->nIOCard[14] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2];
+		pMainFrm->nIOCard[15] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2];
 		//
 	}
 }

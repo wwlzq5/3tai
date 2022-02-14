@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Tue Feb 8 17:47:31 2022
+** Created: Fri Feb 11 17:32:34 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -51,19 +51,13 @@ public:
     QSpacerItem *horizontalSpacer_11;
     DHBaseWidget *widget_CameraSurveillance;
     QVBoxLayout *verticalLayout_18;
+    QVBoxLayout *namelayout_CameraSurveillance;
     QHBoxLayout *horizontalLayout_27;
     QVBoxLayout *verticalLayout_19;
     QHBoxLayout *horizontalLayout_28;
     QCheckBox *checkBox_CameraOffLine;
-    QLabel *label_MissNumber;
-    QSpinBox *spinBox_OffLineNumber;
-    QHBoxLayout *horizontalLayout_30;
-    QCheckBox *checkBox_CameraContinueReject;
-    QLabel *label_rejectNumber;
-    QSpinBox *spinBox_RejectNo;
     QWidget *widget_StatisErrorType_4;
     QGridLayout *gridLayout_25;
-    QGridLayout *layoutStatisErrorType_4;
     QHBoxLayout *horizontalLayout_31;
     QSpacerItem *horizontalSpacer_15;
     QLabel *CameraMonitor_Status;
@@ -71,7 +65,6 @@ public:
     QSpacerItem *horizontalSpacer_16;
     DHBaseWidget *widget_EquipAlarm;
     QVBoxLayout *verticalLayout_17;
-    QVBoxLayout *namelayout_CameraSurveillance;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_23;
     QVBoxLayout *verticalLayout_20;
@@ -128,50 +121,52 @@ public:
     QVBoxLayout *verticalLayout_11;
     QVBoxLayout *widget_IOCounter;
     QGridLayout *gridLayout_15;
-    QLineEdit *Distance1to4;
-    QLabel *label_6;
+    QLabel *label_28;
+    QLabel *label_15;
+    QLabel *label_24;
+    QLabel *label_29;
     QLabel *label_9;
-    QLabel *label_IN1;
-    QLabel *label_7;
-    QLabel *label_OUT1;
-    QLineEdit *lineDelay;
-    QLabel *label_IN0;
-    QLabel *label_OUT5;
     QLabel *label_OUT6;
-    QLineEdit *KickDelay;
-    QLineEdit *Delay6;
     QLabel *label_11;
-    QLineEdit *Delay4;
-    QLabel *label_OUT0;
-    QLabel *label_frequency;
-    QLabel *label_OUT4;
-    QLabel *label_IN2;
+    QLabel *label_6;
     QLabel *label_20;
-    QLabel *label_5;
-    QLineEdit *Delay1;
     QLabel *label_OUT3;
-    QLabel *label_OUT7;
+    QLabel *label_IN1;
+    QLineEdit *Delay4;
     QLabel *label_OUT2;
     QLabel *label_IN3;
+    QLabel *label_OUT5;
     QLineEdit *KickWidth;
+    QLabel *label_IN2;
+    QLabel *label_OUT7;
     QLineEdit *Delay3;
-    QPushButton *read;
+    QLabel *label_OUT0;
+    QLineEdit *Delay1;
+    QLabel *label_OUT4;
+    QLabel *label_IN0;
+    QLabel *label_OUT1;
+    QLabel *label_5;
+    QLineEdit *KickDelay;
+    QLineEdit *Distance1to4;
+    QLabel *label_7;
+    QLineEdit *lineDelay;
+    QLabel *label_frequency;
+    QLineEdit *Delay6;
     QPushButton *pushButton_set;
-    QLineEdit *Delay2;
-    QRadioButton *radioButton_normal;
     QPushButton *pushButton;
     QLineEdit *Delay5;
-    QRadioButton *radioButton_bad;
-    QLabel *label_24;
-    QLabel *label_10;
-    QLabel *label_15;
-    QPushButton *settofile;
+    QRadioButton *radioButton_normal;
+    QPushButton *read;
     QPushButton *advance1;
-    QLabel *label_3;
-    QLabel *label_8;
     QPushButton *settocard;
-    QLabel *label_19;
+    QLabel *label_8;
+    QLabel *label_10;
     QRadioButton *radioButton_good;
+    QLabel *label_3;
+    QRadioButton *radioButton_bad;
+    QLabel *label_19;
+    QPushButton *settofile;
+    QLineEdit *Delay2;
     QGridLayout *gridLayout;
     QWidget *widget_splc;
     QGridLayout *gridLayout_2;
@@ -200,7 +195,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(-355, -180, 1646, 1014));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1678, 973));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_14 = new QVBoxLayout();
@@ -249,6 +244,11 @@ public:
         verticalLayout_18 = new QVBoxLayout(widget_CameraSurveillance);
         verticalLayout_18->setObjectName(QString::fromUtf8("verticalLayout_18"));
         verticalLayout_18->setContentsMargins(-1, 0, -1, -1);
+        namelayout_CameraSurveillance = new QVBoxLayout();
+        namelayout_CameraSurveillance->setObjectName(QString::fromUtf8("namelayout_CameraSurveillance"));
+
+        verticalLayout_18->addLayout(namelayout_CameraSurveillance);
+
         horizontalLayout_27 = new QHBoxLayout();
         horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
         verticalLayout_19 = new QVBoxLayout();
@@ -262,58 +262,8 @@ public:
 
         horizontalLayout_28->addWidget(checkBox_CameraOffLine);
 
-        label_MissNumber = new QLabel(widget_CameraSurveillance);
-        label_MissNumber->setObjectName(QString::fromUtf8("label_MissNumber"));
-        label_MissNumber->setMinimumSize(QSize(15, 0));
-        label_MissNumber->setMaximumSize(QSize(150, 16777215));
-        label_MissNumber->setFont(font);
-        label_MissNumber->setMouseTracking(false);
-        label_MissNumber->setFocusPolicy(Qt::StrongFocus);
-
-        horizontalLayout_28->addWidget(label_MissNumber);
-
-        spinBox_OffLineNumber = new QSpinBox(widget_CameraSurveillance);
-        spinBox_OffLineNumber->setObjectName(QString::fromUtf8("spinBox_OffLineNumber"));
-        spinBox_OffLineNumber->setMinimumSize(QSize(100, 0));
-        spinBox_OffLineNumber->setMaximumSize(QSize(100, 16777215));
-        spinBox_OffLineNumber->setFont(font);
-        spinBox_OffLineNumber->setMinimum(1);
-        spinBox_OffLineNumber->setMaximum(999);
-        spinBox_OffLineNumber->setValue(10);
-
-        horizontalLayout_28->addWidget(spinBox_OffLineNumber);
-
 
         verticalLayout_19->addLayout(horizontalLayout_28);
-
-        horizontalLayout_30 = new QHBoxLayout();
-        horizontalLayout_30->setObjectName(QString::fromUtf8("horizontalLayout_30"));
-        checkBox_CameraContinueReject = new QCheckBox(widget_CameraSurveillance);
-        checkBox_CameraContinueReject->setObjectName(QString::fromUtf8("checkBox_CameraContinueReject"));
-
-        horizontalLayout_30->addWidget(checkBox_CameraContinueReject);
-
-        label_rejectNumber = new QLabel(widget_CameraSurveillance);
-        label_rejectNumber->setObjectName(QString::fromUtf8("label_rejectNumber"));
-        label_rejectNumber->setMinimumSize(QSize(150, 0));
-        label_rejectNumber->setMaximumSize(QSize(150, 16777215));
-        label_rejectNumber->setFont(font);
-
-        horizontalLayout_30->addWidget(label_rejectNumber);
-
-        spinBox_RejectNo = new QSpinBox(widget_CameraSurveillance);
-        spinBox_RejectNo->setObjectName(QString::fromUtf8("spinBox_RejectNo"));
-        spinBox_RejectNo->setMinimumSize(QSize(100, 0));
-        spinBox_RejectNo->setMaximumSize(QSize(100, 16777215));
-        spinBox_RejectNo->setFont(font);
-        spinBox_RejectNo->setMinimum(1);
-        spinBox_RejectNo->setMaximum(999);
-        spinBox_RejectNo->setValue(10);
-
-        horizontalLayout_30->addWidget(spinBox_RejectNo);
-
-
-        verticalLayout_19->addLayout(horizontalLayout_30);
 
         widget_StatisErrorType_4 = new QWidget(widget_CameraSurveillance);
         widget_StatisErrorType_4->setObjectName(QString::fromUtf8("widget_StatisErrorType_4"));
@@ -321,11 +271,6 @@ public:
         gridLayout_25 = new QGridLayout(widget_StatisErrorType_4);
         gridLayout_25->setContentsMargins(2, 2, 2, 2);
         gridLayout_25->setObjectName(QString::fromUtf8("gridLayout_25"));
-        layoutStatisErrorType_4 = new QGridLayout();
-        layoutStatisErrorType_4->setObjectName(QString::fromUtf8("layoutStatisErrorType_4"));
-
-        gridLayout_25->addLayout(layoutStatisErrorType_4, 0, 0, 1, 1);
-
 
         verticalLayout_19->addWidget(widget_StatisErrorType_4);
 
@@ -369,11 +314,6 @@ public:
         verticalLayout_17->setSpacing(0);
         verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
         verticalLayout_17->setContentsMargins(0, 25, 0, 0);
-        namelayout_CameraSurveillance = new QVBoxLayout();
-        namelayout_CameraSurveillance->setObjectName(QString::fromUtf8("namelayout_CameraSurveillance"));
-
-        verticalLayout_17->addLayout(namelayout_CameraSurveillance);
-
         widget_2 = new QWidget(widget_EquipAlarm);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         horizontalLayout_23 = new QHBoxLayout(widget_2);
@@ -668,13 +608,40 @@ public:
 
         gridLayout_15 = new QGridLayout();
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
-        Distance1to4 = new QLineEdit(widget_IOCardSet);
-        Distance1to4->setObjectName(QString::fromUtf8("Distance1to4"));
-        sizePolicy.setHeightForWidth(Distance1to4->sizePolicy().hasHeightForWidth());
-        Distance1to4->setSizePolicy(sizePolicy);
-        Distance1to4->setMaximumSize(QSize(16777215, 16777215));
+        label_28 = new QLabel(widget_IOCardSet);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
 
-        gridLayout_15->addWidget(Distance1to4, 6, 1, 1, 1);
+        gridLayout_15->addWidget(label_28, 13, 3, 1, 1);
+
+        label_15 = new QLabel(widget_IOCardSet);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+
+        gridLayout_15->addWidget(label_15, 13, 0, 1, 1);
+
+        label_24 = new QLabel(widget_IOCardSet);
+        label_24->setObjectName(QString::fromUtf8("label_24"));
+
+        gridLayout_15->addWidget(label_24, 13, 1, 1, 1);
+
+        label_29 = new QLabel(widget_IOCardSet);
+        label_29->setObjectName(QString::fromUtf8("label_29"));
+
+        gridLayout_15->addWidget(label_29, 13, 4, 1, 1);
+
+        label_9 = new QLabel(widget_IOCardSet);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+
+        gridLayout_15->addWidget(label_9, 2, 3, 1, 1);
+
+        label_OUT6 = new QLabel(widget_IOCardSet);
+        label_OUT6->setObjectName(QString::fromUtf8("label_OUT6"));
+
+        gridLayout_15->addWidget(label_OUT6, 12, 3, 1, 1);
+
+        label_11 = new QLabel(widget_IOCardSet);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout_15->addWidget(label_11, 3, 3, 1, 1);
 
         label_6 = new QLabel(widget_IOCardSet);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -683,66 +650,20 @@ public:
 
         gridLayout_15->addWidget(label_6, 1, 0, 1, 1);
 
-        label_9 = new QLabel(widget_IOCardSet);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_20 = new QLabel(widget_IOCardSet);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
 
-        gridLayout_15->addWidget(label_9, 2, 3, 1, 1);
+        gridLayout_15->addWidget(label_20, 6, 3, 1, 1);
+
+        label_OUT3 = new QLabel(widget_IOCardSet);
+        label_OUT3->setObjectName(QString::fromUtf8("label_OUT3"));
+
+        gridLayout_15->addWidget(label_OUT3, 11, 4, 1, 1);
 
         label_IN1 = new QLabel(widget_IOCardSet);
         label_IN1->setObjectName(QString::fromUtf8("label_IN1"));
 
         gridLayout_15->addWidget(label_IN1, 10, 1, 1, 1);
-
-        label_7 = new QLabel(widget_IOCardSet);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
-
-        gridLayout_15->addWidget(label_7, 1, 3, 1, 1);
-
-        label_OUT1 = new QLabel(widget_IOCardSet);
-        label_OUT1->setObjectName(QString::fromUtf8("label_OUT1"));
-
-        gridLayout_15->addWidget(label_OUT1, 11, 1, 1, 1);
-
-        lineDelay = new QLineEdit(widget_IOCardSet);
-        lineDelay->setObjectName(QString::fromUtf8("lineDelay"));
-        sizePolicy.setHeightForWidth(lineDelay->sizePolicy().hasHeightForWidth());
-        lineDelay->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(lineDelay, 7, 1, 1, 1);
-
-        label_IN0 = new QLabel(widget_IOCardSet);
-        label_IN0->setObjectName(QString::fromUtf8("label_IN0"));
-
-        gridLayout_15->addWidget(label_IN0, 10, 0, 1, 1);
-
-        label_OUT5 = new QLabel(widget_IOCardSet);
-        label_OUT5->setObjectName(QString::fromUtf8("label_OUT5"));
-
-        gridLayout_15->addWidget(label_OUT5, 12, 1, 1, 1);
-
-        label_OUT6 = new QLabel(widget_IOCardSet);
-        label_OUT6->setObjectName(QString::fromUtf8("label_OUT6"));
-
-        gridLayout_15->addWidget(label_OUT6, 12, 3, 1, 1);
-
-        KickDelay = new QLineEdit(widget_IOCardSet);
-        KickDelay->setObjectName(QString::fromUtf8("KickDelay"));
-        sizePolicy.setHeightForWidth(KickDelay->sizePolicy().hasHeightForWidth());
-        KickDelay->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(KickDelay, 6, 4, 1, 1);
-
-        Delay6 = new QLineEdit(widget_IOCardSet);
-        Delay6->setObjectName(QString::fromUtf8("Delay6"));
-        sizePolicy.setHeightForWidth(Delay6->sizePolicy().hasHeightForWidth());
-        Delay6->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay6, 3, 4, 1, 1);
-
-        label_11 = new QLabel(widget_IOCardSet);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
-
-        gridLayout_15->addWidget(label_11, 3, 3, 1, 1);
 
         Delay4 = new QLineEdit(widget_IOCardSet);
         Delay4->setObjectName(QString::fromUtf8("Delay4"));
@@ -750,53 +671,6 @@ public:
         Delay4->setSizePolicy(sizePolicy);
 
         gridLayout_15->addWidget(Delay4, 2, 4, 1, 1);
-
-        label_OUT0 = new QLabel(widget_IOCardSet);
-        label_OUT0->setObjectName(QString::fromUtf8("label_OUT0"));
-
-        gridLayout_15->addWidget(label_OUT0, 11, 0, 1, 1);
-
-        label_frequency = new QLabel(widget_IOCardSet);
-        label_frequency->setObjectName(QString::fromUtf8("label_frequency"));
-
-        gridLayout_15->addWidget(label_frequency, 9, 0, 1, 1);
-
-        label_OUT4 = new QLabel(widget_IOCardSet);
-        label_OUT4->setObjectName(QString::fromUtf8("label_OUT4"));
-
-        gridLayout_15->addWidget(label_OUT4, 12, 0, 1, 1);
-
-        label_IN2 = new QLabel(widget_IOCardSet);
-        label_IN2->setObjectName(QString::fromUtf8("label_IN2"));
-
-        gridLayout_15->addWidget(label_IN2, 10, 3, 1, 1);
-
-        label_20 = new QLabel(widget_IOCardSet);
-        label_20->setObjectName(QString::fromUtf8("label_20"));
-
-        gridLayout_15->addWidget(label_20, 6, 3, 1, 1);
-
-        label_5 = new QLabel(widget_IOCardSet);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        gridLayout_15->addWidget(label_5, 7, 0, 1, 1);
-
-        Delay1 = new QLineEdit(widget_IOCardSet);
-        Delay1->setObjectName(QString::fromUtf8("Delay1"));
-        sizePolicy.setHeightForWidth(Delay1->sizePolicy().hasHeightForWidth());
-        Delay1->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay1, 1, 1, 1, 1);
-
-        label_OUT3 = new QLabel(widget_IOCardSet);
-        label_OUT3->setObjectName(QString::fromUtf8("label_OUT3"));
-
-        gridLayout_15->addWidget(label_OUT3, 11, 4, 1, 1);
-
-        label_OUT7 = new QLabel(widget_IOCardSet);
-        label_OUT7->setObjectName(QString::fromUtf8("label_OUT7"));
-
-        gridLayout_15->addWidget(label_OUT7, 12, 4, 1, 1);
 
         label_OUT2 = new QLabel(widget_IOCardSet);
         label_OUT2->setObjectName(QString::fromUtf8("label_OUT2"));
@@ -808,12 +682,27 @@ public:
 
         gridLayout_15->addWidget(label_IN3, 10, 4, 1, 1);
 
+        label_OUT5 = new QLabel(widget_IOCardSet);
+        label_OUT5->setObjectName(QString::fromUtf8("label_OUT5"));
+
+        gridLayout_15->addWidget(label_OUT5, 12, 1, 1, 1);
+
         KickWidth = new QLineEdit(widget_IOCardSet);
         KickWidth->setObjectName(QString::fromUtf8("KickWidth"));
         sizePolicy.setHeightForWidth(KickWidth->sizePolicy().hasHeightForWidth());
         KickWidth->setSizePolicy(sizePolicy);
 
         gridLayout_15->addWidget(KickWidth, 7, 4, 1, 1);
+
+        label_IN2 = new QLabel(widget_IOCardSet);
+        label_IN2->setObjectName(QString::fromUtf8("label_IN2"));
+
+        gridLayout_15->addWidget(label_IN2, 10, 3, 1, 1);
+
+        label_OUT7 = new QLabel(widget_IOCardSet);
+        label_OUT7->setObjectName(QString::fromUtf8("label_OUT7"));
+
+        gridLayout_15->addWidget(label_OUT7, 12, 4, 1, 1);
 
         Delay3 = new QLineEdit(widget_IOCardSet);
         Delay3->setObjectName(QString::fromUtf8("Delay3"));
@@ -822,29 +711,81 @@ public:
 
         gridLayout_15->addWidget(Delay3, 2, 1, 1, 1);
 
-        read = new QPushButton(widget_IOCardSet);
-        read->setObjectName(QString::fromUtf8("read"));
-        sizePolicy.setHeightForWidth(read->sizePolicy().hasHeightForWidth());
-        read->setSizePolicy(sizePolicy);
+        label_OUT0 = new QLabel(widget_IOCardSet);
+        label_OUT0->setObjectName(QString::fromUtf8("label_OUT0"));
 
-        gridLayout_15->addWidget(read, 5, 4, 1, 1);
+        gridLayout_15->addWidget(label_OUT0, 11, 0, 1, 1);
+
+        Delay1 = new QLineEdit(widget_IOCardSet);
+        Delay1->setObjectName(QString::fromUtf8("Delay1"));
+        sizePolicy.setHeightForWidth(Delay1->sizePolicy().hasHeightForWidth());
+        Delay1->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay1, 1, 1, 1, 1);
+
+        label_OUT4 = new QLabel(widget_IOCardSet);
+        label_OUT4->setObjectName(QString::fromUtf8("label_OUT4"));
+
+        gridLayout_15->addWidget(label_OUT4, 12, 0, 1, 1);
+
+        label_IN0 = new QLabel(widget_IOCardSet);
+        label_IN0->setObjectName(QString::fromUtf8("label_IN0"));
+
+        gridLayout_15->addWidget(label_IN0, 10, 0, 1, 1);
+
+        label_OUT1 = new QLabel(widget_IOCardSet);
+        label_OUT1->setObjectName(QString::fromUtf8("label_OUT1"));
+
+        gridLayout_15->addWidget(label_OUT1, 11, 1, 1, 1);
+
+        label_5 = new QLabel(widget_IOCardSet);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout_15->addWidget(label_5, 7, 0, 1, 1);
+
+        KickDelay = new QLineEdit(widget_IOCardSet);
+        KickDelay->setObjectName(QString::fromUtf8("KickDelay"));
+        sizePolicy.setHeightForWidth(KickDelay->sizePolicy().hasHeightForWidth());
+        KickDelay->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(KickDelay, 6, 4, 1, 1);
+
+        Distance1to4 = new QLineEdit(widget_IOCardSet);
+        Distance1to4->setObjectName(QString::fromUtf8("Distance1to4"));
+        sizePolicy.setHeightForWidth(Distance1to4->sizePolicy().hasHeightForWidth());
+        Distance1to4->setSizePolicy(sizePolicy);
+        Distance1to4->setMaximumSize(QSize(16777215, 16777215));
+
+        gridLayout_15->addWidget(Distance1to4, 6, 1, 1, 1);
+
+        label_7 = new QLabel(widget_IOCardSet);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        gridLayout_15->addWidget(label_7, 1, 3, 1, 1);
+
+        lineDelay = new QLineEdit(widget_IOCardSet);
+        lineDelay->setObjectName(QString::fromUtf8("lineDelay"));
+        sizePolicy.setHeightForWidth(lineDelay->sizePolicy().hasHeightForWidth());
+        lineDelay->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(lineDelay, 7, 1, 1, 1);
+
+        label_frequency = new QLabel(widget_IOCardSet);
+        label_frequency->setObjectName(QString::fromUtf8("label_frequency"));
+
+        gridLayout_15->addWidget(label_frequency, 9, 0, 1, 1);
+
+        Delay6 = new QLineEdit(widget_IOCardSet);
+        Delay6->setObjectName(QString::fromUtf8("Delay6"));
+        sizePolicy.setHeightForWidth(Delay6->sizePolicy().hasHeightForWidth());
+        Delay6->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay6, 3, 4, 1, 1);
 
         pushButton_set = new QPushButton(widget_IOCardSet);
         pushButton_set->setObjectName(QString::fromUtf8("pushButton_set"));
 
         gridLayout_15->addWidget(pushButton_set, 4, 3, 1, 1);
-
-        Delay2 = new QLineEdit(widget_IOCardSet);
-        Delay2->setObjectName(QString::fromUtf8("Delay2"));
-        sizePolicy.setHeightForWidth(Delay2->sizePolicy().hasHeightForWidth());
-        Delay2->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay2, 1, 4, 1, 1);
-
-        radioButton_normal = new QRadioButton(widget_IOCardSet);
-        radioButton_normal->setObjectName(QString::fromUtf8("radioButton_normal"));
-
-        gridLayout_15->addWidget(radioButton_normal, 5, 3, 1, 1);
 
         pushButton = new QPushButton(widget_IOCardSet);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -858,34 +799,17 @@ public:
 
         gridLayout_15->addWidget(Delay5, 3, 1, 1, 1);
 
-        radioButton_bad = new QRadioButton(widget_IOCardSet);
-        radioButton_bad->setObjectName(QString::fromUtf8("radioButton_bad"));
-        sizePolicy.setHeightForWidth(radioButton_bad->sizePolicy().hasHeightForWidth());
-        radioButton_bad->setSizePolicy(sizePolicy);
+        radioButton_normal = new QRadioButton(widget_IOCardSet);
+        radioButton_normal->setObjectName(QString::fromUtf8("radioButton_normal"));
 
-        gridLayout_15->addWidget(radioButton_bad, 5, 1, 1, 1);
+        gridLayout_15->addWidget(radioButton_normal, 5, 3, 1, 1);
 
-        label_24 = new QLabel(widget_IOCardSet);
-        label_24->setObjectName(QString::fromUtf8("label_24"));
+        read = new QPushButton(widget_IOCardSet);
+        read->setObjectName(QString::fromUtf8("read"));
+        sizePolicy.setHeightForWidth(read->sizePolicy().hasHeightForWidth());
+        read->setSizePolicy(sizePolicy);
 
-        gridLayout_15->addWidget(label_24, 13, 3, 1, 1);
-
-        label_10 = new QLabel(widget_IOCardSet);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-
-        gridLayout_15->addWidget(label_10, 3, 0, 1, 1);
-
-        label_15 = new QLabel(widget_IOCardSet);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
-
-        gridLayout_15->addWidget(label_15, 13, 1, 1, 1);
-
-        settofile = new QPushButton(widget_IOCardSet);
-        settofile->setObjectName(QString::fromUtf8("settofile"));
-        sizePolicy.setHeightForWidth(settofile->sizePolicy().hasHeightForWidth());
-        settofile->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(settofile, 9, 4, 1, 1);
+        gridLayout_15->addWidget(read, 5, 4, 1, 1);
 
         advance1 = new QPushButton(widget_IOCardSet);
         advance1->setObjectName(QString::fromUtf8("advance1"));
@@ -894,12 +818,12 @@ public:
 
         gridLayout_15->addWidget(advance1, 4, 4, 1, 1);
 
-        label_3 = new QLabel(widget_IOCardSet);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy);
+        settocard = new QPushButton(widget_IOCardSet);
+        settocard->setObjectName(QString::fromUtf8("settocard"));
+        sizePolicy.setHeightForWidth(settocard->sizePolicy().hasHeightForWidth());
+        settocard->setSizePolicy(sizePolicy);
 
-        gridLayout_15->addWidget(label_3, 6, 0, 1, 1);
+        gridLayout_15->addWidget(settocard, 9, 3, 1, 1);
 
         label_8 = new QLabel(widget_IOCardSet);
         label_8->setObjectName(QString::fromUtf8("label_8"));
@@ -908,12 +832,31 @@ public:
 
         gridLayout_15->addWidget(label_8, 2, 0, 1, 1);
 
-        settocard = new QPushButton(widget_IOCardSet);
-        settocard->setObjectName(QString::fromUtf8("settocard"));
-        sizePolicy.setHeightForWidth(settocard->sizePolicy().hasHeightForWidth());
-        settocard->setSizePolicy(sizePolicy);
+        label_10 = new QLabel(widget_IOCardSet);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
 
-        gridLayout_15->addWidget(settocard, 9, 3, 1, 1);
+        gridLayout_15->addWidget(label_10, 3, 0, 1, 1);
+
+        radioButton_good = new QRadioButton(widget_IOCardSet);
+        radioButton_good->setObjectName(QString::fromUtf8("radioButton_good"));
+        sizePolicy.setHeightForWidth(radioButton_good->sizePolicy().hasHeightForWidth());
+        radioButton_good->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(radioButton_good, 5, 0, 1, 1);
+
+        label_3 = new QLabel(widget_IOCardSet);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(label_3, 6, 0, 1, 1);
+
+        radioButton_bad = new QRadioButton(widget_IOCardSet);
+        radioButton_bad->setObjectName(QString::fromUtf8("radioButton_bad"));
+        sizePolicy.setHeightForWidth(radioButton_bad->sizePolicy().hasHeightForWidth());
+        radioButton_bad->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(radioButton_bad, 5, 1, 1, 1);
 
         label_19 = new QLabel(widget_IOCardSet);
         label_19->setObjectName(QString::fromUtf8("label_19"));
@@ -922,12 +865,19 @@ public:
 
         gridLayout_15->addWidget(label_19, 7, 3, 1, 1);
 
-        radioButton_good = new QRadioButton(widget_IOCardSet);
-        radioButton_good->setObjectName(QString::fromUtf8("radioButton_good"));
-        sizePolicy.setHeightForWidth(radioButton_good->sizePolicy().hasHeightForWidth());
-        radioButton_good->setSizePolicy(sizePolicy);
+        settofile = new QPushButton(widget_IOCardSet);
+        settofile->setObjectName(QString::fromUtf8("settofile"));
+        sizePolicy.setHeightForWidth(settofile->sizePolicy().hasHeightForWidth());
+        settofile->setSizePolicy(sizePolicy);
 
-        gridLayout_15->addWidget(radioButton_good, 5, 0, 1, 1);
+        gridLayout_15->addWidget(settofile, 9, 4, 1, 1);
+
+        Delay2 = new QLineEdit(widget_IOCardSet);
+        Delay2->setObjectName(QString::fromUtf8("Delay2"));
+        sizePolicy.setHeightForWidth(Delay2->sizePolicy().hasHeightForWidth());
+        Delay2->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay2, 1, 4, 1, 1);
 
 
         verticalLayout_11->addLayout(gridLayout_15);
@@ -973,9 +923,6 @@ public:
         WidgetTest->setWindowTitle(QApplication::translate("WidgetTest", "Form", 0, QApplication::UnicodeUTF8));
         pushButton_2->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         checkBox_CameraOffLine->setText(QApplication::translate("WidgetTest", "CameraOffLine", 0, QApplication::UnicodeUTF8));
-        label_MissNumber->setText(QApplication::translate("WidgetTest", "MissNumber:", 0, QApplication::UnicodeUTF8));
-        checkBox_CameraContinueReject->setText(QApplication::translate("WidgetTest", "CameraContinueReject", 0, QApplication::UnicodeUTF8));
-        label_rejectNumber->setText(QApplication::translate("WidgetTest", "RejectNumber:", 0, QApplication::UnicodeUTF8));
         CameraMonitor_Status->setText(QApplication::translate("WidgetTest", "TextLabel", 0, QApplication::UnicodeUTF8));
         btnOK_CameraSurveillance->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         checkBox_EquipAlarm->setText(QApplication::translate("WidgetTest", "Equipment maintenance alarm", 0, QApplication::UnicodeUTF8));
@@ -1007,40 +954,42 @@ public:
         btnOK_Save->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         btnOK->setText(QApplication::translate("WidgetTest", "OK", 0, QApplication::UnicodeUTF8));
         btnCancel->setText(QApplication::translate("WidgetTest", "Cancel", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("WidgetTest", "Channel1:", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QString());
+        label_15->setText(QString());
+        label_24->setText(QString());
+        label_29->setText(QString());
         label_9->setText(QApplication::translate("WidgetTest", "Channel4:", 0, QApplication::UnicodeUTF8));
-        label_IN1->setText(QApplication::translate("WidgetTest", "IN1:", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("WidgetTest", "Channel2:", 0, QApplication::UnicodeUTF8));
-        label_OUT1->setText(QApplication::translate("WidgetTest", "OUT1:", 0, QApplication::UnicodeUTF8));
-        label_IN0->setText(QApplication::translate("WidgetTest", "IN0:", 0, QApplication::UnicodeUTF8));
-        label_OUT5->setText(QApplication::translate("WidgetTest", "OUT5:", 0, QApplication::UnicodeUTF8));
         label_OUT6->setText(QApplication::translate("WidgetTest", "OUT6:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("WidgetTest", "Channel6:", 0, QApplication::UnicodeUTF8));
-        label_OUT0->setText(QApplication::translate("WidgetTest", "OUT0:", 0, QApplication::UnicodeUTF8));
-        label_frequency->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
-        label_OUT4->setText(QApplication::translate("WidgetTest", "OUT4:", 0, QApplication::UnicodeUTF8));
-        label_IN2->setText(QApplication::translate("WidgetTest", "IN2:", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("WidgetTest", "Channel1:", 0, QApplication::UnicodeUTF8));
         label_20->setText(QApplication::translate("WidgetTest", "Kick Delay:", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("WidgetTest", "\345\220\216\345\205\211\345\273\266\350\277\237:", 0, QApplication::UnicodeUTF8));
         label_OUT3->setText(QApplication::translate("WidgetTest", "OUT3:", 0, QApplication::UnicodeUTF8));
-        label_OUT7->setText(QApplication::translate("WidgetTest", "OUT7:", 0, QApplication::UnicodeUTF8));
+        label_IN1->setText(QApplication::translate("WidgetTest", "IN1:", 0, QApplication::UnicodeUTF8));
         label_OUT2->setText(QApplication::translate("WidgetTest", "OUT2:", 0, QApplication::UnicodeUTF8));
         label_IN3->setText(QApplication::translate("WidgetTest", "IN3:", 0, QApplication::UnicodeUTF8));
-        read->setText(QApplication::translate("WidgetTest", "Read", 0, QApplication::UnicodeUTF8));
-        pushButton_set->setText(QApplication::translate("WidgetTest", "set", 0, QApplication::UnicodeUTF8));
-        radioButton_normal->setText(QApplication::translate("WidgetTest", "Normal", 0, QApplication::UnicodeUTF8));
+        label_OUT5->setText(QApplication::translate("WidgetTest", "OUT5:", 0, QApplication::UnicodeUTF8));
+        label_IN2->setText(QApplication::translate("WidgetTest", "IN2:", 0, QApplication::UnicodeUTF8));
+        label_OUT7->setText(QApplication::translate("WidgetTest", "OUT7:", 0, QApplication::UnicodeUTF8));
+        label_OUT0->setText(QApplication::translate("WidgetTest", "OUT0:", 0, QApplication::UnicodeUTF8));
+        label_OUT4->setText(QApplication::translate("WidgetTest", "OUT4:", 0, QApplication::UnicodeUTF8));
+        label_IN0->setText(QApplication::translate("WidgetTest", "IN0:", 0, QApplication::UnicodeUTF8));
+        label_OUT1->setText(QApplication::translate("WidgetTest", "OUT1:", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("WidgetTest", "\345\220\216\345\205\211\345\273\266\350\277\237:", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("WidgetTest", "Channel2:", 0, QApplication::UnicodeUTF8));
+        label_frequency->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
+        pushButton_set->setText(QApplication::translate("WidgetTest", "\346\234\215\345\212\241\345\231\250\351\253\230\347\272\247\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("WidgetTest", "\347\275\221\347\273\234\351\207\215\350\277\236", 0, QApplication::UnicodeUTF8));
-        radioButton_bad->setText(QApplication::translate("WidgetTest", "Continue Kick", 0, QApplication::UnicodeUTF8));
-        label_24->setText(QString());
-        label_10->setText(QApplication::translate("WidgetTest", "Channel5:", 0, QApplication::UnicodeUTF8));
-        label_15->setText(QString());
-        settofile->setText(QApplication::translate("WidgetTest", "Save to File", 0, QApplication::UnicodeUTF8));
-        advance1->setText(QApplication::translate("WidgetTest", "Advance", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("WidgetTest", "\344\272\247\345\223\201\351\227\264\350\267\235(0.3):", 0, QApplication::UnicodeUTF8));
-        label_8->setText(QApplication::translate("WidgetTest", "Channel3:", 0, QApplication::UnicodeUTF8));
+        radioButton_normal->setText(QApplication::translate("WidgetTest", "Normal", 0, QApplication::UnicodeUTF8));
+        read->setText(QApplication::translate("WidgetTest", "Read", 0, QApplication::UnicodeUTF8));
+        advance1->setText(QApplication::translate("WidgetTest", "\345\244\271\346\214\201\351\253\230\347\272\247\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         settocard->setText(QApplication::translate("WidgetTest", "Set to Card", 0, QApplication::UnicodeUTF8));
-        label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
+        label_8->setText(QApplication::translate("WidgetTest", "Channel3:", 0, QApplication::UnicodeUTF8));
+        label_10->setText(QApplication::translate("WidgetTest", "Channel5:", 0, QApplication::UnicodeUTF8));
         radioButton_good->setText(QApplication::translate("WidgetTest", "Continue Good", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("WidgetTest", "\344\272\247\345\223\201\351\227\264\350\267\235(0.3):", 0, QApplication::UnicodeUTF8));
+        radioButton_bad->setText(QApplication::translate("WidgetTest", "Continue Kick", 0, QApplication::UnicodeUTF8));
+        label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
+        settofile->setText(QApplication::translate("WidgetTest", "Save to File", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -340,11 +340,7 @@ void MyImageShowItem::updateImage(QImage* imageShown,QString camera, QString ima
 {
 	try
 	{
-		/*QImage temo(*imageShown);
-		temo.save("./123.bmp");*/
 		imageForWidget = imageShown->mirrored();
-		//imageForWidget = imageShown;
-		//imageForWidget.save("./213.bmp");
 	}
 	catch (...)
 	{

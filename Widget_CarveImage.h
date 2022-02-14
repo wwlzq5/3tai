@@ -46,7 +46,6 @@ public:
 	QVBoxLayout *verticalLayout;
 	Widget_CarveInfo *pWidgetCarveInfo;
 	bool bIsTestMode;
-
 signals:
 	void signals_craveImage();
 	void signals_showPic(int);
@@ -61,6 +60,7 @@ public slots:
 	void slots_spinBoxValueChanged();
 
 public slots:
+	void SetSaveStatus();
 	int slots_carve();
 	void slots_CopyROI();
 	void slots_cancel();

@@ -434,13 +434,13 @@ void WidgetManagement::BackupCate(QString strDestPath,QString strSrcPath)
 			return;
 		}
 	}
-	QFileInfoList dirList = dir.entryInfoList(QDir::AllDirs | QDir::Hidden | QDir::NoDotAndDotDot);
+	/*QFileInfoList dirList = dir.entryInfoList(QDir::AllDirs | QDir::Hidden | QDir::NoDotAndDotDot);
 	for (int i=0;i<dirList.size();++i)
 	{
 		QString strDeepDestPath = strDestPath + "/" + dirList.at(i).completeBaseName();
 		QString strDeepSrcPath = strSrcPath + "/" + dirList.at(i).completeBaseName();
 		BackupCate(strDeepDestPath,strDeepSrcPath);
-	}
+	}*/
 }
 void WidgetManagement::slots_export()
 {

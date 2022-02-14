@@ -1,2 +1,4 @@
-﻿     正在创建库 .\runR\GlasswareDetectSystem.lib 和对象 .\runR\GlasswareDetectSystem.exp
+﻿  detectThread.cpp
+  glasswaredetectsystem.cpp
+  Generating Code...
   GlasswareDetectSystem.vcxproj -> E:\GlasswareDetectSystem2\.\runR\GlasswareDetectSystem.exe

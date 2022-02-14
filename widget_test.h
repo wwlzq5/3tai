@@ -35,7 +35,6 @@ enum UnitEnum
 	CLAMPING,//夹持
 	BACKING,//后端
 };
-#define FOURCOMPUTER
 struct MyStruct
 {
 	StateEnum nState;//发送状态标志位
