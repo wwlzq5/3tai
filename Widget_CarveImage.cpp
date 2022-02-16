@@ -486,11 +486,11 @@ void Widget_CarveImage::slots_save()
 		QMessageBox::information(this,"Error",tr("Please change to carve mode!"));
 		return;
 	}
-	/*if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
+	if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
 	{
 		QMessageBox::information(this,"Error",QString::fromLocal8Bit("ÇëÍ£Ö¹¼ì²â!"));
 		return;
-	}*/
+	}
 	//±£´æÊÇ·ñÎªÓ¦Á¦Í¼Ïñ,´Ë´¦Ó¦Óë¼ì²âÏß³Ì»¥³â
 	if (m_eStatus != CARVED&&m_eStatus != DRAWED)
 	{
@@ -548,7 +548,7 @@ void Widget_CarveImage::slots_save()
 	m_pHorizonV1->setVisible(false);
 	m_pHorizonV2->setVisible(false);
 	pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
-	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
+	//pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
 }
 void Widget_CarveImage::SetSaveStatus()
@@ -1427,11 +1427,11 @@ void Widget_CarveImage::slots_grey()
 //ÒÆµ½carveinfoÖÐ
 void Widget_CarveImage::slots_setToCamera()
 {
-	//if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
-	//{
-	//	QMessageBox::information(this,"Error",QString::fromLocal8Bit("ÇëÍ£Ö¹¼ì²â!"));
-	//	return;
-	//}
+	if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
+	{
+		QMessageBox::information(this,"Error",QString::fromLocal8Bit("ÇëÍ£Ö¹¼ì²â!"));
+		return;
+	}
 	int iCameraSN =  pMainFrm->m_sCarvedCamInfo[iCameraNo].m_iToRealCamera;
 	int iShuterTime = pWidgetCarveInfo->ui.spinBox_exposureTime->text().toInt();
 	int iTriggerType = pWidgetCarveInfo->ui.comboBox_triggerType->currentIndex();
@@ -1539,7 +1539,7 @@ void Widget_CarveImage::slots_setToCamera()
 			StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 		}
 	}
-	pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
+	//pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
 	pMainFrm->Logfile.write(QString("set camera%1 param,TriggerType:%2,ShuterTime:%3,TriggerDelay:%4!").arg(iCameraSN).arg(iTriggerType).arg(iShuterTime).arg(iTriggerDelay),OperationLog);

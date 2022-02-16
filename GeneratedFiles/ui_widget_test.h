@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Fri Feb 11 17:32:34 2022
+** Created: Wed Feb 16 13:30:30 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -167,6 +167,7 @@ public:
     QLabel *label_19;
     QPushButton *settofile;
     QLineEdit *Delay2;
+    QCheckBox *checkBox;
     QGridLayout *gridLayout;
     QWidget *widget_splc;
     QGridLayout *gridLayout_2;
@@ -195,7 +196,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1678, 973));
+        scrollAreaWidgetContents->setGeometry(QRect(-387, 0, 1678, 973));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_14 = new QVBoxLayout();
@@ -879,6 +880,11 @@ public:
 
         gridLayout_15->addWidget(Delay2, 1, 4, 1, 1);
 
+        checkBox = new QCheckBox(widget_IOCardSet);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        gridLayout_15->addWidget(checkBox, 9, 1, 1, 1);
+
 
         verticalLayout_11->addLayout(gridLayout_15);
 
@@ -990,6 +996,7 @@ public:
         radioButton_bad->setText(QApplication::translate("WidgetTest", "Continue Kick", 0, QApplication::UnicodeUTF8));
         label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
         settofile->setText(QApplication::translate("WidgetTest", "Save to File", 0, QApplication::UnicodeUTF8));
+        checkBox->setText(QApplication::translate("WidgetTest", "PLC\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

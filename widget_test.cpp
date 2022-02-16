@@ -17,6 +17,10 @@ WidgetTest::WidgetTest(QWidget *parent)
 	ui.btnChoseErrorType->setVisible(false);
 	timerUpdateIOCardCounter = new QTimer(this);
 	timerUpdateIOCardCounter->setInterval(1000);//每毫秒刷新一次计数
+
+	connect(timerUpdateIOCardCounter, SIGNAL(timeout()), this, SLOT(slots_updateIOcardCounter()));
+	timerUpdateIOCardCounter->start();
+
 	CameraOffAreet = new QTimer(this);
 	CameraOffAreet->setInterval(10000);
  	connect(CameraOffAreet, SIGNAL(timeout()), this, SLOT(slots_CameraOffAreet()));   
@@ -29,12 +33,6 @@ WidgetTest::WidgetTest(QWidget *parent)
 	ui.comboBox->insertItem(0,tr("Refresh All")); 
 	ui.comboBox->insertItem(1,tr("Only Bad Images Are Refreshed"));
 	ui.comboBox->insertItem(2,tr("All Not Refresh"));
-
-	//ui.label_MissNumber->setText("");
-	//ui.spinBox_OffLineNumber->setVisible(false);
-	//ui.checkBox_CameraContinueReject->setVisible(false);
-	//ui.label_rejectNumber->setVisible(false);
-	//ui.spinBox_RejectNo->setVisible(false);
 
 	QSettings iniCarveSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
 	QString strSession;
@@ -74,10 +72,23 @@ WidgetTest::WidgetTest(QWidget *parent)
 			nReadIOcard->start();
 		}
 	}else{
+		if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
+		{
+			ui.advance1->setText(QString::fromLocal8Bit("前壁高级设置"));
+		}else{
+			ui.advance1->setText(QString::fromLocal8Bit("后壁高级设置"));
+		}
 		ui.pushButton_set->setVisible(false);
 		m_plc->setVisible(false);
+		ui.checkBox->setVisible(false);
 	}
+	ui.checkBox->setChecked(false);
+	connect(ui.checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_ShowPlc(int)));
 	pMainFrm->m_sRunningInfo.m_iKickMode = 2;
+	nIotest = new IOtestWidget;
+	connect(nIotest,SIGNAL(showIocard()),this,SLOT(slots_IoOpenPam()));
+	connect(nIotest,SIGNAL(modifyIoPam(int,int)),this,SLOT(slots_IoSetPam(int,int)));
+	connect(this,SIGNAL(signal_ioSetPam(int,int)),nIotest,SLOT(slots_showPam(int,int)));
 }
 WidgetTest::~WidgetTest()
 {
@@ -86,6 +97,16 @@ WidgetTest::~WidgetTest()
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2 && pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
 		m_vIOCard->CloseIOCard();
+	}
+}
+void WidgetTest::slots_ShowPlc(int temp)
+{
+	if(temp == 2)
+	{
+		m_plc->setVisible(true);
+	}else if(temp == 0)
+	{
+		m_plc->setVisible(false);
 	}
 }
 void WidgetTest::slot_readIoCard()
@@ -119,22 +140,35 @@ void WidgetTest::slot_ConnectSever()
 		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
 }
+void WidgetTest::slots_IoOpenPam()
+{
+	if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
+	{
+		m_vIOCard->Show_PIO24B_DebugDialog(this);
+	}
+}
+void WidgetTest::slots_IoSetPam(int temp,int temp2)
+{
+	if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
+	{
+		m_vIOCard->writeParam(45,temp);
+		m_vIOCard->writeParam(32,temp2);
+	}
+}
 void WidgetTest::slot_openPlcSet()
 {
-	m_vIOCard->Show_PIO24B_DebugDialog(this);
+	if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
+	{
+		int temp = m_vIOCard->readParam(45);
+		int temp2 = m_vIOCard->readParam(32);
+		emit signal_ioSetPam(temp,temp2);
+	}
+	nIotest->show();
 }
 void WidgetTest::slots_intoWidget()
 {	
-	connect(timerUpdateIOCardCounter, SIGNAL(timeout()), this, SLOT(slots_updateIOcardCounter()));
-	timerUpdateIOCardCounter->stop();
-	Sleep(10);
-	timerUpdateIOCardCounter->start();
-
 	ui.checkBox_CameraOffLine->setChecked(pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance);
-	//ui.checkBox_CameraContinueReject->setChecked(pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance);
-	//ui.spinBox_OffLineNumber->setValue(pMainFrm->m_sSystemInfo.iCamOfflineNo);
-	//ui.spinBox_RejectNo->setValue(pMainFrm->m_sSystemInfo.iCamContinueRejectNumber);
-
+	
 	if (pMainFrm->m_sSystemInfo.m_iSaveNormalErrorImageByTime)
 	{
 		ui.checkBox_saveFailureNormalImage->setChecked(true);
@@ -186,6 +220,12 @@ void WidgetTest::slots_intoWidget()
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
 	{
 		m_plc->EnterPLC();
+		if(ui.checkBox->isChecked())
+		{
+			m_plc->setVisible(true);
+		}else{
+			m_plc->setVisible(false);
+		}
 	}
 }
 bool WidgetTest::leaveWidget()

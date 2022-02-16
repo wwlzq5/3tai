@@ -67,16 +67,20 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		nAlertSet->setAutoFillBackground(true);
 		nAlertSet->setPalette(pal);
 		QGridLayout *gridlayout = new QGridLayout(nAlertSet);
+
 		QSignalMapper* signalmapper = new QSignalMapper(this);//工具栏的信号管理
-		QLabel * labelinfo1= new QLabel(this);
-		labelinfo1->setText(QString::fromLocal8Bit("报警状态"));//勾选表示要报警
-		gridlayout->addWidget(labelinfo1,0,1);
-		QLabel * labelinfo2= new QLabel(this);
-		labelinfo2->setText(QString::fromLocal8Bit("输送线状态"));//勾选表示要停止输送线
-		gridlayout->addWidget(labelinfo2,0,2);
-		QLabel * labelinfo3= new QLabel(this);
-		labelinfo3->setText(QString::fromLocal8Bit("理瓶器状态"));//勾选表示要停止理瓶器
-		gridlayout->addWidget(labelinfo3,0,3);
+		QCheckBox *checkBox = new QCheckBox(this);
+		checkBox->setText(QString::fromLocal8Bit("是否报警"));//勾选表示要报警
+		gridlayout->addWidget(checkBox,0,1,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		connect(checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_modify1(int)));
+		QCheckBox *checkBox2 = new QCheckBox(this);
+		checkBox2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
+		gridlayout->addWidget(checkBox2,0,3,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		connect(checkBox2,SIGNAL(stateChanged(int)),this,SLOT(slots_modify2(int)));
+		QCheckBox *checkBox3 = new QCheckBox(this);
+		checkBox3->setText(QString::fromLocal8Bit("是否停理瓶器"));//勾选表示要停止理瓶器
+		gridlayout->addWidget(checkBox3,0,5,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		connect(checkBox3,SIGNAL(stateChanged(int)),this,SLOT(slots_modify3(int)));
 		for (int i = 0;i < 32;i++)
 		{
 			QLabel * label = new QLabel(this);
@@ -98,9 +102,9 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 			if(ErrorName != "")
 			{
 				gridlayout->addWidget(label,i+1,0);
-				gridlayout->addWidget(nlistCheckBox[i],i+1,1);
-				gridlayout->addWidget(nlistCheckBox[i+32],i+1,2);
-				gridlayout->addWidget(nlistCheckBox[i+64],i+1,3);
+				gridlayout->addWidget(nlistCheckBox[i],i+1,2,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+				gridlayout->addWidget(nlistCheckBox[i+32],i+1,4,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+				gridlayout->addWidget(nlistCheckBox[i+64],i+1,6,1,2,Qt::AlignLeft | Qt::AlignVCenter);
 			}else{
 				label->setVisible(false);
 				nlistCheckBox[i]->setVisible(false);
@@ -122,6 +126,54 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 Widget_PLC::~Widget_PLC()
 {
 	delete m_pSocket;
+}
+void Widget_PLC::slots_modify1(int temp)
+{
+	if(temp == 2)
+	{
+		for (int i = 0;i < 32;i++)
+		{
+			nlistCheckBox[i]->setChecked(true);
+		}
+	}else if(temp == 0)
+	{
+		for (int i = 0;i < 32;i++)
+		{
+			nlistCheckBox[i]->setChecked(false);
+		}
+	}
+}
+void Widget_PLC::slots_modify2(int temp)
+{
+	if(temp == 2)
+	{
+		for (int i = 32;i < 64;i++)
+		{
+			nlistCheckBox[i]->setChecked(true);
+		}
+	}else if(temp == 0)
+	{
+		for (int i = 32;i < 64;i++)
+		{
+			nlistCheckBox[i]->setChecked(false);
+		}
+	}
+}
+void Widget_PLC::slots_modify3(int temp)
+{
+	if(temp == 2)
+	{
+		for (int i = 64;i < 96;i++)
+		{
+			nlistCheckBox[i]->setChecked(true);
+		}
+	}else if(temp == 0)
+	{
+		for (int i = 64;i < 96;i++)
+		{
+			nlistCheckBox[i]->setChecked(false);
+		}
+	}
 }
 void Widget_PLC::slots_clickBox(int mTemp)
 {

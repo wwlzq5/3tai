@@ -23,6 +23,9 @@ public slots:
 	void slots_TimeOut();
 	void slots_CrashTimeOut();
 	void slots_clickBox(int);
+	void slots_modify1(int);
+	void slots_modify2(int);
+	void slots_modify3(int);
 public:
 	void EnterPLC();
 	void SetLimiteState(bool);

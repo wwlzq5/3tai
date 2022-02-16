@@ -32,6 +32,7 @@ void DetectThread::run()
 }
 void DetectThread::ProcessHanlde(int Camera)
 {
+	
 	if(pMainFrm->nQueue[Camera].listDetect.length()>0)
 	{
 		pMainFrm->nQueue[Camera].mDetectLocker.lock();
@@ -42,9 +43,9 @@ void DetectThread::ProcessHanlde(int Camera)
 		//旋转原始图片
 		
 		long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
-		*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = DetectElement.ImageNormal->SourceImage->copy();
+		//*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = DetectElement.ImageNormal->SourceImage->copy();
+		memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
 
-		//memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
 		//裁剪原始图片
 		pMainFrm->m_mutexmCarve[iCamera].lock();
 		lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;

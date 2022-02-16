@@ -9,6 +9,7 @@
 #include "camerasatuslabel.h"
 #include "widget_plc.h"
 #include "CIOCard.h"
+#include "widget_IoSet.h"
 enum StateEnum
 {
 	SENDDATA,
@@ -84,9 +85,13 @@ signals:
 	void signals_sendAlarm(int warningType, QString warningInfo);
 	void signals_ShowWarning(int , QString );
 	void signal_UsualSend(int);
+	void signal_ioSetPam(int,int);
 public slots:
+	void slots_ShowPlc(int);
 	void slot_ConnectSever();
 	void slot_readIoCard();
+	void slots_IoSetPam(int,int);
+	void slots_IoOpenPam();
 	void slot_openPlcSet();
 	void slots_intoWidget();
 	void slots_ChoseCamera();
@@ -148,6 +153,8 @@ public:
 	QMutex nTestCounter;
 	CIOCard* m_vIOCard;
 	QTimer* nReadIOcard;
+	//QWidget* nIOtest;
+	IOtestWidget* nIotest;
 public:
 	NingInfo nInfo;
 	Widget_PLC * m_plc;

@@ -301,7 +301,6 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 			}
 		}
 	}
-	
 	CGrabElement *pGrabElement = NULL;
 	if(nQueue[tempCamera].listGrab.count()>0)
 	{
@@ -323,7 +322,6 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		pGrabElement->nHeight = nHeight;
 		pGrabElement->nSignalNo = imgNumber;
 		pGrabElement->nCamSN = tempCamera;
-
 		if (nQueue[tempCamera].InitID == pGrabElement->initID)
 		{
 			m_detectElement[tempCamera].ImageNormal = pGrabElement;
@@ -1368,7 +1366,7 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 		labelCoder->setText(strEncoder+strTime);
 	}
 	//保存IO卡的数据准备发送
-	if(m_sRunningInfo.m_bCheck && m_sSystemInfo.m_bIsIOCardOK)
+	//if(m_sRunningInfo.m_bCheck && m_sSystemInfo.m_bIsIOCardOK)
 	{
 		MyStruct nTempStruct;
 		if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
@@ -1390,7 +1388,7 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 			nTPIOtr = m_ptr;
 			nTPIOtr+=sizeof(MyStruct);
 			MyErrorType nTest = pMainFrm->nCameraErrorType.first();
-			nCameraErrorType.clear();
+			nCameraErrorType.pop_back();
 			nIOCard[16] = nTest.id+1;
 			nIOCard[17] = nTest.nType;
 			if(m_sSystemInfo.m_iSystemType == 2)

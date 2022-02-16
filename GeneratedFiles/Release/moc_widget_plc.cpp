@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_plc.h'
 **
-** Created: Tue Feb 8 17:47:31 2022
+** Created: Wed Feb 16 11:42:24 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Widget_PLC[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,9 @@ static const uint qt_meta_data_Widget_PLC[] = {
      101,   11,   11,   11, 0x0a,
      117,   11,   11,   11, 0x0a,
      138,   11,   11,   11, 0x0a,
+     158,   11,   11,   11, 0x0a,
+     177,   11,   11,   11, 0x0a,
+     196,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -47,6 +50,8 @@ static const char qt_meta_stringdata_Widget_PLC[] = {
     "slots_Pushbuttonsave()\0slots_Pushbuttonread()\0"
     "slots_readFromPLC()\0slots_TimeOut()\0"
     "slots_CrashTimeOut()\0slots_clickBox(int)\0"
+    "slots_modify1(int)\0slots_modify2(int)\0"
+    "slots_modify3(int)\0"
 };
 
 void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -62,6 +67,9 @@ void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->slots_TimeOut(); break;
         case 5: _t->slots_CrashTimeOut(); break;
         case 6: _t->slots_clickBox((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->slots_modify1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->slots_modify2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->slots_modify3((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -99,9 +107,9 @@ int Widget_PLC::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 10;
     }
     return _id;
 }
