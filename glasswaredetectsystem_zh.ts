@@ -1753,35 +1753,35 @@
     </message>
     <message>
         <location filename="widget_Management.cpp" line="154"/>
-        <location filename="widget_Management.cpp" line="295"/>
+        <location filename="widget_Management.cpp" line="294"/>
         <source>Input a new name</source>
         <translation>输入新品种名称</translation>
     </message>
     <message>
         <location filename="widget_Management.cpp" line="154"/>
-        <location filename="widget_Management.cpp" line="296"/>
+        <location filename="widget_Management.cpp" line="295"/>
         <source>New name:</source>
         <translation>名称：</translation>
     </message>
     <message>
         <location filename="widget_Management.cpp" line="163"/>
         <location filename="widget_Management.cpp" line="167"/>
-        <location filename="widget_Management.cpp" line="227"/>
-        <location filename="widget_Management.cpp" line="232"/>
-        <location filename="widget_Management.cpp" line="237"/>
-        <location filename="widget_Management.cpp" line="290"/>
-        <location filename="widget_Management.cpp" line="309"/>
-        <location filename="widget_Management.cpp" line="314"/>
-        <location filename="widget_Management.cpp" line="330"/>
-        <location filename="widget_Management.cpp" line="335"/>
-        <location filename="widget_Management.cpp" line="360"/>
-        <location filename="widget_Management.cpp" line="401"/>
-        <location filename="widget_Management.cpp" line="415"/>
-        <location filename="widget_Management.cpp" line="433"/>
-        <location filename="widget_Management.cpp" line="451"/>
-        <location filename="widget_Management.cpp" line="460"/>
-        <location filename="widget_Management.cpp" line="481"/>
-        <location filename="widget_Management.cpp" line="536"/>
+        <location filename="widget_Management.cpp" line="226"/>
+        <location filename="widget_Management.cpp" line="231"/>
+        <location filename="widget_Management.cpp" line="236"/>
+        <location filename="widget_Management.cpp" line="289"/>
+        <location filename="widget_Management.cpp" line="308"/>
+        <location filename="widget_Management.cpp" line="313"/>
+        <location filename="widget_Management.cpp" line="329"/>
+        <location filename="widget_Management.cpp" line="334"/>
+        <location filename="widget_Management.cpp" line="359"/>
+        <location filename="widget_Management.cpp" line="400"/>
+        <location filename="widget_Management.cpp" line="414"/>
+        <location filename="widget_Management.cpp" line="432"/>
+        <location filename="widget_Management.cpp" line="453"/>
+        <location filename="widget_Management.cpp" line="462"/>
+        <location filename="widget_Management.cpp" line="483"/>
+        <location filename="widget_Management.cpp" line="538"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
@@ -1792,7 +1792,7 @@
     </message>
     <message>
         <location filename="widget_Management.cpp" line="167"/>
-        <location filename="widget_Management.cpp" line="309"/>
+        <location filename="widget_Management.cpp" line="308"/>
         <source>Model name already exist.</source>
         <translation>品种名已经存在。</translation>
     </message>
@@ -1802,143 +1802,143 @@
         <translation>新建品种:[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="227"/>
+        <location filename="widget_Management.cpp" line="226"/>
         <source>Please stop detection!</source>
         <translation>请停止检测！</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="232"/>
+        <location filename="widget_Management.cpp" line="231"/>
         <source>Current product model is already loaded!</source>
         <translation>当前品种已经被选中!</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="237"/>
-        <location filename="widget_Management.cpp" line="290"/>
-        <location filename="widget_Management.cpp" line="335"/>
-        <location filename="widget_Management.cpp" line="451"/>
-        <location filename="widget_Management.cpp" line="536"/>
+        <location filename="widget_Management.cpp" line="236"/>
+        <location filename="widget_Management.cpp" line="289"/>
+        <location filename="widget_Management.cpp" line="334"/>
+        <location filename="widget_Management.cpp" line="453"/>
+        <location filename="widget_Management.cpp" line="538"/>
         <source>Product model not selected!</source>
         <translation>尚未选择品种!</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="242"/>
+        <location filename="widget_Management.cpp" line="241"/>
         <source>Load</source>
         <translation>加载</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="243"/>
+        <location filename="widget_Management.cpp" line="242"/>
         <source>Are you sure to load:&lt;font color=red&gt;[%1]&lt;/font&gt;?</source>
         <translation>确定载入：&lt;font color=red&gt;[%1]&lt;/font&gt;?</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="263"/>
+        <location filename="widget_Management.cpp" line="262"/>
         <source>Loading the template:</source>
         <oldsource>Loading the template</oldsource>
         <translation>加载模板:</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="314"/>
+        <location filename="widget_Management.cpp" line="313"/>
         <source>Cannot input same name!</source>
         <translation>已有相同的名字的品种！</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="323"/>
+        <location filename="widget_Management.cpp" line="322"/>
         <source>Backup model:[%1]</source>
         <translation>备份品种：[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="330"/>
+        <location filename="widget_Management.cpp" line="329"/>
         <source>Current product model is loaded, can not delete!</source>
         <translation>单签品种正在使用，不能删除！</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="339"/>
+        <location filename="widget_Management.cpp" line="338"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="340"/>
+        <location filename="widget_Management.cpp" line="339"/>
         <source>Are you sure to delete:&lt;font color=red&gt;[%1]&lt;/font&gt;?</source>
         <translation>确定删除：&lt;font color=red&gt;[%1]&lt;/font&gt;?</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="349"/>
+        <location filename="widget_Management.cpp" line="348"/>
         <source>Delete model:[%1]</source>
         <translation>删除品种：[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="361"/>
+        <location filename="widget_Management.cpp" line="360"/>
         <source>Image already exist.Are you sure to change it?</source>
         <translation>图像已经存在，确定替换？</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="369"/>
+        <location filename="widget_Management.cpp" line="368"/>
         <source>Select a image:</source>
         <translation>选择图像：</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="370"/>
+        <location filename="widget_Management.cpp" line="369"/>
         <source>Images (*.png *.bmp *.jpg *.tif *.GIF)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="388"/>
+        <location filename="widget_Management.cpp" line="387"/>
         <source>change image:[%1]</source>
         <translation>更换图像：[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="401"/>
-        <location filename="widget_Management.cpp" line="415"/>
+        <location filename="widget_Management.cpp" line="400"/>
+        <location filename="widget_Management.cpp" line="414"/>
         <source>Deleting [%1] fail!</source>
         <translation>删除[%1]失败！</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="433"/>
+        <location filename="widget_Management.cpp" line="432"/>
         <source>Copying [%1] fail!</source>
         <translation type="unfinished">复制[%1]失败！</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="447"/>
+        <location filename="widget_Management.cpp" line="449"/>
         <source>Export Cart</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="460"/>
+        <location filename="widget_Management.cpp" line="462"/>
         <source>Model already Backup.</source>
         <translation>品种已备份.</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="469"/>
+        <location filename="widget_Management.cpp" line="471"/>
         <source>Export model:[%1]</source>
         <translation>导出：[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="474"/>
+        <location filename="widget_Management.cpp" line="476"/>
         <source>Import Cart</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="481"/>
+        <location filename="widget_Management.cpp" line="483"/>
         <source>Model already exist.</source>
         <translation>品种已存在。</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="495"/>
+        <location filename="widget_Management.cpp" line="497"/>
         <source>Import model:[%1]</source>
         <translation>导入：[%1]</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="511"/>
+        <location filename="widget_Management.cpp" line="513"/>
         <source>CameraNo:%1</source>
         <translation>相机：%1</translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="513"/>
+        <location filename="widget_Management.cpp" line="515"/>
         <source>Height:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_Management.cpp" line="515"/>
+        <location filename="widget_Management.cpp" line="517"/>
         <source>Angle:</source>
         <translation></translation>
     </message>

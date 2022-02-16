@@ -41,7 +41,7 @@ public:
  	QList <QDoubleSpinBox *> listdSpinBoxCameraAngle;
 	void UpdateTable();
 	void DeleteCate(QString strDirPath);
-	void BackupCate(QString strDirPath,QString strSrcPath);
+	void BackupCate(QString strDirPath,QString strSrcPath,int = 0);
 	bool leaveWidget();
 
 	void initCameraPositionWidget();

@@ -176,7 +176,6 @@ void WidgetManagement::slots_new()
 // 	ui.tableCate->setCurrentCell(0,0);
 	iSelectRow = -1;
 	pMainFrm->Logfile.write((tr("New model:[%1]").arg(strModelName.section("/",-1))),OperationLog);
-
 }
 void WidgetManagement::SeverAdd(QString strModelName)
 {
@@ -314,7 +313,7 @@ void WidgetManagement::slots_backup()
  		QMessageBox::information(this,tr("Information"),tr("Cannot input same name!"));
  		return;
  	}
-	BackupCate(strDestPath,strSrcPath);
+	BackupCate(strDestPath,strSrcPath,1);
  	//刷新表格
  	UpdateTable();
 // 	ui.tableCate->setCurrentCell(0,0);
@@ -417,7 +416,7 @@ void WidgetManagement::DeleteCate(QString strDirPath)
 	}
 
 }
-void WidgetManagement::BackupCate(QString strDestPath,QString strSrcPath)
+void WidgetManagement::BackupCate(QString strDestPath,QString strSrcPath,int nSure)
 {
 	QDir dir;
 	if (!dir.exists(strDestPath))
@@ -434,13 +433,16 @@ void WidgetManagement::BackupCate(QString strDestPath,QString strSrcPath)
 			return;
 		}
 	}
-	/*QFileInfoList dirList = dir.entryInfoList(QDir::AllDirs | QDir::Hidden | QDir::NoDotAndDotDot);
-	for (int i=0;i<dirList.size();++i)
+	if(nSure)
 	{
-		QString strDeepDestPath = strDestPath + "/" + dirList.at(i).completeBaseName();
-		QString strDeepSrcPath = strSrcPath + "/" + dirList.at(i).completeBaseName();
-		BackupCate(strDeepDestPath,strDeepSrcPath);
-	}*/
+		QFileInfoList dirList = dir.entryInfoList(QDir::AllDirs | QDir::Hidden | QDir::NoDotAndDotDot);
+		for (int i=0;i<dirList.size();++i)
+		{
+			QString strDeepDestPath = strDestPath + "/" + dirList.at(i).completeBaseName();
+			QString strDeepSrcPath = strSrcPath + "/" + dirList.at(i).completeBaseName();
+			BackupCate(strDeepDestPath,strDeepSrcPath,nSure);
+		}
+	}
 }
 void WidgetManagement::slots_export()
 {
@@ -486,7 +488,7 @@ void WidgetManagement::slots_import()
 	// 		QMessageBox::information(this,tr("Information"),tr("Cannot input same name!"));
 	// 		return;
 	// 	}
-	BackupCate(strDestPath,strSrcPath);
+	BackupCate(strDestPath,strSrcPath,1);
 	//刷新表格
 	UpdateTable();
 	// 	ui.tableCate->setCurrentCell(0,0);
