@@ -2020,7 +2020,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 		if(nUserWidget->nScreenCount == 5)
 		{
 			nUserWidget->nScreenCount=0;
-			nUserWidget->show();
+			//nUserWidget->show();
 			title_widget->setState(false);
 			//SendDataToSever(3,LOCKSCREEN);
 		}

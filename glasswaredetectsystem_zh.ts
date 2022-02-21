@@ -557,18 +557,6 @@
         <translation type="unfinished">后壁</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2009"/>
-        <source>NetWoek Connect success</source>
-        <oldsource>connect success!</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="glasswaredetectsystem.cpp" line="2012"/>
-        <source>NetWoek Connect failed</source>
-        <oldsource>connect failed!</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="glasswaredetectsystem.cpp" line="1077"/>
         <source>IOCard success</source>
         <translation type="unfinished"></translation>
@@ -577,6 +565,16 @@
         <location filename="glasswaredetectsystem.cpp" line="1364"/>
         <source>Remaining days of use?%1 </source>
         <translation>剩余使用天数：%1 </translation>
+    </message>
+    <message>
+        <location filename="glasswaredetectsystem.cpp" line="2009"/>
+        <source>NetWoek Connect success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="glasswaredetectsystem.cpp" line="2012"/>
+        <source>NetWoek Connect failed</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="glasswaredetectsystem.cpp" line="2096"/>
@@ -4134,12 +4132,12 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="881"/>
+        <location filename="widget_plc.ui" line="884"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="894"/>
+        <location filename="widget_plc.ui" line="897"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4154,222 +4152,237 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="474"/>
+        <location filename="widget_plc.ui" line="634"/>
         <source>队列2阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="277"/>
+        <location filename="widget_plc.ui" line="604"/>
         <source>队列2阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="453"/>
+        <location filename="widget_plc.ui" line="577"/>
         <source>队列2测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="318"/>
+        <location filename="widget_plc.ui" line="675"/>
         <source>队列3阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="349"/>
+        <location filename="widget_plc.ui" line="641"/>
         <source>队列3测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="540"/>
+        <location filename="widget_plc.ui" line="723"/>
         <source>队列3阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="373"/>
+        <location filename="widget_plc.ui" line="696"/>
         <source>后堵瓶测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="527"/>
+        <location filename="widget_plc.ui" line="689"/>
         <source>后堵瓶阈值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="580"/>
+        <location filename="widget_plc.ui" line="281"/>
         <source>输送线停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="460"/>
+        <location filename="widget_plc.ui" line="349"/>
         <source>理瓶器启动延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="733"/>
+        <location filename="widget_plc.ui" line="772"/>
         <source>读取</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="311"/>
+        <location filename="widget_plc.ui" line="597"/>
         <source>队列1阈值上限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="570"/>
+        <location filename="widget_plc.ui" line="537"/>
         <source>队列1阈值下限</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="363"/>
+        <location filename="widget_plc.ui" line="530"/>
         <source>队列1测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="481"/>
+        <location filename="widget_plc.ui" line="682"/>
         <source>前倒瓶测试值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="600"/>
+        <location filename="widget_plc.ui" line="379"/>
         <source>夹瓶比列因子</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="294"/>
+        <location filename="widget_plc.ui" line="658"/>
         <source>前倒瓶阈值</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="400"/>
+        <location filename="widget_plc.ui" line="274"/>
         <source>前输送线加速时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="342"/>
+        <location filename="widget_plc.ui" line="322"/>
         <source>前输送线减速时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="818"/>
+        <location filename="widget_plc.ui" line="821"/>
         <source>输送线电机减速比</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="325"/>
+        <location filename="widget_plc.ui" line="471"/>
         <source>前输送线频率</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="811"/>
+        <location filename="widget_plc.ui" line="814"/>
         <source>板链节距</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="788"/>
+        <location filename="widget_plc.ui" line="791"/>
         <source>主动齿轮数</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="467"/>
+        <location filename="widget_plc.ui" line="262"/>
+        <source>常规参数设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="409"/>
         <source>输送线电机最大频率</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="779"/>
+        <location filename="widget_plc.ui" line="511"/>
+        <source>连续倒瓶报警数量</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="524"/>
+        <source>阈值设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="widget_plc.ui" line="782"/>
         <source>特殊参数设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="798"/>
+        <location filename="widget_plc.ui" line="801"/>
         <source>夹瓶电机减速比</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="825"/>
+        <location filename="widget_plc.ui" line="828"/>
         <source>夹瓶带齿轮数</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="835"/>
+        <location filename="widget_plc.ui" line="838"/>
         <source>夹瓶皮带节距</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="623"/>
+        <location filename="widget_plc.ui" line="312"/>
         <source>前倒瓶剔除吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="380"/>
+        <location filename="widget_plc.ui" line="366"/>
         <source>前输送线启动延迟</source>
         <oldsource>前倒瓶剔除编码器延迟行</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="407"/>
+        <location filename="widget_plc.ui" line="433"/>
         <source>理瓶器停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="356"/>
+        <location filename="widget_plc.ui" line="359"/>
         <source>瓶底光源吹气间隔</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="587"/>
+        <location filename="widget_plc.ui" line="342"/>
         <source>瓶底光源吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="607"/>
+        <location filename="widget_plc.ui" line="440"/>
         <source>前倒瓶剔除编码器延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="630"/>
+        <location filename="widget_plc.ui" line="447"/>
         <source>输送线变频器品牌</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="638"/>
-        <location filename="widget_plc.ui" line="659"/>
-        <location filename="widget_plc.ui" line="680"/>
+        <location filename="widget_plc.ui" line="292"/>
+        <location filename="widget_plc.ui" line="387"/>
+        <location filename="widget_plc.ui" line="417"/>
         <source>丹佛斯</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="643"/>
-        <location filename="widget_plc.ui" line="664"/>
-        <location filename="widget_plc.ui" line="685"/>
+        <location filename="widget_plc.ui" line="297"/>
+        <location filename="widget_plc.ui" line="392"/>
+        <location filename="widget_plc.ui" line="422"/>
         <source>台达</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="651"/>
+        <location filename="widget_plc.ui" line="329"/>
         <source>理瓶器变频器品牌</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="672"/>
+        <location filename="widget_plc.ui" line="305"/>
         <source>前输送变频器品牌</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="697"/>
+        <location filename="widget_plc.ui" line="454"/>
         <source>连续不踢废数量</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="744"/>
+        <location filename="widget_plc.ui" line="478"/>
         <source>机型</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="757"/>
+        <location filename="widget_plc.ui" line="491"/>
         <source>左手机</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="770"/>
+        <location filename="widget_plc.ui" line="504"/>
         <source>右手机</source>
         <translation type="unfinished"></translation>
     </message>
