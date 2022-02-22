@@ -155,6 +155,7 @@ public:
 	QTimer* nReadIOcard;
 	//QWidget* nIOtest;
 	IOtestWidget* nIotest;
+	s_ConfigIOCardInfo m_sSystemInfo1;
 public:
 	NingInfo nInfo;
 	Widget_PLC * m_plc;

@@ -151,7 +151,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.1");
+	return SysType + QString(tr("Version:")+"6.64.1.2");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -2021,6 +2021,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 		{
 			nUserWidget->nScreenCount=0;
 			//nUserWidget->show();
+			pMainFrm->nUserWidget->nPermission = 3;
 			title_widget->setState(false);
 			//SendDataToSever(3,LOCKSCREEN);
 		}

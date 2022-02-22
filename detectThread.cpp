@@ -56,8 +56,8 @@ void DetectThread::ProcessHanlde(int Camera)
 			delete DetectElement.ImageNormal->SourceImage;
 			delete DetectElement.ImageNormal;
 			DetectElement.ImageNormal = NULL;
-			DetectElement.ImageNormal->myImage = NULL;
-			DetectElement.ImageNormal->SourceImage = NULL;
+			/*DetectElement.ImageNormal->myImage = NULL;
+			DetectElement.ImageNormal->SourceImage = NULL;*/
 			pMainFrm->m_mutexmCarve[iCamera].unlock();
 			return;
 		}
@@ -549,7 +549,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 		}
 		if (FailureImage == pMainFrm->m_sRunningInfo.m_eSaveImageType)
 		{
-			QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+			QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 			pElement->myImage->mirrored().save(strSavePath);
 		}
 		if (FailureImageInCount == pMainFrm->m_sRunningInfo.m_eSaveImageType)
@@ -557,7 +557,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 			pMainFrm->m_sRunningInfo.m_mutexRunningInfo.lock();
 			if (pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera] > 0)
 			{
-				QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+				QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 				pElement->myImage->mirrored().save(strSavePath);
 				pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera]--;
 			}

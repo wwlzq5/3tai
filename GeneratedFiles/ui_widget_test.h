@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Wed Feb 16 13:30:30 2022
+** Created: Tue Feb 22 10:10:53 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -121,53 +121,54 @@ public:
     QVBoxLayout *verticalLayout_11;
     QVBoxLayout *widget_IOCounter;
     QGridLayout *gridLayout_15;
-    QLabel *label_28;
-    QLabel *label_15;
     QLabel *label_24;
     QLabel *label_29;
     QLabel *label_9;
-    QLabel *label_OUT6;
-    QLabel *label_11;
-    QLabel *label_6;
-    QLabel *label_20;
-    QLabel *label_OUT3;
-    QLabel *label_IN1;
-    QLineEdit *Delay4;
-    QLabel *label_OUT2;
-    QLabel *label_IN3;
-    QLabel *label_OUT5;
-    QLineEdit *KickWidth;
-    QLabel *label_IN2;
-    QLabel *label_OUT7;
-    QLineEdit *Delay3;
-    QLabel *label_OUT0;
-    QLineEdit *Delay1;
-    QLabel *label_OUT4;
-    QLabel *label_IN0;
-    QLabel *label_OUT1;
-    QLabel *label_5;
-    QLineEdit *KickDelay;
-    QLineEdit *Distance1to4;
-    QLabel *label_7;
-    QLineEdit *lineDelay;
-    QLabel *label_frequency;
-    QLineEdit *Delay6;
-    QPushButton *pushButton_set;
-    QPushButton *pushButton;
-    QLineEdit *Delay5;
+    QLabel *label_15;
     QRadioButton *radioButton_normal;
+    QLineEdit *Delay4;
     QPushButton *read;
     QPushButton *advance1;
+    QLabel *label_OUT4;
+    QLineEdit *Delay5;
+    QLabel *label_5;
+    QLabel *label_OUT2;
+    QLineEdit *KickWidth;
+    QLabel *label_OUT5;
+    QLabel *label_IN1;
+    QLineEdit *KickDelay;
+    QLineEdit *Distance1to4;
+    QLabel *label_IN3;
+    QLineEdit *lineDelay;
+    QLabel *label_7;
+    QLabel *label_frequency;
+    QLabel *label_OUT6;
+    QLabel *label_11;
+    QPushButton *pushButton_set;
+    QLineEdit *Delay3;
+    QLabel *label_OUT3;
+    QLabel *label_OUT1;
+    QLabel *label_OUT0;
+    QLabel *label_OUT7;
+    QLineEdit *Delay1;
+    QLineEdit *Delay6;
+    QLabel *label_6;
+    QLabel *label_20;
+    QLabel *label_IN0;
+    QLabel *label_IN2;
     QPushButton *settocard;
+    QLabel *label_3;
+    QPushButton *settofile;
+    QLineEdit *Delay2;
+    QRadioButton *radioButton_bad;
+    QLabel *label_19;
+    QCheckBox *checkBox;
     QLabel *label_8;
     QLabel *label_10;
     QRadioButton *radioButton_good;
-    QLabel *label_3;
-    QRadioButton *radioButton_bad;
-    QLabel *label_19;
-    QPushButton *settofile;
-    QLineEdit *Delay2;
-    QCheckBox *checkBox;
+    QLabel *label_28;
+    QPushButton *pushButton;
+    QLabel *label;
     QGridLayout *gridLayout;
     QWidget *widget_splc;
     QGridLayout *gridLayout_2;
@@ -609,16 +610,6 @@ public:
 
         gridLayout_15 = new QGridLayout();
         gridLayout_15->setObjectName(QString::fromUtf8("gridLayout_15"));
-        label_28 = new QLabel(widget_IOCardSet);
-        label_28->setObjectName(QString::fromUtf8("label_28"));
-
-        gridLayout_15->addWidget(label_28, 13, 3, 1, 1);
-
-        label_15 = new QLabel(widget_IOCardSet);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
-
-        gridLayout_15->addWidget(label_15, 13, 0, 1, 1);
-
         label_24 = new QLabel(widget_IOCardSet);
         label_24->setObjectName(QString::fromUtf8("label_24"));
 
@@ -634,37 +625,15 @@ public:
 
         gridLayout_15->addWidget(label_9, 2, 3, 1, 1);
 
-        label_OUT6 = new QLabel(widget_IOCardSet);
-        label_OUT6->setObjectName(QString::fromUtf8("label_OUT6"));
+        label_15 = new QLabel(widget_IOCardSet);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
 
-        gridLayout_15->addWidget(label_OUT6, 12, 3, 1, 1);
+        gridLayout_15->addWidget(label_15, 13, 0, 1, 1);
 
-        label_11 = new QLabel(widget_IOCardSet);
-        label_11->setObjectName(QString::fromUtf8("label_11"));
+        radioButton_normal = new QRadioButton(widget_IOCardSet);
+        radioButton_normal->setObjectName(QString::fromUtf8("radioButton_normal"));
 
-        gridLayout_15->addWidget(label_11, 3, 3, 1, 1);
-
-        label_6 = new QLabel(widget_IOCardSet);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(label_6, 1, 0, 1, 1);
-
-        label_20 = new QLabel(widget_IOCardSet);
-        label_20->setObjectName(QString::fromUtf8("label_20"));
-
-        gridLayout_15->addWidget(label_20, 6, 3, 1, 1);
-
-        label_OUT3 = new QLabel(widget_IOCardSet);
-        label_OUT3->setObjectName(QString::fromUtf8("label_OUT3"));
-
-        gridLayout_15->addWidget(label_OUT3, 11, 4, 1, 1);
-
-        label_IN1 = new QLabel(widget_IOCardSet);
-        label_IN1->setObjectName(QString::fromUtf8("label_IN1"));
-
-        gridLayout_15->addWidget(label_IN1, 10, 1, 1, 1);
+        gridLayout_15->addWidget(radioButton_normal, 5, 3, 1, 1);
 
         Delay4 = new QLineEdit(widget_IOCardSet);
         Delay4->setObjectName(QString::fromUtf8("Delay4"));
@@ -673,20 +642,41 @@ public:
 
         gridLayout_15->addWidget(Delay4, 2, 4, 1, 1);
 
+        read = new QPushButton(widget_IOCardSet);
+        read->setObjectName(QString::fromUtf8("read"));
+        sizePolicy.setHeightForWidth(read->sizePolicy().hasHeightForWidth());
+        read->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(read, 5, 4, 1, 1);
+
+        advance1 = new QPushButton(widget_IOCardSet);
+        advance1->setObjectName(QString::fromUtf8("advance1"));
+        sizePolicy.setHeightForWidth(advance1->sizePolicy().hasHeightForWidth());
+        advance1->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(advance1, 4, 4, 1, 1);
+
+        label_OUT4 = new QLabel(widget_IOCardSet);
+        label_OUT4->setObjectName(QString::fromUtf8("label_OUT4"));
+
+        gridLayout_15->addWidget(label_OUT4, 12, 0, 1, 1);
+
+        Delay5 = new QLineEdit(widget_IOCardSet);
+        Delay5->setObjectName(QString::fromUtf8("Delay5"));
+        sizePolicy.setHeightForWidth(Delay5->sizePolicy().hasHeightForWidth());
+        Delay5->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay5, 3, 1, 1, 1);
+
+        label_5 = new QLabel(widget_IOCardSet);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout_15->addWidget(label_5, 7, 0, 1, 1);
+
         label_OUT2 = new QLabel(widget_IOCardSet);
         label_OUT2->setObjectName(QString::fromUtf8("label_OUT2"));
 
         gridLayout_15->addWidget(label_OUT2, 11, 3, 1, 1);
-
-        label_IN3 = new QLabel(widget_IOCardSet);
-        label_IN3->setObjectName(QString::fromUtf8("label_IN3"));
-
-        gridLayout_15->addWidget(label_IN3, 10, 4, 1, 1);
-
-        label_OUT5 = new QLabel(widget_IOCardSet);
-        label_OUT5->setObjectName(QString::fromUtf8("label_OUT5"));
-
-        gridLayout_15->addWidget(label_OUT5, 12, 1, 1, 1);
 
         KickWidth = new QLineEdit(widget_IOCardSet);
         KickWidth->setObjectName(QString::fromUtf8("KickWidth"));
@@ -695,54 +685,15 @@ public:
 
         gridLayout_15->addWidget(KickWidth, 7, 4, 1, 1);
 
-        label_IN2 = new QLabel(widget_IOCardSet);
-        label_IN2->setObjectName(QString::fromUtf8("label_IN2"));
+        label_OUT5 = new QLabel(widget_IOCardSet);
+        label_OUT5->setObjectName(QString::fromUtf8("label_OUT5"));
 
-        gridLayout_15->addWidget(label_IN2, 10, 3, 1, 1);
+        gridLayout_15->addWidget(label_OUT5, 12, 1, 1, 1);
 
-        label_OUT7 = new QLabel(widget_IOCardSet);
-        label_OUT7->setObjectName(QString::fromUtf8("label_OUT7"));
+        label_IN1 = new QLabel(widget_IOCardSet);
+        label_IN1->setObjectName(QString::fromUtf8("label_IN1"));
 
-        gridLayout_15->addWidget(label_OUT7, 12, 4, 1, 1);
-
-        Delay3 = new QLineEdit(widget_IOCardSet);
-        Delay3->setObjectName(QString::fromUtf8("Delay3"));
-        sizePolicy.setHeightForWidth(Delay3->sizePolicy().hasHeightForWidth());
-        Delay3->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay3, 2, 1, 1, 1);
-
-        label_OUT0 = new QLabel(widget_IOCardSet);
-        label_OUT0->setObjectName(QString::fromUtf8("label_OUT0"));
-
-        gridLayout_15->addWidget(label_OUT0, 11, 0, 1, 1);
-
-        Delay1 = new QLineEdit(widget_IOCardSet);
-        Delay1->setObjectName(QString::fromUtf8("Delay1"));
-        sizePolicy.setHeightForWidth(Delay1->sizePolicy().hasHeightForWidth());
-        Delay1->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay1, 1, 1, 1, 1);
-
-        label_OUT4 = new QLabel(widget_IOCardSet);
-        label_OUT4->setObjectName(QString::fromUtf8("label_OUT4"));
-
-        gridLayout_15->addWidget(label_OUT4, 12, 0, 1, 1);
-
-        label_IN0 = new QLabel(widget_IOCardSet);
-        label_IN0->setObjectName(QString::fromUtf8("label_IN0"));
-
-        gridLayout_15->addWidget(label_IN0, 10, 0, 1, 1);
-
-        label_OUT1 = new QLabel(widget_IOCardSet);
-        label_OUT1->setObjectName(QString::fromUtf8("label_OUT1"));
-
-        gridLayout_15->addWidget(label_OUT1, 11, 1, 1, 1);
-
-        label_5 = new QLabel(widget_IOCardSet);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-
-        gridLayout_15->addWidget(label_5, 7, 0, 1, 1);
+        gridLayout_15->addWidget(label_IN1, 10, 1, 1, 1);
 
         KickDelay = new QLineEdit(widget_IOCardSet);
         KickDelay->setObjectName(QString::fromUtf8("KickDelay"));
@@ -759,10 +710,10 @@ public:
 
         gridLayout_15->addWidget(Distance1to4, 6, 1, 1, 1);
 
-        label_7 = new QLabel(widget_IOCardSet);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_IN3 = new QLabel(widget_IOCardSet);
+        label_IN3->setObjectName(QString::fromUtf8("label_IN3"));
 
-        gridLayout_15->addWidget(label_7, 1, 3, 1, 1);
+        gridLayout_15->addWidget(label_IN3, 10, 4, 1, 1);
 
         lineDelay = new QLineEdit(widget_IOCardSet);
         lineDelay->setObjectName(QString::fromUtf8("lineDelay"));
@@ -771,10 +722,64 @@ public:
 
         gridLayout_15->addWidget(lineDelay, 7, 1, 1, 1);
 
+        label_7 = new QLabel(widget_IOCardSet);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        gridLayout_15->addWidget(label_7, 1, 3, 1, 1);
+
         label_frequency = new QLabel(widget_IOCardSet);
         label_frequency->setObjectName(QString::fromUtf8("label_frequency"));
 
         gridLayout_15->addWidget(label_frequency, 9, 0, 1, 1);
+
+        label_OUT6 = new QLabel(widget_IOCardSet);
+        label_OUT6->setObjectName(QString::fromUtf8("label_OUT6"));
+
+        gridLayout_15->addWidget(label_OUT6, 12, 3, 1, 1);
+
+        label_11 = new QLabel(widget_IOCardSet);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+
+        gridLayout_15->addWidget(label_11, 3, 3, 1, 1);
+
+        pushButton_set = new QPushButton(widget_IOCardSet);
+        pushButton_set->setObjectName(QString::fromUtf8("pushButton_set"));
+
+        gridLayout_15->addWidget(pushButton_set, 4, 3, 1, 1);
+
+        Delay3 = new QLineEdit(widget_IOCardSet);
+        Delay3->setObjectName(QString::fromUtf8("Delay3"));
+        sizePolicy.setHeightForWidth(Delay3->sizePolicy().hasHeightForWidth());
+        Delay3->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay3, 2, 1, 1, 1);
+
+        label_OUT3 = new QLabel(widget_IOCardSet);
+        label_OUT3->setObjectName(QString::fromUtf8("label_OUT3"));
+
+        gridLayout_15->addWidget(label_OUT3, 11, 4, 1, 1);
+
+        label_OUT1 = new QLabel(widget_IOCardSet);
+        label_OUT1->setObjectName(QString::fromUtf8("label_OUT1"));
+
+        gridLayout_15->addWidget(label_OUT1, 11, 1, 1, 1);
+
+        label_OUT0 = new QLabel(widget_IOCardSet);
+        label_OUT0->setObjectName(QString::fromUtf8("label_OUT0"));
+
+        gridLayout_15->addWidget(label_OUT0, 11, 0, 1, 1);
+
+        label_OUT7 = new QLabel(widget_IOCardSet);
+        label_OUT7->setObjectName(QString::fromUtf8("label_OUT7"));
+
+        gridLayout_15->addWidget(label_OUT7, 12, 4, 1, 1);
+
+        Delay1 = new QLineEdit(widget_IOCardSet);
+        Delay1->setObjectName(QString::fromUtf8("Delay1"));
+        sizePolicy.setHeightForWidth(Delay1->sizePolicy().hasHeightForWidth());
+        Delay1->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay1, 1, 1, 1, 1);
 
         Delay6 = new QLineEdit(widget_IOCardSet);
         Delay6->setObjectName(QString::fromUtf8("Delay6"));
@@ -783,41 +788,27 @@ public:
 
         gridLayout_15->addWidget(Delay6, 3, 4, 1, 1);
 
-        pushButton_set = new QPushButton(widget_IOCardSet);
-        pushButton_set->setObjectName(QString::fromUtf8("pushButton_set"));
+        label_6 = new QLabel(widget_IOCardSet);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        sizePolicy.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy);
 
-        gridLayout_15->addWidget(pushButton_set, 4, 3, 1, 1);
+        gridLayout_15->addWidget(label_6, 1, 0, 1, 1);
 
-        pushButton = new QPushButton(widget_IOCardSet);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        label_20 = new QLabel(widget_IOCardSet);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
 
-        gridLayout_15->addWidget(pushButton, 4, 0, 1, 1);
+        gridLayout_15->addWidget(label_20, 6, 3, 1, 1);
 
-        Delay5 = new QLineEdit(widget_IOCardSet);
-        Delay5->setObjectName(QString::fromUtf8("Delay5"));
-        sizePolicy.setHeightForWidth(Delay5->sizePolicy().hasHeightForWidth());
-        Delay5->setSizePolicy(sizePolicy);
+        label_IN0 = new QLabel(widget_IOCardSet);
+        label_IN0->setObjectName(QString::fromUtf8("label_IN0"));
 
-        gridLayout_15->addWidget(Delay5, 3, 1, 1, 1);
+        gridLayout_15->addWidget(label_IN0, 10, 0, 1, 1);
 
-        radioButton_normal = new QRadioButton(widget_IOCardSet);
-        radioButton_normal->setObjectName(QString::fromUtf8("radioButton_normal"));
+        label_IN2 = new QLabel(widget_IOCardSet);
+        label_IN2->setObjectName(QString::fromUtf8("label_IN2"));
 
-        gridLayout_15->addWidget(radioButton_normal, 5, 3, 1, 1);
-
-        read = new QPushButton(widget_IOCardSet);
-        read->setObjectName(QString::fromUtf8("read"));
-        sizePolicy.setHeightForWidth(read->sizePolicy().hasHeightForWidth());
-        read->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(read, 5, 4, 1, 1);
-
-        advance1 = new QPushButton(widget_IOCardSet);
-        advance1->setObjectName(QString::fromUtf8("advance1"));
-        sizePolicy.setHeightForWidth(advance1->sizePolicy().hasHeightForWidth());
-        advance1->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(advance1, 4, 4, 1, 1);
+        gridLayout_15->addWidget(label_IN2, 10, 3, 1, 1);
 
         settocard = new QPushButton(widget_IOCardSet);
         settocard->setObjectName(QString::fromUtf8("settocard"));
@@ -825,6 +816,46 @@ public:
         settocard->setSizePolicy(sizePolicy);
 
         gridLayout_15->addWidget(settocard, 9, 3, 1, 1);
+
+        label_3 = new QLabel(widget_IOCardSet);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(label_3, 6, 0, 1, 1);
+
+        settofile = new QPushButton(widget_IOCardSet);
+        settofile->setObjectName(QString::fromUtf8("settofile"));
+        sizePolicy.setHeightForWidth(settofile->sizePolicy().hasHeightForWidth());
+        settofile->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(settofile, 9, 4, 1, 1);
+
+        Delay2 = new QLineEdit(widget_IOCardSet);
+        Delay2->setObjectName(QString::fromUtf8("Delay2"));
+        sizePolicy.setHeightForWidth(Delay2->sizePolicy().hasHeightForWidth());
+        Delay2->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(Delay2, 1, 4, 1, 1);
+
+        radioButton_bad = new QRadioButton(widget_IOCardSet);
+        radioButton_bad->setObjectName(QString::fromUtf8("radioButton_bad"));
+        sizePolicy.setHeightForWidth(radioButton_bad->sizePolicy().hasHeightForWidth());
+        radioButton_bad->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(radioButton_bad, 5, 1, 1, 1);
+
+        label_19 = new QLabel(widget_IOCardSet);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+        sizePolicy.setHeightForWidth(label_19->sizePolicy().hasHeightForWidth());
+        label_19->setSizePolicy(sizePolicy);
+
+        gridLayout_15->addWidget(label_19, 7, 3, 1, 1);
+
+        checkBox = new QCheckBox(widget_IOCardSet);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        gridLayout_15->addWidget(checkBox, 9, 1, 1, 1);
 
         label_8 = new QLabel(widget_IOCardSet);
         label_8->setObjectName(QString::fromUtf8("label_8"));
@@ -845,45 +876,20 @@ public:
 
         gridLayout_15->addWidget(radioButton_good, 5, 0, 1, 1);
 
-        label_3 = new QLabel(widget_IOCardSet);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy);
+        label_28 = new QLabel(widget_IOCardSet);
+        label_28->setObjectName(QString::fromUtf8("label_28"));
 
-        gridLayout_15->addWidget(label_3, 6, 0, 1, 1);
+        gridLayout_15->addWidget(label_28, 13, 3, 1, 1);
 
-        radioButton_bad = new QRadioButton(widget_IOCardSet);
-        radioButton_bad->setObjectName(QString::fromUtf8("radioButton_bad"));
-        sizePolicy.setHeightForWidth(radioButton_bad->sizePolicy().hasHeightForWidth());
-        radioButton_bad->setSizePolicy(sizePolicy);
+        pushButton = new QPushButton(widget_IOCardSet);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
-        gridLayout_15->addWidget(radioButton_bad, 5, 1, 1, 1);
+        gridLayout_15->addWidget(pushButton, 4, 1, 1, 1);
 
-        label_19 = new QLabel(widget_IOCardSet);
-        label_19->setObjectName(QString::fromUtf8("label_19"));
-        sizePolicy.setHeightForWidth(label_19->sizePolicy().hasHeightForWidth());
-        label_19->setSizePolicy(sizePolicy);
+        label = new QLabel(widget_IOCardSet);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout_15->addWidget(label_19, 7, 3, 1, 1);
-
-        settofile = new QPushButton(widget_IOCardSet);
-        settofile->setObjectName(QString::fromUtf8("settofile"));
-        sizePolicy.setHeightForWidth(settofile->sizePolicy().hasHeightForWidth());
-        settofile->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(settofile, 9, 4, 1, 1);
-
-        Delay2 = new QLineEdit(widget_IOCardSet);
-        Delay2->setObjectName(QString::fromUtf8("Delay2"));
-        sizePolicy.setHeightForWidth(Delay2->sizePolicy().hasHeightForWidth());
-        Delay2->setSizePolicy(sizePolicy);
-
-        gridLayout_15->addWidget(Delay2, 1, 4, 1, 1);
-
-        checkBox = new QCheckBox(widget_IOCardSet);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        gridLayout_15->addWidget(checkBox, 9, 1, 1, 1);
+        gridLayout_15->addWidget(label, 4, 0, 1, 1);
 
 
         verticalLayout_11->addLayout(gridLayout_15);
@@ -960,43 +966,44 @@ public:
         btnOK_Save->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         btnOK->setText(QApplication::translate("WidgetTest", "OK", 0, QApplication::UnicodeUTF8));
         btnCancel->setText(QApplication::translate("WidgetTest", "Cancel", 0, QApplication::UnicodeUTF8));
-        label_28->setText(QString());
-        label_15->setText(QString());
         label_24->setText(QString());
         label_29->setText(QString());
         label_9->setText(QApplication::translate("WidgetTest", "Channel4:", 0, QApplication::UnicodeUTF8));
-        label_OUT6->setText(QApplication::translate("WidgetTest", "OUT6:", 0, QApplication::UnicodeUTF8));
-        label_11->setText(QApplication::translate("WidgetTest", "Channel6:", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("WidgetTest", "Channel1:", 0, QApplication::UnicodeUTF8));
-        label_20->setText(QApplication::translate("WidgetTest", "Kick Delay:", 0, QApplication::UnicodeUTF8));
-        label_OUT3->setText(QApplication::translate("WidgetTest", "OUT3:", 0, QApplication::UnicodeUTF8));
-        label_IN1->setText(QApplication::translate("WidgetTest", "IN1:", 0, QApplication::UnicodeUTF8));
-        label_OUT2->setText(QApplication::translate("WidgetTest", "OUT2:", 0, QApplication::UnicodeUTF8));
-        label_IN3->setText(QApplication::translate("WidgetTest", "IN3:", 0, QApplication::UnicodeUTF8));
-        label_OUT5->setText(QApplication::translate("WidgetTest", "OUT5:", 0, QApplication::UnicodeUTF8));
-        label_IN2->setText(QApplication::translate("WidgetTest", "IN2:", 0, QApplication::UnicodeUTF8));
-        label_OUT7->setText(QApplication::translate("WidgetTest", "OUT7:", 0, QApplication::UnicodeUTF8));
-        label_OUT0->setText(QApplication::translate("WidgetTest", "OUT0:", 0, QApplication::UnicodeUTF8));
-        label_OUT4->setText(QApplication::translate("WidgetTest", "OUT4:", 0, QApplication::UnicodeUTF8));
-        label_IN0->setText(QApplication::translate("WidgetTest", "IN0:", 0, QApplication::UnicodeUTF8));
-        label_OUT1->setText(QApplication::translate("WidgetTest", "OUT1:", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("WidgetTest", "\345\220\216\345\205\211\345\273\266\350\277\237:", 0, QApplication::UnicodeUTF8));
-        label_7->setText(QApplication::translate("WidgetTest", "Channel2:", 0, QApplication::UnicodeUTF8));
-        label_frequency->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
-        pushButton_set->setText(QApplication::translate("WidgetTest", "\346\234\215\345\212\241\345\231\250\351\253\230\347\272\247\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("WidgetTest", "\347\275\221\347\273\234\351\207\215\350\277\236", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QString());
         radioButton_normal->setText(QApplication::translate("WidgetTest", "Normal", 0, QApplication::UnicodeUTF8));
         read->setText(QApplication::translate("WidgetTest", "Read", 0, QApplication::UnicodeUTF8));
         advance1->setText(QApplication::translate("WidgetTest", "\345\244\271\346\214\201\351\253\230\347\272\247\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
+        label_OUT4->setText(QApplication::translate("WidgetTest", "OUT4:", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("WidgetTest", "\345\220\216\345\205\211\345\273\266\350\277\237:", 0, QApplication::UnicodeUTF8));
+        label_OUT2->setText(QApplication::translate("WidgetTest", "OUT2:", 0, QApplication::UnicodeUTF8));
+        label_OUT5->setText(QApplication::translate("WidgetTest", "OUT5:", 0, QApplication::UnicodeUTF8));
+        label_IN1->setText(QApplication::translate("WidgetTest", "IN1:", 0, QApplication::UnicodeUTF8));
+        label_IN3->setText(QApplication::translate("WidgetTest", "IN3:", 0, QApplication::UnicodeUTF8));
+        label_7->setText(QApplication::translate("WidgetTest", "Channel2:", 0, QApplication::UnicodeUTF8));
+        label_frequency->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
+        label_OUT6->setText(QApplication::translate("WidgetTest", "OUT6:", 0, QApplication::UnicodeUTF8));
+        label_11->setText(QApplication::translate("WidgetTest", "Channel6:", 0, QApplication::UnicodeUTF8));
+        pushButton_set->setText(QApplication::translate("WidgetTest", "\346\234\215\345\212\241\345\231\250\351\253\230\347\272\247\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
+        label_OUT3->setText(QApplication::translate("WidgetTest", "OUT3:", 0, QApplication::UnicodeUTF8));
+        label_OUT1->setText(QApplication::translate("WidgetTest", "OUT1:", 0, QApplication::UnicodeUTF8));
+        label_OUT0->setText(QApplication::translate("WidgetTest", "OUT0:", 0, QApplication::UnicodeUTF8));
+        label_OUT7->setText(QApplication::translate("WidgetTest", "OUT7:", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("WidgetTest", "Channel1:", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("WidgetTest", "Kick Delay:", 0, QApplication::UnicodeUTF8));
+        label_IN0->setText(QApplication::translate("WidgetTest", "IN0:", 0, QApplication::UnicodeUTF8));
+        label_IN2->setText(QApplication::translate("WidgetTest", "IN2:", 0, QApplication::UnicodeUTF8));
         settocard->setText(QApplication::translate("WidgetTest", "Set to Card", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("WidgetTest", "\344\272\247\345\223\201\351\227\264\350\267\235(0.3):", 0, QApplication::UnicodeUTF8));
+        settofile->setText(QApplication::translate("WidgetTest", "Save to File", 0, QApplication::UnicodeUTF8));
+        radioButton_bad->setText(QApplication::translate("WidgetTest", "Continue Kick", 0, QApplication::UnicodeUTF8));
+        label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
+        checkBox->setText(QApplication::translate("WidgetTest", "PLC\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("WidgetTest", "Channel3:", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("WidgetTest", "Channel5:", 0, QApplication::UnicodeUTF8));
         radioButton_good->setText(QApplication::translate("WidgetTest", "Continue Good", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("WidgetTest", "\344\272\247\345\223\201\351\227\264\350\267\235(0.3):", 0, QApplication::UnicodeUTF8));
-        radioButton_bad->setText(QApplication::translate("WidgetTest", "Continue Kick", 0, QApplication::UnicodeUTF8));
-        label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
-        settofile->setText(QApplication::translate("WidgetTest", "Save to File", 0, QApplication::UnicodeUTF8));
-        checkBox->setText(QApplication::translate("WidgetTest", "PLC\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
+        label_28->setText(QString());
+        pushButton->setText(QApplication::translate("WidgetTest", "\347\275\221\347\273\234\351\207\215\350\277\236", 0, QApplication::UnicodeUTF8));
+        label->setText(QString());
     } // retranslateUi
 
 };

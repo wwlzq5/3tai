@@ -51,11 +51,10 @@ WidgetTest::WidgetTest(QWidget *parent)
 		m_plc->setVisible(true);
 		if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 		{
-			s_ConfigIOCardInfo m_sSystemInfo;
-			m_sSystemInfo.iCardID = 1;
-			m_sSystemInfo.strCardInitFile = QString("./PIO24B_reg_init1.txt");
-			m_sSystemInfo.strCardName = QString("PIO24B");
-			m_vIOCard = new CIOCard(m_sSystemInfo,1);
+			m_sSystemInfo1.iCardID = 1;
+			m_sSystemInfo1.strCardInitFile = QString("./PIO24B_reg_init1.txt");
+			m_sSystemInfo1.strCardName = QString("PIO24B");
+			m_vIOCard = new CIOCard(m_sSystemInfo1,1);
 			s_IOCardErrorInfo sIOCardErrorInfo = m_vIOCard->InitIOCard();
 			if (!sIOCardErrorInfo.bResult)
 			{
@@ -153,6 +152,13 @@ void WidgetTest::slots_IoSetPam(int temp,int temp2)
 	{
 		m_vIOCard->writeParam(45,temp);
 		m_vIOCard->writeParam(32,temp2);
+		QString strValue,strPara;
+		strValue = strValue.setNum(temp,10);
+		strPara = strPara.setNum(45,10);
+		StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,m_sSystemInfo1.strCardInitFile);
+		strValue = strValue.setNum(temp2,10);
+		strPara = strPara.setNum(32,10);
+		StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,m_sSystemInfo1.strCardInitFile);
 	}
 }
 void WidgetTest::slot_openPlcSet()
@@ -1030,7 +1036,8 @@ void WidgetTest::slots_updateIOcardCounter()
 		pMainFrm->nIOCard[13] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0];
 		pMainFrm->nIOCard[14] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2];
 		pMainFrm->nIOCard[15] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2];
-		//
+		//显示发送的数据个数
+		ui.label->setText(QString::fromLocal8Bit("网络通信个数：")+QString::number(pMainFrm->nCountNumber));//网络通信个数
 	}
 }
 

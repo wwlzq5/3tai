@@ -486,11 +486,11 @@ void Widget_CarveImage::slots_save()
 		QMessageBox::information(this,"Error",tr("Please change to carve mode!"));
 		return;
 	}
-	if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
+	/*if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
 	{
 		QMessageBox::information(this,"Error",QString::fromLocal8Bit("请停止检测!"));
 		return;
-	}
+	}*/
 	//保存是否为应力图像,此处应与检测线程互斥
 	if (m_eStatus != CARVED&&m_eStatus != DRAWED)
 	{
@@ -1427,11 +1427,11 @@ void Widget_CarveImage::slots_grey()
 //移到carveinfo中
 void Widget_CarveImage::slots_setToCamera()
 {
-	if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
+	/*if(timerTest->isActive()||pMainFrm->m_sRunningInfo.m_bCheck)
 	{
 		QMessageBox::information(this,"Error",QString::fromLocal8Bit("请停止检测!"));
 		return;
-	}
+	}*/
 	int iCameraSN =  pMainFrm->m_sCarvedCamInfo[iCameraNo].m_iToRealCamera;
 	int iShuterTime = pWidgetCarveInfo->ui.spinBox_exposureTime->text().toInt();
 	int iTriggerType = pWidgetCarveInfo->ui.comboBox_triggerType->currentIndex();
