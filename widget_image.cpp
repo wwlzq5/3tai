@@ -191,22 +191,19 @@ void ImageWidget::slots_turnImage()
 }
 void ImageWidget::slots_showCarve()
 {
-	if(pMainFrm->nUserWidget->nPermission != 3)
+	if (!bIsCarveWidgetShow)
 	{
-		if (!bIsCarveWidgetShow)
-		{
-			QPixmap iconShowCarve(":/sysButton/arrowLeft");
-			buttonShowCarve->setIcon(iconShowCarve);
-			emit signals_showCarve();
-			bIsCarveWidgetShow = true;
-		}
-		else
-		{
-			QPixmap iconHideCarve(":/sysButton/arrowright");
-			buttonShowCarve->setIcon(iconHideCarve);
-			emit signals_hideCarve();
-			bIsCarveWidgetShow = false;
-		}
+		QPixmap iconShowCarve(":/sysButton/arrowLeft");
+		buttonShowCarve->setIcon(iconShowCarve);
+		emit signals_showCarve();
+		bIsCarveWidgetShow = true;
+	}
+	else
+	{
+		QPixmap iconHideCarve(":/sysButton/arrowright");
+		buttonShowCarve->setIcon(iconHideCarve);
+		emit signals_hideCarve();
+		bIsCarveWidgetShow = false;
 	}
 }
 

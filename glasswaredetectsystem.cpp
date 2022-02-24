@@ -2019,11 +2019,14 @@ void GlasswareDetectSystem::slot_SockScreen()
 		nUserWidget->nScreenCount++;
 		if(nUserWidget->nScreenCount == 5)
 		{
+			if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+			{
+				pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
+			}
 			nUserWidget->nScreenCount=0;
-			//nUserWidget->show();
-			pMainFrm->nUserWidget->nPermission = 3;
 			title_widget->setState(false);
-			//SendDataToSever(3,LOCKSCREEN);
+			pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
+			pMainFrm->nUserWidget->nPermission = 3;
 		}
 	}else{
 		gcPosition.x = tgcPosition.x;
@@ -2034,18 +2037,21 @@ void GlasswareDetectSystem::slots_loginState(int nPerm)
 {
 	widget_carveSetting->slots_turnCameraPage(0);
 	loginState(nPerm);
-	//SendDataToSever(nPerm,LOCKSCREEN);
 }
 void GlasswareDetectSystem::loginState(int nPerm)
 {
+	if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+	{
+		pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
+	}
 	if(nPerm == 3)
 	{
-		title_widget->setState(false);
-		//test_widget->m_plc->SetLimiteState(false);PLC需要操作权限才能更改数据
+		title_widget->setState(false);//菜单栏置灰
+		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
 	}else{
 		title_widget->setState(true);
-		//test_widget->m_plc->SetLimiteState(true);
-	}
+		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(true);
+	}	
 	nUserWidget->hide();
 	nUserWidget->nPermission = nPerm;
 }

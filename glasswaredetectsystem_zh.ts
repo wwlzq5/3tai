@@ -577,28 +577,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2097"/>
+        <location filename="glasswaredetectsystem.cpp" line="2103"/>
         <source>Encryption verification failed, will exit the program!</source>
         <translation type="unfinished">加密验证失败,即将退出程序!</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2107"/>
+        <location filename="glasswaredetectsystem.cpp" line="2113"/>
         <source>The authorization to use the equipment is about to expire 
 , please contact business personnel!</source>
         <translation type="unfinished">设备使用授权即将到期\n请联系商务人员！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2131"/>
+        <location filename="glasswaredetectsystem.cpp" line="2137"/>
         <source>License expired or dongle abnormal! Error code: 22</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：22</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2147"/>
+        <location filename="glasswaredetectsystem.cpp" line="2153"/>
         <source>License expired or dongle abnormal! Error code: %1</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2153"/>
+        <location filename="glasswaredetectsystem.cpp" line="2159"/>
         <source>Encryption authentication failed!</source>
         <translation type="unfinished">加密验证失败！</translation>
     </message>
@@ -819,10 +819,10 @@
     <message>
         <location filename="glasswaredetectsystem.cpp" line="894"/>
         <location filename="glasswaredetectsystem.cpp" line="1570"/>
-        <location filename="glasswaredetectsystem.cpp" line="2097"/>
-        <location filename="glasswaredetectsystem.cpp" line="2131"/>
-        <location filename="glasswaredetectsystem.cpp" line="2147"/>
+        <location filename="glasswaredetectsystem.cpp" line="2103"/>
+        <location filename="glasswaredetectsystem.cpp" line="2137"/>
         <location filename="glasswaredetectsystem.cpp" line="2153"/>
+        <location filename="glasswaredetectsystem.cpp" line="2159"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -1051,38 +1051,38 @@
         <translation>图像界面</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="324"/>
-        <location filename="widget_image.cpp" line="387"/>
+        <location filename="widget_image.cpp" line="321"/>
+        <location filename="widget_image.cpp" line="384"/>
         <source>No error Image! </source>
         <translation>没有错误图像！</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="330"/>
+        <location filename="widget_image.cpp" line="327"/>
         <source>Alreay the final Image! </source>
         <translation>已经是最后一张！</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="394"/>
+        <location filename="widget_image.cpp" line="391"/>
         <source>Alreay the first Image! </source>
         <translation>已经是第一张！</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="446"/>
+        <location filename="widget_image.cpp" line="443"/>
         <source>Abnormal in close model </source>
         <translation type="unfinished">关闭算法设置时异常</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="459"/>
+        <location filename="widget_image.cpp" line="456"/>
         <source>Image height:%1 not fit camera height:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="464"/>
+        <location filename="widget_image.cpp" line="461"/>
         <source>Image Width:%1 not fit camera Width:%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="483"/>
+        <location filename="widget_image.cpp" line="480"/>
         <source>widget_alg size is too small width:%1 height:%2</source>
         <translation></translation>
     </message>
@@ -1091,12 +1091,12 @@
         <translation type="obsolete">打开算法界面</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="491"/>
+        <location filename="widget_image.cpp" line="488"/>
         <source>Abnormal in set Model</source>
         <translation type="unfinished">setModle时异常</translation>
     </message>
     <message>
-        <location filename="widget_image.cpp" line="502"/>
+        <location filename="widget_image.cpp" line="499"/>
         <source>Abnormal in set Model </source>
         <translation>setModle时异常2</translation>
     </message>
