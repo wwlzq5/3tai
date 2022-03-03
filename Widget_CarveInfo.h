@@ -22,6 +22,8 @@ signals:
 public slots:
 	void TrunCameraSet();
 	void TrunImageSet();
+	void slot_setToCamera();
+	void slot_SetSaveStatus();
 private:
 	QToolButton *toolButtonToCamera;
 	QToolButton *toolButtonToImage;

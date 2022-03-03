@@ -24,6 +24,28 @@ CProgramLicense m_ProgramLicense;
 
 GlasswareDetectSystem * pMainFrm;
 QString appPath;  //更新路径
+
+DWORD GlasswareDetectSystem::ConnectSever(void* param)
+{
+	while(!pMainFrm->m_bIsThreadDead)
+	{
+		if(!pMainFrm->n_NetConnectState&& pMainFrm->m_tcpSocket != NULL)
+		{
+			//pMainFrm->m_tcpSocket->abort();
+			pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
+			if(pMainFrm->m_tcpSocket->waitForConnected(1000))
+			{
+				pMainFrm->n_NetConnectState = true;
+				pMainFrm->Logfile.write(tr("NetWoek Connect success"),CheckLog);
+			}else{
+				pMainFrm->n_NetConnectState = false;
+				pMainFrm->Logfile.write(tr("NetWoek Connect failed"),CheckLog);
+			}
+		}
+		Sleep(60*1000);
+	}
+	return TRUE;
+}
 DWORD GlasswareDetectSystem::SendIOCard(void* param)
 {
 	while(!pMainFrm->m_bIsThreadDead)
@@ -151,7 +173,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.2");
+	return SysType + QString(tr("Version:")+"6.64.1.3");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -326,12 +348,7 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		{
 			m_detectElement[tempCamera].ImageNormal = pGrabElement;
 			m_detectElement[tempCamera].iCameraNormal = tempCamera;
-			if(1 == m_sCarvedCamInfo[tempCamera].m_iStress)
-			{
-				m_detectElement[tempCamera].iType = 1;
-			}else{
-				m_detectElement[tempCamera].iType = 0;
-			}
+			m_detectElement[tempCamera].iType = m_sCarvedCamInfo[tempCamera].m_iStress;
 			nQueue[tempCamera].mDetectLocker.lock();
 			nQueue[tempCamera].listDetect.append(m_detectElement[tempCamera]);
 			nQueue[tempCamera].mDetectLocker.unlock();
@@ -389,6 +406,7 @@ void GlasswareDetectSystem::InitParameter()
 	{
 		HANDLE token = OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid);
 		TerminateProcess(token, 0);
+		Sleep(1000);
 	}
 	nSeverExe=new QProcess;
 	nSeverExe->setWorkingDirectory(appPath+"/Sever");
@@ -442,8 +460,11 @@ void GlasswareDetectSystem::onServerDataReady()
 			m_sRunningInfo.nGSoap_ErrorCamCount[2]=0;
 			m_sRunningInfo.m_checkedNum = 0;
 			m_sRunningInfo.m_passNum = 0;
+			m_sRunningInfo.m_GSoap_Last_checkedNum = 0;
+			m_sRunningInfo.m_GSoap_Last_failureNumFromIOcard = 0;
 			m_sRunningInfo.m_kickoutNumber = 0;
 			m_sRunningInfo.m_failureNumFromIOcard = 0;
+			m_sRunningInfo.m_failureNum2 = 0;
 			test_widget->nInfo.m_checkedNum = 0;
 			test_widget->nInfo.m_checkedNum2 = 0;
 			test_widget->nInfo.m_passNum = 0;
@@ -466,7 +487,14 @@ void GlasswareDetectSystem::onServerDataReady()
 
 				strSession = QString("/system/failureNum");
 				iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
-				nCountNumber = 0;
+
+				strSession=QString("/system/SeverCheckedNum");
+				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
+
+				strSession = QString("/system/SeverFailureNum");
+				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
+
+				pMainFrm->nCountNumber = 0;
 			}
 			break;
 		case SEVERS:
@@ -479,9 +507,6 @@ void GlasswareDetectSystem::onServerDataReady()
 				nWidgetWarning->showWarnning(nAddModeName);
 			}
 			break;
-		case LOCKSCREEN:
-			
-			break;
 		case FRONTSTATE://根据服务器返回的账号权限，隐藏弹窗，设置按钮属性,仅服务器使用
 			if(m_sSystemInfo.m_iSystemType == 2)
 			{
@@ -489,9 +514,6 @@ void GlasswareDetectSystem::onServerDataReady()
 				loginState(nClearName.toInt());
 				nUserWidget->nPermission = nClearName.toInt();
 			}
-			break;
-		case CONNECT:
-			//n_StartTime = QTime::currentTime().minute();
 			break;
 		case SYSTEMMODEADD:
 			if(m_sRunningInfo.m_bCheck)//如果是开始检测和开始调试中则自动关闭
@@ -544,6 +566,7 @@ void GlasswareDetectSystem::onServerDataReady()
 					title_widget->setState(true);
 					nUserWidget->nPermission = 2;
 				}
+				Sleep(200);
 				show();
 			}
 			break;
@@ -555,7 +578,6 @@ void GlasswareDetectSystem::onServerDataReady()
 		m_buffer = buffer;
 	}
 }
-
 //读取配置信息
 void GlasswareDetectSystem::ReadIniInformation()
 {
@@ -1069,12 +1091,21 @@ void GlasswareDetectSystem::InitIOCard()
 		m_vIOCard[0] = new CIOCard(m_sSystemInfo.m_sConfigIOCardInfo[0],0);
 		connect(m_vIOCard[0],SIGNAL(emitMessageBoxMainThread(s_MSGBoxInfo)),this,SLOT(slots_MessageBoxMainThread(s_MSGBoxInfo)));
 		s_IOCardErrorInfo sIOCardErrorInfo = m_vIOCard[0]->InitIOCard();
+		//增加补踢默认勾选
+		int temp = m_vIOCard[0]->readParam(35)|0x8;
+		m_vIOCard[0]->writeParam(35,temp);
+		QString strValue,strPara;
+
+		strValue = strValue.setNum(temp,10);
+		strPara = strPara.setNum(35,10);
+		StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
+
 		if (!sIOCardErrorInfo.bResult)
 		{
 			m_sSystemInfo.m_bIsIOCardOK = false;
-			pMainFrm->Logfile.write(tr("Error in init IOCard"),AbnormityLog);
+			pMainFrm->Logfile.write(tr("Error in init IOCard"),OperationLog);
 		}
-		pMainFrm->Logfile.write(tr("IOCard success"),AbnormityLog);
+		pMainFrm->Logfile.write(tr("IOCard success"),CheckLog);
 	}
 }
 //初始化算法
@@ -1167,6 +1198,7 @@ void GlasswareDetectSystem::initDetectThread()
 	m_bIsThreadDead = FALSE;
 	CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)SendDetect, this, 0, NULL );
 	CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)SendIOCard, this, 0, NULL );
+	CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)ConnectSever, this, 0, NULL );
 	for (int i=0;i<m_sSystemInfo.iCamCount;i++)
 	{
 		pdetthread[i] = new DetectThread(this,i);
@@ -1333,26 +1365,33 @@ void GlasswareDetectSystem::SendDataToSever(int nSendCount,StateEnum nState)
 }
 void GlasswareDetectSystem::slots_UpdateCoderNumber()
 {
-	int nCodeNum=0,nCheckNum=0,nSignNum=0;
-	
+	int nCodeNum=0,nCheckNum=0,nSignNum=0,nKickNum=0;
 	if (m_sRunningInfo.m_bCheck && m_sSystemInfo.m_bIsIOCardOK)
 	{
 		m_vIOCard[0]->m_mutexmIOCard.lock();
 		nCheckNum = m_vIOCard[0]->ReadCounter(0);
 		nSignNum = m_vIOCard[0]->ReadCounter(4);
 		nCodeNum = m_vIOCard[0]->ReadCounter(13);
+		nKickNum = m_vIOCard[0]->ReadCounter(36)&0x1F;//0x0f
 		m_vIOCard[0]->m_mutexmIOCard.unlock();
-		//药玻瓶口瓶底剔废
+		//过检总数
 		if((nCheckNum - m_sRunningInfo.m_passNum>0)&&(nCheckNum - m_sRunningInfo.m_passNum<50))
 		{
 			m_sRunningInfo.m_checkedNum = m_sRunningInfo.m_checkedNum + nCheckNum - m_sRunningInfo.m_passNum;
 		}
+		//踢废总数
 		m_sRunningInfo.m_passNum = nCheckNum;
 		if ((nSignNum - m_sRunningInfo.m_kickoutNumber > 0) && (nSignNum - m_sRunningInfo.m_kickoutNumber < 50))
 		{
 			m_sRunningInfo.m_failureNumFromIOcard = m_sRunningInfo.m_failureNumFromIOcard + nSignNum - m_sRunningInfo.m_kickoutNumber;
 		}
 		m_sRunningInfo.m_kickoutNumber = nSignNum;
+		//补踢总数
+		if ((nKickNum - m_sRunningInfo.m_passNum2 > 0) && (nKickNum - m_sRunningInfo.m_passNum2 < 50))
+		{
+			m_sRunningInfo.m_failureNum2 = m_sRunningInfo.m_failureNum2 + nKickNum - m_sRunningInfo.m_passNum2;
+		}
+		m_sRunningInfo.m_passNum2 = nKickNum;
 	}
 	QString strValue,strEncoder,strTime;
 	strValue ="	";
@@ -1517,12 +1556,19 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		slots_OnExit();
 		break;
 	case 9://只有夹持需要这个功能
-		hide();
+		if(n_NetConnectState)
+		{
+			hide();
+		}else{
+			QMessageBox::information(this,tr("Infomation"),QString::fromLocal8Bit("网络断开连接，正在重连"));
+		}
+		
 		SendDataToSever(nUserWidget->nPermission,ONLYSHOWSEVER);
 		pMainFrm->Logfile.write(("return severs interface"),AbnormityLog);
 		break;
 	case 10:
 		nUserWidget->show();
+		break;
 	}
 }
 void GlasswareDetectSystem::slots_OnBtnStar()
@@ -1805,6 +1851,15 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 	strSession = QString("/system/failureNum");
 	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
 
+	strSession = QString("/system/KickNum");
+	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNum2);
+
+	strSession=QString("/system/SeverCheckedNum");
+	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
+
+	strSession = QString("/system/SeverFailureNum");
+	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
+
 	if (ifyanz || QMessageBox::Yes == QMessageBox::question(this,tr("Exit"),
 		tr("Are you sure to exit?"),
 		QMessageBox::Yes | QMessageBox::No))	
@@ -1819,8 +1874,6 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 			QMessageBox::information(this,tr("Infomation"),tr("Please Stop Detection First!"));
 			return;		
 		}
-		//m_tcpSocket->disconnectFromHost();
-		//m_tcpSocket->waitForDisconnected();
 		if(m_sSystemInfo.m_iSystemType == 2)
 		{
 			if(nSeverExe) 
@@ -1831,8 +1884,6 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 			nSeverExe = 0;
 		}
 		
-
-
 		EquipRuntime::Instance()->EquipExitLogFile();
 		ToolButton *TBtn = title_widget->button_list.at(4);
 		pMainFrm->Logfile.write(("Close ModelDlg!"),OperationLog);
@@ -1999,19 +2050,6 @@ void GlasswareDetectSystem::SetLanguage(int pLang)
 
 void GlasswareDetectSystem::slot_SockScreen()
 {
-	if(!n_NetConnectState&& m_tcpSocket != NULL)
-	{
-		m_tcpSocket->abort();
-		m_tcpSocket->connectToHost("192.168.250.202",8088);
-		if(pMainFrm->m_tcpSocket->waitForConnected(1000))
-		{
-			n_NetConnectState = true;
-			pMainFrm->Logfile.write(tr("NetWoek Connect success"),CheckLog);
-		}else{
-			n_NetConnectState = false;
-			pMainFrm->Logfile.write(tr("NetWoek Connect failed"),CheckLog);
-		}
-	}
 	POINT tgcPosition;
 	GetCursorPos(&tgcPosition);
 	if((tgcPosition.x == gcPosition.x) && (tgcPosition.y == gcPosition.y))
@@ -2065,6 +2103,15 @@ void GlasswareDetectSystem::InitLastData()
 
 	strSession=QString("/system/failureNum");
 	m_sRunningInfo.m_failureNumFromIOcard=iniDataSet.value(strSession,0).toInt();
+
+	strSession=QString("/system/KickNum");
+	m_sRunningInfo.m_failureNum2 = iniDataSet.value(strSession,0).toInt();
+	
+	strSession=QString("/system/SeverCheckedNum");
+	test_widget->nInfo.m_checkedNum=iniDataSet.value(strSession,0).toInt();
+
+	strSession=QString("/system/SeverFailureNum");
+	test_widget->nInfo.m_checkedNum2=iniDataSet.value(strSession,0).toInt();
 }
 #ifdef JIAMI_INITIA
 void GlasswareDetectSystem::MonitorLicense()

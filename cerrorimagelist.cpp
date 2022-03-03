@@ -219,6 +219,7 @@ void CErrorImageList::slots_updateInfo()
 	double total = pMainFrm->m_sRunningInfo.m_checkedNum;
 	double failur = pMainFrm->m_sRunningInfo.m_failureNumFromIOcard;
 	double Readmodle = pMainFrm->m_sRunningInfo.nModelCheckedCount;
+	double KickNum = pMainFrm->m_sRunningInfo.m_failureNum2;
 	double failurRate,ModleRate;
 	if (0 == total)
 	{
@@ -233,5 +234,5 @@ void CErrorImageList::slots_updateInfo()
 	labelTotal->setText(QString::fromLocal8Bit("总数:")+"\n"+QString::number(total));
 	labelFailur->setText(QString::fromLocal8Bit("踢废数:")+"\n"+QString::number(failur));
 	labelFailurRate->setText(QString::fromLocal8Bit("踢废率:")+"\n"+QString::number(failurRate,'f',2)+"%");
-	labelModleRate->setText(QString::fromLocal8Bit("识别率:")+"\n"+QString::number(ModleRate,'f',2)+"%");
+	labelModleRate->setText(QString::fromLocal8Bit("补踢数:")+"\n"+QString::number(KickNum));
 }

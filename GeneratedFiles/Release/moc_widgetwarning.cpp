@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widgetwarning.h'
 **
-** Created: Tue Feb 8 17:47:32 2022
+** Created: Wed Mar 2 15:10:24 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

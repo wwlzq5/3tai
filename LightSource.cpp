@@ -86,7 +86,7 @@ void LightSource::initConfig()
 }
 void LightSource::slot_login()
 {
-	QString str=ui.lineEdit_2->text();
+	QString str=ui.lineEdit_2->text(); //192.168.250.103
 	QByteArray ba = str.toLatin1();
 	char* ipAddress=ba.data();
 	nNetID = nLed_Connect(ipAddress, 8234);

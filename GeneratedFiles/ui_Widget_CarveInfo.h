@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Widget_CarveInfo.ui'
 **
-** Created: Tue Feb 8 17:47:31 2022
+** Created: Wed Mar 2 15:10:24 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -50,6 +50,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QRadioButton *radioButton_Normal;
     QRadioButton *radioButton_Stress;
+    QRadioButton *radioButton_StressLocation;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_toNormal;
@@ -120,7 +121,7 @@ public:
     {
         if (Widget_CarveInfo->objectName().isEmpty())
             Widget_CarveInfo->setObjectName(QString::fromUtf8("Widget_CarveInfo"));
-        Widget_CarveInfo->resize(486, 473);
+        Widget_CarveInfo->resize(555, 544);
         Widget_CarveInfo->setMaximumSize(QSize(16777215, 10000));
         QFont font;
         font.setPointSize(12);
@@ -165,6 +166,11 @@ public:
         radioButton_Stress->setObjectName(QString::fromUtf8("radioButton_Stress"));
 
         horizontalLayout->addWidget(radioButton_Stress);
+
+        radioButton_StressLocation = new QRadioButton(groupBox_12);
+        radioButton_StressLocation->setObjectName(QString::fromUtf8("radioButton_StressLocation"));
+
+        horizontalLayout->addWidget(radioButton_StressLocation);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -539,7 +545,7 @@ public:
         QObject::connect(horizontalSlider, SIGNAL(valueChanged(int)), spinBox_exposureTime, SLOT(setValue(int)));
         QObject::connect(spinBox_exposureTime, SIGNAL(valueChanged(int)), horizontalSlider, SLOT(setValue(int)));
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Widget_CarveInfo);
@@ -551,6 +557,7 @@ public:
         groupBox_12->setTitle(QApplication::translate("Widget_CarveInfo", "Image Type\357\274\232", 0, QApplication::UnicodeUTF8));
         radioButton_Normal->setText(QApplication::translate("Widget_CarveInfo", "Normal", 0, QApplication::UnicodeUTF8));
         radioButton_Stress->setText(QApplication::translate("Widget_CarveInfo", "Stress", 0, QApplication::UnicodeUTF8));
+        radioButton_StressLocation->setText(QApplication::translate("Widget_CarveInfo", "Stress location", 0, QApplication::UnicodeUTF8));
         label_toNormal->setText(QApplication::translate("Widget_CarveInfo", "To Nomal Camera Number:", 0, QApplication::UnicodeUTF8));
         label_21->setText(QApplication::translate("Widget_CarveInfo", "Real Camera\357\274\232", 0, QApplication::UnicodeUTF8));
         label_22->setText(QApplication::translate("Widget_CarveInfo", "Angle\357\274\232", 0, QApplication::UnicodeUTF8));

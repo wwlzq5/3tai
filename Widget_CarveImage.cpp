@@ -210,14 +210,14 @@ void Widget_CarveImage::init(int iCamNo)
 	main_layout->setSpacing(6);
 	main_layout->setContentsMargins(5, 5, 5, 5);
 	
-	setLayout(main_layout); 
+	setLayout(main_layout);
 
 	connect(pView,SIGNAL(signals_mouseReleaseEvent(QMouseEvent*)),this,SLOT(slots_mouseReleaseEvent(QMouseEvent*)));
 	connect(pView,SIGNAL(signals_mousePressEvent(QMouseEvent*)),this,SLOT(slots_mousePressEvent(QMouseEvent*)));
 	connect(pView,SIGNAL(signals_mouseMoveEvent(QMouseEvent*)),this,SLOT(slots_mouseMoveEvent(QMouseEvent*)));
 	connect(pView,SIGNAL(signals_resizeEvent(QResizeEvent *)),this,SLOT(slots_resizeEvent(QResizeEvent *)));
 	connect(pWidgetCarveInfo->ui.pushButton_cancel,SIGNAL(clicked()),this,SLOT(slots_cancel()));
-	connect(pWidgetCarveInfo->ui.pushButton_carve,SIGNAL(clicked()),this,SLOT(slots_carve()));
+	//connect(pWidgetCarveInfo->ui.pushButton_carve,SIGNAL(clicked()),this,SLOT(slots_carve()));//后续改成复制剪切框
 	connect(pWidgetCarveInfo->ui.pushButton_save,SIGNAL(clicked()),this,SLOT(slots_save()));
 	connect(pWidgetCarveInfo->ui.pushButton_copyROI,SIGNAL(clicked()),this,SLOT(slots_CopyROI()));
 //	connect(pWidgetCarveInfo->ui.pushButton_restore,SIGNAL(clicked()),this,SLOT(slots_restore()));	
@@ -239,6 +239,7 @@ void Widget_CarveImage::init(int iCamNo)
 	QButtonGroup * buttonGroup  = new QButtonGroup(this);
 	buttonGroup->addButton(pWidgetCarveInfo->ui.radioButton_Normal,0);
 	buttonGroup->addButton(pWidgetCarveInfo->ui.radioButton_Stress,1);
+	buttonGroup->addButton(pWidgetCarveInfo->ui.radioButton_StressLocation,2);
 	connect(buttonGroup, SIGNAL(buttonClicked(int)), this, SLOT(slots_StressModeChanged(int)));
 
 	pWidgetCarveInfo->ui.lineEdit_delay->setValidator(new QIntValidator(0, 50000, this));
@@ -259,10 +260,14 @@ void Widget_CarveImage::init(int iCamNo)
 	pWidgetCarveInfo->ui.groupBox_11->setVisible(false);//微调
 	pWidgetCarveInfo->ui.groupBox_Position->setVisible(false);//位置
 
-	if(pMainFrm->m_sCarvedCamInfo[iCamNo].m_iStress)
+	if(pMainFrm->m_sCarvedCamInfo[iCamNo].m_iStress == 1)
 	{
 		pWidgetCarveInfo->ui.radioButton_Stress->setChecked(true);
-	}else{
+	}else if(pMainFrm->m_sCarvedCamInfo[iCamNo].m_iStress == 2)
+	{
+		pWidgetCarveInfo->ui.radioButton_StressLocation->setChecked(true);
+	}else
+	{
 		pWidgetCarveInfo->ui.radioButton_Normal->setChecked(true);
 	}
 }
@@ -508,10 +513,14 @@ void Widget_CarveImage::slots_save()
 	strSession = QString("/Stress/Device_%1").arg(iCameraNo);
 	if(pWidgetCarveInfo->ui.radioButton_Normal->isChecked())
 	{
-		iniCarveSet.setValue (strSession,0);
+		iniCarveSet.setValue(strSession,0);
+	}else if(pWidgetCarveInfo->ui.radioButton_Stress->isChecked())
+	{
+		iniCarveSet.setValue(strSession,1);
 	}else{
-		iniCarveSet.setValue (strSession,1);
+		iniCarveSet.setValue(strSession,2);
 	}
+	
 	strSession = QString("/pointx/Grab_%1").arg(iCameraNo);
 	iniCarveSet.setValue (strSession,iImageX);
 	strSession = QString("/pointy/Grab_%1").arg(iCameraNo);
@@ -548,12 +557,15 @@ void Widget_CarveImage::slots_save()
 	m_pHorizonV1->setVisible(false);
 	m_pHorizonV2->setVisible(false);
 	pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
-	//pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
+	
 }
 void Widget_CarveImage::SetSaveStatus()
 {
 	pWidgetCarveInfo->ui.pushButton_save->setEnabled(true);
+}
+void Widget_CarveImage::SetToCameraStatus()
+{
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(true);
 }
 void Widget_CarveImage::slots_CopyROI()
@@ -1187,7 +1199,7 @@ void Widget_CarveImage::slots_StressModeChanged(int index)
 		pWidgetCarveInfo->ui.label_toNormal->setEnabled(false);
 		pWidgetCarveInfo->ui.spinBox_toNormal->setEnabled(false);
 	}
-	else if (1 == index)
+	else
 	{
 		pWidgetCarveInfo->ui.label_toNormal->setEnabled(true);
 		pWidgetCarveInfo->ui.spinBox_toNormal->setEnabled(true);
@@ -1541,7 +1553,7 @@ void Widget_CarveImage::slots_setToCamera()
 	}
 	//pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
-	QTimer::singleShot(2000,this,SLOT(SetSaveStatus()));
+	QTimer::singleShot(2000,this,SLOT(SetToCameraStatus()));
 	pMainFrm->Logfile.write(QString("set camera%1 param,TriggerType:%2,ShuterTime:%3,TriggerDelay:%4!").arg(iCameraSN).arg(iTriggerType).arg(iShuterTime).arg(iTriggerDelay),OperationLog);
 }
 void Widget_CarveImage::slots_startTest()

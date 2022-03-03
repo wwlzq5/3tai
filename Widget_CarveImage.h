@@ -58,8 +58,8 @@ public slots:
 	void slots_readDelayPara();
 	void slots_startTest();
 	void slots_spinBoxValueChanged();
-
 public slots:
+	void SetToCameraStatus();
 	void SetSaveStatus();
 	int slots_carve();
 	void slots_CopyROI();

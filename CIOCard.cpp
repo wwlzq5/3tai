@@ -37,6 +37,7 @@ s_IOCardErrorInfo CIOCard::InitIOCard()
 				m_Pio24b.hardReset();
 				m_Pio24b.initRegisters(m_sConfigIOCardInfo.strCardInitFile, m_sConfigIOCardInfo.strCardName);
 				m_Pio24b.softReset();
+				//ÉèÖÃ²¹ÌßÄ¬ÈÏ¹´Ñ¡
 				m_Pio24b.enable(false);// true->false [11/11/2010 zhaodt]
 				m_bIsIOCardOK = true;
 			}

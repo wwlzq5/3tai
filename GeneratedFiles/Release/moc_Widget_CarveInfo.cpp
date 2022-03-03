@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Widget_CarveInfo.h'
 **
-** Created: Tue Feb 8 17:47:31 2022
+** Created: Wed Mar 2 15:10:24 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Widget_CarveInfo[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,6 +36,8 @@ static const uint qt_meta_data_Widget_CarveInfo[] = {
  // slots: signature, parameters, type, tag, flags
       37,   17,   17,   17, 0x0a,
       53,   17,   17,   17, 0x0a,
+      68,   17,   17,   17, 0x0a,
+      87,   17,   17,   17, 0x0a,
 
        0        // eod
 };
@@ -43,6 +45,7 @@ static const uint qt_meta_data_Widget_CarveInfo[] = {
 static const char qt_meta_stringdata_Widget_CarveInfo[] = {
     "Widget_CarveInfo\0\0signals_craveImg()\0"
     "TrunCameraSet()\0TrunImageSet()\0"
+    "slot_setToCamera()\0slot_SetSaveStatus()\0"
 };
 
 void Widget_CarveInfo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -54,6 +57,8 @@ void Widget_CarveInfo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0: _t->signals_craveImg(); break;
         case 1: _t->TrunCameraSet(); break;
         case 2: _t->TrunImageSet(); break;
+        case 3: _t->slot_setToCamera(); break;
+        case 4: _t->slot_SetSaveStatus(); break;
         default: ;
         }
     }
@@ -92,9 +97,9 @@ int Widget_CarveInfo::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
 }

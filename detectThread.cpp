@@ -13,7 +13,6 @@ DetectThread::DetectThread(QObject *parent,int temp)
 	iMaxErrorType = 0;
 	iMaxErrorArea = 0;
 	iErrorType = 0;
-	
 }
 DetectThread::~DetectThread()
 {
@@ -32,7 +31,6 @@ void DetectThread::run()
 }
 void DetectThread::ProcessHanlde(int Camera)
 {
-	
 	if(pMainFrm->nQueue[Camera].listDetect.length()>0)
 	{
 		pMainFrm->nQueue[Camera].mDetectLocker.lock();
@@ -43,7 +41,6 @@ void DetectThread::ProcessHanlde(int Camera)
 		//旋转原始图片
 		
 		long lImageSize = pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight;
-		//*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = DetectElement.ImageNormal->SourceImage->copy();
 		memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(),DetectElement.ImageNormal->SourceImage->bits(),lImageSize);
 
 		//裁剪原始图片
@@ -54,10 +51,9 @@ void DetectThread::ProcessHanlde(int Camera)
 			pMainFrm->Logfile.write(tr("ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3").arg(iCamera).arg(lImageSize).arg(DetectElement.ImageNormal->myImage->byteCount()),AbnormityLog);
 			delete DetectElement.ImageNormal->myImage;
 			delete DetectElement.ImageNormal->SourceImage;
+			DetectElement.ImageNormal->myImage = NULL;
+			DetectElement.ImageNormal->SourceImage = NULL;
 			delete DetectElement.ImageNormal;
-			DetectElement.ImageNormal = NULL;
-			/*DetectElement.ImageNormal->myImage = NULL;
-			DetectElement.ImageNormal->SourceImage = NULL;*/
 			pMainFrm->m_mutexmCarve[iCamera].unlock();
 			return;
 		}
@@ -69,43 +65,25 @@ void DetectThread::ProcessHanlde(int Camera)
 			pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth*pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight);
 		//进入检测环节
 		pMainFrm->m_mutexmCarve[iCamera].unlock();
-		if(0 == DetectElement.iType)
+		
+		DetectNormal(DetectElement.ImageNormal,DetectElement.iType);
+		if (pMainFrm->nQueue[iCamera].InitID == DetectElement.ImageNormal->initID)
+		{ 
+			pMainFrm->nQueue[iCamera].mGrabLocker.lock();
+			pMainFrm->nQueue[iCamera].listGrab.push_back(DetectElement.ImageNormal);
+			pMainFrm->nQueue[iCamera].mGrabLocker.unlock();
+		}
+		else
 		{
-			DetectNormal(DetectElement.ImageNormal);
-			if (pMainFrm->nQueue[iCamera].InitID == DetectElement.ImageNormal->initID)
-			{ 
-				pMainFrm->nQueue[iCamera].mGrabLocker.lock();
-				pMainFrm->nQueue[iCamera].listGrab.push_back(DetectElement.ImageNormal);
-				pMainFrm->nQueue[iCamera].mGrabLocker.unlock();
-			}
-			else
-			{
-				delete DetectElement.ImageNormal->SourceImage;
-				delete DetectElement.ImageNormal->myImage;
-				DetectElement.ImageNormal->myImage = NULL;
-				DetectElement.ImageNormal->SourceImage = NULL;
-				delete DetectElement.ImageNormal;
-			}
-		}else{
-			DetectStress(DetectElement.ImageNormal);
-			if (pMainFrm->nQueue[iCamera].InitID == DetectElement.ImageNormal->initID)
-			{
-				pMainFrm->nQueue[iCamera].mGrabLocker.lock();
-				pMainFrm->nQueue[iCamera].listGrab.push_back(DetectElement.ImageNormal);
-				pMainFrm->nQueue[iCamera].mGrabLocker.unlock();
-			}
-			else
-			{
-				delete DetectElement.ImageNormal->SourceImage;
-				delete DetectElement.ImageNormal->myImage;
-				DetectElement.ImageNormal->myImage = NULL;
-				DetectElement.ImageNormal->SourceImage = NULL;
-				delete DetectElement.ImageNormal;
-			}
+			delete DetectElement.ImageNormal->SourceImage;
+			delete DetectElement.ImageNormal->myImage;
+			DetectElement.ImageNormal->myImage = NULL;
+			DetectElement.ImageNormal->SourceImage = NULL;
+			delete DetectElement.ImageNormal;
 		}
 	}
 }
-void DetectThread::DetectNormal(CGrabElement *pElement)
+void DetectThread::DetectNormal(CGrabElement *pElement,int nTmp)
 {
 	checkTimecost.StartSpeedTest();
 
@@ -114,100 +92,36 @@ void DetectThread::DetectNormal(CGrabElement *pElement)
 	iMaxErrorType = 0;
 	iMaxErrorArea = 0;
 	pElement->cErrorRectList.clear();
-	try
+	
+	rotateImage(pElement);
+	if (pMainFrm->m_sRunningInfo.m_bCheck && pMainFrm->m_sRunningInfo.m_bIsCheck[iCamera])
 	{
-		rotateImage(pElement);
-		if (pMainFrm->m_sRunningInfo.m_bCheck && pMainFrm->m_sRunningInfo.m_bIsCheck[iCamera])
+		try
 		{
-			try
+			checkImage(pElement,nTmp);
+			bool bOK = getCheckResult(pElement);
+			if (!bOK)
 			{
-				checkImage(pElement, 1);
-				bool bOK = getCheckResult(pElement);
-				if (!bOK)
-				{
-					return;
-				}
-			}
-			catch (...)
-			{
+				return;
 			}
 		}
-	}
-	catch(...)
-	{
-	}
-	try
-	{
-		kickOutBad(pElement->nSignalNo);
-		saveImage(pElement);
-		//将错误图像加入错误链表
-		if (bCheckResult[iCamera])
+		catch (...)
 		{
-			addErrorImageList(pElement);
+			pMainFrm->Logfile.write("Algorithm crash!",CheckLog);
 		}
 	}
-	catch (...)
+	kickOutBad(pElement->nSignalNo);
+	saveImage(pElement);
+	//将错误图像加入错误链表
+	if (bCheckResult[iCamera])
 	{
+		addErrorImageList(pElement);
 	}
 	checkTimecost.StopSpeedTest();
 	pElement->dCostTime = checkTimecost.dfTime;
 
 	//刷新图像和状态
-	if (pMainFrm->nQueue[iCamera].InitID == pElement->initID)
-	{
-		upDateState(pElement->myImage,pElement->nSignalNo,pElement->dCostTime, pElement->nMouldID, pElement->cErrorRectList,pElement->initID);
-	}
-	pElement = NULL;
-}
-void DetectThread::DetectStress(CGrabElement *pElement)
-{
-	checkTimecost.StartSpeedTest();
-	bCheckResult[iCamera] = false;
-	iErrorType = 0;
-	iMaxErrorType = 0;
-	iMaxErrorArea = 0;
-	pElement->cErrorRectList.clear();
-
-	try
-	{
-		rotateImage(pElement);
-		if (pMainFrm->m_sRunningInfo.m_bCheck && pMainFrm->m_sRunningInfo.m_bIsCheck[iCamera])
-		{
-			try
-			{
-				checkImage(pElement, 2);
-				bool bOK = getCheckResult(pElement);
-				if (!bOK)
-				{
-					return;
-				}
-			}
-			catch (...)
-			{
-			}
-		}
-	}
-	catch(...)
-	{
-	}
-	try
-	{
-		kickOutBad(pElement->nSignalNo);
-		//保存图像
-		saveImage(pElement);
-		//将错误图像加入错误链表
-		if (bCheckResult[iCamera])
-		{
-			addErrorImageList(pElement);
-		}
-	}
-	catch (...)
-	{
-	}
-	checkTimecost.StopSpeedTest();
-	pElement->dCostTime = checkTimecost.dfTime;
-	//刷新图像和状态
-	if (pMainFrm->nQueue[iCamera].InitID == pElement->initID)
+	if(pMainFrm->nQueue[iCamera].InitID == pElement->initID)
 	{
 		upDateState(pElement->myImage,pElement->nSignalNo,pElement->dCostTime, pElement->nMouldID, pElement->cErrorRectList,pElement->initID);
 	}
@@ -234,7 +148,7 @@ void DetectThread::checkImage(CGrabElement *pElement,int iCheckMode)
 	sAlgCInp.sInputParam.pcData = (char*)pElement->myImage->bits();
 	//sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 
-	if (1 == iCheckMode)
+	if (0 == iCheckMode)
 	{
 		sReturnStatus = pMainFrm->m_cBottleCheck[iCamera].Check(sAlgCInp,&pAlgCheckResult);
 		pMainFrm->m_sCarvedCamInfo[iCamera].sImageLocInfo[pElement->nSignalNo].m_AlgImageLocInfos.sLocOri = pAlgCheckResult->sImgLocInfo.sLocOri;
@@ -247,7 +161,7 @@ void DetectThread::checkImage(CGrabElement *pElement,int iCheckMode)
 		SetEvent(pMainFrm->pHandles[iCamera]);
 		pMainFrm->m_sCarvedCamInfo[iCamera].sImageLocInfo[pElement->nSignalNo].m_iHaveInfo = 1;
 	}
-	else if (2 == iCheckMode)
+	else if (1 == iCheckMode)
 	{
 		int normalCamera = pMainFrm->m_sCarvedCamInfo[iCamera].m_iToNormalCamera;
 		if(!pMainFrm->m_sSystemInfo.m_bIsTest)
@@ -394,7 +308,7 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 	pMainFrm->m_cCombine.AddResult(nSignalNo,iCamera,tmpResult);
 	if (pMainFrm->m_cCombine.ConbineResult(nSignalNo,0,comResult))//图像都拍完后结果综合
 	{
-		for	(int i = nSignalNo - 5; i<nSignalNo ;i++)
+		/*for	(int i = nSignalNo - 5; i<nSignalNo ;i++)
 		{
 			if (!pMainFrm->m_cCombine.IsReject((i+256)%256))
 			{
@@ -410,7 +324,7 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 				}
 				pMainFrm->m_cCombine.SetReject((i+256)%256);
 			}
-		}
+		}*/
 
 		for	(int i = nSignalNo; i < nSignalNo + 5;i++)
 		{

@@ -32,17 +32,31 @@ Widget_CarveInfo::Widget_CarveInfo(QWidget *parent)
 	ui.layoutCamera->setSpacing(0);
 	ui.layoutCamera->setContentsMargins(0, 0, 0, 0);
 
+	ui.pushButton_setToCamera_2->setFocusPolicy(Qt::NoFocus);
+	ui.pushButton_setToCamera->setFocusPolicy(Qt::NoFocus);
+	ui.pushButton_carve->setFocusPolicy(Qt::NoFocus);
+	ui.pushButton_save->setFocusPolicy(Qt::NoFocus);
 
 	connect(toolButtonToCamera,SIGNAL(clicked()),this,SLOT(TrunCameraSet()));
 	connect(toolButtonToImage,SIGNAL(clicked()),this,SLOT(TrunImageSet()));
 	connect(ui.pushButton_setToCamera_2,SIGNAL(clicked()),ui.pushButton_setToCamera,SLOT(click()));
-
+	connect(ui.pushButton_setToCamera_2,SIGNAL(clicked()),this,SLOT(slot_setToCamera()));
 	ui.stackedWidget->setCurrentIndex(0);
 }
 
 Widget_CarveInfo::~Widget_CarveInfo()
 {
 }
+void Widget_CarveInfo::slot_setToCamera()
+{
+	ui.pushButton_setToCamera_2->setEnabled(false);
+	QTimer::singleShot(2000,this,SLOT(slot_SetSaveStatus()));
+}
+void Widget_CarveInfo::slot_SetSaveStatus()
+{
+	ui.pushButton_setToCamera_2->setEnabled(true);
+}
+
 void Widget_CarveInfo::TrunCameraSet()
 {
 	ui.stackedWidget->setCurrentIndex(1);

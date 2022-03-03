@@ -340,11 +340,11 @@ void MyImageShowItem::updateImage(QImage* imageShown,QString camera, QString ima
 {
 	try
 	{
-		imageForWidget = imageShown->mirrored();
+		imageForWidget = (imageShown)->mirrored();
 	}
 	catch (...)
 	{
-		pMainFrm->Logfile.write(tr("----取出显示图像异常----"),AbnormityLog);
+		pMainFrm->Logfile.write(("get picture error"),CheckLog);
 		return;
 	}
 
@@ -367,6 +367,10 @@ void MyImageShowItem::slots_updateImage(QImage* imageShown,QString camera, QStri
 		return;
 	}
 	if (imageShown == NULL)
+	{
+		return;
+	}
+	if (pMainFrm->nQueue[iCameraNo].InitID != ImageCount)
 	{
 		return;
 	}

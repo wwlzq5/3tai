@@ -83,6 +83,7 @@ public:
 	void showAllert();
 	static DWORD WINAPI SendDetect(void*);
 	static DWORD WINAPI SendIOCard(void*);
+	static DWORD WINAPI ConnectSever(void*);
 	DWORD GetProcessIdFromName(const char*processName);
 	void loginState(int nPerm);
 signals:

@@ -22,8 +22,7 @@ signals:
 	void signals_updateImage(QImage*, QString, QString, QString, QString, QString, QList<QRect> ,int );
 	void signals_showspeed(int);
 private:
-	void DetectNormal(CGrabElement *pElement);
-	void DetectStress(CGrabElement *pElement);
+	void DetectNormal(CGrabElement *pElement,int pLocation);
 	void rotateImage(CGrabElement *pElement);
 	void checkImage(CGrabElement *pElement,int iCheckMode);
 	bool getCheckResult(CGrabElement *pElement);

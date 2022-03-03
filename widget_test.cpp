@@ -81,7 +81,9 @@ WidgetTest::WidgetTest(QWidget *parent)
 		m_plc->setVisible(false);
 		ui.checkBox->setVisible(false);
 	}
+	ui.label_29->setVisible(false);
 	ui.checkBox->setChecked(false);
+	ui.pushButton->setVisible(false);
 	connect(ui.checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_ShowPlc(int)));
 	pMainFrm->m_sRunningInfo.m_iKickMode = 2;
 	nIotest = new IOtestWidget;
@@ -130,7 +132,9 @@ void WidgetTest::slot_readIoCard()
 }
 void WidgetTest::slot_ConnectSever()
 {
+	pMainFrm->nSocketMutex.lock();
 	pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
+	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
 	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
 	if(pMainFrm->m_tcpSocket->waitForConnected(3000) && m_plc->m_pSocket->waitForConnected(3000))
 	{
@@ -138,6 +142,7 @@ void WidgetTest::slot_ConnectSever()
 	}else{
 		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
+	pMainFrm->nSocketMutex.unlock();
 }
 void WidgetTest::slots_IoOpenPam()
 {
@@ -1030,12 +1035,13 @@ void WidgetTest::slots_updateIOcardCounter()
 		//ui.label_23->setText(QString::fromLocal8Bit("接口卡补踢总数：")+QString::number(0));		//接口卡补踢总数
 		ui.label_15->setText(QString::fromLocal8Bit("综合过检总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[0])); //综合过检总数
 		ui.label_24->setText(QString::fromLocal8Bit("综合过检踢废：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0]));  //综合过检踢废
-		ui.label_28->setText(QString::fromLocal8Bit("补踢过检总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2])); //补踢过检总数
-		ui.label_29->setText(QString::fromLocal8Bit("补踢踢废总数：")+QString::number(pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2]));  //补踢踢废总数
+		iCounter = pMainFrm->m_vIOCard[0]->ReadCounter(36)&0x1F;
+		ui.label_28->setText(QString::fromLocal8Bit("补踢变化：")+QString::number(iCounter)); //补踢过检总数
+		//ui.label_29->setText(QString::fromLocal8Bit("补踢踢废总数：")+QString::number(0));  //补踢踢废总数
 		pMainFrm->nIOCard[12] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[0];
 		pMainFrm->nIOCard[13] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0];
-		pMainFrm->nIOCard[14] = pMainFrm->m_sRunningInfo.nGSoap_ErrorTypeCount[2];
-		pMainFrm->nIOCard[15] = pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2];
+		pMainFrm->nIOCard[14] = 0;
+		pMainFrm->nIOCard[15] = 0;
 		//显示发送的数据个数
 		ui.label->setText(QString::fromLocal8Bit("网络通信个数：")+QString::number(pMainFrm->nCountNumber));//网络通信个数
 	}

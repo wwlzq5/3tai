@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
-    <height>473</height>
+    <width>555</width>
+    <height>544</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -37,7 +37,7 @@
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_5">
@@ -81,6 +81,13 @@
                   <widget class="QRadioButton" name="radioButton_Stress">
                    <property name="text">
                     <string>Stress</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_StressLocation">
+                   <property name="text">
+                    <string>Stress location</string>
                    </property>
                   </widget>
                  </item>
