@@ -577,28 +577,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2150"/>
+        <location filename="glasswaredetectsystem.cpp" line="2167"/>
         <source>Encryption verification failed, will exit the program!</source>
         <translation type="unfinished">加密验证失败,即将退出程序!</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2160"/>
+        <location filename="glasswaredetectsystem.cpp" line="2177"/>
         <source>The authorization to use the equipment is about to expire 
 , please contact business personnel!</source>
         <translation type="unfinished">设备使用授权即将到期\n请联系商务人员！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2184"/>
+        <location filename="glasswaredetectsystem.cpp" line="2201"/>
         <source>License expired or dongle abnormal! Error code: 22</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：22</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2200"/>
+        <location filename="glasswaredetectsystem.cpp" line="2217"/>
         <source>License expired or dongle abnormal! Error code: %1</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2206"/>
+        <location filename="glasswaredetectsystem.cpp" line="2223"/>
         <source>Encryption authentication failed!</source>
         <translation type="unfinished">加密验证失败！</translation>
     </message>
@@ -819,10 +819,10 @@
     <message>
         <location filename="glasswaredetectsystem.cpp" line="916"/>
         <location filename="glasswaredetectsystem.cpp" line="1616"/>
-        <location filename="glasswaredetectsystem.cpp" line="2150"/>
-        <location filename="glasswaredetectsystem.cpp" line="2184"/>
-        <location filename="glasswaredetectsystem.cpp" line="2200"/>
-        <location filename="glasswaredetectsystem.cpp" line="2206"/>
+        <location filename="glasswaredetectsystem.cpp" line="2167"/>
+        <location filename="glasswaredetectsystem.cpp" line="2201"/>
+        <location filename="glasswaredetectsystem.cpp" line="2217"/>
+        <location filename="glasswaredetectsystem.cpp" line="2223"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>

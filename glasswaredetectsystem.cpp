@@ -2070,6 +2070,23 @@ void GlasswareDetectSystem::slot_SockScreen()
 		gcPosition.x = tgcPosition.x;
 		gcPosition.y = tgcPosition.y;
 	}
+	QSettings iniDataSet(m_sConfigInfo.m_strDataPath,QSettings::IniFormat);
+	iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
+	QString strSession;
+	strSession=QString("/system/checkedNum");
+	iniDataSet.setValue(strSession,m_sRunningInfo.m_checkedNum);
+
+	strSession = QString("/system/failureNum");
+	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
+
+	strSession = QString("/system/KickNum");
+	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNum2);
+
+	strSession=QString("/system/SeverCheckedNum");
+	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
+
+	strSession = QString("/system/SeverFailureNum");
+	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
 }
 void GlasswareDetectSystem::slots_loginState(int nPerm)
 {
