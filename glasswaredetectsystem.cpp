@@ -69,6 +69,7 @@ DWORD GlasswareDetectSystem::SendDetect(void* param)
 	int nSignalNo = 0 ;
 	int nlastNumber = 0;
 	int nCurrentNum = 0;
+	int sendNum = 10;
 	char *m_reportPtr = new char[256*sizeof(MyErrorType)+sizeof(MyStruct)];
 	memset(m_reportPtr,0,256*sizeof(MyErrorType)+sizeof(MyStruct));
 	MyStruct nTempStruct;
@@ -103,17 +104,17 @@ DWORD GlasswareDetectSystem::SendDetect(void* param)
 					pMainFrm->nSendData[nSignalNo].nType = 0;
 					pMainFrm->nSendData[nSignalNo].nErrorArea = 0;
 					pMainFrm->nCountNumber++;
-					if(pMainFrm->nCountNumber == 256)//发送256个数据到服务器进行汇总
+					if(pMainFrm->nCountNumber == sendNum)//发送256个数据到服务器进行汇总
 					{
 						pMainFrm->nCountNumber = 0;
 						nTempStruct.nState = SENDDATA;
-						nTempStruct.nCount = 256*sizeof(MyErrorType)+sizeof(MyStruct);
+						nTempStruct.nCount = sendNum*sizeof(MyErrorType)+sizeof(MyStruct);
 						memcpy(m_reportPtr,&nTempStruct,sizeof(MyStruct));
 						nTPtr = m_reportPtr;
 						nTPtr+=sizeof(MyStruct);
-						memcpy(nTPtr,&nCheckSendData,256*sizeof(MyErrorType));
-						memset(&nCheckSendData,0,256*sizeof(MyErrorType));
-						QByteArray ba(m_reportPtr,256*sizeof(MyErrorType)+sizeof(MyStruct));
+						memcpy(nTPtr,&nCheckSendData,sendNum*sizeof(MyErrorType));
+						memset(&nCheckSendData,0,sendNum*sizeof(MyErrorType));
+						QByteArray ba(m_reportPtr,sendNum*sizeof(MyErrorType)+sizeof(MyStruct));
 						pMainFrm->nSocketMutex.lock();
 						pMainFrm->ncSocketWriteData.push_back(ba);
 						pMainFrm->nSocketMutex.unlock();
@@ -404,15 +405,17 @@ void GlasswareDetectSystem::InitParameter()
 	DWORD pid = GetProcessIdFromName("MultiInterface.exe");
 	if(pid!=0)
 	{
-		HANDLE token = OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid);
-		TerminateProcess(token, 0);
+		/*HANDLE token = OpenProcess(PROCESS_ALL_ACCESS,FALSE,pid);
+		TerminateProcess(token,0);
+		Sleep(1000);*/
+	}else{
+		nSeverExe=new QProcess;
+		nSeverExe->setWorkingDirectory(appPath+"/Sever");
+		QString str = appPath+"Sever"+"/MultiInterface.exe";
+		nSeverExe->start("\""+str+"\"");
 		Sleep(1000);
 	}
-	nSeverExe=new QProcess;
-	nSeverExe->setWorkingDirectory(appPath+"/Sever");
-	QString str = appPath+"Sever"+"/MultiInterface.exe";
-	nSeverExe->start("\""+str+"\"");
-	Sleep(1000);
+	
 
 	m_tcpSocket = new QTcpSocket();
 	m_tcpSocket->connectToHost("192.168.250.202",8088);
@@ -487,6 +490,9 @@ void GlasswareDetectSystem::onServerDataReady()
 
 				strSession = QString("/system/failureNum");
 				iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
+
+				strSession = QString("/system/KickNum");
+				iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNum2);
 
 				strSession=QString("/system/SeverCheckedNum");
 				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
@@ -1245,7 +1251,7 @@ void GlasswareDetectSystem::initInterface()
 	setWindowIcon(icon);
 	nUserWidget = new UserWidget;
 	connect(nUserWidget,SIGNAL(signal_LoginState(int)),this,SLOT(slots_loginState(int)));
-	nUserWidget->show();
+	nUserWidget->hide();
 
 	statked_widget = new QStackedWidget();
 	statked_widget->setObjectName("mainStacked");
@@ -1265,7 +1271,7 @@ void GlasswareDetectSystem::initInterface()
 	statked_widget->addWidget(widget_Management);
 	statked_widget->addWidget(test_widget);
 	statked_widget->addWidget(widget_alg);
-	
+	title_widget->setState(false);//菜单栏置灰;
 	//状态栏
 	stateBar = new QWidget(this);
 	stateBar->setFixedHeight(40);
@@ -1304,6 +1310,10 @@ void GlasswareDetectSystem::initInterface()
 	nSockScreen->setInterval(1000*60);
 	nSockScreen->start();
 
+	nSendConnect = new QTimer(this);
+	nSendConnect->setInterval(1000*10);
+	nSendConnect->start();
+
 	QHBoxLayout* hLayoutStateBar = new QHBoxLayout(stateBar);
 	hLayoutStateBar->addLayout(gridLayoutStatusLight);
 	hLayoutStateBar->addStretch();
@@ -1330,7 +1340,9 @@ void GlasswareDetectSystem::initInterface()
 	connect(this,SIGNAL(signals_intoManagementWidget()),widget_Management,SLOT(slots_intoWidget()));	
 	connect(this,SIGNAL(signals_intoTestWidget()),test_widget,SLOT(slots_intoWidget()));	
 	connect(timerUpdateCoder, SIGNAL(timeout()), this, SLOT(slots_UpdateCoderNumber()));    
-	connect(nSockScreen, SIGNAL(timeout()), this, SLOT(slot_SockScreen()));    
+	connect(nSockScreen, SIGNAL(timeout()), this, SLOT(slot_SockScreen()));
+	connect(nSendConnect, SIGNAL(timeout()), this, SLOT(slots_SendConnect()));
+	
  	for (int i = 0;i < pMainFrm->m_sSystemInfo.iCamCount;i++)
 	{
 		connect(pMainFrm->pdetthread[i], SIGNAL(signals_upDateCamera(int,int)), this, SLOT(slots_updateCameraState(int,int)));
@@ -1876,12 +1888,12 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 		}
 		if(m_sSystemInfo.m_iSystemType == 2)
 		{
-			if(nSeverExe) 
+			/*if(nSeverExe) 
 			{
 				nSeverExe->close();
 			}
 			delete nSeverExe;
-			nSeverExe = 0;
+			nSeverExe = 0;*/
 		}
 		
 		EquipRuntime::Instance()->EquipExitLogFile();
@@ -2047,7 +2059,10 @@ void GlasswareDetectSystem::SetLanguage(int pLang)
 {
 	sLanguage = pLang;
 }
-
+void GlasswareDetectSystem::slots_SendConnect()
+{
+	SendDataToSever(nUserWidget->nPermission,CONNECT);
+}
 void GlasswareDetectSystem::slot_SockScreen()
 {
 	POINT tgcPosition;

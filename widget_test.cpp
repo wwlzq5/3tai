@@ -83,7 +83,7 @@ WidgetTest::WidgetTest(QWidget *parent)
 	}
 	ui.label_29->setVisible(false);
 	ui.checkBox->setChecked(false);
-	ui.pushButton->setVisible(false);
+	//ui.pushButton->setVisible(false);
 	connect(ui.checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_ShowPlc(int)));
 	pMainFrm->m_sRunningInfo.m_iKickMode = 2;
 	nIotest = new IOtestWidget;
@@ -132,17 +132,21 @@ void WidgetTest::slot_readIoCard()
 }
 void WidgetTest::slot_ConnectSever()
 {
-	pMainFrm->nSocketMutex.lock();
 	pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
 	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
 	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
-	if(pMainFrm->m_tcpSocket->waitForConnected(3000) && m_plc->m_pSocket->waitForConnected(3000))
+	if(pMainFrm->m_tcpSocket->waitForConnected(1000) && m_plc->m_pSocket->waitForConnected(1000))
 	{
 		QMessageBox::information(this,tr("message"),tr("connect success!"));
 	}else{
 		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
-	pMainFrm->nSocketMutex.unlock();
+	QTimer::singleShot(3000,this,SLOT(setConnect()));
+	ui.pushButton->setEnabled(false);
+}
+void WidgetTest::setConnect()
+{
+	ui.pushButton->setEnabled(true);
 }
 void WidgetTest::slots_IoOpenPam()
 {

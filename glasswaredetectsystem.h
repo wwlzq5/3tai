@@ -105,6 +105,7 @@ public slots:
 	void onServerDataReady();
 	void onAginConnect();
 	void slot_SockScreen();
+	void slots_SendConnect();
 	void slots_loginState(int);
 public:
 	//初始化
@@ -139,6 +140,7 @@ public:
 	QList<CameraStatusLabel *> cameraStatus_list;
 	QTimer *timerUpdateCoder;
 	QTimer *nSockScreen;
+	QTimer *nSendConnect;
 	QVector<QString> m_vstrPLCInfoType;		//错误类型
 	QLabel *labelCoder;
 	QWidget *stateBar;

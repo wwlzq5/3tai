@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'glasswaredetectsystem.h'
 **
-** Created: Wed Mar 2 15:12:17 2022
+** Created: Fri Mar 4 09:14:58 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_GlasswareDetectSystem[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -53,6 +53,7 @@ static const uint qt_meta_data_GlasswareDetectSystem[] = {
      522,   22,   22,   22, 0x0a,
      538,   22,   22,   22, 0x0a,
      556,   22,   22,   22, 0x0a,
+     576,   22,   22,   22, 0x0a,
 
        0        // eod
 };
@@ -73,7 +74,8 @@ static const char qt_meta_stringdata_GlasswareDetectSystem[] = {
     "nCam,mode\0slots_SetCameraStatus(int,int)\0"
     "path\0directoryChanged(QString)\0"
     "onServerDataReady()\0onAginConnect()\0"
-    "slot_SockScreen()\0slots_loginState(int)\0"
+    "slot_SockScreen()\0slots_SendConnect()\0"
+    "slots_loginState(int)\0"
 };
 
 void GlasswareDetectSystem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -101,7 +103,8 @@ void GlasswareDetectSystem::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 16: _t->onServerDataReady(); break;
         case 17: _t->onAginConnect(); break;
         case 18: _t->slot_SockScreen(); break;
-        case 19: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->slots_SendConnect(); break;
+        case 20: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -139,9 +142,9 @@ int GlasswareDetectSystem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 21;
     }
     return _id;
 }
