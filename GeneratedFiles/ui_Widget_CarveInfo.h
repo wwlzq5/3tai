@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Widget_CarveInfo.ui'
 **
-** Created: Wed Mar 2 15:10:24 2022
+** Created: Tue Mar 8 09:34:30 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -86,10 +86,10 @@ public:
     QPushButton *pushButton_startTest;
     QPushButton *pushButton_save;
     QHBoxLayout *horizontalLayout_6;
-    QPushButton *pushButton_carve;
+    QPushButton *pushButton_copyROI;
     QPushButton *pushButton_cancel;
     QPushButton *pushButton_setToCamera;
-    QPushButton *pushButton_copyROI;
+    QPushButton *pushButton_lightSet;
     QSpacerItem *verticalSpacer;
     QWidget *page_2;
     QGridLayout *gridLayout_6;
@@ -374,11 +374,11 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        pushButton_carve = new QPushButton(widget_image);
-        pushButton_carve->setObjectName(QString::fromUtf8("pushButton_carve"));
-        pushButton_carve->setMinimumSize(QSize(40, 40));
+        pushButton_copyROI = new QPushButton(widget_image);
+        pushButton_copyROI->setObjectName(QString::fromUtf8("pushButton_copyROI"));
+        pushButton_copyROI->setMinimumSize(QSize(40, 40));
 
-        horizontalLayout_6->addWidget(pushButton_carve);
+        horizontalLayout_6->addWidget(pushButton_copyROI);
 
         pushButton_cancel = new QPushButton(widget_image);
         pushButton_cancel->setObjectName(QString::fromUtf8("pushButton_cancel"));
@@ -392,11 +392,11 @@ public:
 
         horizontalLayout_6->addWidget(pushButton_setToCamera);
 
-        pushButton_copyROI = new QPushButton(widget_image);
-        pushButton_copyROI->setObjectName(QString::fromUtf8("pushButton_copyROI"));
-        pushButton_copyROI->setMinimumSize(QSize(40, 40));
+        pushButton_lightSet = new QPushButton(widget_image);
+        pushButton_lightSet->setObjectName(QString::fromUtf8("pushButton_lightSet"));
+        pushButton_lightSet->setMinimumSize(QSize(40, 40));
 
-        horizontalLayout_6->addWidget(pushButton_copyROI);
+        horizontalLayout_6->addWidget(pushButton_lightSet);
 
 
         verticalLayout_4->addLayout(horizontalLayout_6);
@@ -574,10 +574,10 @@ public:
         label_24->setText(QApplication::translate("Widget_CarveInfo", "Exposure Time\357\274\232", 0, QApplication::UnicodeUTF8));
         pushButton_startTest->setText(QApplication::translate("Widget_CarveInfo", "Start Test", 0, QApplication::UnicodeUTF8));
         pushButton_save->setText(QApplication::translate("Widget_CarveInfo", "Save", 0, QApplication::UnicodeUTF8));
-        pushButton_carve->setText(QApplication::translate("Widget_CarveInfo", "Carve", 0, QApplication::UnicodeUTF8));
+        pushButton_copyROI->setText(QApplication::translate("Widget_CarveInfo", "copyROI", 0, QApplication::UnicodeUTF8));
         pushButton_cancel->setText(QApplication::translate("Widget_CarveInfo", "Cancel", 0, QApplication::UnicodeUTF8));
         pushButton_setToCamera->setText(QApplication::translate("Widget_CarveInfo", "SetToCamera", 0, QApplication::UnicodeUTF8));
-        pushButton_copyROI->setText(QApplication::translate("Widget_CarveInfo", "CopyROI", 0, QApplication::UnicodeUTF8));
+        pushButton_lightSet->setText(QApplication::translate("Widget_CarveInfo", "Light", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("Widget_CarveInfo", "Trigger Mode\357\274\232", 0, QApplication::UnicodeUTF8));
         comboBox_triggerType->clear();
         comboBox_triggerType->insertItems(0, QStringList()

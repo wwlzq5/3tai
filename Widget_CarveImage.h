@@ -65,6 +65,7 @@ public slots:
 	void slots_CopyROI();
 	void slots_cancel();
 	void slots_save();
+	void slots_LightSet();
 	void slots_up();
 	void slots_down();
 	void slots_left();

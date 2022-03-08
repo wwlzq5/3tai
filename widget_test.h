@@ -121,7 +121,7 @@ public slots:
 	void slots_EquipAlarmSave();
 	void slots_EquipAlarmClear();
 	void slots_SetEquipAlarmSatus(int,bool);
-	void setConnect();
+	
 private:
 	int iSaveMode;
 	int iLastSaveMode;

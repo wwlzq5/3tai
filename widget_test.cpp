@@ -132,21 +132,17 @@ void WidgetTest::slot_readIoCard()
 }
 void WidgetTest::slot_ConnectSever()
 {
-	pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
+	//pMainFrm->nSocketMutex.lock();
+	//pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
 	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
 	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
-	if(pMainFrm->m_tcpSocket->waitForConnected(1000) && m_plc->m_pSocket->waitForConnected(1000))
+	if(/*pMainFrm->m_tcpSocket->waitForConnected(3000) &&*/ m_plc->m_pSocket->waitForConnected(3000))
 	{
 		QMessageBox::information(this,tr("message"),tr("connect success!"));
 	}else{
 		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
-	QTimer::singleShot(3000,this,SLOT(setConnect()));
-	ui.pushButton->setEnabled(false);
-}
-void WidgetTest::setConnect()
-{
-	ui.pushButton->setEnabled(true);
+//	pMainFrm->nSocketMutex.unlock();
 }
 void WidgetTest::slots_IoOpenPam()
 {

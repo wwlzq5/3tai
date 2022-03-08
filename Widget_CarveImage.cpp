@@ -219,7 +219,8 @@ void Widget_CarveImage::init(int iCamNo)
 	connect(pWidgetCarveInfo->ui.pushButton_cancel,SIGNAL(clicked()),this,SLOT(slots_cancel()));
 	//connect(pWidgetCarveInfo->ui.pushButton_carve,SIGNAL(clicked()),this,SLOT(slots_carve()));//后续改成复制剪切框
 	connect(pWidgetCarveInfo->ui.pushButton_save,SIGNAL(clicked()),this,SLOT(slots_save()));
-	connect(pWidgetCarveInfo->ui.pushButton_copyROI,SIGNAL(clicked()),this,SLOT(slots_CopyROI()));
+	connect(pWidgetCarveInfo->ui.pushButton_copyROI,SIGNAL(clicked()),this,SLOT(slots_CopyROI()));//复制剪切框
+	connect(pWidgetCarveInfo->ui.pushButton_lightSet,SIGNAL(clicked()),this,SLOT(slots_LightSet()));//光源控制
 //	connect(pWidgetCarveInfo->ui.pushButton_restore,SIGNAL(clicked()),this,SLOT(slots_restore()));	
  	connect(pWidgetCarveInfo->ui.pushButton_up,SIGNAL(clicked()),this,SLOT(slots_up()));
 	connect(pWidgetCarveInfo->ui.pushButton_down,SIGNAL(clicked()),this,SLOT(slots_down()));
@@ -569,6 +570,18 @@ void Widget_CarveImage::SetToCameraStatus()
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(true);
 }
 void Widget_CarveImage::slots_CopyROI()
+{
+	//复制剪切框到其他相机
+	for(int i=0; i<pMainFrm->m_sSystemInfo.iCamCount;i++)
+	{
+		Widget_CarveImage* widgetCarveImage = pMainFrm->widget_carveSetting->listWidgetCarveImage.at(i);
+		widgetCarveImage->topPoint = topPoint;
+		widgetCarveImage->buttomPoint = buttomPoint;
+	}
+	pMainFrm->Logfile.write(QString("CopyROI from Camera:%1").arg(iCameraNo),OperationLog);
+}
+
+void Widget_CarveImage::slots_LightSet()
 {
 	if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
 	{

@@ -163,9 +163,9 @@ void WidgetCarveSetting::slots_turnCameraPage(int index)
 	iCameraNo = index;
 	//image_widget->showMaxImage(iCameraNo);
 	tempCarveInfo->ui.spinBox_exposureTime->setValue(pMainFrm->m_sRealCamInfo[pMainFrm->m_sCarvedCamInfo[index].m_iToRealCamera].m_iShuter);
-	//tempCarveiamge->updateActiveImg(index);
+	tempCarveiamge->slots_updateActiveImg(index);
 	tempCarveiamge->intoWidget();
-	tempCarveiamge->slots_cancel();
+	//tempCarveiamge->slots_cancel();
 }
 
 void WidgetCarveSetting::slots_showCarve()

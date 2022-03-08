@@ -34,7 +34,7 @@ Widget_CarveInfo::Widget_CarveInfo(QWidget *parent)
 
 	ui.pushButton_setToCamera_2->setFocusPolicy(Qt::NoFocus);
 	ui.pushButton_setToCamera->setFocusPolicy(Qt::NoFocus);
-	ui.pushButton_carve->setFocusPolicy(Qt::NoFocus);
+	ui.pushButton_copyROI->setFocusPolicy(Qt::NoFocus);
 	ui.pushButton_save->setFocusPolicy(Qt::NoFocus);
 
 	connect(toolButtonToCamera,SIGNAL(clicked()),this,SLOT(TrunCameraSet()));

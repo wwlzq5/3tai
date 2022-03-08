@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_mycellwidget.h'
 **
-** Created: Wed Mar 2 15:10:23 2022
+** Created: Tue Mar 8 09:34:29 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

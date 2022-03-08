@@ -86,6 +86,7 @@ public:
 	static DWORD WINAPI ConnectSever(void*);
 	DWORD GetProcessIdFromName(const char*processName);
 	void loginState(int nPerm);
+	void initSocket();
 signals:
 	void signals_intoManagementWidget();
 	void signals_intoTestWidget();
@@ -103,9 +104,7 @@ public slots:
 	void slots_SetCameraStatus(int nCam,int mode);
 	void directoryChanged(QString path);
 	void onServerDataReady();
-	void onAginConnect();
 	void slot_SockScreen();
-	void slots_SendConnect();
 	void slots_loginState(int);
 public:
 	//初始化
@@ -140,7 +139,6 @@ public:
 	QList<CameraStatusLabel *> cameraStatus_list;
 	QTimer *timerUpdateCoder;
 	QTimer *nSockScreen;
-	QTimer *nSendConnect;
 	QVector<QString> m_vstrPLCInfoType;		//错误类型
 	QLabel *labelCoder;
 	QWidget *stateBar;

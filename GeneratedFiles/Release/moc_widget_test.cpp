@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_test.h'
 **
-** Created: Fri Mar 4 16:41:26 2022
+** Created: Tue Mar 8 09:34:29 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_WidgetTest[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      38,   14, // methods
+      37,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,7 +70,6 @@ static const uint qt_meta_data_WidgetTest[] = {
      886,   11,   11,   11, 0x0a,
      909,   11,   11,   11, 0x0a,
      933,  163,   11,   11, 0x0a,
-     968,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -102,7 +101,6 @@ static const char qt_meta_stringdata_WidgetTest[] = {
     "slots_EquipAlarmInfoShowbtn(bool)\0"
     "slots_EquipAlarmSave()\0slots_EquipAlarmClear()\0"
     "slots_SetEquipAlarmSatus(int,bool)\0"
-    "setConnect()\0"
 };
 
 void WidgetTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -148,7 +146,6 @@ void WidgetTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 34: _t->slots_EquipAlarmSave(); break;
         case 35: _t->slots_EquipAlarmClear(); break;
         case 36: _t->slots_SetEquipAlarmSatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 37: _t->setConnect(); break;
         default: ;
         }
     }
@@ -186,9 +183,9 @@ int WidgetTest::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 38)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 37;
     }
     return _id;
 }
