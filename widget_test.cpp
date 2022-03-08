@@ -132,17 +132,14 @@ void WidgetTest::slot_readIoCard()
 }
 void WidgetTest::slot_ConnectSever()
 {
-	//pMainFrm->nSocketMutex.lock();
-	//pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
 	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
 	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
-	if(/*pMainFrm->m_tcpSocket->waitForConnected(3000) &&*/ m_plc->m_pSocket->waitForConnected(3000))
+	if(m_plc->m_pSocket->waitForConnected(3000))
 	{
 		QMessageBox::information(this,tr("message"),tr("connect success!"));
 	}else{
 		QMessageBox::information(this,tr("message"),tr("connect failed!"));
 	}
-//	pMainFrm->nSocketMutex.unlock();
 }
 void WidgetTest::slots_IoOpenPam()
 {

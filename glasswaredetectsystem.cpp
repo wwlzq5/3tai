@@ -46,8 +46,8 @@ DWORD GlasswareDetectSystem::ConnectSever(void* param)
 	QByteArray ba((char*)&nTempStruct, sizeof(MyStruct));
 	while(!pMainFrm->m_bIsThreadDead)
 	{
-		bool ret = pMainFrm->m_tcpSocket->write(ba.data(),ba.size());
-		if(!ret)
+		int ret = pMainFrm->m_tcpSocket->write(ba.data(),ba.size());
+		if(ret == -1)
 		{
 			//pMainFrm->Logfile.write(QString("tcpsocket cnt Packet send Error!"),AbnormityLog);
 			pMainFrm->m_tcpSocket->connectToHost("192.168.250.202",8088);
@@ -82,6 +82,8 @@ DWORD GlasswareDetectSystem::SendIOCard(void* param)
 			pMainFrm->m_tcpSocket->write(nTest.data(),nTest.size());
 			//pMainFrm->m_tcpSocket->waitForBytesWritten(3000);
 		}
+		QByteArray nTest;
+		pMainFrm->m_tcpSocket->write(nTest.data(),nTest.size());
 		Sleep(200);
 	}
 	return TRUE;
@@ -227,7 +229,6 @@ void GlasswareDetectSystem::Initialize()
 	InitIOCard();
 	InitCheckSet();
 	initDetectThread();
-	initSocket();
 }
 //采集回调函数
 void WINAPI GlobalGrabOverCallback (const s_GBSIGNALINFO* SigInfo)
@@ -433,6 +434,7 @@ void GlasswareDetectSystem::InitParameter()
 		nSeverExe->start("\""+str+"\"");
 		Sleep(1000);
 	}
+	initSocket();
 }
 void GlasswareDetectSystem::onServerDataReady()
 {
