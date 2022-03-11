@@ -39,7 +39,21 @@ WidgetCarveSetting::WidgetCarveSetting(QWidget *parent)
 		pushButton_carvePage->setText(QString::number(i+1));
 		pushButton_carvePage->setStyleSheet("background-color:gray");
 		buttonGroupCamera->addButton(pushButton_carvePage,i);
-		if(pMainFrm->m_sSystemInfo.iCamCount ==36)
+		int j=0;
+		if(pMainFrm->m_sSystemInfo.iCamCount == 24)//18+6
+		{
+			if(i<9)
+			{
+				GridLayout->addWidget(pushButton_carvePage,i%3,i/3);
+			}else if(i>8 && i<15)//9-14
+			{
+				j = i-1;
+				GridLayout->addWidget(pushButton_carvePage,j%2,j/2);
+			}else{
+				j = i+6;
+				GridLayout->addWidget(pushButton_carvePage,j%3,j/3);
+			}
+		}else if(pMainFrm->m_sSystemInfo.iCamCount == 27)//18+9
 		{
 			GridLayout->addWidget(pushButton_carvePage,i%3,i/3);
 		}else

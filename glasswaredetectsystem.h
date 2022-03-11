@@ -83,7 +83,7 @@ public:
 	void showAllert();
 	static DWORD WINAPI SendDetect(void*);
 	static DWORD WINAPI SendIOCard(void*);
-	static DWORD WINAPI ConnectSever(void*);
+	//static DWORD WINAPI ConnectSever(void*);
 	DWORD GetProcessIdFromName(const char*processName);
 	void loginState(int nPerm);
 	void initSocket();
@@ -104,8 +104,11 @@ public slots:
 	void slots_SetCameraStatus(int nCam,int mode);
 	void directoryChanged(QString path);
 	void onServerDataReady();
+	void onAginConnect();
 	void slot_SockScreen();
 	void slots_loginState(int);
+	void slots_ConnectServer();
+	void slots_SocketStataChanged( QAbstractSocket::SocketState socketState);
 public:
 	//初始化
 	void Initialize();
@@ -121,7 +124,7 @@ public:
 	void initInterface();	//初始化界面
 	int ReadImageSignal(int nImageNum,int camera=0);
 	void SetLanguage(int pLang);
-	void SendDataToSever(int,StateEnum);
+	bool SendDataToSever(int,StateEnum);
 public:
 	QStackedWidget *statked_widget;
 	WidgetTitle *title_widget;				//标题栏 
@@ -139,6 +142,7 @@ public:
 	QList<CameraStatusLabel *> cameraStatus_list;
 	QTimer *timerUpdateCoder;
 	QTimer *nSockScreen;
+	QTimer *nConnectTimer;
 	QVector<QString> m_vstrPLCInfoType;		//错误类型
 	QLabel *labelCoder;
 	QWidget *stateBar;

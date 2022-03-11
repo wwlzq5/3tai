@@ -20,10 +20,10 @@ ImageWidget::ImageWidget(QWidget *parent)
 		sAlgImageLocInfo[i].sXldPoint.nColsAry = new int[BOTTLEXLD_POINTNUM];
 		sAlgImageLocInfo[i].sXldPoint.nRowsAry = new int[BOTTLEXLD_POINTNUM];
 	}
-	if(pMainFrm->m_sSystemInfo.iCamCount == 24 || pMainFrm->m_sSystemInfo.iCamCount==4)
+	if(pMainFrm->m_sSystemInfo.iCamCount==4)
 	{
 		nRow = 2;
-	}else if(pMainFrm->m_sSystemInfo.iCamCount == 36)
+	}else if(pMainFrm->m_sSystemInfo.iCamCount == 27 || pMainFrm->m_sSystemInfo.iCamCount == 24)
 	{
 		nRow = 3;
 	}else{
@@ -118,7 +118,13 @@ void ImageWidget::initDialog()
 		listImageShowItem.append(imageShowItem);
 		if(pMainFrm->m_sCarvedCamInfo[i].m_iStress)
 		{
-			gridLayoutStressImage->addWidget(listImageShowItem[i],nStressRow%nRow,nStressRow/nRow,1,1);
+			if(pMainFrm->m_sSystemInfo.iCamCount > 24)
+			{
+				gridLayoutStressImage->addWidget(listImageShowItem[i],nStressRow%3,nStressRow/3,1,1);
+			}else{
+				gridLayoutStressImage->addWidget(listImageShowItem[i],nStressRow%2,nStressRow/2,1,1);
+			}
+			//gridLayoutImage->addWidget(listImageShowItem[i],nNormalRow%nRow,nNormalRow/nRow,1,1);//0.0  
 			nStressRow++;
 		}else{
 			gridLayoutImage->addWidget(listImageShowItem[i],nNormalRow%nRow,nNormalRow/nRow,1,1);//0.0  
