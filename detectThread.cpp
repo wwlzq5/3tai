@@ -382,7 +382,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 			{
 				dirSaveImagePath->mkpath(strSaveImagePath);
 			}
-			QString strSavePath = QString(strSaveImagePath + "/image number%1_%2%3%4.bmp").arg(pElement->nSignalNo).arg(time.time().hour()).arg(time.time().minute()).arg(time.time().second());
+			QString strSavePath = QString(strSaveImagePath + "/image number%1_%2%3%4_%5.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.time().hour()).arg(time.time().minute()).arg(time.time().second());
 			pElement->myImage->mirrored().save(strSavePath);
 		}
 	}
@@ -398,7 +398,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 			{
 				dirSaveImagePath->mkpath(strSaveImagePath);
 			}
-			QString strSavePath = QString(strSaveImagePath + "/image number%1_%2%3%4.bmp").arg(pElement->nSignalNo).arg(time.time().hour()).arg(time.time().minute()).arg(time.time().second());
+			QString strSavePath = QString(strSaveImagePath + "/image number%1_%2%3%4_%5.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.time().hour()).arg(time.time().minute()).arg(time.time().second());
 			pElement->myImage->mirrored().save(strSavePath);
 		}
 
@@ -418,7 +418,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 		}
 		if (AllImage == pMainFrm->m_sRunningInfo.m_eSaveImageType)
 		{
-			QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+			QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5_%6.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 			pElement->myImage->mirrored().save(strSavePath);
 		}
 		if (AllImageInCount == pMainFrm->m_sRunningInfo.m_eSaveImageType)
@@ -426,7 +426,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 			pMainFrm->m_sRunningInfo.m_mutexRunningInfo.lock();
 			if (pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera] > 0)
 			{
-				QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+				QString strSavePath = QString(strSaveImagePath + "image_%1_%2%3%4_%5_%6.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 				pElement->myImage->mirrored().save(strSavePath);
 				pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera]--;
 			}
@@ -463,7 +463,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 		}
 		if (FailureImage == pMainFrm->m_sRunningInfo.m_eSaveImageType)
 		{
-			QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+			QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5_%6.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 			pElement->myImage->mirrored().save(strSavePath);
 		}
 		if (FailureImageInCount == pMainFrm->m_sRunningInfo.m_eSaveImageType)
@@ -471,7 +471,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 			pMainFrm->m_sRunningInfo.m_mutexRunningInfo.lock();
 			if (pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera] > 0)
 			{
-				QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5.bmp").arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
+				QString strSavePath = QString(strSaveImagePath + "/image_%1_%2%3%4_%5_%6.bmp").arg(iCamera+1).arg(pElement->nSignalNo).arg(time.hour()).arg(time.minute()).arg(time.second()).arg(time.msec());
 				pElement->myImage->mirrored().save(strSavePath);
 				pMainFrm->m_sRunningInfo.m_iSaveImgCount[iCamera]--;
 			}

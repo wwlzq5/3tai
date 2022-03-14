@@ -344,7 +344,7 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		nQueue[tempCamera].listGrab.removeFirst();
 		memcpy(pGrabElement->SourceImage->bits(),pImageBuffer,nWidth*nHeight);
 		pMainFrm->nQueue[tempCamera].mGrabLocker.unlock();
-		if(!m_sSystemInfo.m_iTest)
+		if(m_sSystemInfo.m_bIsIOCardOK != 0)
 		{
 			if(m_sSystemInfo.m_iSystemType != 2)//夹持使用镜像，前后壁使用原始图
 			{
