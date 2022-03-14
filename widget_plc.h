@@ -26,9 +26,9 @@ public slots:
 	void slots_modify1(int);
 	void slots_modify2(int);
 	void slots_modify3(int);
+	void slots_AutoAlert(int);
 public:
 	void EnterPLC();
-	void SetLimiteState(bool);
 public:
 	Ui::widget_plc ui;
 public:
@@ -38,6 +38,7 @@ public:
 	void ByteToData(QByteArray& st, int nStart, int nEnd,T&);
 	int SendMessage(int,QByteArray&,int,int,int);//读取写入数据，需要最后给读取数据长度
 	void SendDataToPLCHead(int nAddr, QByteArray& st, int state,int id,int DataSize);
+	void SendCustomAlert(int,int);
 public:
 	QUdpSocket* m_pSocket;
 	QTimer* m_zTimer;
@@ -47,7 +48,9 @@ public:
 	int nSystemType;
 	QWidget * nAlertSet;
 	QList<QCheckBox*> nlistCheckBox;
+	QList<QCheckBox*> nCustomAlert;
 	int* nAlertDataList;
+	int* nCustomList;
 };
 
 #endif // WIDGET_PLC_H

@@ -9,7 +9,7 @@
 #include <QSignalMapper>
 #include "glasswaredetectsystem.h"
 extern GlasswareDetectSystem *pMainFrm;
-
+#define CUSTOMALERT 3
 Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 	: QWidget(parent)
 {
@@ -56,6 +56,9 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 	{
 		nAlertDataList = new int[96];
 		memset(nAlertDataList,0,96*sizeof(int));
+		nCustomList = new int[CUSTOMALERT*2];
+		memset(nCustomList,0,CUSTOMALERT*sizeof(int));
+
 		for(int i=0;i<96;i++)
 		{
 			QCheckBox *checkBox = new QCheckBox(this);
@@ -67,7 +70,6 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		nAlertSet->setAutoFillBackground(true);
 		nAlertSet->setPalette(pal);
 		QGridLayout *gridlayout = new QGridLayout(nAlertSet);
-
 		QSignalMapper* signalmapper = new QSignalMapper(this);//工具栏的信号管理
 		QCheckBox *checkBox = new QCheckBox(this);
 		checkBox->setText(QString::fromLocal8Bit("是否报警"));//勾选表示要报警
@@ -119,6 +121,40 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		mainLayout->setContentsMargins(0,0,0,0);
 		nAlertSet->setLayout(mainLayout);
 		ui.scrollArea->setWidget(nAlertSet);
+		//增加自定义的报警
+		
+		QGridLayout *groupBox_5 = new QGridLayout(ui.widget_2);
+		QSignalMapper* signalmapper1 = new QSignalMapper(this);//工具栏的信号管理
+		QLabel *nLabel2 = new QLabel(this);
+		nLabel2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
+		groupBox_5->addWidget(nLabel2,0,1,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		QLabel *nLabel3 = new QLabel(this);
+		nLabel3->setText(QString::fromLocal8Bit("是否停理瓶器"));//勾选表示要停止理瓶器
+		groupBox_5->addWidget(nLabel3,0,3,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		QLabel *nLabel11 = new QLabel(this);
+		nLabel11->setText(QString::fromLocal8Bit("前壁补踢报警"));//勾选表示要报警
+		groupBox_5->addWidget(nLabel11,1,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		QLabel *nLabel12 = new QLabel(this);
+		nLabel12->setText(QString::fromLocal8Bit("夹持补踢报警"));//勾选表示要报警
+		groupBox_5->addWidget(nLabel12,2,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		QLabel *nLabel13 = new QLabel(this);
+		nLabel13->setText(QString::fromLocal8Bit("后壁补踢报警"));//勾选表示要报警
+		groupBox_5->addWidget(nLabel13,3,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		for(int i=0;i<CUSTOMALERT*2;i++)
+		{
+			QCheckBox *checkBox = new QCheckBox(this);
+			nCustomAlert<<checkBox;
+			connect(nCustomAlert[i], SIGNAL(stateChanged(int)), signalmapper1, SLOT(map()));
+			signalmapper1->setMapping(nCustomAlert[i], i);
+		}
+		connect(signalmapper1, SIGNAL(mapped(int)), this, SLOT(slots_AutoAlert(int)));
+
+		for(int i=0;i<CUSTOMALERT;i++)
+		{
+			groupBox_5->addWidget(nCustomAlert[i],i+1,2,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+			groupBox_5->addWidget(nCustomAlert[i+3],i+1,4,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		}
+
 	}
 	//80000200010000020005 0101B200 D4000002
 }
@@ -175,6 +211,15 @@ void Widget_PLC::slots_modify3(int temp)
 		}
 	}
 }
+void Widget_PLC::slots_AutoAlert(int temp)
+{
+	if(nCustomList[temp] == 1)
+	{
+		nCustomList[temp] = 0;
+	}else{
+		nCustomList[temp] = 1;
+	}
+}
 void Widget_PLC::slots_clickBox(int mTemp)
 {
 	if(nAlertDataList[mTemp]==1)
@@ -192,33 +237,7 @@ void Widget_PLC::slots_Pushbuttonread()
 void Widget_PLC::EnterPLC()
 {
 	QByteArray st;
-	SendMessage(92,st,1,2,244);//228+12   //暂时获取界面显示的所有数据2*6+8*4+8*9+4+3*4+10*8 120+80+12
-	if(pMainFrm->nUserWidget->nPermission == 3)
-	{
-		ui.lineEdit->setEnabled(false);
-		ui.lineEdit_22->setEnabled(false);
-		ui.lineEdit_23->setEnabled(false);
-		ui.lineEdit_24->setEnabled(false);
-		ui.lineEdit_25->setEnabled(false);
-		ui.lineEdit_26->setEnabled(false);
-		ui.lineEdit_27->setEnabled(false);
-		ui.lineEdit_28->setEnabled(false);
-		ui.lineEdit_29->setEnabled(false);
-		ui.lineEdit_30->setEnabled(false);
-		ui.lineEdit_31->setEnabled(false);
-	}else{
-		ui.lineEdit->setEnabled(true);
-		ui.lineEdit_22->setEnabled(true);
-		ui.lineEdit_23->setEnabled(true);
-		ui.lineEdit_24->setEnabled(true);
-		ui.lineEdit_25->setEnabled(true);
-		ui.lineEdit_26->setEnabled(true);
-		ui.lineEdit_27->setEnabled(true);
-		ui.lineEdit_28->setEnabled(true);
-		ui.lineEdit_29->setEnabled(true);
-		ui.lineEdit_30->setEnabled(true);
-		ui.lineEdit_31->setEnabled(true);
-	}
+	SendMessage(87,st,1,2,254);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
 }
 void Widget_PLC::slots_CrashTimeOut()
 {
@@ -246,23 +265,7 @@ void Widget_PLC::slots_TimeOut()
 {
 	//获取PLC的报警信息
 	QByteArray st;
-	SendMessage(0,st,1,1,4);//读取报警数据
-}
-void Widget_PLC::SetLimiteState(bool nShow)
-{
-	ui.lineEdit->setEnabled(nShow);
-	ui.lineEdit_22->setEnabled(nShow);
-	ui.lineEdit_23->setEnabled(nShow);
-	ui.lineEdit_24->setEnabled(nShow);
-	ui.lineEdit_25->setEnabled(nShow);
-	ui.lineEdit_27->setEnabled(nShow);
-	ui.lineEdit_26->setEnabled(nShow);
-	ui.lineEdit_28->setEnabled(nShow);
-	ui.lineEdit_29->setEnabled(nShow);
-	ui.lineEdit_30->setEnabled(nShow);
-	ui.lineEdit_31->setEnabled(nShow);
-	ui.lineEdit_32->setEnabled(nShow);
-	ui.lineEdit_33->setEnabled(nShow);
+	SendMessage(0,st,1,1,8);//读取报警数据
 }
 void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id,int DataSize) //参数1为相机ID号，参数2为组装后的数据，参数3为读写状态,参数4为通道ID(可以为任意整数),参数5为数据大小
 {
@@ -304,13 +307,32 @@ int Widget_PLC::SendMessage(int address,QByteArray& send,int state,int id,int Da
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 258)//242+12+4
+	if (v_receive.size() == 268)//242+12+4+10
 	{
 		double v_douTemp = 0;
 		int v_Itmp = 0;
 		int v_bit = 14;
 		int j=0;
-		for (;v_bit<26;v_bit+=2)
+		for (;v_bit<18;v_bit+=2)
+		{
+			WORD v_Itmps=0;
+			ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);
+			for(int i=0;i<CUSTOMALERT;i++)
+			{
+				if(v_Itmps >> i & 0x01)
+				{
+					nCustomList[j]=1;
+					nCustomAlert[j]->setChecked(true);
+				}else{
+					nCustomList[j]=0;
+					nCustomAlert[j]->setChecked(false);
+				}
+				j++;
+			}
+		}
+		j=0;
+		v_bit+=6;//24 
+		for (;v_bit<36;v_bit+=2)//24+12
 		{
 			WORD v_Itmps=0;
 			ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);
@@ -464,13 +486,13 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
-	}else if(v_receive.size() == 18)
+	}else if(v_receive.size() == 22)
 	{
 		WORD v_Itmp=0;
 		int j=0;
 		int m_byte=14;
 		bool Asert = true;
-		for (;m_byte<18;m_byte+=2)
+		for (;m_byte<22;m_byte+=2)
 		{
 			ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
 			for(int i=0;i<16;i++)
@@ -515,11 +537,54 @@ void Widget_PLC::slots_Pushbuttonsure()
 	DataToByte(TempData,st);
 	SendMessage(90,st,2,1,2);//写入指令，命令下发完毕后再写一次
 }
+void Widget_PLC::SendCustomAlert(int temp,int nData)
+{
+	QByteArray st;
+	WORD TempData=0;
+	if(nData == 0)
+	{
+		TempData=0;
+	}else{
+		if(temp == 1)
+		{
+			TempData = 1;
+		}else if(temp == 2)
+		{
+			TempData = 2;
+		}else{
+			TempData = 4;
+		}
+	}
+	DataToByte(TempData,st);
+	SendMessage(3,st,2,1,2);
+}
 void Widget_PLC::slots_Pushbuttonsave()
 {
 	QByteArray st;
 	WORD test = 1;
 	WORD nData[6];
+	memset(nData,0,sizeof(WORD)*6);
+	for(int i=0;i<CUSTOMALERT*2;i++)
+	{
+		if(i<CUSTOMALERT)
+		{
+			if(nCustomList[i])
+			{
+				nData[0] += test<<i;
+			}
+		}else 
+		{
+			if(nCustomList[i])
+			{
+				nData[1] += test<<i;
+			}
+		}
+	}
+	for(int i=0;i<2;i++)
+	{
+		DataToByte(nData[i],st);
+	}
+	DataToByte(test,st);
 	memset(nData,0,sizeof(WORD)*6);
 	for(int i=0;i<96;i++)
 	{
@@ -656,7 +721,7 @@ void Widget_PLC::slots_Pushbuttonsave()
 	TempData = ui.lineEdit_40->text().toInt();
 	DataToByte(TempData,st);
 	//总数
-	SendMessage(92,st,2,1,244);//120+44+64=228+12
+	SendMessage(87,st,2,1,254);//120+44+64=244+10
 }
 template<typename T>
 void Widget_PLC::DataToByte(T& xx, QByteArray& st)

@@ -308,7 +308,7 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 	pMainFrm->m_cCombine.AddResult(nSignalNo,iCamera,tmpResult);
 	if (pMainFrm->m_cCombine.ConbineResult(nSignalNo,0,comResult))//图像都拍完后结果综合
 	{
-		/*for	(int i = nSignalNo - 5; i<nSignalNo ;i++)
+		for(int i = nSignalNo - 5; i<nSignalNo ;i++)
 		{
 			if (!pMainFrm->m_cCombine.IsReject((i+256)%256))
 			{
@@ -320,11 +320,11 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 				if (pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 				{
 					pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[2] += 1;
-					pMainFrm->m_vIOCard[sResultInfo.nIOCardNum]->SendResult(sResultInfo);
+					//pMainFrm->m_vIOCard[sResultInfo.nIOCardNum]->SendResult(sResultInfo);
 				}
 				pMainFrm->m_cCombine.SetReject((i+256)%256);
 			}
-		}*/
+		}
 
 		for	(int i = nSignalNo; i < nSignalNo + 5;i++)
 		{

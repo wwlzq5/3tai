@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_plc.ui'
 **
-** Created: Tue Mar 8 09:34:30 2022
+** Created: Mon Mar 14 16:00:13 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -63,6 +63,9 @@ public:
     QLabel *label_30;
     QLineEdit *lineEdit_4;
     QLabel *label_11;
+    QGroupBox *groupBox_5;
+    QGridLayout *gridLayout_3;
+    QWidget *widget_2;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
@@ -162,7 +165,7 @@ public:
     {
         if (widget_plc->objectName().isEmpty())
             widget_plc->setObjectName(QString::fromUtf8("widget_plc"));
-        widget_plc->resize(962, 817);
+        widget_plc->resize(962, 866);
         verticalLayout = new QVBoxLayout(widget_plc);
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -323,12 +326,24 @@ public:
 
         verticalLayout_2->addWidget(groupBox_8);
 
+        groupBox_5 = new QGroupBox(widget);
+        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        gridLayout_3 = new QGridLayout(groupBox_5);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        widget_2 = new QWidget(groupBox_5);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+
+        gridLayout_3->addWidget(widget_2, 3, 3, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox_5);
+
         scrollArea = new QScrollArea(widget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 423, 528));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 423, 521));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_2->addWidget(scrollArea);
@@ -871,6 +886,7 @@ public:
         label_9->setText(QApplication::translate("widget_plc", "\347\247\222", 0, QApplication::UnicodeUTF8));
         label_30->setText(QApplication::translate("widget_plc", "\344\272\247\345\223\201\351\200\237\345\272\246:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("widget_plc", "\347\247\222", 0, QApplication::UnicodeUTF8));
+        groupBox_5->setTitle(QApplication::translate("widget_plc", "\347\263\273\347\273\237\350\207\252\345\256\232\344\271\211\346\212\245\350\255\246\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("widget_plc", "\345\205\211\347\224\265\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         groupBox_3->setTitle(QApplication::translate("widget_plc", "\345\270\270\350\247\204\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         label_21->setText(QApplication::translate("widget_plc", "\345\211\215\350\276\223\351\200\201\347\272\277\345\212\240\351\200\237\346\227\266\351\227\264", 0, QApplication::UnicodeUTF8));

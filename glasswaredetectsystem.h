@@ -82,8 +82,6 @@ public:
 	void MonitorLicense();
 	void showAllert();
 	static DWORD WINAPI SendDetect(void*);
-	static DWORD WINAPI SendIOCard(void*);
-	//static DWORD WINAPI ConnectSever(void*);
 	DWORD GetProcessIdFromName(const char*processName);
 	void loginState(int nPerm);
 	void initSocket();
@@ -104,7 +102,6 @@ public slots:
 	void slots_SetCameraStatus(int nCam,int mode);
 	void directoryChanged(QString path);
 	void onServerDataReady();
-	void onAginConnect();
 	void slot_SockScreen();
 	void slots_loginState(int);
 	void slots_ConnectServer();
@@ -124,7 +121,7 @@ public:
 	void initInterface();	//初始化界面
 	int ReadImageSignal(int nImageNum,int camera=0);
 	void SetLanguage(int pLang);
-	bool SendDataToSever(int,StateEnum);
+	bool SendDataToSever(int,StateEnum,QByteArray,bool);
 public:
 	QStackedWidget *statked_widget;
 	WidgetTitle *title_widget;				//标题栏 
@@ -199,8 +196,8 @@ public:
 public:
 	//涉及网络通信的变量
 	QMutex nSocketMutex;
-	QList<QByteArray> ncSocketWriteData;
 	int nCountNumber;
+	int nLastKick;
 	int nLastCheckNum;
 	int nLastFailedNum;
 	bool n_NetConnectState;

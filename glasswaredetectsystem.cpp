@@ -6,6 +6,8 @@
 #include <QPropertyAnimation>
 
 #include "EquipRuntime.h"
+//是否网络自测试
+#define CESHINETWORK
 //是否加密宏开关 JIAMI_INITIA
 //#define  JIAMI_INITIA
 #ifdef JIAMI_INITIA
@@ -22,58 +24,8 @@ CProgramLicense m_ProgramLicense;
 #endif
 #endif
 
-//#define SERVER_IP "192.168.20.116"
-#define SERVER_IP "192.168.250.202"
-#define SERVRR_PORT 8088
-
 GlasswareDetectSystem * pMainFrm;
 QString appPath;  //更新路径
-/*
-DWORD GlasswareDetectSystem::ConnectSever(void* param)
-{
-	GlasswareDetectSystem *pThis=(GlasswareDetectSystem*)param;
-	while(!pThis->m_bIsThreadDead)
-	{
-		bool ret = pThis->SendDataToSever(0,CONNECT);
-		if(!ret)
-		{
-			pThis->Logfile.write(QString("tcpsocket cnt Packet send Error!"),AbnormityLog);
-			pThis->m_tcpSocket->connectToHost(SERVER_IP,SERVRR_PORT);
-// 			if(pMainFrm->m_tcpSocket->waitForConnected(1000))
-// 			{
-// 				connect(pMainFrm->m_tcpSocket, SIGNAL(readyRead()), pMainFrm, SLOT(pMainFrm->onServerDataReady()));
-// 				pMainFrm->Logfile.write(QString("TcpSocket ReCnt Succesed"),AbnormityLog);
-// 				pMainFrm->n_NetConnectState=true;
-// 			}
-// 			else
-// 			{
-// 				pMainFrm->Logfile.write(QString("network failed!"),AbnormityLog);
-// 				pMainFrm->m_tcpSocket->abort();
-// 				pMainFrm->n_NetConnectState=false;
-// 			}
-		}
-		Sleep(10*1000);
-	}
-	return TRUE;
-}
-*/
-DWORD GlasswareDetectSystem::SendIOCard(void* param)
-{
-	while(!pMainFrm->m_bIsThreadDead)
-	{
-		if(pMainFrm->ncSocketWriteData.count()>0 && pMainFrm->n_NetConnectState)
-		{
-			pMainFrm->nSocketMutex.lock();
-			QByteArray nTest = pMainFrm->ncSocketWriteData.first();
-			pMainFrm->ncSocketWriteData.removeFirst();
-			pMainFrm->nSocketMutex.unlock();
-			pMainFrm->m_tcpSocket->write(nTest.data(),nTest.size());
-			//pMainFrm->m_tcpSocket->waitForBytesWritten(3000);
-		}
-		Sleep(200);
-	}
-	return TRUE;
-}
 DWORD GlasswareDetectSystem::SendDetect(void* param)
 {
 	int DataSize=10;
@@ -126,10 +78,7 @@ DWORD GlasswareDetectSystem::SendDetect(void* param)
 						memcpy(nTPtr,&nCheckSendData,DataSize*sizeof(MyErrorType));
 						memset(&nCheckSendData,0,DataSize*sizeof(MyErrorType));
 						QByteArray ba(m_reportPtr,DataSize*sizeof(MyErrorType)+sizeof(MyStruct));
-						pMainFrm->nSocketMutex.lock();
-						pMainFrm->ncSocketWriteData.push_back(ba);
-						pMainFrm->nSocketMutex.unlock();
-						
+						pMainFrm->SendDataToSever(0,SENDDATA,ba,true);
 					}
 				}
 			}
@@ -185,7 +134,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.4");
+	return SysType + QString(tr("Version:")+"6.64.1.5");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -210,7 +159,6 @@ void GlasswareDetectSystem::Init()
 //初始化
 void GlasswareDetectSystem::Initialize()
 {
-	initSocket();
 	LoadParameterAndCam();
 	InitImage();
 	InitIOCard();
@@ -247,10 +195,8 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 	if (m_sSystemInfo.m_bIsIOCardOK)
 	{
 		//每次回调尝试读取两个工位的图像号，通过是否重复来判断是第几工位拍图，再放到对应的检测队列，就没法判断误触发的情况
-		if(m_sSystemInfo.m_bIsTest)
+		if(!m_sSystemInfo.m_bIsTest)
 		{
-			//tempI = m_sCarvedCamInfo[widget_carveSetting->iCameraNo].m_iStress;
-		}else{
 			for(;tempI<2;tempI++)
 			{
 				if(tempI == 0)
@@ -344,7 +290,7 @@ void GlasswareDetectSystem::GrabCallBack(const s_GBSIGNALINFO *SigInfo)
 		nQueue[tempCamera].listGrab.removeFirst();
 		memcpy(pGrabElement->SourceImage->bits(),pImageBuffer,nWidth*nHeight);
 		pMainFrm->nQueue[tempCamera].mGrabLocker.unlock();
-		if(m_sSystemInfo.m_bIsIOCardOK != 0)
+		if(!m_sSystemInfo.m_iTest)
 		{
 			if(m_sSystemInfo.m_iSystemType != 2)//夹持使用镜像，前后壁使用原始图
 			{
@@ -428,10 +374,7 @@ void GlasswareDetectSystem::InitParameter()
 		nSeverExe->start("\""+str+"\"");
 		Sleep(1000);
 	}
-}
-void GlasswareDetectSystem::onAginConnect()
-{
-	n_NetConnectState = false;
+	initSocket();
 }
 void GlasswareDetectSystem::onServerDataReady()
 {
@@ -1202,8 +1145,6 @@ void GlasswareDetectSystem::initDetectThread()
 {
 	m_bIsThreadDead = FALSE;
 	CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)SendDetect, this, 0, NULL );
-	CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)SendIOCard, this, 0, NULL );
-	//CreateThread( NULL, 0, (LPTHREAD_START_ROUTINE)ConnectSever, this, 0, NULL );
 	for (int i=0;i<m_sSystemInfo.iCamCount;i++)
 	{
 		pdetthread[i] = new DetectThread(this,i);
@@ -1374,7 +1315,7 @@ void GlasswareDetectSystem::initInterface()
 	nLightSource = new LightSource();
 	nWidgetWarning = new Widget_Warning();
 }
-bool GlasswareDetectSystem::SendDataToSever(int nSendCount,StateEnum nState)
+bool GlasswareDetectSystem::SendDataToSever(int nSendCount,StateEnum nState,QByteArray nTest,bool nCurrentData)
 {
 	if (!n_NetConnectState)
 	{
@@ -1385,17 +1326,33 @@ bool GlasswareDetectSystem::SendDataToSever(int nSendCount,StateEnum nState)
 	nTempStruct.nCount = sizeof(MyStruct);
 	nTempStruct.nFail = nSendCount;
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
+	{
 		nTempStruct.nUnit = LEADING;
+	}
 	else if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
+	{
 		nTempStruct.nUnit = CLAMPING;
+	}
 	else if(pMainFrm->m_sSystemInfo.m_iSystemType == 3)
+	{
 		nTempStruct.nUnit = BACKING;
+	}
 	QByteArray ba((char*)&nTempStruct, sizeof(MyStruct));
-	int ret = m_tcpSocket->write(ba,sizeof(MyStruct));
+	int ret = -1;
+	nSocketMutex.lock();
+	if(nCurrentData)
+	{
+		ret = m_tcpSocket->write(nTest.data(),nTest.size());
+	}else{
+		ret = m_tcpSocket->write(ba.data(),ba.size());
+	}
+	nSocketMutex.unlock();
 	if(ret == -1)
+	{
 		return false;
-	else
+	}else{
 		return true;
+	}
 }
 void GlasswareDetectSystem::slots_UpdateCoderNumber()
 {
@@ -1473,9 +1430,7 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 			memcpy(nTPIOtr,nIOCard,24*sizeof(int));
 			memset(nIOCard,0,24*sizeof(int));
 			QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
-			nSocketMutex.lock();
-			pMainFrm->ncSocketWriteData.push_back(ba);
-			nSocketMutex.unlock();
+			SendDataToSever(0,ALERT,ba,true);
 		}else{
 			if(nLastCheckNum != test_widget->nInfo.m_checkedNum ||nLastFailedNum != test_widget->nInfo.m_checkedNum2|| m_sRunningInfo.m_iKickMode2!=test_widget->m_plc->nErrorType)
 			{
@@ -1498,9 +1453,7 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 				memcpy(nTPIOtr,nIOCard,24*sizeof(int));
 				memset(nIOCard,0,24*sizeof(int));
 				QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
-				nSocketMutex.lock();
-				pMainFrm->ncSocketWriteData.push_back(ba);
-				nSocketMutex.unlock();
+				SendDataToSever(0,ALERT,ba,true);
 			}
 		}
 	}
@@ -1593,7 +1546,7 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		if(n_NetConnectState)
 		{
 			hide();
-			SendDataToSever(nUserWidget->nPermission,ONLYSHOWSEVER);
+			SendDataToSever(nUserWidget->nPermission,ONLYSHOWSEVER,NULL,false);
 			pMainFrm->Logfile.write(("return severs interface"),AbnormityLog);
 		}else{
 			QMessageBox::information(this,tr("Infomation"),QString::fromLocal8Bit("网络断开连接，正在重连"));
@@ -1907,16 +1860,6 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 			QMessageBox::information(this,tr("Infomation"),tr("Please Stop Detection First!"));
 			return;		
 		}
-		if(m_sSystemInfo.m_iSystemType == 2)
-		{
-			/*if(nSeverExe) 
-			{
-				nSeverExe->close();
-			}
-			delete nSeverExe;
-			nSeverExe = 0;*/
-		}
-		
 		EquipRuntime::Instance()->EquipExitLogFile();
 		ToolButton *TBtn = title_widget->button_list.at(4);
 		pMainFrm->Logfile.write(("Close ModelDlg!"),OperationLog);
@@ -2127,26 +2070,26 @@ void GlasswareDetectSystem::slots_loginState(int nPerm)
 	loginState(nPerm);
 }
 
-void GlasswareDetectSystem::slots_ConnectServer()
+void GlasswareDetectSystem::slots_ConnectServer()//10秒发送一次连接信号
 {
-	bool ret = SendDataToSever(0,CONNECT);
-	if(!ret /*&& (m_tcpSocket->state() == QAbstractSocket::UnconnectedState )*/)
+	bool ret = SendDataToSever(0,CONNECT,NULL,false);
+	if(!ret)
 	{
 		Logfile.write(QString("tcpsocket cnt Packet send Error!"),AbnormityLog);
-		m_tcpSocket->connectToHost(SERVER_IP,SERVRR_PORT);
-// 		if(pMainFrm->m_tcpSocket->waitForConnected(1000))
-// 		{
-// 			connect(pMainFrm->m_tcpSocket, SIGNAL(readyRead()), pMainFrm, SLOT(pMainFrm->onServerDataReady()));
-// 			pMainFrm->Logfile.write(QString("TcpSocket ReCnt Succesed"),AbnormityLog);
-// 			pMainFrm->n_NetConnectState=true;
-// 		}
-// 		else
-// 		{
-// 			pMainFrm->Logfile.write(QString("network failed!"),AbnormityLog);
-// 			pMainFrm->m_tcpSocket->abort();
-// 			pMainFrm->n_NetConnectState=false;
-// 		}
+#ifdef CESHINETWORK
+		m_tcpSocket->connectToHost("192.168.250.202",8088);
+#else
+		m_tcpSocket->connectToHost("127.0.0.1",8088);
+#endif
 	}
+	//判断误踢报警
+	if(m_sRunningInfo.m_failureNum2 - nLastKick > 20)//
+	{
+		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,1);
+	}else{
+		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,0);
+	}
+	nLastKick = m_sRunningInfo.m_failureNum2;
 }
 
 void GlasswareDetectSystem::slots_SocketStataChanged(QAbstractSocket::SocketState socketState)
@@ -2156,7 +2099,7 @@ void GlasswareDetectSystem::slots_SocketStataChanged(QAbstractSocket::SocketStat
 		connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(onServerDataReady()));
 		Logfile.write(QString("TcpSocket Cnt"),AbnormityLog);
 		n_NetConnectState=true;
-		SendDataToSever(0,CONNECT);
+		SendDataToSever(0,CONNECT,NULL,false);
 	}
 	else if(socketState == QAbstractSocket::ConnectingState)
 	{
@@ -2191,10 +2134,14 @@ void GlasswareDetectSystem::loginState(int nPerm)
 
 void GlasswareDetectSystem::initSocket()
 {
+	n_NetConnectState = false;
 	m_tcpSocket = new QTcpSocket();
 	connect(m_tcpSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState )), this, SLOT(slots_SocketStataChanged( QAbstractSocket::SocketState )));
-	//m_tcpSocket->connectToHost("192.168.250.202",SERVRR_PORT);
-	m_tcpSocket->connectToHost(SERVER_IP,SERVRR_PORT);
+#ifdef CESHINETWORK
+	m_tcpSocket->connectToHost("192.168.250.202",8088);
+#else
+	m_tcpSocket->connectToHost("127.0.0.1",8088);
+#endif
 	if(m_tcpSocket->waitForConnected(3000))
 	{
 		n_NetConnectState = true;
@@ -2203,7 +2150,8 @@ void GlasswareDetectSystem::initSocket()
 		n_NetConnectState = false;
 		m_tcpSocket->abort();
 	}
-/*	connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(onAginConnect()));*/
+	//m_tcpSocket->connectToHost("127.0.0.1",8088);
+	//m_tcpSocket->waitForConnected(3000);
 }
 
 void GlasswareDetectSystem::InitLastData()
@@ -2219,7 +2167,8 @@ void GlasswareDetectSystem::InitLastData()
 
 	strSession=QString("/system/KickNum");
 	m_sRunningInfo.m_failureNum2 = iniDataSet.value(strSession,0).toInt();
-	
+	nLastKick = m_sRunningInfo.m_failureNum2;
+
 	strSession=QString("/system/SeverCheckedNum");
 	test_widget->nInfo.m_checkedNum=iniDataSet.value(strSession,0).toInt();
 

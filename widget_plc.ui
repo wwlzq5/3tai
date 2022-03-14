@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>962</width>
-    <height>817</height>
+    <height>866</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -230,6 +230,18 @@
          </widget>
         </item>
         <item>
+         <widget class="QGroupBox" name="groupBox_5">
+          <property name="title">
+           <string>系统自定义报警设置</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="3" column="3">
+            <widget class="QWidget" name="widget_2" native="true"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QScrollArea" name="scrollArea">
           <property name="widgetResizable">
            <bool>true</bool>
@@ -240,7 +252,7 @@
              <x>0</x>
              <y>0</y>
              <width>423</width>
-             <height>528</height>
+             <height>521</height>
             </rect>
            </property>
           </widget>
