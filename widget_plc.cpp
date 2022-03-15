@@ -124,6 +124,7 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		//增加自定义的报警
 		
 		QGridLayout *groupBox_5 = new QGridLayout(ui.widget_2);
+		groupBox_5->setColStretch(6,10);
 		QSignalMapper* signalmapper1 = new QSignalMapper(this);//工具栏的信号管理
 		QLabel *nLabel2 = new QLabel(this);
 		nLabel2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
@@ -133,13 +134,13 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		groupBox_5->addWidget(nLabel3,0,3,1,2,Qt::AlignLeft | Qt::AlignVCenter);
 		QLabel *nLabel11 = new QLabel(this);
 		nLabel11->setText(QString::fromLocal8Bit("前壁补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel11,1,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		groupBox_5->addWidget(nLabel11,1,0);
 		QLabel *nLabel12 = new QLabel(this);
 		nLabel12->setText(QString::fromLocal8Bit("夹持补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel12,2,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		groupBox_5->addWidget(nLabel12,2,0);
 		QLabel *nLabel13 = new QLabel(this);
 		nLabel13->setText(QString::fromLocal8Bit("后壁补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel13,3,0,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		groupBox_5->addWidget(nLabel13,3,0);
 		for(int i=0;i<CUSTOMALERT*2;i++)
 		{
 			QCheckBox *checkBox = new QCheckBox(this);
@@ -154,7 +155,6 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 			groupBox_5->addWidget(nCustomAlert[i],i+1,2,1,2,Qt::AlignLeft | Qt::AlignVCenter);
 			groupBox_5->addWidget(nCustomAlert[i+3],i+1,4,1,2,Qt::AlignLeft | Qt::AlignVCenter);
 		}
-
 	}
 	//80000200010000020005 0101B200 D4000002
 }
@@ -265,7 +265,7 @@ void Widget_PLC::slots_TimeOut()
 {
 	//获取PLC的报警信息
 	QByteArray st;
-	SendMessage(0,st,1,1,8);//读取报警数据
+	SendMessage(0,st,1,1,6);//读取报警数据
 }
 void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id,int DataSize) //参数1为相机ID号，参数2为组装后的数据，参数3为读写状态,参数4为通道ID(可以为任意整数),参数5为数据大小
 {
@@ -486,13 +486,13 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
-	}else if(v_receive.size() == 22)
+	}else if(v_receive.size() == 20)
 	{
 		WORD v_Itmp=0;
 		int j=0;
 		int m_byte=14;
 		bool Asert = true;
-		for (;m_byte<22;m_byte+=2)
+		for (;m_byte<20;m_byte+=2)
 		{
 			ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
 			for(int i=0;i<16;i++)
