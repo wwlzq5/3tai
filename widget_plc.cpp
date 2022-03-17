@@ -57,7 +57,7 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 		nAlertDataList = new int[96];
 		memset(nAlertDataList,0,96*sizeof(int));
 		nCustomList = new int[CUSTOMALERT*2];
-		memset(nCustomList,0,CUSTOMALERT*sizeof(int));
+		memset(nCustomList,0,CUSTOMALERT*2*sizeof(int));
 
 		for(int i=0;i<96;i++)
 		{
@@ -265,7 +265,7 @@ void Widget_PLC::slots_TimeOut()
 {
 	//获取PLC的报警信息
 	QByteArray st;
-	SendMessage(0,st,1,1,6);//读取报警数据
+	SendMessage(0,st,1,1,8);//读取报警数据
 }
 void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id,int DataSize) //参数1为相机ID号，参数2为组装后的数据，参数3为读写状态,参数4为通道ID(可以为任意整数),参数5为数据大小
 {
@@ -307,8 +307,9 @@ int Widget_PLC::SendMessage(int address,QByteArray& send,int state,int id,int Da
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 268)//242+12+4+10
+	if (v_receive.size() == 268)//254+14
 	{
+		//
 		double v_douTemp = 0;
 		int v_Itmp = 0;
 		int v_bit = 14;
@@ -486,7 +487,7 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
-	}else if(v_receive.size() == 20)
+	}else if(v_receive.size() == 22)
 	{
 		WORD v_Itmp=0;
 		int j=0;
@@ -501,6 +502,7 @@ void Widget_PLC::slots_readFromPLC()
 				{
 					nErrorType = j;
 					Asert = false;
+					//pMainFrm->Logfile.write(QString("send %1").arg(j),AbnormityLog);
 				}
 				j++;
 			}
@@ -509,6 +511,13 @@ void Widget_PLC::slots_readFromPLC()
 		{
 			nErrorType = -1;
 		}
+		//每次启停把连续补踢涉及的事件标志变化
+		ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
+		if(v_Itmp)
+		{
+			emit ClearCountinueKick();
+		}
+		m_byte+=2;
 	}else if(v_receive.size() == 54)//14+40
 	{
 		double v_douTemp;
@@ -556,7 +565,7 @@ void Widget_PLC::SendCustomAlert(int temp,int nData)
 		}
 	}
 	DataToByte(TempData,st);
-	SendMessage(3,st,2,1,2);
+	SendMessage(2,st,2,1,2);
 }
 void Widget_PLC::slots_Pushbuttonsave()
 {
@@ -576,15 +585,14 @@ void Widget_PLC::slots_Pushbuttonsave()
 		{
 			if(nCustomList[i])
 			{
-				nData[1] += test<<i;
+				nData[1] += test<<(i-CUSTOMALERT);
 			}
 		}
 	}
-	for(int i=0;i<2;i++)
+	for(int i=0;i<5;i++)
 	{
 		DataToByte(nData[i],st);
 	}
-	DataToByte(test,st);
 	memset(nData,0,sizeof(WORD)*6);
 	for(int i=0;i<96;i++)
 	{

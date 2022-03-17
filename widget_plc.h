@@ -27,6 +27,8 @@ public slots:
 	void slots_modify2(int);
 	void slots_modify3(int);
 	void slots_AutoAlert(int);
+signals:
+	void ClearCountinueKick();
 public:
 	void EnterPLC();
 public:

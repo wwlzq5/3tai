@@ -87,6 +87,7 @@ signals:
 	void signal_UsualSend(int);
 	void signal_ioSetPam(int,int);
 public slots:
+	void slot_clearKick();
 	void slots_ShowPlc(int);
 	void slot_ConnectSever();
 	void slot_readIoCard();

@@ -110,7 +110,7 @@ GlasswareDetectSystem::GlasswareDetectSystem(QWidget *parent, Qt::WFlags flags)
 	//m_eCurrentMainPage = CarveSettingPage;
 	CherkerAry.pCheckerlist=NULL;
 	surplusDays=0;
-
+	nContinueKick = false;
 	//网络通信初始化
 	m_tcpSocket = NULL;
 	nLastCheckNum = 0;
@@ -590,8 +590,9 @@ void GlasswareDetectSystem::ReadIniInformation()
 	m_sSystemInfo.iIsSample = iniset.value("/system/IsSample",0).toInt();//是否取样
 	m_sSystemInfo.iIsCameraCount = iniset.value("/system/IsCameraCount",0).toInt();//是否统计各相机踢废率
 	m_sSystemInfo.LastModelName = iniset.value("/system/LastModelName","default").toString();	//读取上次使用模板
-	m_sSystemInfo.m_iIsTrackStatistics = iniset.value("/system/isTrackStatistics",0).toInt();	//是否报警统计
-	m_sSystemInfo.m_iTrackNumber = iniset.value("/system/TrackNumber",10).toInt();	//报警统计个数
+	m_sSystemInfo.m_iIsTrackStatistics = iniset.value("/system/MaxKickNumber",200).toInt();	//是否报警统计
+	m_sSystemInfo.m_iTrackNumber = iniset.value("/system/MinKickNumber",10).toInt();	//报警统计个数
+
 	m_sSystemInfo.m_NoKickIfNoFind = iniset.value("/system/NoKickIfNoFind",0).toInt();	//报警类型
 	m_sSystemInfo.m_NoKickIfROIFail = iniset.value("/system/NoKickIfROIFail",0).toInt();	//报警类型	
 
@@ -2083,11 +2084,10 @@ void GlasswareDetectSystem::slots_ConnectServer()//10秒发送一次连接信号
 #endif
 	}
 	//判断误踢报警
-	if(m_sRunningInfo.m_failureNum2 - nLastKick > 20)//
+	if((m_sRunningInfo.m_failureNum2 - nLastKick > m_sSystemInfo.m_iTrackNumber && !nContinueKick && m_sRunningInfo.m_bCheck)|| (m_sRunningInfo.m_failureNum2 > m_sSystemInfo.m_iIsTrackStatistics))//
 	{
+		nContinueKick = true;
 		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,1);
-	}else{
-		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,0);
 	}
 	nLastKick = m_sRunningInfo.m_failureNum2;
 }

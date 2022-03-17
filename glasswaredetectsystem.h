@@ -198,6 +198,7 @@ public:
 	QMutex nSocketMutex;
 	int nCountNumber;
 	int nLastKick;
+	bool nContinueKick;//是否补踢
 	int nLastCheckNum;
 	int nLastFailedNum;
 	bool n_NetConnectState;

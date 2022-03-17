@@ -38,13 +38,14 @@ WidgetTest::WidgetTest(QWidget *parent)
 	QString strSession;
 	iIOCardOffSet = iniCarveSet.value("/system/iIOCardOffSet",200).toInt();
 	ui.Distance1to4->setText(QString::number(iIOCardOffSet));
-
 	//瓶口瓶底增加控件控制PLC通讯
 	connect(ui.pushButton_set,SIGNAL(clicked()),this,SLOT(slot_openPlcSet()));
 	connect(ui.pushButton,SIGNAL(clicked()),this,SLOT(slot_ConnectSever()));
 	m_plc = new Widget_PLC(ui.widget_splc,pMainFrm->m_sSystemInfo.m_iSystemType);
+	connect(m_plc,SIGNAL(ClearCountinueKick()),this,SLOT(slot_clearKick()));
 	ui.gridLayout->addWidget(m_plc);
-
+	ui.lineEdit ->setText(QString::number(pMainFrm->m_sSystemInfo.m_iTrackNumber));
+	ui.lineEdit_2->setText(QString::number(pMainFrm->m_sSystemInfo.m_iIsTrackStatistics));
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)//隐藏瓶身的按钮，防止前后壁误操作到第二块接口卡
 	{
 		ui.pushButton_set->setVisible(true);
@@ -128,6 +129,12 @@ void WidgetTest::slot_readIoCard()
 		nInfo.m_failureNum = nFailNum;
 		nTestCounter.unlock();
 	}
+}
+void WidgetTest::slot_clearKick()
+{
+	pMainFrm->nContinueKick=false;
+	pMainFrm->nLastKick = pMainFrm->m_sRunningInfo.m_failureNum2;
+	m_plc->SendCustomAlert(pMainFrm->m_sSystemInfo.m_iSystemType,0);
 }
 void WidgetTest::slot_ConnectSever()
 {
@@ -902,6 +909,11 @@ void WidgetTest::slots_setToFile()
 	QSettings iniCarveSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
 	QString strSession;
 	iniCarveSet.setValue ("/system/iIOCardOffSet",pMainFrm->test_widget->iIOCardOffSet);
+
+	QSettings iniDataSet(pMainFrm->m_sConfigInfo.m_strConfigPath,QSettings::IniFormat);
+	iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
+	iniDataSet.setValue ("/system/MinKickNumber",pMainFrm->m_sSystemInfo.m_iTrackNumber);
+	iniDataSet.setValue ("/system/MaxKickNumber",pMainFrm->m_sSystemInfo.m_iIsTrackStatistics);
 }
 void WidgetTest::slots_advance1()
 {
@@ -951,6 +963,8 @@ void WidgetTest::getIOCardParam()
 	m_nKickDelay = ui.KickDelay->text().toInt();
 	m_nKickWidth = ui.KickWidth->text().toInt();
 	iIOCardOffSet = ui.Distance1to4->text().toInt();
+	pMainFrm->m_sSystemInfo.m_iTrackNumber = ui.lineEdit->text().toInt();
+	pMainFrm->m_sSystemInfo.m_iIsTrackStatistics = ui.lineEdit_2->text().toInt();
 }
 
 void WidgetTest::slots_choseAllCamera()
@@ -988,7 +1002,7 @@ void WidgetTest::slots_updateIOcardCounter()
 	{
 		int iCounter;
 		iCounter = pMainFrm->m_vIOCard[0]->ReadCounter(16);
-		ui.label_frequency->setText(tr("Frequency:")+QString::number(iCounter));
+		//ui.label_frequency->setText(tr("Frequency:")+QString::number(iCounter));
 		iCounter = pMainFrm->m_vIOCard[0]->ReadCounter(0);
 		pMainFrm->nIOCard[0] = iCounter;
 		ui.label_IN0->setText(tr("IN0:")+QString::number(iCounter));

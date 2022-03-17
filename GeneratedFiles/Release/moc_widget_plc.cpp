@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_plc.h'
 **
-** Created: Mon Mar 14 16:00:13 2022
+** Created: Thu Mar 17 09:53:46 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,36 +23,40 @@ static const uint qt_meta_data_Widget_PLC[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      12,   11,   11,   11, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      12,   11,   11,   11, 0x0a,
-      35,   11,   11,   11, 0x0a,
-      58,   11,   11,   11, 0x0a,
-      81,   11,   11,   11, 0x0a,
-     101,   11,   11,   11, 0x0a,
-     117,   11,   11,   11, 0x0a,
+      33,   11,   11,   11, 0x0a,
+      56,   11,   11,   11, 0x0a,
+      79,   11,   11,   11, 0x0a,
+     102,   11,   11,   11, 0x0a,
+     122,   11,   11,   11, 0x0a,
      138,   11,   11,   11, 0x0a,
-     158,   11,   11,   11, 0x0a,
-     177,   11,   11,   11, 0x0a,
-     196,   11,   11,   11, 0x0a,
-     215,   11,   11,   11, 0x0a,
+     159,   11,   11,   11, 0x0a,
+     179,   11,   11,   11, 0x0a,
+     198,   11,   11,   11, 0x0a,
+     217,   11,   11,   11, 0x0a,
+     236,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_Widget_PLC[] = {
-    "Widget_PLC\0\0slots_Pushbuttonsure()\0"
-    "slots_Pushbuttonsave()\0slots_Pushbuttonread()\0"
-    "slots_readFromPLC()\0slots_TimeOut()\0"
-    "slots_CrashTimeOut()\0slots_clickBox(int)\0"
-    "slots_modify1(int)\0slots_modify2(int)\0"
-    "slots_modify3(int)\0slots_AutoAlert(int)\0"
+    "Widget_PLC\0\0ClearCountinueKick()\0"
+    "slots_Pushbuttonsure()\0slots_Pushbuttonsave()\0"
+    "slots_Pushbuttonread()\0slots_readFromPLC()\0"
+    "slots_TimeOut()\0slots_CrashTimeOut()\0"
+    "slots_clickBox(int)\0slots_modify1(int)\0"
+    "slots_modify2(int)\0slots_modify3(int)\0"
+    "slots_AutoAlert(int)\0"
 };
 
 void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -61,17 +65,18 @@ void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_ASSERT(staticMetaObject.cast(_o));
         Widget_PLC *_t = static_cast<Widget_PLC *>(_o);
         switch (_id) {
-        case 0: _t->slots_Pushbuttonsure(); break;
-        case 1: _t->slots_Pushbuttonsave(); break;
-        case 2: _t->slots_Pushbuttonread(); break;
-        case 3: _t->slots_readFromPLC(); break;
-        case 4: _t->slots_TimeOut(); break;
-        case 5: _t->slots_CrashTimeOut(); break;
-        case 6: _t->slots_clickBox((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 7: _t->slots_modify1((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 8: _t->slots_modify2((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 9: _t->slots_modify3((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 10: _t->slots_AutoAlert((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->ClearCountinueKick(); break;
+        case 1: _t->slots_Pushbuttonsure(); break;
+        case 2: _t->slots_Pushbuttonsave(); break;
+        case 3: _t->slots_Pushbuttonread(); break;
+        case 4: _t->slots_readFromPLC(); break;
+        case 5: _t->slots_TimeOut(); break;
+        case 6: _t->slots_CrashTimeOut(); break;
+        case 7: _t->slots_clickBox((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->slots_modify1((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: _t->slots_modify2((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: _t->slots_modify3((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 11: _t->slots_AutoAlert((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -109,10 +114,16 @@ int Widget_PLC::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
+}
+
+// SIGNAL 0
+void Widget_PLC::ClearCountinueKick()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE
