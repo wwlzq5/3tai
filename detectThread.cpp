@@ -357,7 +357,7 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 				pMainFrm->nSendData[nSignalNo].id = iErrorCamera;
 				pMainFrm->nSendData[nSignalNo].nType = sComErrorpara.nErrorType;
 				pMainFrm->nSendData[nSignalNo].nErrorArea = sComErrorpara.nArea;
-				pMainFrm->nCameraErrorType.push_back(pMainFrm->nSendData[nSignalNo]);
+				//pMainFrm->nCameraErrorType.push_back(pMainFrm->nSendData[nSignalNo]);
 			}
 			else
 			{

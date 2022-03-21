@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_test.h'
 **
-** Created: Wed Mar 16 17:18:51 2022
+** Created: Mon Mar 21 09:16:49 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_WidgetTest[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      38,   14, // methods
+      37,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,37 +40,36 @@ static const uint qt_meta_data_WidgetTest[] = {
 
  // slots: signature, parameters, type, tag, flags
      245,   11,   11,   11, 0x0a,
-     262,   11,   11,   11, 0x0a,
-     281,   11,   11,   11, 0x0a,
-     301,   11,   11,   11, 0x0a,
-     319,  163,   11,   11, 0x0a,
-     343,   11,   11,   11, 0x0a,
-     361,   11,   11,   11, 0x0a,
-     379,   11,   11,   11, 0x0a,
-     398,   11,   11,   11, 0x0a,
-     418,   11,   11,   11, 0x0a,
-     441,   11,   11,   11, 0x0a,
-     456,   11,   11,   11, 0x0a,
-     485,   11,   11,   11, 0x0a,
-     506,  500,   11,   11, 0x0a,
-     539,  533,   11,   11, 0x0a,
-     566,   11,   11,   11, 0x0a,
-     584,   11,   11,   11, 0x0a,
-     602,   11,   11,   11, 0x0a,
+     264,   11,   11,   11, 0x0a,
+     284,   11,   11,   11, 0x0a,
+     302,  163,   11,   11, 0x0a,
+     326,   11,   11,   11, 0x0a,
+     344,   11,   11,   11, 0x0a,
+     362,   11,   11,   11, 0x0a,
+     381,   11,   11,   11, 0x0a,
+     401,   11,   11,   11, 0x0a,
+     424,   11,   11,   11, 0x0a,
+     439,   11,   11,   11, 0x0a,
+     468,   11,   11,   11, 0x0a,
+     489,  483,   11,   11, 0x0a,
+     522,  516,   11,   11, 0x0a,
+     549,   11,   11,   11, 0x0a,
+     567,   11,   11,   11, 0x0a,
+     585,   11,   11,   11, 0x0a,
+     603,   11,   11,   11, 0x0a,
      620,   11,   11,   11, 0x0a,
-     637,   11,   11,   11, 0x0a,
-     660,   11,   11,   11, 0x0a,
-     684,   11,   11,   11, 0x0a,
-     710,   11,   11,   11, 0x0a,
-     737,   11,   11,   11, 0x0a,
-     765,   11,   11,   11, 0x0a,
-     790,   11,   11,   11, 0x0a,
-     813,   11,   11,   11, 0x0a,
-     838,   11,   11,   11, 0x0a,
-     869,   11,   11,   11, 0x0a,
-     903,   11,   11,   11, 0x0a,
-     926,   11,   11,   11, 0x0a,
-     950,  163,   11,   11, 0x0a,
+     643,   11,   11,   11, 0x0a,
+     667,   11,   11,   11, 0x0a,
+     693,   11,   11,   11, 0x0a,
+     720,   11,   11,   11, 0x0a,
+     748,   11,   11,   11, 0x0a,
+     773,   11,   11,   11, 0x0a,
+     796,   11,   11,   11, 0x0a,
+     821,   11,   11,   11, 0x0a,
+     852,   11,   11,   11, 0x0a,
+     886,   11,   11,   11, 0x0a,
+     909,   11,   11,   11, 0x0a,
+     933,  163,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -82,12 +81,12 @@ static const char qt_meta_stringdata_WidgetTest[] = {
     "signals_sendAlarm(int,QString)\0,\0"
     "signals_ShowWarning(int,QString)\0"
     "signal_UsualSend(int)\0signal_ioSetPam(int,int)\0"
-    "slot_clearKick()\0slots_ShowPlc(int)\0"
-    "slot_ConnectSever()\0slot_readIoCard()\0"
-    "slots_IoSetPam(int,int)\0slots_IoOpenPam()\0"
-    "slot_openPlcSet()\0slots_intoWidget()\0"
-    "slots_ChoseCamera()\0slots_ChoseErrorType()\0"
-    "slots_OKSave()\0slots_OKCameraSurveillance()\0"
+    "slots_ShowPlc(int)\0slot_ConnectSever()\0"
+    "slot_readIoCard()\0slots_IoSetPam(int,int)\0"
+    "slots_IoOpenPam()\0slot_openPlcSet()\0"
+    "slots_intoWidget()\0slots_ChoseCamera()\0"
+    "slots_ChoseErrorType()\0slots_OKSave()\0"
+    "slots_OKCameraSurveillance()\0"
     "slots_Cancel()\0iMode\0slots_KickModeChanged(int)\0"
     "index\0slots_SaveModeChanged(int)\0"
     "slots_readDelay()\0slots_setToCard()\0"
@@ -116,38 +115,37 @@ void WidgetTest::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->signals_ShowWarning((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 4: _t->signal_UsualSend((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->signal_ioSetPam((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 6: _t->slot_clearKick(); break;
-        case 7: _t->slots_ShowPlc((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 8: _t->slot_ConnectSever(); break;
-        case 9: _t->slot_readIoCard(); break;
-        case 10: _t->slots_IoSetPam((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 11: _t->slots_IoOpenPam(); break;
-        case 12: _t->slot_openPlcSet(); break;
-        case 13: _t->slots_intoWidget(); break;
-        case 14: _t->slots_ChoseCamera(); break;
-        case 15: _t->slots_ChoseErrorType(); break;
-        case 16: _t->slots_OKSave(); break;
-        case 17: _t->slots_OKCameraSurveillance(); break;
-        case 18: _t->slots_Cancel(); break;
-        case 19: _t->slots_KickModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 20: _t->slots_SaveModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 21: _t->slots_readDelay(); break;
-        case 22: _t->slots_setToCard(); break;
-        case 23: _t->slots_setToFile(); break;
-        case 24: _t->slots_advance1(); break;
-        case 25: _t->slots_choseAllCamera(); break;
-        case 26: _t->slots_choseNoneCamera(); break;
-        case 27: _t->slots_choseAllErrorType(); break;
-        case 28: _t->slots_choseNoneErrorType(); break;
-        case 29: _t->slots_updateIOcardCounter(); break;
-        case 30: _t->slots_ifCheckShowImage(); break;
-        case 31: _t->slots_CameraOffAreet(); break;
-        case 32: _t->SetCameraMonitorStatus(); break;
-        case 33: _t->slots_EquipAlarmCheckBox((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 34: _t->slots_EquipAlarmInfoShowbtn((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 35: _t->slots_EquipAlarmSave(); break;
-        case 36: _t->slots_EquipAlarmClear(); break;
-        case 37: _t->slots_SetEquipAlarmSatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 6: _t->slots_ShowPlc((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->slot_ConnectSever(); break;
+        case 8: _t->slot_readIoCard(); break;
+        case 9: _t->slots_IoSetPam((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 10: _t->slots_IoOpenPam(); break;
+        case 11: _t->slot_openPlcSet(); break;
+        case 12: _t->slots_intoWidget(); break;
+        case 13: _t->slots_ChoseCamera(); break;
+        case 14: _t->slots_ChoseErrorType(); break;
+        case 15: _t->slots_OKSave(); break;
+        case 16: _t->slots_OKCameraSurveillance(); break;
+        case 17: _t->slots_Cancel(); break;
+        case 18: _t->slots_KickModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->slots_SaveModeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 20: _t->slots_readDelay(); break;
+        case 21: _t->slots_setToCard(); break;
+        case 22: _t->slots_setToFile(); break;
+        case 23: _t->slots_advance1(); break;
+        case 24: _t->slots_choseAllCamera(); break;
+        case 25: _t->slots_choseNoneCamera(); break;
+        case 26: _t->slots_choseAllErrorType(); break;
+        case 27: _t->slots_choseNoneErrorType(); break;
+        case 28: _t->slots_updateIOcardCounter(); break;
+        case 29: _t->slots_ifCheckShowImage(); break;
+        case 30: _t->slots_CameraOffAreet(); break;
+        case 31: _t->SetCameraMonitorStatus(); break;
+        case 32: _t->slots_EquipAlarmCheckBox((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 33: _t->slots_EquipAlarmInfoShowbtn((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 34: _t->slots_EquipAlarmSave(); break;
+        case 35: _t->slots_EquipAlarmClear(); break;
+        case 36: _t->slots_SetEquipAlarmSatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -185,9 +183,9 @@ int WidgetTest::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 38)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 37;
     }
     return _id;
 }

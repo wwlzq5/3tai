@@ -265,7 +265,7 @@ void Widget_PLC::slots_TimeOut()
 {
 	//获取PLC的报警信息
 	QByteArray st;
-	SendMessage(0,st,1,1,8);//读取报警数据
+	SendMessage(0,st,1,1,6);//读取报警数据
 }
 void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id,int DataSize) //参数1为相机ID号，参数2为组装后的数据，参数3为读写状态,参数4为通道ID(可以为任意整数),参数5为数据大小
 {
@@ -487,7 +487,7 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
-	}else if(v_receive.size() == 22)
+	}else if(v_receive.size() == 20)
 	{
 		WORD v_Itmp=0;
 		int j=0;
@@ -511,13 +511,6 @@ void Widget_PLC::slots_readFromPLC()
 		{
 			nErrorType = -1;
 		}
-		//每次启停把连续补踢涉及的事件标志变化
-		ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
-		if(v_Itmp)
-		{
-			emit ClearCountinueKick();
-		}
-		m_byte+=2;
 	}else if(v_receive.size() == 54)//14+40
 	{
 		double v_douTemp;

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_plc.ui'
 **
-** Created: Wed Mar 16 17:02:20 2022
+** Created: Mon Mar 21 09:16:50 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

@@ -192,13 +192,11 @@ public:
 	int surplusDays;
 	HANDLE pHandles[CAMERA_MAX_COUNT];
 	MyErrorType nSendData[256];
-	QList<MyErrorType> nCameraErrorType;
 public:
 	//涉及网络通信的变量
 	QMutex nSocketMutex;
 	int nCountNumber;
 	int nLastKick;
-	bool nContinueKick;//是否补踢
 	int nLastCheckNum;
 	int nLastFailedNum;
 	bool n_NetConnectState;

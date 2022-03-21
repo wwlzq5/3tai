@@ -110,7 +110,6 @@ GlasswareDetectSystem::GlasswareDetectSystem(QWidget *parent, Qt::WFlags flags)
 	//m_eCurrentMainPage = CarveSettingPage;
 	CherkerAry.pCheckerlist=NULL;
 	surplusDays=0;
-	nContinueKick = false;
 	//网络通信初始化
 	m_tcpSocket = NULL;
 	nLastCheckNum = 0;
@@ -1397,66 +1396,23 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 		labelCoder->setText(strEncoder+strTime);
 	}
 	//保存IO卡的数据准备发送
-	//if(m_sRunningInfo.m_bCheck && m_sSystemInfo.m_bIsIOCardOK)
+	if(m_sSystemInfo.m_iSystemType == 2)
 	{
 		MyStruct nTempStruct;
-		if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
-		{
-			nTempStruct.nUnit = LEADING;
-		}else if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
-		{
-			nTempStruct.nUnit = CLAMPING;
-		}else if(pMainFrm->m_sSystemInfo.m_iSystemType == 3)
-		{
-			nTempStruct.nUnit = BACKING;
-		}
+		nTempStruct.nUnit = CLAMPING;
 		char* nTPIOtr;
-		if(pMainFrm->nCameraErrorType.count()>0)
-		{
-			nTempStruct.nState = ALERT;
-			nTempStruct.nCount = 24*sizeof(int)+sizeof(MyStruct);
-			memcpy(m_ptr,&nTempStruct,sizeof(MyStruct));
-			nTPIOtr = m_ptr;
-			nTPIOtr+=sizeof(MyStruct);
-			MyErrorType nTest = pMainFrm->nCameraErrorType.first();
-			nCameraErrorType.pop_back();
-			nIOCard[16] = nTest.id+1;
-			nIOCard[17] = nTest.nType;
-			if(m_sSystemInfo.m_iSystemType == 2)
-			{
-				nIOCard[21] = test_widget->nInfo.m_checkedNum;//表示第四块接口卡的过检总数
-				nIOCard[22] = test_widget->nInfo.m_checkedNum2;//表示第四块接口卡的踢废数目
-				nIOCard[23] = test_widget->m_plc->nErrorType;
-			}
-			memcpy(nTPIOtr,nIOCard,24*sizeof(int));
-			memset(nIOCard,0,24*sizeof(int));
-			QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
-			SendDataToSever(0,ALERT,ba,true);
-		}else{
-			if(nLastCheckNum != test_widget->nInfo.m_checkedNum ||nLastFailedNum != test_widget->nInfo.m_checkedNum2|| m_sRunningInfo.m_iKickMode2!=test_widget->m_plc->nErrorType)
-			{
-				test_widget->nTestCounter.lock();
-				nLastCheckNum = test_widget->nInfo.m_checkedNum;
-				nLastFailedNum = test_widget->nInfo.m_checkedNum2;
-				m_sRunningInfo.m_iKickMode2 = test_widget->m_plc->nErrorType;
-				test_widget->nTestCounter.unlock();
-				nTempStruct.nState = ALERT;
-				nTempStruct.nCount = 24*sizeof(int)+sizeof(MyStruct);
-				memcpy(m_ptr,&nTempStruct,sizeof(MyStruct));
-				nTPIOtr = m_ptr;
-				nTPIOtr+=sizeof(MyStruct);
-				if(m_sSystemInfo.m_iSystemType == 2)
-				{
-					nIOCard[21] = nLastCheckNum;//表示第四块接口卡的过检总数
-					nIOCard[22] = nLastFailedNum;//表示第四块接口卡的踢废数目
-					nIOCard[23] = test_widget->m_plc->nErrorType;
-				}
-				memcpy(nTPIOtr,nIOCard,24*sizeof(int));
-				memset(nIOCard,0,24*sizeof(int));
-				QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
-				SendDataToSever(0,ALERT,ba,true);
-			}
-		}
+		nTempStruct.nState = ALERT;
+		nTempStruct.nCount = 24*sizeof(int)+sizeof(MyStruct);
+		memcpy(m_ptr,&nTempStruct,sizeof(MyStruct));
+		nTPIOtr = m_ptr;
+		nTPIOtr+=sizeof(MyStruct);
+		nIOCard[21] = test_widget->nInfo.m_checkedNum;//表示第四块接口卡的过检总数
+		nIOCard[22] = test_widget->nInfo.m_checkedNum2;//表示第四块接口卡的踢废数目
+		nIOCard[23] = test_widget->m_plc->nErrorType;
+		memcpy(nTPIOtr,nIOCard,24*sizeof(int));
+		memset(nIOCard,0,24*sizeof(int));
+		QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
+		SendDataToSever(0,ALERT,ba,true);
 	}
 }
 
@@ -2084,9 +2040,8 @@ void GlasswareDetectSystem::slots_ConnectServer()//10秒发送一次连接信号
 #endif
 	}
 	//判断误踢报警
-	if((m_sRunningInfo.m_failureNum2 - nLastKick > m_sSystemInfo.m_iTrackNumber && !nContinueKick && m_sRunningInfo.m_bCheck)|| (m_sRunningInfo.m_failureNum2 > m_sSystemInfo.m_iIsTrackStatistics))//
+	if(m_sRunningInfo.m_bCheck&&(m_sRunningInfo.m_failureNum2 - nLastKick > m_sSystemInfo.m_iTrackNumber||m_sRunningInfo.m_failureNum2 > m_sSystemInfo.m_iIsTrackStatistics))//
 	{
-		nContinueKick = true;
 		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,1);
 	}
 	nLastKick = m_sRunningInfo.m_failureNum2;

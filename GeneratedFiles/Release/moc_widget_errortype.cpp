@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_errortype.h'
 **
-** Created: Wed Mar 16 17:02:19 2022
+** Created: Mon Mar 21 09:16:49 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

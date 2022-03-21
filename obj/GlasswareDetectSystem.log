@@ -1,1 +1,161 @@
-﻿  GlasswareDetectSystem.vcxproj -> E:\GlasswareDetectSystem2\.\runR\GlasswareDetectSystem.exe
+﻿  Moc'ing glasswaredetectsystem.h...
+  Qt: Untested Windows version 6.2 detected!
+  Rcc'ing glasswaredetectsystem.qrc...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing Widget_CameraPosition.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_camera.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_errortype.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_test.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_title.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_mycellwidget.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing cmygraphicsview.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing dhbasewidget.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing camerasatuslabel.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing cerrorimagelist.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing myimageshowitem.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing mytableview.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_Management.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing Widget_CarveImage.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing Widget_CarveInfo.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing detectThread.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing CIOCard.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing clogFile.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing Widget_CarveSetting.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing pushButton.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_image.h...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing image_widget.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing Widget_CarveInfo.ui...
+  Qt: Untested Windows version 6.2 detected!
+E:\GlasswareDetectSystem2\Widget_CarveInfo.ui : warning : Z-order assignment: '' is not a valid widget.
+E:\GlasswareDetectSystem2\Widget_CarveInfo.ui : warning : Z-order assignment: '' is not a valid widget.
+  Uic'ing widget_Management.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing widget_test.ui...
+  Qt: Untested Windows version 6.2 detected!
+E:\GlasswareDetectSystem2\widget_test.ui : warning : Z-order assignment: '' is not a valid widget.
+E:\GlasswareDetectSystem2\widget_test.ui : warning : Z-order assignment: '' is not a valid widget.
+E:\GlasswareDetectSystem2\widget_test.ui : warning : Z-order assignment: '' is not a valid widget.
+E:\GlasswareDetectSystem2\widget_test.ui : warning : Z-order assignment: '' is not a valid widget.
+E:\GlasswareDetectSystem2\widget_test.ui : warning : Z-order assignment: '' is not a valid widget.
+  Uic'ing Widget_CameraPosition.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing EquipRuntime.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing pushLicense.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_plc.h...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing widget_plc.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing LightSource.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widgetwarning.h...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing LightSource.h...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing userwidget.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widgetUser.h...
+  Qt: Untested Windows version 6.2 detected!
+  Uic'ing iowidget.ui...
+  Qt: Untested Windows version 6.2 detected!
+  Moc'ing widget_IoSet.h...
+  Qt: Untested Windows version 6.2 detected!
+  camerasatuslabel.cpp
+  cerrorimagelist.cpp
+  CIOCard.cpp
+  cmyerrorlist.cpp
+  cmygraphicsview.cpp
+  CombineResult.cpp
+  database.cpp
+  dhbasewidget.cpp
+  EquipRuntime.cpp
+  moc_camerasatuslabel.cpp
+  moc_cerrorimagelist.cpp
+  moc_CIOCard.cpp
+  moc_clogFile.cpp
+  moc_cmygraphicsview.cpp
+  moc_dhbasewidget.cpp
+  moc_EquipRuntime.cpp
+  moc_LightSource.cpp
+  moc_myimageshowitem.cpp
+  moc_mytableview.cpp
+  moc_pushLicense.cpp
+  Generating Code...
+  Compiling...
+  moc_widgetUser.cpp
+  moc_widgetwarning.cpp
+  moc_widget_camera.cpp
+  moc_Widget_CameraPosition.cpp
+  moc_Widget_CarveImage.cpp
+  moc_widget_errortype.cpp
+  moc_widget_image.cpp
+  moc_widget_IoSet.cpp
+  moc_widget_Management.cpp
+  moc_widget_mycellwidget.cpp
+  moc_widget_plc.cpp
+  moc_widget_test.cpp
+  moc_widget_title.cpp
+  LightSource.cpp
+LightSource.cpp(75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  myimageshowitem.cpp
+  mytableview.cpp
+  pushLicense.cpp
+  widgetUser.cpp
+  widgetwarning.cpp
+  widget_camera.cpp
+  Generating Code...
+  Compiling...
+  Widget_CameraPosition.cpp
+  widget_errortype.cpp
+  Widget_CarveImage.cpp
+  Widget_CarveSetting.cpp
+  detectThread.cpp
+  clogFile.cpp
+  moc_detectThread.cpp
+  moc_glasswaredetectsystem.cpp
+  moc_pushButton.cpp
+  moc_Widget_CarveInfo.cpp
+  moc_Widget_CarveSetting.cpp
+  glasswaredetectsystem.cpp
+  widget_image.cpp
+  main.cpp
+  myQueue.cpp
+  pushButton.cpp
+  Widget_CarveInfo.cpp
+  widget_IoSet.cpp
+  widget_Management.cpp
+  widget_mycellwidget.cpp
+  Generating Code...
+  Compiling...
+  stateTool.cpp
+  toolButton.cpp
+  widget_plc.cpp
+  widget_test.cpp
+  widget_title.cpp
+  Generating Code...
+  qrc_glasswaredetectsystem.cpp
+     正在创建库 .\runR\GlasswareDetectSystem.lib 和对象 .\runR\GlasswareDetectSystem.exp
+  GlasswareDetectSystem.vcxproj -> E:\GlasswareDetectSystem2\.\runR\GlasswareDetectSystem.exe

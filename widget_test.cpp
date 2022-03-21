@@ -42,7 +42,6 @@ WidgetTest::WidgetTest(QWidget *parent)
 	connect(ui.pushButton_set,SIGNAL(clicked()),this,SLOT(slot_openPlcSet()));
 	connect(ui.pushButton,SIGNAL(clicked()),this,SLOT(slot_ConnectSever()));
 	m_plc = new Widget_PLC(ui.widget_splc,pMainFrm->m_sSystemInfo.m_iSystemType);
-	connect(m_plc,SIGNAL(ClearCountinueKick()),this,SLOT(slot_clearKick()));
 	ui.gridLayout->addWidget(m_plc);
 	ui.lineEdit ->setText(QString::number(pMainFrm->m_sSystemInfo.m_iTrackNumber));
 	ui.lineEdit_2->setText(QString::number(pMainFrm->m_sSystemInfo.m_iIsTrackStatistics));
@@ -129,12 +128,6 @@ void WidgetTest::slot_readIoCard()
 		nInfo.m_failureNum = nFailNum;
 		nTestCounter.unlock();
 	}
-}
-void WidgetTest::slot_clearKick()
-{
-	pMainFrm->nContinueKick=false;
-	pMainFrm->nLastKick = pMainFrm->m_sRunningInfo.m_failureNum2;
-	m_plc->SendCustomAlert(pMainFrm->m_sSystemInfo.m_iSystemType,0);
 }
 void WidgetTest::slot_ConnectSever()
 {
