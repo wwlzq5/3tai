@@ -38,17 +38,14 @@ WidgetTest::WidgetTest(QWidget *parent)
 	QString strSession;
 	iIOCardOffSet = iniCarveSet.value("/system/iIOCardOffSet",200).toInt();
 	ui.Distance1to4->setText(QString::number(iIOCardOffSet));
+
 	//瓶口瓶底增加控件控制PLC通讯
 	connect(ui.pushButton_set,SIGNAL(clicked()),this,SLOT(slot_openPlcSet()));
 	connect(ui.pushButton,SIGNAL(clicked()),this,SLOT(slot_ConnectSever()));
-	m_plc = new Widget_PLC(ui.widget_splc,pMainFrm->m_sSystemInfo.m_iSystemType);
-	ui.gridLayout->addWidget(m_plc);
-	ui.lineEdit ->setText(QString::number(pMainFrm->m_sSystemInfo.m_iTrackNumber));
-	ui.lineEdit_2->setText(QString::number(pMainFrm->m_sSystemInfo.m_iIsTrackStatistics));
+	
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)//隐藏瓶身的按钮，防止前后壁误操作到第二块接口卡
 	{
 		ui.pushButton_set->setVisible(true);
-		m_plc->setVisible(true);
 		if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 		{
 			m_sSystemInfo1.iCardID = 1;
@@ -78,12 +75,8 @@ WidgetTest::WidgetTest(QWidget *parent)
 			ui.advance1->setText(QString::fromLocal8Bit("后壁高级设置"));
 		}
 		ui.pushButton_set->setVisible(false);
-		m_plc->setVisible(false);
-		ui.checkBox->setVisible(false);
 	}
-	ui.checkBox->setChecked(false);
 	//ui.pushButton->setVisible(false);
-	connect(ui.checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_ShowPlc(int)));
 	pMainFrm->m_sRunningInfo.m_iKickMode = 2;
 	nIotest = new IOtestWidget;
 	connect(nIotest,SIGNAL(showIocard()),this,SLOT(slots_IoOpenPam()));
@@ -97,16 +90,6 @@ WidgetTest::~WidgetTest()
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2 && pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
 		m_vIOCard->CloseIOCard();
-	}
-}
-void WidgetTest::slots_ShowPlc(int temp)
-{
-	if(temp == 2)
-	{
-		m_plc->setVisible(true);
-	}else if(temp == 0)
-	{
-		m_plc->setVisible(false);
 	}
 }
 void WidgetTest::slot_readIoCard()
@@ -132,8 +115,8 @@ void WidgetTest::slot_readIoCard()
 void WidgetTest::slot_ConnectSever()
 {
 	//pMainFrm->m_tcpSocket->connectToHost("127.0.0.1",8088);
-	m_plc->m_pSocket->connectToHost("192.168.250.1", 9600);
-	if(m_plc->m_pSocket->waitForConnected(3000))
+	pMainFrm->plc_widget->m_pSocket->connectToHost("192.168.250.1", 9600);
+	if(pMainFrm->plc_widget->m_pSocket->waitForConnected(3000))
 	{
 		QMessageBox::information(this,tr("message"),tr("connect success!"));
 	}else{
@@ -170,6 +153,7 @@ void WidgetTest::slot_openPlcSet()
 		int temp2 = m_vIOCard->readParam(32);
 		emit signal_ioSetPam(temp,temp2);
 	}
+	nIotest->raise();
 	nIotest->show();
 }
 void WidgetTest::slots_intoWidget()
@@ -223,17 +207,6 @@ void WidgetTest::slots_intoWidget()
 	ui.spinBox_Number->setValue(iSaveImgCount);
 	initInformation();//更新接口卡配置
 	ui.comboBox->setCurrentIndex(ifshowImage);
-	//发送PLC事件，更新数据
-	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
-	{
-		m_plc->EnterPLC();
-		if(ui.checkBox->isChecked())
-		{
-			m_plc->setVisible(true);
-		}else{
-			m_plc->setVisible(false);
-		}
-	}
 }
 bool WidgetTest::leaveWidget()
 {
@@ -580,20 +553,14 @@ void WidgetTest::slots_CameraOffAreet()
 			pMainFrm->cameraStatus_list.at(i)->SetCameraStatus(2);
 			//emit signals_ShowWarning(i,QString(tr("Camera %1 Offline ! \nPlease check the camera and restart the software!")).arg(i+1));
 			test = true;
-			m_plc->nErrorCameraID = i+1;
+			pMainFrm->plc_widget->nErrorCameraID = i+1;
 			break;
 		}
 	}
 	if(!test)
 	{
-		m_plc->nErrorCameraID = 0;
+		pMainFrm->plc_widget->nErrorCameraID = 0;
 	}
-	/*if(test)
-	{
-		emit signal_UsualSend(1);
-	}else{
-		emit signal_UsualSend(0);
-	}*/
 }
 
 void WidgetTest::SetCameraMonitorStatus()
@@ -995,7 +962,7 @@ void WidgetTest::slots_updateIOcardCounter()
 	{
 		int iCounter;
 		iCounter = pMainFrm->m_vIOCard[0]->ReadCounter(16);
-		//ui.label_frequency->setText(tr("Frequency:")+QString::number(iCounter));
+		ui.label_frequency->setText(tr("Frequency:")+QString::number(iCounter));
 		iCounter = pMainFrm->m_vIOCard[0]->ReadCounter(0);
 		pMainFrm->nIOCard[0] = iCounter;
 		ui.label_IN0->setText(tr("IN0:")+QString::number(iCounter));

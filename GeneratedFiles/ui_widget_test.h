@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Mon Mar 21 09:16:50 2022
+** Created: Thu Mar 24 09:30:29 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -143,7 +143,7 @@ public:
     QLineEdit *lineDelay;
     QLabel *label_OUT5;
     QPushButton *read;
-    QLabel *label;
+    QLabel *label_frequency;
     QLabel *label_11;
     QLabel *label_OUT3;
     QLabel *label_9;
@@ -166,15 +166,13 @@ public:
     QLabel *label_10;
     QLineEdit *Delay1;
     QLabel *label_20;
-    QCheckBox *checkBox;
     QRadioButton *radioButton_good;
     QLabel *label_2;
     QLabel *label_4;
     QLineEdit *lineEdit_2;
     QLineEdit *lineEdit;
-    QGridLayout *gridLayout;
-    QWidget *widget_splc;
-    QGridLayout *gridLayout_2;
+    QLabel *label;
+    QSpacerItem *verticalSpacer_2;
 
     void setupUi(QWidget *WidgetTest)
     {
@@ -200,7 +198,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(-416, 0, 1707, 973));
+        scrollAreaWidgetContents->setGeometry(QRect(-416, -139, 1707, 973));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_14 = new QVBoxLayout();
@@ -740,10 +738,10 @@ public:
 
         gridLayout_15->addWidget(read, 5, 3, 1, 1);
 
-        label = new QLabel(widget_IOCardSet);
-        label->setObjectName(QString::fromUtf8("label"));
+        label_frequency = new QLabel(widget_IOCardSet);
+        label_frequency->setObjectName(QString::fromUtf8("label_frequency"));
 
-        gridLayout_15->addWidget(label, 9, 0, 1, 1);
+        gridLayout_15->addWidget(label_frequency, 9, 0, 1, 1);
 
         label_11 = new QLabel(widget_IOCardSet);
         label_11->setObjectName(QString::fromUtf8("label_11"));
@@ -877,11 +875,6 @@ public:
 
         gridLayout_15->addWidget(label_20, 6, 2, 1, 1);
 
-        checkBox = new QCheckBox(widget_IOCardSet);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        gridLayout_15->addWidget(checkBox, 9, 1, 1, 1);
-
         radioButton_good = new QRadioButton(widget_IOCardSet);
         radioButton_good->setObjectName(QString::fromUtf8("radioButton_good"));
         sizePolicy.setHeightForWidth(radioButton_good->sizePolicy().hasHeightForWidth());
@@ -913,25 +906,17 @@ public:
 
         gridLayout_15->addWidget(lineEdit, 8, 1, 1, 1);
 
+        label = new QLabel(widget_IOCardSet);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_15->addWidget(label, 9, 1, 1, 1);
+
 
         verticalLayout_11->addLayout(gridLayout_15);
 
-        gridLayout = new QGridLayout();
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        widget_splc = new QWidget(widget_IOCardSet);
-        widget_splc->setObjectName(QString::fromUtf8("widget_splc"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(widget_splc->sizePolicy().hasHeightForWidth());
-        widget_splc->setSizePolicy(sizePolicy3);
-        gridLayout_2 = new QGridLayout(widget_splc);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addWidget(widget_splc, 0, 0, 1, 1);
-
-
-        verticalLayout_11->addLayout(gridLayout);
+        verticalLayout_11->addItem(verticalSpacer_2);
 
 
         verticalLayout_4->addWidget(widget_IOCardSet);
@@ -1004,7 +989,7 @@ public:
         radioButton_normal->setText(QApplication::translate("WidgetTest", "Normal", 0, QApplication::UnicodeUTF8));
         label_OUT5->setText(QApplication::translate("WidgetTest", "OUT5:", 0, QApplication::UnicodeUTF8));
         read->setText(QApplication::translate("WidgetTest", "Read", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
+        label_frequency->setText(QApplication::translate("WidgetTest", "Frequency:", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("WidgetTest", "Channel6:", 0, QApplication::UnicodeUTF8));
         label_OUT3->setText(QApplication::translate("WidgetTest", "OUT3:", 0, QApplication::UnicodeUTF8));
         label_9->setText(QApplication::translate("WidgetTest", "Channel4:", 0, QApplication::UnicodeUTF8));
@@ -1023,10 +1008,10 @@ public:
         label_8->setText(QApplication::translate("WidgetTest", "Channel3:", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("WidgetTest", "Channel5:", 0, QApplication::UnicodeUTF8));
         label_20->setText(QApplication::translate("WidgetTest", "Kick Delay:", 0, QApplication::UnicodeUTF8));
-        checkBox->setText(QApplication::translate("WidgetTest", "PLC\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         radioButton_good->setText(QApplication::translate("WidgetTest", "Continue Good", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("WidgetTest", "\350\277\236\347\273\255\350\241\245\350\270\242\346\212\245\350\255\246:", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("WidgetTest", "\350\241\245\350\270\242\346\234\200\345\244\247\344\270\252\346\225\260\346\212\245\350\255\246:", 0, QApplication::UnicodeUTF8));
+        label->setText(QString());
     } // retranslateUi
 
 };

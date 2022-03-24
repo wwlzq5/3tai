@@ -586,6 +586,7 @@ void Widget_CarveImage::slots_LightSet()
 	if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
 	{
 		pMainFrm->nLightSource->raise();
+		pMainFrm->nLightSource->intoLightSource(iCameraNo);
 		pMainFrm->nLightSource->showNormal();
 	}
 }
@@ -1460,38 +1461,22 @@ void Widget_CarveImage::slots_setToCamera()
 	int iCameraSN =  pMainFrm->m_sCarvedCamInfo[iCameraNo].m_iToRealCamera;
 	int iShuterTime = pWidgetCarveInfo->ui.spinBox_exposureTime->text().toInt();
 	int iTriggerType = pWidgetCarveInfo->ui.comboBox_triggerType->currentIndex();
-	pMainFrm->mutexDetectElement[iCameraSN].lock();
-
 	pMainFrm->m_sRealCamInfo[iCameraSN].m_iShuter = iShuterTime;
-	pMainFrm->m_sRealCamInfo[iCameraSN].m_iTrigger = iTriggerType;
 
-	if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 0)
+	pMainFrm->mutexDetectElement[iCameraSN].lock();
+	if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 8)
+	{
+		((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERExposure,iShuterTime);
+	}
+	else if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 0)
 	{
 		((CDHGrabberSG*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->SGSetParamInt(SGGrabSpeed,iShuterTime);
 	}
-	else if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 8)
-	{
-		if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iTrigger == 0)
-		{
-			((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERSnapMode,0);
-			pMainFrm->m_sRealCamInfo[iCameraSN].m_bGrabIsTrigger = false;
-		}
-		else if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iTrigger == 1)
-		{
-			((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERSnapMode,1);
-			pMainFrm->m_sRealCamInfo[iCameraSN].m_bGrabIsTrigger = true;
-		}
-		((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERExposure,iShuterTime);
-	}
-
 	pMainFrm->mutexDetectElement[iCameraSN].unlock();
-
 	QSettings iniCameraSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
-	QString strShuter,strTrigger;
+	QString strShuter;
 	strShuter = QString("/Shuter/Grab_%1").arg(iCameraSN);
-	strTrigger = QString("/Trigger/Grab_%1").arg(iCameraSN);
 	iniCameraSet.setValue(strShuter,QString::number(iShuterTime));
-	iniCameraSet.setValue(strTrigger,QString::number(iTriggerType));
 	//设置延时参数
 	if (pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
@@ -1564,7 +1549,6 @@ void Widget_CarveImage::slots_setToCamera()
 			StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 		}
 	}
-	//pWidgetCarveInfo->ui.pushButton_save->setEnabled(false);
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetToCameraStatus()));
 	pMainFrm->Logfile.write(QString("set camera%1 param,TriggerType:%2,ShuterTime:%3,TriggerDelay:%4!").arg(iCameraSN).arg(iTriggerType).arg(iShuterTime).arg(iTriggerDelay),OperationLog);

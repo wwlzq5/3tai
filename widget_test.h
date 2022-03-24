@@ -7,7 +7,6 @@
 #include "widget_camera.h"
 #include "ui_widget_test.h"
 #include "camerasatuslabel.h"
-#include "widget_plc.h"
 #include "CIOCard.h"
 #include "widget_IoSet.h"
 enum StateEnum
@@ -87,7 +86,6 @@ signals:
 	void signal_UsualSend(int);
 	void signal_ioSetPam(int,int);
 public slots:
-	void slots_ShowPlc(int);
 	void slot_ConnectSever();
 	void slot_readIoCard();
 	void slots_IoSetPam(int,int);
@@ -158,7 +156,6 @@ public:
 	s_ConfigIOCardInfo m_sSystemInfo1;
 public:
 	NingInfo nInfo;
-	Widget_PLC * m_plc;
 	//QConsole* nConsole;
 	int iIOCardOffSet;
 	int ifshowImage;

@@ -38,7 +38,7 @@ WidgetTitle::WidgetTitle(QWidget *parent)
 	QStringList string_list;
 	string_list<<":/toolWidget/bottle"<<":/toolWidget/management"\
 		<<":/toolWidget/set"<<":/toolWidget/algset"<<":/toolWidget/start"<<":/toolWidget/exit"\
-		<<":/toolWidget/GoDown"<<":/toolWidget/home"<<":/toolWidget/UpDown"<<":/toolWidget/InterFace"<<":/toolWidget/home";//
+		<<":/toolWidget/PLC"<<":/toolWidget/home"<<":/toolWidget/UpDown"<<":/toolWidget/InterFace"<<":/toolWidget/home";//
 	QHBoxLayout *button_layout = new QHBoxLayout();//水平布局管理器
 
 	QSignalMapper *signal_mapper = new QSignalMapper(this);//工具栏的信号管理
@@ -86,12 +86,13 @@ WidgetTitle::WidgetTitle(QWidget *parent)
 
     setLayout(main_layout); 
     setFixedHeight(TITEL_HEIGHT);
-	button_list.at(6)->setVisible(false);
+	//button_list.at(6)->setVisible(false);
 	button_list.at(7)->setVisible(false);
 	button_list.at(8)->setVisible(false);
 	if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
 	{
 		button_list.at(9)->setVisible(false);
+		button_list.at(6)->setVisible(false);
 	}
 }
 void WidgetTitle::setState(bool test)
@@ -100,6 +101,7 @@ void WidgetTitle::setState(bool test)
 	button_list.at(2)->setEnabled(test);
 	button_list.at(3)->setEnabled(test);
 	button_list.at(4)->setEnabled(test);
+	button_list.at(6)->setEnabled(test);
 }
 void WidgetTitle::addToolName()
 {
@@ -113,7 +115,7 @@ void WidgetTitle::addToolName()
 	button_list.at(3)->setText(tr("Algorithm"));
 	button_list.at(4)->setText(tr("Start"));
 	button_list.at(5)->setText(tr("Exit"));
-	button_list.at(6)->setText(tr("UpDown"));
+	button_list.at(6)->setText(tr("PLC"));
 	button_list.at(7)->setText(tr("ClampDown"));
 	button_list.at(8)->setText(tr("GoDown"));
 	button_list.at(9)->setText(tr("InterFace"));

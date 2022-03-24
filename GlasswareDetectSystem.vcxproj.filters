@@ -334,6 +334,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_widget_IoSet.cpp">
       <Filter>Header Files\Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Widget_PLCPicture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Widget_PLCPicture.cpp">
+      <Filter>Header Files\Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Widget_PLCPicture.cpp">
+      <Filter>Header Files\Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="glasswaredetectsystem.h">
@@ -520,6 +529,9 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="widget_IoSet.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Widget_PLCPicture.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

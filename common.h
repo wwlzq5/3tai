@@ -60,6 +60,7 @@ enum e_CurrentMainPage
 	ManagementSettingPage,
 	TestPage,
 	AlgPage,
+	PlcPage
 };
 
 enum e_ToolButton	

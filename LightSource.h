@@ -27,6 +27,7 @@ public:
 	void getStyle();
 	void closeEvent(QCloseEvent *event);
 	void SaveParameter();
+	void intoLightSource(int);
 public slots:
 	void slots_clickAccont(int);
 	//void slot_setValue(int);

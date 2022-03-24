@@ -170,7 +170,9 @@ void DetectThread::checkImage(CGrabElement *pElement,int iCheckMode)
 			switch(dwRet)
 			{
 			case WAIT_TIMEOUT:
+				sReturnStatus.nErrorID = 1;
 				pMainFrm->Logfile.write(QString("Camera:%1 overtime").arg(iCamera) ,CheckLog);
+				return;
 			}
 		}
 		

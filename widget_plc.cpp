@@ -10,16 +10,15 @@
 #include "glasswaredetectsystem.h"
 extern GlasswareDetectSystem *pMainFrm;
 #define CUSTOMALERT 3
-Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
+Widget_PLC::Widget_PLC(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	setWindowIcon(QIcon("./Resources/LOGO.png"));
-	setWindowTitle(QString::fromLocal8Bit("PLC设置"));
-	//setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);//去掉标题栏
 	connect(ui.SureButton,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsure()));
 	connect(ui.pushButton_save,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsave()));
 	connect(ui.pushButton_read,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonread()));
+	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
+	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	m_pSocket = new QUdpSocket();
 	m_pSocket->connectToHost("192.168.250.1", 9600);
 	if (m_pSocket->state() == QAbstractSocket::ConnectedState || m_pSocket->waitForConnected(2000))
@@ -35,24 +34,18 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 	ui.lineEdit_6->setValidator(IntValidator);
 	IntValidator->setRange(1,450);
 	ui.lineEdit_1->setValidator(IntValidator);
-	if(SystemType==2)
-	{
-		m_zTimer = new QTimer(this);
-		connect(m_zTimer,SIGNAL(timeout()),this,SLOT(slots_TimeOut()));
-		m_zTimer->start(1000);
-	}
+	nSystemType = pMainFrm->m_sSystemInfo.m_iSystemType;
 	m_CrashTimer = new QTimer(this);
 	connect(m_CrashTimer,SIGNAL(timeout()),this,SLOT(slots_CrashTimeOut()));
 	m_CrashTimer->start(10000);
 	//获取PLC报警信息
 	nErrorType = 0;
-	nErrorCameraID = 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-	nSystemType = SystemType;
+	nErrorCameraID = 0;
 	QButtonGroup* test4=new QButtonGroup(this);
 	test4->addButton(ui.radioButton_9);
 	test4->addButton(ui.radioButton_10);
 	/////////////////////
-	if(SystemType==2)
+	if(nSystemType == 2)
 	{
 		nAlertDataList = new int[96];
 		memset(nAlertDataList,0,96*sizeof(int));
@@ -64,24 +57,18 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 			QCheckBox *checkBox = new QCheckBox(this);
 			nlistCheckBox<<checkBox;
 		}
-		nAlertSet = new QWidget(this);
-		QPalette pal(nAlertSet->palette());
-		pal.setColor(QPalette::Background,QColor(90,90,90,120));
-		nAlertSet->setAutoFillBackground(true);
-		nAlertSet->setPalette(pal);
-		QGridLayout *gridlayout = new QGridLayout(nAlertSet);
 		QSignalMapper* signalmapper = new QSignalMapper(this);//工具栏的信号管理
 		QCheckBox *checkBox = new QCheckBox(this);
 		checkBox->setText(QString::fromLocal8Bit("是否报警"));//勾选表示要报警
-		gridlayout->addWidget(checkBox,0,1,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		ui.gridLayout_7->addWidget(checkBox,0,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_modify1(int)));
 		QCheckBox *checkBox2 = new QCheckBox(this);
 		checkBox2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
-		gridlayout->addWidget(checkBox2,0,3,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		ui.gridLayout_7->addWidget(checkBox2,0,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox2,SIGNAL(stateChanged(int)),this,SLOT(slots_modify2(int)));
 		QCheckBox *checkBox3 = new QCheckBox(this);
 		checkBox3->setText(QString::fromLocal8Bit("是否停理瓶器"));//勾选表示要停止理瓶器
-		gridlayout->addWidget(checkBox3,0,5,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		ui.gridLayout_7->addWidget(checkBox3,0,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox3,SIGNAL(stateChanged(int)),this,SLOT(slots_modify3(int)));
 		for (int i = 0;i < 32;i++)
 		{
@@ -103,10 +90,10 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 			signalmapper->setMapping(nlistCheckBox[i+64], i+64);
 			if(ErrorName != "")
 			{
-				gridlayout->addWidget(label,i+1,0);
-				gridlayout->addWidget(nlistCheckBox[i],i+1,2,1,2,Qt::AlignLeft | Qt::AlignVCenter);
-				gridlayout->addWidget(nlistCheckBox[i+32],i+1,4,1,2,Qt::AlignLeft | Qt::AlignVCenter);
-				gridlayout->addWidget(nlistCheckBox[i+64],i+1,6,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+				ui.gridLayout_7->addWidget(label,i+1,0);
+				ui.gridLayout_7->addWidget(nlistCheckBox[i],i+1,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+				ui.gridLayout_7->addWidget(nlistCheckBox[i+32],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+				ui.gridLayout_7->addWidget(nlistCheckBox[i+64],i+1,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 			}else{
 				label->setVisible(false);
 				nlistCheckBox[i]->setVisible(false);
@@ -115,32 +102,23 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 			}
 		}
 		connect(signalmapper, SIGNAL(mapped(int)), this, SLOT(slots_clickBox(int)));
-		QVBoxLayout *mainLayout = new QVBoxLayout();
-		mainLayout->addLayout(gridlayout);
-		mainLayout->setSpacing(6);
-		mainLayout->setContentsMargins(0,0,0,0);
-		nAlertSet->setLayout(mainLayout);
-		ui.scrollArea->setWidget(nAlertSet);
 		//增加自定义的报警
-		
-		QGridLayout *groupBox_5 = new QGridLayout(ui.widget_2);
-		groupBox_5->setColStretch(6,10);
 		QSignalMapper* signalmapper1 = new QSignalMapper(this);//工具栏的信号管理
 		QLabel *nLabel2 = new QLabel(this);
 		nLabel2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
-		groupBox_5->addWidget(nLabel2,0,1,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		ui.gridLayout_12->addWidget(nLabel2,0,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		QLabel *nLabel3 = new QLabel(this);
 		nLabel3->setText(QString::fromLocal8Bit("是否停理瓶器"));//勾选表示要停止理瓶器
-		groupBox_5->addWidget(nLabel3,0,3,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+		ui.gridLayout_12->addWidget(nLabel3,0,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		QLabel *nLabel11 = new QLabel(this);
 		nLabel11->setText(QString::fromLocal8Bit("前壁补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel11,1,0);
+		ui.gridLayout_12->addWidget(nLabel11,1,0);
 		QLabel *nLabel12 = new QLabel(this);
 		nLabel12->setText(QString::fromLocal8Bit("夹持补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel12,2,0);
+		ui.gridLayout_12->addWidget(nLabel12,2,0);
 		QLabel *nLabel13 = new QLabel(this);
 		nLabel13->setText(QString::fromLocal8Bit("后壁补踢报警"));//勾选表示要报警
-		groupBox_5->addWidget(nLabel13,3,0);
+		ui.gridLayout_12->addWidget(nLabel13,3,0);
 		for(int i=0;i<CUSTOMALERT*2;i++)
 		{
 			QCheckBox *checkBox = new QCheckBox(this);
@@ -152,16 +130,66 @@ Widget_PLC::Widget_PLC(QWidget *parent,int SystemType)
 
 		for(int i=0;i<CUSTOMALERT;i++)
 		{
-			groupBox_5->addWidget(nCustomAlert[i],i+1,2,1,2,Qt::AlignLeft | Qt::AlignVCenter);
-			groupBox_5->addWidget(nCustomAlert[i+3],i+1,4,1,2,Qt::AlignLeft | Qt::AlignVCenter);
+			ui.gridLayout_12->addWidget(nCustomAlert[i],i+1,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+			ui.gridLayout_12->addWidget(nCustomAlert[i+CUSTOMALERT],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		}
 	}
-	//80000200010000020005 0101B200 D4000002
+	m_PlcPicture = new Widget_PLCPicture(ui.widget_3);
+	ui.gridLayout_3->addWidget(m_PlcPicture);
+	connect(m_PlcPicture,SIGNAL(showSetPam()),this,SLOT(slots_HidePicture()));
+	connect(this,SIGNAL(signal_updatePLCInfo(WORD)),m_PlcPicture,SLOT(slots_updatePLCInfo(WORD)));
+	if(nSystemType == 2)
+	{
+		m_zTimer = new QTimer(this);
+		connect(m_zTimer,SIGNAL(timeout()),this,SLOT(slots_TimeOut()));
+		m_zTimer->start(1000);
+	}
+	EnableCortol();
 }
-
 Widget_PLC::~Widget_PLC()
 {
 	delete m_pSocket;
+}
+void Widget_PLC::EnableCortol()
+{
+	ui.gridLayout_7->setSpacing(20);
+	ui.groupBox_2->setVisible(false);
+	ui.groupBox_4->setVisible(false);
+	ui.widget->setVisible(false);
+	ui.widget_3->setVisible(true);
+	ui.lineEdit_30->setVisible(false);
+	ui.label_39->setVisible(false);
+	ui.lineEdit_31->setVisible(false);
+	ui.label_40->setVisible(false);
+}
+void Widget_PLC::slots_HidePicture()
+{
+	ui.widget->setVisible(true);
+	ui.widget_3->setVisible(false);
+}
+void Widget_PLC::slots_intoWidget()
+{
+	QByteArray st;
+	SendPLCMessage(87,st,1,2,254);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
+	ui.checkBox->setChecked(false);
+	ui.checkBox_2->setChecked(false);
+	ui.widget->setVisible(false);
+	ui.widget_3->setVisible(true);
+}
+void Widget_PLC::slots_showPamSet()
+{
+	if(ui.checkBox->isChecked())
+	{
+		ui.groupBox_2->setVisible(true);
+	}else{
+		ui.groupBox_2->setVisible(false);
+	}
+	if(ui.checkBox_2->isChecked())
+	{
+		ui.groupBox_4->setVisible(true);
+	}else{
+		ui.groupBox_4->setVisible(false);
+	}
 }
 void Widget_PLC::slots_modify1(int temp)
 {
@@ -232,12 +260,7 @@ void Widget_PLC::slots_clickBox(int mTemp)
 void Widget_PLC::slots_Pushbuttonread()
 {
 	QByteArray st;
-	SendMessage(20,st,1,1,40);
-}
-void Widget_PLC::EnterPLC()
-{
-	QByteArray st;
-	SendMessage(87,st,1,2,254);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
+	SendPLCMessage(20,st,1,1,40);
 }
 void Widget_PLC::slots_CrashTimeOut()
 {
@@ -254,18 +277,18 @@ void Widget_PLC::slots_CrashTimeOut()
 	DataToByte(zTest,st);
 	if(nSystemType == 1)
 	{
-		SendMessage(500,st,2,1,8);
+		SendPLCMessage(500,st,2,1,8);
 	}else if(nSystemType == 2){
-		SendMessage(504,st,2,1,8);
+		SendPLCMessage(504,st,2,1,8);
 	}else if(nSystemType == 3){
-		SendMessage(508,st,2,1,8);
+		SendPLCMessage(508,st,2,1,8);
 	}
 }
 void Widget_PLC::slots_TimeOut()
 {
 	//获取PLC的报警信息
 	QByteArray st;
-	SendMessage(0,st,1,1,6);//读取报警数据
+	SendPLCMessage(0,st,1,1,8);//读取报警数据
 }
 void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id,int DataSize) //参数1为相机ID号，参数2为组装后的数据，参数3为读写状态,参数4为通道ID(可以为任意整数),参数5为数据大小
 {
@@ -291,8 +314,7 @@ void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id
 	v_szTmp.append(st);
 	st = v_szTmp;
 }
-
-int Widget_PLC::SendMessage(int address,QByteArray& send,int state,int id,int DataSize) //异步发送数据改变PLC参数
+void Widget_PLC::SendPLCMessage(int address,QByteArray& send,int state,int id,int DataSize) //异步发送数据改变PLC参数
 {
 	SendDataToPLCHead(address,send,state,id,DataSize);
 	if (m_pSocket->state() == QAbstractSocket::ConnectedState)
@@ -302,21 +324,19 @@ int Widget_PLC::SendMessage(int address,QByteArray& send,int state,int id,int Da
 			m_pSocket->write(send);
 		}
 	}
-	return 0;
 }
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 268)//254+14
+	if (v_receive.size() == 268)//242+12+4+10
 	{
-		//
 		double v_douTemp = 0;
 		int v_Itmp = 0;
 		int v_bit = 14;
 		int j=0;
+		WORD v_Itmps=0;
 		for (;v_bit<18;v_bit+=2)
 		{
-			WORD v_Itmps=0;
 			ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);
 			for(int i=0;i<CUSTOMALERT;i++)
 			{
@@ -332,10 +352,18 @@ void Widget_PLC::slots_readFromPLC()
 			}
 		}
 		j=0;
-		v_bit+=6;//24 
+		v_bit+=2;
+		ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);//H89
+		if(v_Itmps)
+		{
+			ui.radioButton->setChecked(true);
+		}else{
+			ui.radioButton_3->setChecked(true);
+		}
+		v_bit+=4;//24 
 		for (;v_bit<36;v_bit+=2)//24+12
 		{
-			WORD v_Itmps=0;
+			v_Itmps=0;
 			ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);
 			for(int i=0;i<16;i++)
 			{
@@ -487,7 +515,7 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
-	}else if(v_receive.size() == 20)
+	}else if(v_receive.size() == 22)
 	{
 		WORD v_Itmp=0;
 		int j=0;
@@ -502,7 +530,6 @@ void Widget_PLC::slots_readFromPLC()
 				{
 					nErrorType = j;
 					Asert = false;
-					//pMainFrm->Logfile.write(QString("send %1").arg(j),AbnormityLog);
 				}
 				j++;
 			}
@@ -511,6 +538,8 @@ void Widget_PLC::slots_readFromPLC()
 		{
 			nErrorType = -1;
 		}
+		ByteToData(v_receive,m_byte,m_byte+1,v_Itmp);
+		emit signal_updatePLCInfo(v_Itmp);
 	}else if(v_receive.size() == 54)//14+40
 	{
 		double v_douTemp;
@@ -531,13 +560,12 @@ void Widget_PLC::slots_readFromPLC()
 		ui.lineEdit_20->setText(QString::number(v_douTemp,'f',2));
 	}
 }
-
 void Widget_PLC::slots_Pushbuttonsure()
 {
 	QByteArray st;
 	WORD TempData = 3;
 	DataToByte(TempData,st);
-	SendMessage(90,st,2,1,2);//写入指令，命令下发完毕后再写一次
+	SendPLCMessage(90,st,2,1,2);//写入指令，命令下发完毕后再写一次
 }
 void Widget_PLC::SendCustomAlert(int temp,int nData)
 {
@@ -558,7 +586,7 @@ void Widget_PLC::SendCustomAlert(int temp,int nData)
 		}
 	}
 	DataToByte(TempData,st);
-	SendMessage(2,st,2,1,2);
+	SendPLCMessage(2,st,2,1,2);
 }
 void Widget_PLC::slots_Pushbuttonsave()
 {
@@ -581,6 +609,10 @@ void Widget_PLC::slots_Pushbuttonsave()
 				nData[1] += test<<(i-CUSTOMALERT);
 			}
 		}
+	}
+	if(ui.radioButton->isChecked())
+	{
+		nData[2]=1;
 	}
 	for(int i=0;i<5;i++)
 	{
@@ -722,7 +754,7 @@ void Widget_PLC::slots_Pushbuttonsave()
 	TempData = ui.lineEdit_40->text().toInt();
 	DataToByte(TempData,st);
 	//总数
-	SendMessage(87,st,2,1,254);//120+44+64=244+10
+	SendPLCMessage(87,st,2,1,254);//120+44+64=244+10
 }
 template<typename T>
 void Widget_PLC::DataToByte(T& xx, QByteArray& st)

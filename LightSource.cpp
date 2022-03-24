@@ -90,6 +90,11 @@ void LightSource::slot_login()
 	QByteArray ba = str.toLatin1();
 	char* ipAddress=ba.data();
 	nNetID = nLed_Connect(ipAddress, 8234);
+	if(nNetID == 0)
+	{
+		QMessageBox::information(this,tr("Infomation"),tr("login failed"));;
+		return;
+	}
 	ui.pushButton_6->setVisible(true);
 	ui.pushButton_5->setVisible(false);
 	ui.checkBox->setChecked(true);
@@ -178,6 +183,57 @@ void LightSource::slot_setPushbotton(int i)
 	default:
 		break;
 	}
+}
+void LightSource::intoLightSource(int icarema)
+{
+	int normalCamera = pMainFrm->m_sCarvedCamInfo[icarema].m_iToRealCamera+1;
+	int nTemp = 101;
+	if(pMainFrm->m_sSystemInfo.iRealCamCount==12)
+	{
+		if(normalCamera == 1 || normalCamera == 2 || normalCamera == 7 || normalCamera == 8)
+		{
+			nTemp = 101;
+		}
+		if(normalCamera == 3 || normalCamera == 4 || normalCamera == 9 || normalCamera == 10)
+		{
+			nTemp = 102;
+		}
+		if(normalCamera == 5 || normalCamera == 6 || normalCamera == 11 || normalCamera == 12)
+		{
+			nTemp = 103;
+		}
+	}else if(pMainFrm->m_sSystemInfo.iRealCamCount == 15){
+		if(normalCamera == 1 || normalCamera == 2 || normalCamera == 3 || normalCamera == 10 || normalCamera == 11)
+		{
+			nTemp = 101;
+		}
+		if(normalCamera == 4 || normalCamera == 5 || normalCamera == 6 || normalCamera == 12 || normalCamera == 13)
+		{
+			nTemp = 102;
+		}
+		if(normalCamera == 7 || normalCamera == 8 || normalCamera == 9 || normalCamera == 14 || normalCamera == 15)
+		{
+			nTemp = 103;
+		}
+	}else{
+		if(normalCamera == 1 || normalCamera == 2 || normalCamera == 3 || normalCamera == 10 || normalCamera == 11 || normalCamera == 12)
+		{
+			nTemp = 101;
+		}
+		if(normalCamera == 4 || normalCamera == 5 || normalCamera == 6 || normalCamera == 13 || normalCamera == 14 || normalCamera == 15)
+		{
+			nTemp = 102;
+		}
+		if(normalCamera == 7 || normalCamera == 8 || normalCamera == 9 || normalCamera == 16 || normalCamera == 17 || normalCamera == 18)
+		{
+			nTemp = 103;
+		}
+	}
+	if(pMainFrm->m_sSystemInfo.m_iSystemType == 3)
+	{
+		nTemp += 3;
+	}
+	ui.lineEdit_2->setText(QString("192.168.250.")+QString::number(nTemp));
 }
 void LightSource::SaveParameter()
 {

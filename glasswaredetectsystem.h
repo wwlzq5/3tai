@@ -22,6 +22,7 @@
 #include "LightSource.h"
 #include "widgetwarning.h"
 #include "widgetUser.h"
+#include "widget_plc.h"
 
 #include <time.h>
 #include <tlhelp32.h>
@@ -88,7 +89,7 @@ public:
 signals:
 	void signals_intoManagementWidget();
 	void signals_intoTestWidget();
-
+	void signals_intoPLCWidget();
 	void signals_clear();
 	void signals_HideWarning(int);
 	void signals_ConnectSever();
@@ -128,6 +129,7 @@ public:
 	WidgetCarveSetting *widget_carveSetting;			//剪切设置
 	WidgetManagement *widget_Management;			//品种设置
 	WidgetTest *test_widget;
+	Widget_PLC * plc_widget;
 	QWidget *widget_alg;
 	LightSource* nLightSource;
 	Widget_Warning *nWidgetWarning;

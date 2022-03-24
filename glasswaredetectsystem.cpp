@@ -133,7 +133,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.5");
+	return SysType + QString(tr("Version:")+"6.64.1.6");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -536,7 +536,6 @@ void GlasswareDetectSystem::ReadIniInformation()
 	PLCStatusiniset.setIniCodec(QTextCodec::codecForName("GBK"));
 	QSettings iniDataSet(m_sConfigInfo.m_strDataPath,QSettings::IniFormat);
 	iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
-
 	QSettings runtimeCfg(pMainFrm->m_sConfigInfo.m_sRuntimePath,QSettings::IniFormat);
 	runtimeCfg.setIniCodec(QTextCodec::codecForName("GBK"));
 
@@ -557,6 +556,8 @@ void GlasswareDetectSystem::ReadIniInformation()
 			strSession = QString("/ErrorType/%1").arg(i);
 			m_sErrorInfo.m_vstrErrorType.append(QString::fromLocal8Bit(erroriniset.value(strSession,"NULL").toString()));//.toLatin1().data()));
 			m_sErrorInfo.m_cErrorReject.iErrorCountByType[i] = 0;
+			//QString tempText = QString::fromLocal8Bit(PLCStatusiniset.value(strSession,"NULL").toString());
+			//qDebug()<<QString::fromLocal8Bit(erroriniset.value(strSession,"NULL").toString());
 		}
 	}
 	m_sErrorInfo.m_vstrErrorType.append(tr("Unknown Defect"));//.toLatin1().data()));
@@ -715,7 +716,8 @@ void GlasswareDetectSystem::ReadIniInformation()
 		strShuter = QString("/Shuter/Grab_%1").arg(i);
 		strTrigger = QString("/Trigger/Grab_%1").arg(i);
 		m_sRealCamInfo[i].m_iShuter=iniCameraSet.value(strShuter,20).toInt();
-		m_sRealCamInfo[i].m_iTrigger=iniCameraSet.value(strTrigger,1).toInt();//默认外触发
+		//m_sRealCamInfo[i].m_iTrigger=iniCameraSet.value(strTrigger,1).toInt();//默认外触发
+		m_sRealCamInfo[i].m_iTrigger=iniCameraSet.value(strTrigger,1).toInt();
 	}
 	sVersion = getVersion(NULL);
 	//read Equipment maintenance Config
@@ -882,7 +884,8 @@ void GlasswareDetectSystem::InitCam()
 	{
 		if(m_sRealCamInfo[i].m_iGrabType == 8)
 		{
-			if(m_sRealCamInfo[i].m_iTrigger == 1)
+			((CDHGrabberMER*)m_sRealCamInfo[i].m_pGrabber)->MERSetParamInt(MERSnapMode,1);
+			/*if(m_sRealCamInfo[i].m_iTrigger == 1)
 			{
 				((CDHGrabberMER*)m_sRealCamInfo[i].m_pGrabber)->MERSetParamInt(MERSnapMode,1);
 				m_sRealCamInfo[i].m_bGrabIsTrigger = true;
@@ -891,7 +894,7 @@ void GlasswareDetectSystem::InitCam()
 			{
 				((CDHGrabberMER*)m_sRealCamInfo[i].m_pGrabber)->MERSetParamInt(MERSnapMode,0);
 				m_sRealCamInfo[i].m_bGrabIsTrigger = false;
-			}
+			}*/
 			((CDHGrabberMER*)m_sRealCamInfo[i].m_pGrabber)->MERSetParamInt(MERExposure,m_sRealCamInfo[i].m_iShuter);
 		}
 	}
@@ -1202,6 +1205,7 @@ void GlasswareDetectSystem::initInterface()
 	test_widget->slots_intoWidget();
 	widget_alg = new QWidget(this);
 	widget_alg->setObjectName("widget_alg");
+	plc_widget = new Widget_PLC();
 
 	QPalette palette;
 	palette.setBrush(QPalette::Window, QBrush(Qt::white));
@@ -1211,6 +1215,7 @@ void GlasswareDetectSystem::initInterface()
 	statked_widget->addWidget(widget_Management);
 	statked_widget->addWidget(test_widget);
 	statked_widget->addWidget(widget_alg);
+	statked_widget->addWidget(plc_widget);
 	title_widget->setState(false);//菜单栏置灰;
 	//状态栏
 	stateBar = new QWidget(this);
@@ -1300,7 +1305,8 @@ void GlasswareDetectSystem::initInterface()
 	connect(title_widget, SIGNAL(closeWidget()), this, SLOT(slots_OnExit()));
 	connect(title_widget, SIGNAL(turnPage(int)), this, SLOT(slots_turnPage(int)));
 	connect(this,SIGNAL(signals_intoManagementWidget()),widget_Management,SLOT(slots_intoWidget()));	
-	connect(this,SIGNAL(signals_intoTestWidget()),test_widget,SLOT(slots_intoWidget()));	
+	connect(this,SIGNAL(signals_intoTestWidget()),test_widget,SLOT(slots_intoWidget()));
+	connect(this,SIGNAL(signals_intoPLCWidget()),plc_widget,SLOT(slots_intoWidget()));
 	connect(timerUpdateCoder, SIGNAL(timeout()), this, SLOT(slots_UpdateCoderNumber()));    
 	connect(nSockScreen, SIGNAL(timeout()), this, SLOT(slot_SockScreen()));  
 	connect(nConnectTimer, SIGNAL(timeout()), this, SLOT(slots_ConnectServer()));  
@@ -1408,7 +1414,7 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 		nTPIOtr+=sizeof(MyStruct);
 		nIOCard[21] = test_widget->nInfo.m_checkedNum;//表示第四块接口卡的过检总数
 		nIOCard[22] = test_widget->nInfo.m_checkedNum2;//表示第四块接口卡的踢废数目
-		nIOCard[23] = test_widget->m_plc->nErrorType;
+		nIOCard[23] = plc_widget->nErrorType;
 		memcpy(nTPIOtr,nIOCard,24*sizeof(int));
 		memset(nIOCard,0,24*sizeof(int));
 		QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
@@ -1498,6 +1504,14 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		break;
 	case 5:
 		slots_OnExit();
+		break;
+	case 6://切换到plc界面
+		m_eCurrentMainPage = PlcPage;
+		emit signals_intoPLCWidget();
+		statked_widget->setCurrentWidget(plc_widget);
+		m_eLastMainPage = m_eCurrentMainPage;
+		iLastPage = 6;
+		pMainFrm->Logfile.write(("into plcPage"),AbnormityLog);
 		break;
 	case 9://只有夹持需要这个功能
 		if(n_NetConnectState)
@@ -2042,7 +2056,7 @@ void GlasswareDetectSystem::slots_ConnectServer()//10秒发送一次连接信号
 	//判断误踢报警
 	if(m_sRunningInfo.m_bCheck&&(m_sRunningInfo.m_failureNum2 - nLastKick > m_sSystemInfo.m_iTrackNumber||m_sRunningInfo.m_failureNum2 > m_sSystemInfo.m_iIsTrackStatistics))//
 	{
-		test_widget->m_plc->SendCustomAlert(m_sSystemInfo.m_iSystemType,1);
+		pMainFrm->plc_widget->SendCustomAlert(m_sSystemInfo.m_iSystemType,1);
 	}
 	nLastKick = m_sRunningInfo.m_failureNum2;
 }
