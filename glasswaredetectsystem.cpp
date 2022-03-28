@@ -458,8 +458,8 @@ void GlasswareDetectSystem::onServerDataReady()
 			if(m_sSystemInfo.m_iSystemType == 2)
 			{
 				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-				loginState(nClearName.toInt());
-				nUserWidget->nPermission = nClearName.toInt();
+				//loginState(nClearName.toInt());
+				//nUserWidget->nPermission = nClearName.toInt();
 			}
 			break;
 		case SYSTEMMODEADD:
@@ -504,16 +504,16 @@ void GlasswareDetectSystem::onServerDataReady()
 		case ONLYSHOWSEVER:
 			if(m_sSystemInfo.m_iSystemType == 2)
 			{
-				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-				if(nClearName == "LIMIT")
-				{
-					title_widget->setState(false);
-					nUserWidget->nPermission = 3;
-				}else{
-					title_widget->setState(true);
-					nUserWidget->nPermission = 2;
-				}
-				Sleep(200);
+// 				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
+// 				if(nClearName == "LIMIT")
+// 				{
+// 					title_widget->setState(false);
+// 					nUserWidget->nPermission = 3;
+// 				}else{
+// 					title_widget->setState(true);
+// 					nUserWidget->nPermission = 2;
+// 				}
+// 				Sleep(10);
 				show();
 			}
 			break;
@@ -1193,8 +1193,8 @@ void GlasswareDetectSystem::initInterface()
 	icon.addFile(QString::fromUtf8(":/sys/icon"), QSize(), QIcon::Normal, QIcon::Off);
 	setWindowIcon(icon);
 	nUserWidget = new UserWidget;
-	connect(nUserWidget,SIGNAL(signal_LoginState(int)),this,SLOT(slots_loginState(int)));
-	nUserWidget->hide();
+	connect(nUserWidget,SIGNAL(signal_LoginState(int,bool)),this,SLOT(slots_loginState(int,bool)));
+	/*nUserWidget->hide();*/
 
 	statked_widget = new QStackedWidget();
 	statked_widget->setObjectName("mainStacked");
@@ -1216,7 +1216,7 @@ void GlasswareDetectSystem::initInterface()
 	statked_widget->addWidget(test_widget);
 	statked_widget->addWidget(widget_alg);
 	statked_widget->addWidget(plc_widget);
-	title_widget->setState(false);//菜单栏置灰;
+	//title_widget->setState(false);//菜单栏置灰;
 	//状态栏
 	stateBar = new QWidget(this);
 	stateBar->setFixedHeight(40);
@@ -1320,6 +1320,8 @@ void GlasswareDetectSystem::initInterface()
 	skin.fill(QColor(90,90,90,120));
 	nLightSource = new LightSource();
 	nWidgetWarning = new Widget_Warning();
+
+	loginState(nUserWidget->nPermission,false);
 }
 bool GlasswareDetectSystem::SendDataToSever(int nSendCount,StateEnum nState,QByteArray nTest,bool nCurrentData)
 {
@@ -1524,7 +1526,10 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		}
 		break;
 	case 10:
-		nUserWidget->show();
+		{
+			slots_loginState(nUserWidget->nPermission,false);//上锁
+			nUserWidget->show();
+		}		
 		break;
 	}
 }
@@ -1999,19 +2004,24 @@ void GlasswareDetectSystem::slot_SockScreen()
 {
 	POINT tgcPosition;
 	GetCursorPos(&tgcPosition);
-	if((tgcPosition.x == gcPosition.x) && (tgcPosition.y == gcPosition.y))
+	if((tgcPosition.x == gcPosition.x) && (tgcPosition.y == gcPosition.y) && !isHidden())
 	{
 		nUserWidget->nScreenCount++;
 		if(nUserWidget->nScreenCount == 5)
 		{
-			if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+			if(nUserWidget->iUserPerm)
 			{
-				pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
+				slots_loginState(nUserWidget->nPermission,false);
+				nUserWidget->nScreenCount=0;
 			}
-			nUserWidget->nScreenCount=0;
-			title_widget->setState(false);
-			pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
-			pMainFrm->nUserWidget->nPermission = 3;
+// 			if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+// 			{
+// 				pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
+// 			}
+// 			nUserWidget->nScreenCount=0;
+// 			title_widget->setState(false);
+// 			pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
+// 			pMainFrm->nUserWidget->nPermission = 3;
 		}
 	}else{
 		gcPosition.x = tgcPosition.x;
@@ -2035,10 +2045,11 @@ void GlasswareDetectSystem::slot_SockScreen()
 	strSession = QString("/system/SeverFailureNum");
 	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
 }
-void GlasswareDetectSystem::slots_loginState(int nPerm)
+void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock)
 {
 	widget_carveSetting->slots_turnCameraPage(0);
-	loginState(nPerm);
+	loginState(nPerm,isUnlock);
+	nUserWidget->iUserPerm = isUnlock;
 }
 
 void GlasswareDetectSystem::slots_ConnectServer()//10秒发送一次连接信号
@@ -2083,22 +2094,37 @@ void GlasswareDetectSystem::slots_SocketStataChanged(QAbstractSocket::SocketStat
 	}
 }
 
-void GlasswareDetectSystem::loginState(int nPerm)
+void GlasswareDetectSystem::loginState(int nPerm,bool isUnlock)
 {
 	if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
 	{
 		pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
-	}
-	if(nPerm == 3)
-	{
-		title_widget->setState(false);//菜单栏置灰
 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
-	}else{
-		title_widget->setState(true);
+	}
+	title_widget->setState(nPerm,isUnlock);
+	if(isUnlock)
+	{
+		nUserWidget->hide();
 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(true);
-	}	
-	nUserWidget->hide();
-	nUserWidget->nPermission = nPerm;
+	}
+	else
+	{
+		if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+		{
+			pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
+		}
+		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
+	}
+// 	if(nPerm == 3)
+// 	{
+// 		title_widget->setState(false);//菜单栏置灰
+// 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
+// 	}else{
+// 		title_widget->setState(true);
+// 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(true);
+// 	}	
+//	nUserWidget->hide();
+	//nUserWidget->nPermission = nPerm;
 }
 
 void GlasswareDetectSystem::initSocket()

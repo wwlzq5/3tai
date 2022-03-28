@@ -19,6 +19,7 @@ public:
     explicit WidgetTitle(QWidget *parent = 0);
 	void addToolName();
 	void setState(bool);
+	void setState(int pPermission,bool isUnLock);
 signals:
 	void showSkin();
     void showMin();

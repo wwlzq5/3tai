@@ -562,33 +562,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1400"/>
+        <location filename="glasswaredetectsystem.cpp" line="1402"/>
         <source>Remaining days of use?%1 </source>
         <translation>剩余使用天数：%1 </translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2181"/>
+        <location filename="glasswaredetectsystem.cpp" line="2207"/>
         <source>Encryption verification failed, will exit the program!</source>
         <translation type="unfinished">加密验证失败,即将退出程序!</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2191"/>
+        <location filename="glasswaredetectsystem.cpp" line="2217"/>
         <source>The authorization to use the equipment is about to expire 
 , please contact business personnel!</source>
         <translation type="unfinished">设备使用授权即将到期\n请联系商务人员！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2215"/>
+        <location filename="glasswaredetectsystem.cpp" line="2241"/>
         <source>License expired or dongle abnormal! Error code: 22</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：22</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2231"/>
+        <location filename="glasswaredetectsystem.cpp" line="2257"/>
         <source>License expired or dongle abnormal! Error code: %1</source>
         <translation type="unfinished">License过期或加密狗异常！错误代码：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="2237"/>
+        <location filename="glasswaredetectsystem.cpp" line="2263"/>
         <source>Encryption authentication failed!</source>
         <translation type="unfinished">加密验证失败！</translation>
     </message>
@@ -633,13 +633,13 @@
         <translation type="obsolete">持续好</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1395"/>
+        <location filename="glasswaredetectsystem.cpp" line="1397"/>
         <source>Speed:</source>
         <oldsource>Speed+</oldsource>
         <translation>速度：</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1449"/>
+        <location filename="glasswaredetectsystem.cpp" line="1451"/>
         <source>Error in image carve </source>
         <translation>图像剪切错误</translation>
     </message>
@@ -753,7 +753,7 @@
         <translation type="obsolete">初始化检测！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1396"/>
+        <location filename="glasswaredetectsystem.cpp" line="1398"/>
         <source>Time:</source>
         <oldsource>Time</oldsource>
         <translation type="unfinished">时间:</translation>
@@ -808,11 +808,11 @@
     </message>
     <message>
         <location filename="glasswaredetectsystem.cpp" line="866"/>
-        <location filename="glasswaredetectsystem.cpp" line="1573"/>
-        <location filename="glasswaredetectsystem.cpp" line="2181"/>
-        <location filename="glasswaredetectsystem.cpp" line="2215"/>
-        <location filename="glasswaredetectsystem.cpp" line="2231"/>
-        <location filename="glasswaredetectsystem.cpp" line="2237"/>
+        <location filename="glasswaredetectsystem.cpp" line="1578"/>
+        <location filename="glasswaredetectsystem.cpp" line="2207"/>
+        <location filename="glasswaredetectsystem.cpp" line="2241"/>
+        <location filename="glasswaredetectsystem.cpp" line="2257"/>
+        <location filename="glasswaredetectsystem.cpp" line="2263"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -861,7 +861,7 @@
         <translation type="obsolete">相机：%1</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1831"/>
+        <location filename="glasswaredetectsystem.cpp" line="1836"/>
         <source>Please Stop Detection First!</source>
         <translation type="unfinished">请停止检测！</translation>
     </message>
@@ -880,7 +880,7 @@
         <translation type="obsolete">退出系统！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1395"/>
+        <location filename="glasswaredetectsystem.cpp" line="1397"/>
         <source>Coder Number</source>
         <translation>编码器计数</translation>
     </message>
@@ -901,16 +901,16 @@
         <translation type="obsolete">提示</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1523"/>
-        <location filename="glasswaredetectsystem.cpp" line="1535"/>
-        <location filename="glasswaredetectsystem.cpp" line="1826"/>
+        <location filename="glasswaredetectsystem.cpp" line="1525"/>
+        <location filename="glasswaredetectsystem.cpp" line="1540"/>
         <location filename="glasswaredetectsystem.cpp" line="1831"/>
+        <location filename="glasswaredetectsystem.cpp" line="1836"/>
         <source>Infomation</source>
         <translation type="unfinished">系统信息</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1535"/>
-        <location filename="glasswaredetectsystem.cpp" line="1826"/>
+        <location filename="glasswaredetectsystem.cpp" line="1540"/>
+        <location filename="glasswaredetectsystem.cpp" line="1831"/>
         <source>Please Stop Test First!</source>
         <translation type="unfinished">请先停止检测！</translation>
     </message>
@@ -919,18 +919,18 @@
         <translation type="obsolete">应力图像%1错误，相机%2不是正常图像！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1573"/>
+        <location filename="glasswaredetectsystem.cpp" line="1578"/>
         <source>No Model,Please Load Model!</source>
         <translation type="unfinished">当前没有模板，请先选择模版！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1577"/>
+        <location filename="glasswaredetectsystem.cpp" line="1582"/>
         <source>Stop</source>
         <oldsource>Stop detect</oldsource>
         <translation type="unfinished">停止检测</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1598"/>
+        <location filename="glasswaredetectsystem.cpp" line="1603"/>
         <source>Start</source>
         <oldsource>Start detect</oldsource>
         <translation type="unfinished">开始检测</translation>
@@ -948,7 +948,7 @@
         <translation type="obsolete">停止&amp;结束检测线程！</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1699"/>
+        <location filename="glasswaredetectsystem.cpp" line="1704"/>
         <source>Directory change</source>
         <translation type="unfinished">qss路径变化</translation>
     </message>
@@ -957,12 +957,12 @@
         <translation type="obsolete">qss文件变化，重新加载</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1725"/>
+        <location filename="glasswaredetectsystem.cpp" line="1730"/>
         <source>Information</source>
         <translation type="unfinished">信息</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1725"/>
+        <location filename="glasswaredetectsystem.cpp" line="1730"/>
         <source>Load Language pack [glasswaredetectsystem_zh.qm] fail!</source>
         <translation type="unfinished">加载语言包[glasswaredetectsystem_zh.qm]失败！</translation>
     </message>
@@ -983,12 +983,12 @@
         <translation type="obsolete">进入算法设置界面</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1820"/>
+        <location filename="glasswaredetectsystem.cpp" line="1825"/>
         <source>Exit</source>
         <translation type="unfinished">退出</translation>
     </message>
     <message>
-        <location filename="glasswaredetectsystem.cpp" line="1821"/>
+        <location filename="glasswaredetectsystem.cpp" line="1826"/>
         <source>Are you sure to exit?</source>
         <translation type="unfinished">确定退出？</translation>
     </message>
@@ -1596,37 +1596,93 @@
         <translation type="obsolete">请登录系统</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="56"/>
+        <location filename="userwidget.ui" line="71"/>
+        <source>new user</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="userwidget.ui" line="86"/>
+        <source>Change PassWord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="userwidget.ui" line="100"/>
         <source>User:</source>
         <translation type="unfinished">用户名:</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="74"/>
-        <location filename="userwidget.ui" line="122"/>
+        <location filename="userwidget.ui" line="118"/>
+        <location filename="userwidget.ui" line="142"/>
         <source>Password:</source>
         <translation type="unfinished">密码:</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="132"/>
+        <location filename="userwidget.ui" line="152"/>
         <source>New Password:</source>
         <translation type="unfinished">新密码:</translation>
+    </message>
+    <message>
+        <location filename="userwidget.ui" line="162"/>
+        <source>User Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="176"/>
+        <source>品种管理</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="183"/>
+        <source>系统设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="190"/>
+        <source>算法设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="197"/>
+        <source>开始检测</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="204"/>
+        <source>退出</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="userwidget.ui" line="211"/>
+        <source>主界面</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="userwidget.ui" line="235"/>
+        <source>Only change Permission</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="userwidget.ui" line="246"/>
+        <source>delete</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Again:</source>
         <translation type="obsolete">新密码：</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="159"/>
+        <location filename="userwidget.ui" line="266"/>
         <source>OK</source>
         <translation type="unfinished">确定</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="105"/>
+        <location filename="userwidget.ui" line="55"/>
         <source>Login</source>
         <translation type="unfinished">登陆</translation>
     </message>
     <message>
-        <location filename="userwidget.ui" line="166"/>
+        <location filename="userwidget.ui" line="62"/>
+        <location filename="userwidget.ui" line="273"/>
         <source>Cancel</source>
         <translation type="unfinished">取消</translation>
     </message>
@@ -1652,16 +1708,56 @@
         <translation type="obsolete">初级权限</translation>
     </message>
     <message>
-        <location filename="widgetUser.cpp" line="117"/>
-        <location filename="widgetUser.cpp" line="167"/>
+        <location filename="widgetUser.cpp" line="131"/>
+        <location filename="widgetUser.cpp" line="162"/>
+        <location filename="widgetUser.cpp" line="208"/>
         <source>Error</source>
         <translation type="unfinished">错误</translation>
     </message>
     <message>
-        <location filename="widgetUser.cpp" line="117"/>
-        <location filename="widgetUser.cpp" line="167"/>
+        <location filename="widgetUser.cpp" line="131"/>
+        <location filename="widgetUser.cpp" line="208"/>
         <source>Wrong password</source>
         <translation type="unfinished">密码错误</translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="162"/>
+        <source>Change password Error.
+The new password is the same as the old password.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="226"/>
+        <source>The new User Error.
+User name [%1] already exist!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="244"/>
+        <source>The new User successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="280"/>
+        <location filename="widgetUser.cpp" line="287"/>
+        <source>Tips</source>
+        <translation type="unfinished">提示</translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="280"/>
+        <source>Are you sure you want to delete the [%1] user?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="287"/>
+        <source>The Password is Wrong.
+please input again!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="310"/>
+        <source>Detele [%1] user successfully</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Advanced Permissions</source>
@@ -1674,12 +1770,21 @@
         <translation type="obsolete">最高权限</translation>
     </message>
     <message>
-        <location filename="widgetUser.cpp" line="164"/>
+        <location filename="widgetUser.cpp" line="203"/>
+        <location filename="widgetUser.cpp" line="205"/>
+        <location filename="widgetUser.cpp" line="226"/>
+        <location filename="widgetUser.cpp" line="244"/>
+        <location filename="widgetUser.cpp" line="310"/>
         <source>Information</source>
         <translation type="unfinished">信息</translation>
     </message>
     <message>
-        <location filename="widgetUser.cpp" line="164"/>
+        <location filename="widgetUser.cpp" line="203"/>
+        <source>Permission Changed Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="widgetUser.cpp" line="205"/>
         <source>The new password set successfully</source>
         <translation type="unfinished">新密码设置成功</translation>
     </message>
@@ -2816,27 +2921,27 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">一体机*</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="110"/>
+        <location filename="widget_title.cpp" line="138"/>
         <source>minimize</source>
         <translation>最小化</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="111"/>
+        <location filename="widget_title.cpp" line="139"/>
         <source>close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="112"/>
+        <location filename="widget_title.cpp" line="140"/>
         <source>Image</source>
         <translation>图像显示</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="118"/>
+        <location filename="widget_title.cpp" line="146"/>
         <source>PLC</source>
         <translation type="unfinished">PLC</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="122"/>
+        <location filename="widget_title.cpp" line="150"/>
         <source>Lock</source>
         <translation type="unfinished">锁定</translation>
     </message>
@@ -2853,17 +2958,17 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">图像监视</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="113"/>
+        <location filename="widget_title.cpp" line="141"/>
         <source>Management</source>
         <translation>品种管理</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="114"/>
+        <location filename="widget_title.cpp" line="142"/>
         <source>Test</source>
         <translation>系统设置</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="115"/>
+        <location filename="widget_title.cpp" line="143"/>
         <source>Algorithm</source>
         <oldsource>Algorithm set</oldsource>
         <translation>算法设置</translation>
@@ -2881,13 +2986,13 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">帮助</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="116"/>
+        <location filename="widget_title.cpp" line="144"/>
         <source>Start</source>
         <oldsource>Clear</oldsource>
         <translation type="unfinished">开始检测</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="117"/>
+        <location filename="widget_title.cpp" line="145"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
@@ -2900,17 +3005,17 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">前壁</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="120"/>
+        <location filename="widget_title.cpp" line="148"/>
         <source>GoDown</source>
         <translation type="unfinished">后壁</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="119"/>
+        <location filename="widget_title.cpp" line="147"/>
         <source>ClampDown</source>
         <translation type="unfinished">夹持</translation>
     </message>
     <message>
-        <location filename="widget_title.cpp" line="121"/>
+        <location filename="widget_title.cpp" line="149"/>
         <source>InterFace</source>
         <translation type="unfinished">主界面</translation>
     </message>
@@ -2974,7 +3079,7 @@ Please check the camera and restart the software!</source>
     </message>
     <message>
         <location filename="Widget_CarveImage.cpp" line="508"/>
-        <location filename="Widget_CarveImage.cpp" line="1572"/>
+        <location filename="Widget_CarveImage.cpp" line="1579"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -2998,7 +3103,7 @@ Please check the camera and restart the software!</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1572"/>
+        <location filename="Widget_CarveImage.cpp" line="1579"/>
         <source>Please stop detect!</source>
         <translation>请先停止测试!</translation>
     </message>
@@ -3052,12 +3157,12 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">请先停止检测！</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1563"/>
+        <location filename="Widget_CarveImage.cpp" line="1570"/>
         <source>Start Test</source>
         <translation>开始测试</translation>
     </message>
     <message>
-        <location filename="Widget_CarveImage.cpp" line="1584"/>
+        <location filename="Widget_CarveImage.cpp" line="1591"/>
         <source>Stop Test</source>
         <translation>停止测试</translation>
     </message>

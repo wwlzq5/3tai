@@ -84,7 +84,7 @@ public:
 	void showAllert();
 	static DWORD WINAPI SendDetect(void*);
 	DWORD GetProcessIdFromName(const char*processName);
-	void loginState(int nPerm);
+	void loginState(int nPerm,bool isUnlock);
 	void initSocket();
 signals:
 	void signals_intoManagementWidget();
@@ -104,7 +104,7 @@ public slots:
 	void directoryChanged(QString path);
 	void onServerDataReady();
 	void slot_SockScreen();
-	void slots_loginState(int);
+	void slots_loginState(int,bool);
 	void slots_ConnectServer();
 	void slots_SocketStataChanged( QAbstractSocket::SocketState socketState);
 public:

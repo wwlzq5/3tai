@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>342</width>
-    <height>427</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -27,11 +27,52 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,1">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="2,3">
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QWidget" name="widget_LogIn" native="true">
           <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0" colspan="2">
+           <item row="1" column="1">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>166</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="2">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QPushButton" name="pushButton_login">
+               <property name="text">
+                <string>Login</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_close">
+               <property name="text">
+                <string>Cancel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="pushButton_NewUser">
+             <property name="text">
+              <string>new user</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="3">
             <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,7">
              <item>
               <widget class="QPushButton" name="pushButton_image">
@@ -40,6 +81,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string>Change PassWord</string>
                </property>
                <property name="text">
                 <string/>
@@ -84,62 +128,125 @@
              </item>
             </layout>
            </item>
-           <item row="1" column="0">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>166</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QPushButton" name="pushButton_login">
-               <property name="text">
-                <string>Login</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
           </layout>
          </widget>
         </item>
         <item>
          <widget class="QWidget" name="widget_ChangePassWord" native="true">
-          <layout class="QGridLayout" name="gridLayout_6">
-           <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
             <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="0">
+             <item row="1" column="0">
               <widget class="QLabel" name="label_password_2">
                <property name="text">
                 <string>Password:</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
+             <item row="1" column="1">
               <widget class="QLineEdit" name="lineEdit_passWord2"/>
              </item>
-             <item row="1" column="0">
+             <item row="2" column="0">
               <widget class="QLabel" name="label_password_3">
                <property name="text">
                 <string>New Password:</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
+             <item row="2" column="1">
               <widget class="QLineEdit" name="lineEdit_newPassWord"/>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_UserName">
+               <property name="text">
+                <string>User Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="lineEdit_UserName"/>
              </item>
             </layout>
            </item>
-           <item row="1" column="0">
+           <item>
+            <layout class="QGridLayout" name="gridLayout_5">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="checkBox_1">
+               <property name="text">
+                <string>品种管理</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="checkBox_2">
+               <property name="text">
+                <string>系统设置</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="checkBox_3">
+               <property name="text">
+                <string>算法设置</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="checkBox_4">
+               <property name="text">
+                <string>开始检测</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="checkBox_5">
+               <property name="text">
+                <string>退出</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="checkBox_6">
+               <property name="text">
+                <string>主界面</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox_OnlyChangePermission">
+               <property name="text">
+                <string>Only change Permission</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QPushButton" name="pushButton_deleteUser">
+               <property name="text">
+                <string>delete</string>
+               </property>
+              </widget>
+             </item>
              <item>
               <spacer name="horizontalSpacer_2">
                <property name="orientation">
