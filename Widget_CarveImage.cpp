@@ -1461,93 +1461,100 @@ void Widget_CarveImage::slots_setToCamera()
 	int iCameraSN =  pMainFrm->m_sCarvedCamInfo[iCameraNo].m_iToRealCamera;
 	int iShuterTime = pWidgetCarveInfo->ui.spinBox_exposureTime->text().toInt();
 	int iTriggerType = pWidgetCarveInfo->ui.comboBox_triggerType->currentIndex();
-	pMainFrm->m_sRealCamInfo[iCameraSN].m_iShuter = iShuterTime;
-
-	pMainFrm->mutexDetectElement[iCameraSN].lock();
-	if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 8)
+	//曝光不一样才修改到相机
+	if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iShuter != iShuterTime)
 	{
-		((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERExposure,iShuterTime);
+		pMainFrm->mutexDetectElement[iCameraSN].lock();
+		if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 8)
+		{
+			((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->MERSetParamInt(MERExposure,iShuterTime);
+		}
+		else if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 0)
+		{
+			((CDHGrabberSG*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->SGSetParamInt(SGGrabSpeed,iShuterTime);
+		}
+		pMainFrm->mutexDetectElement[iCameraSN].unlock();
+		pMainFrm->m_sRealCamInfo[iCameraSN].m_iShuter = iShuterTime;
+		QSettings iniCameraSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
+		QString strShuter;
+		strShuter = QString("/Shuter/Grab_%1").arg(iCameraSN);
+		iniCameraSet.setValue(strShuter,QString::number(iShuterTime));
 	}
-	else if(pMainFrm->m_sRealCamInfo[iCameraSN].m_iGrabType == 0)
-	{
-		((CDHGrabberSG*)pMainFrm->m_sRealCamInfo[iCameraSN].m_pGrabber)->SGSetParamInt(SGGrabSpeed,iShuterTime);
-	}
-	pMainFrm->mutexDetectElement[iCameraSN].unlock();
-	QSettings iniCameraSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
-	QString strShuter;
-	strShuter = QString("/Shuter/Grab_%1").arg(iCameraSN);
-	iniCameraSet.setValue(strShuter,QString::number(iShuterTime));
 	//设置延时参数
 	if (pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
-		iTriggerDelay = pWidgetCarveInfo->ui.lineEdit_delay->text().toInt();
-		QString strValue,strPara;
-		strValue = strValue.setNum(iTriggerDelay,10);
-		int station = 0;
-
-		if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
+		int nCurrentDelay = pWidgetCarveInfo->ui.lineEdit_delay->text().toInt();
+		if(iTriggerDelay != nCurrentDelay)
 		{
-			if(iCameraNo >= pMainFrm->m_sSystemInfo.iRealCamCount)
+			QString strValue,strPara;
+			strValue = strValue.setNum(iTriggerDelay,10);
+			int station = 0;
+
+			if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
 			{
-				station = pMainFrm->struGrabCardPara[iCameraSN].iReserve2;
+				if(iCameraNo >= pMainFrm->m_sSystemInfo.iRealCamCount)
+				{
+					station = pMainFrm->struGrabCardPara[iCameraSN].iReserve2;
+				}else{
+					station = pMainFrm->struGrabCardPara[iCameraSN].iReserve1;
+				}
+				switch (station)
+				{
+				case 1:
+					pMainFrm->m_vIOCard[0]->writeParam(32,iTriggerDelay);
+					strPara = strPara.setNum(32,10);
+					break;
+				case 2:
+					pMainFrm->m_vIOCard[0]->writeParam(61,iTriggerDelay);
+					strPara = strPara.setNum(61,10);
+					break;	
+				case 3:
+					pMainFrm->m_vIOCard[0]->writeParam(57,iTriggerDelay);
+					strPara = strPara.setNum(57,10);
+					break;
+				case 4:
+					pMainFrm->m_vIOCard[0]->writeParam(59,iTriggerDelay);
+					strPara = strPara.setNum(59,10);
+					break;
+				case 5:
+					pMainFrm->m_vIOCard[0]->writeParam(157,iTriggerDelay);
+					strPara = strPara.setNum(157,10);
+					break;
+				case 6:
+					pMainFrm->m_vIOCard[0]->writeParam(158,iTriggerDelay);
+					strPara = strPara.setNum(158,10);
+					break;
+				}
+				StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 			}else{
 				station = pMainFrm->struGrabCardPara[iCameraSN].iReserve1;
+				switch (station)
+				{
+				case 1:
+					pMainFrm->m_vIOCard[0]->writeParam(157,iTriggerDelay);
+					strPara = strPara.setNum(157,10);
+					break;
+				case 2:
+					pMainFrm->m_vIOCard[0]->writeParam(158,iTriggerDelay);
+					strPara = strPara.setNum(158,10);
+					break;	
+				case 3:
+					pMainFrm->m_vIOCard[0]->writeParam(159,iTriggerDelay);
+					strPara = strPara.setNum(159,10);
+					break;
+				case 4:
+					pMainFrm->m_vIOCard[0]->writeParam(160,iTriggerDelay);
+					strPara = strPara.setNum(160,10);
+					break;
+				case 5:
+					pMainFrm->m_vIOCard[0]->writeParam(96,iTriggerDelay);
+					strPara = strPara.setNum(96,10);
+					break;
+				}
+				StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 			}
-			switch (station)
-			{
-			case 1:
-				pMainFrm->m_vIOCard[0]->writeParam(32,iTriggerDelay);
-				strPara = strPara.setNum(32,10);
-				break;
-			case 2:
-				pMainFrm->m_vIOCard[0]->writeParam(61,iTriggerDelay);
-				strPara = strPara.setNum(61,10);
-				break;	
-			case 3:
-				pMainFrm->m_vIOCard[0]->writeParam(57,iTriggerDelay);
-				strPara = strPara.setNum(57,10);
-				break;
-			case 4:
-				pMainFrm->m_vIOCard[0]->writeParam(59,iTriggerDelay);
-				strPara = strPara.setNum(59,10);
-				break;
-			case 5:
-				pMainFrm->m_vIOCard[0]->writeParam(157,iTriggerDelay);
-				strPara = strPara.setNum(157,10);
-				break;
-			case 6:
-				pMainFrm->m_vIOCard[0]->writeParam(158,iTriggerDelay);
-				strPara = strPara.setNum(158,10);
-				break;
-			}
-			StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
-		}else{
-			station = pMainFrm->struGrabCardPara[iCameraSN].iReserve1;
-			switch (station)
-			{
-			case 1:
-				pMainFrm->m_vIOCard[0]->writeParam(157,iTriggerDelay);
-				strPara = strPara.setNum(157,10);
-				break;
-			case 2:
-				pMainFrm->m_vIOCard[0]->writeParam(158,iTriggerDelay);
-				strPara = strPara.setNum(158,10);
-				break;	
-			case 3:
-				pMainFrm->m_vIOCard[0]->writeParam(159,iTriggerDelay);
-				strPara = strPara.setNum(159,10);
-				break;
-			case 4:
-				pMainFrm->m_vIOCard[0]->writeParam(160,iTriggerDelay);
-				strPara = strPara.setNum(160,10);
-				break;
-			case 5:
-				pMainFrm->m_vIOCard[0]->writeParam(96,iTriggerDelay);
-				strPara = strPara.setNum(96,10);
-				break;
-			}
-			StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,pMainFrm->m_sSystemInfo.m_sConfigIOCardInfo[0].strCardInitFile);
 		}
+		iTriggerDelay = nCurrentDelay;
 	}
 	pWidgetCarveInfo->ui.pushButton_setToCamera->setEnabled(false);
 	QTimer::singleShot(2000,this,SLOT(SetToCameraStatus()));
