@@ -107,14 +107,14 @@ void WidgetTitle::setState(int pPermission,bool isUnLock)
 {
 // 	if(isUnLock)
 // 	{
-		for(int i=0;i<5;i++)
+		for(int i=1;i<=6;i++)
 		{	
 			if( 1 & (pPermission >> i))
-				button_list.at(i+1)->setEnabled(isUnLock);
+				button_list.at(i)->setEnabled(isUnLock);
 			else
-				button_list.at(i+1)->setEnabled(false);
+				button_list.at(i)->setEnabled(false);
 		}
-		if( 1 & (pPermission >> 5))
+		if( 1 & (pPermission >> 7))
 			button_list.at(9)->setEnabled(isUnLock);
 		else
 			button_list.at(9)->setEnabled(false);

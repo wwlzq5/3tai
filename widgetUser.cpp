@@ -61,7 +61,8 @@ void UserWidget::initialUserInfo()
 	QString strPermissions = sysSet.value("Permissions","").toString();
 	QStringList strPermissionsList = strPermissions.split(",");
 	nPermissionsList.clear();
-	for (int i=0;i<strPermissionsList.size();i++)
+	nPermissionsList.append(0xFF);
+	for (int i=1;i<strPermissionsList.size();i++)
 	{
 		nPermissionsList.append(strPermissionsList.at(i).toInt());
 	}
@@ -74,15 +75,18 @@ void UserWidget::initialUserInfo()
 	//用户数为零增加2个用户
 	if (0 == iUserNumber)
 	{
+		strUserList.clear();
+		strPasswordList.clear();
+		nPermissionsList.clear();
 		strUserList.append("Admin");
 		strUserList.append("daheng");
 		strUserList.append("user");
 		strPasswordList.append("daheng");
 		strPasswordList.append("");
 		strPasswordList.append("");
-		nPermissionsList.append(0x3F);
-		nPermissionsList.append(0x3F);
-		nPermissionsList.append(0x1A);
+		nPermissionsList.append(0xFF);
+		nPermissionsList.append(0xFF);
+		nPermissionsList.append(0x90);
 		//保存到注册表
 		QString strUsers;
 		QString strPassword;
@@ -136,7 +140,7 @@ void UserWidget::slots_login()
 	iUserPerm = true;
 	if(strUserName.compare("Admin",Qt::CaseInsensitive) == 0)
 	{
-		nPermission = 0x3F;
+		nPermission = 0xFF;
 	}else
 	{
 		nPermission = nPermissionsList.at(nUser);
@@ -173,11 +177,11 @@ void UserWidget::slots_changePassWrod()
 				if(strUserList.at(i) == strUserName)
 				{
 					int tmpPermission=0;
-					for (int i=1;i<=6;i++)
+					for (int i=0;i<=7;i++)
 					{
 						QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
 						if(tmpBox->isChecked())
-							tmpPermission |= (1<<(i-1));
+							tmpPermission |= (1<<i);
 					}
 					strPermissions = strPermissions + QString::number(tmpPermission) + ",";
 				}else{
@@ -221,20 +225,34 @@ void UserWidget::slots_changePassWrod()
 		QString strPassword = sysSet.value("Password","").toString();
 		QString strPermissions = sysSet.value("Permissions","").toString();
 		QString newName=ui.lineEdit_UserName->text();
+		if(newName == "")
+		{
+			QMessageBox::information(this,tr("Information"),tr("The new User Error.\nThe user name cannot be empty!"));
+			return;
+		}
 		if(strUsers.contains(newName,Qt::CaseInsensitive))
 		{
 			QMessageBox::information(this,tr("Information"),tr("The new User Error.\nUser name [%1] already exist!").arg(newName));
 			return;
 		}
-		strUsers.append(newName+",");
+		bool isAdmin = ui.checkBox_0->isChecked();
 		QString newPassword=ui.lineEdit_passWord2->text();
+		if(isAdmin)//是否是管理员用户
+		{
+			if(newPassword == "")
+			{
+				QMessageBox::information(this,tr("Information"),tr("The password of the new admin user must not be empty").arg(newName));
+				return;
+			}
+		}
+		strUsers.append(newName+",");
 		strPassword.append(newPassword+",");
 		int tmpPermission=0;
-		for (int i=1;i<=6;i++)
+		for (int i=0;i<=7;i++)
 		{
 			QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
 			if(tmpBox->isChecked())
-				tmpPermission |= (1<<(i-1));
+				tmpPermission |= (1<<i);
 		}
 		strPermissions.append(QString::number(tmpPermission)+",");
 		sysSet.setValue("Users",strUsers);
@@ -255,6 +273,23 @@ void UserWidget::slots_CancelchangePassWrod()
 
 void UserWidget::slots_NewUser()
 {
+	bool isSuccessed=false;
+	int nUser = ui.comboBoxUser->currentIndex();
+	strUserName = strUserList.at(nUser);
+	int UserPermission=nPermissionsList.at(nUser);
+	if ( ! (0x01 & UserPermission))
+	{
+		QMessageBox::information(this,tr("Information"),tr("the [%1] user don't have admin permission and cannot to new user.").arg(strUserName));
+		return;
+	}
+	strPassWordUser = strPasswordList.at(nUser);
+	PassWord = ui.lineEdit_passWord->text();
+	if(PassWord != strPassWordUser)
+	{
+		QMessageBox::information(this,tr("Error"),tr("Wrong password"));
+		return;
+	}
+
 	isNewUserStatus =true;
 	ui.widget_LogIn->setVisible(false);
 	ui.widget_ChangePassWord->setVisible(true);
@@ -265,7 +300,7 @@ void UserWidget::slots_NewUser()
 	ui.lineEdit_UserName->clear();
 	ui.lineEdit_passWord2->clear();
 	ui.checkBox_OnlyChangePermission->setVisible(false);
-	for (int i=1;i<=6;i++)
+	for (int i=0;i<=7;i++)
 	{
 		QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
 		tmpBox->setChecked(false);
@@ -342,7 +377,7 @@ void UserWidget::slots_loginChangePassWrod()
 		ui.checkBox_OnlyChangePermission->setChecked(false);
 		ui.lineEdit_newPassWord->setEnabled(true);
 		isOnlyChangePerission=false;
-		for (int i=1;i<=6;i++)
+		for (int i=0;i<=7;i++)
 		{
 			QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
 			tmpBox->setChecked(true);
@@ -351,21 +386,44 @@ void UserWidget::slots_loginChangePassWrod()
 	}
 	else
 	{
-		ui.pushButton_deleteUser->setVisible(true);
-		ui.checkBox_OnlyChangePermission->setEnabled(true);
-		ui.checkBox_OnlyChangePermission->setChecked(true);
-		ui.lineEdit_newPassWord->setEnabled(false);
-		isOnlyChangePerission=true;
+		if(curUserName.compare("daheng",Qt::CaseInsensitive) == 0)
+			ui.pushButton_deleteUser->setVisible(false);
+		else
+			ui.pushButton_deleteUser->setVisible(true);
 		int UserPermission=nPermissionsList.at(nUser);
-		for (int i=1;i<=6;i++)
+		if(	0x01 & UserPermission)
 		{
-			QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
-			if(0x01 & (UserPermission>>(i-1))  )
-				tmpBox->setChecked(true);
-			else
-				tmpBox->setChecked(false);
-			tmpBox->setEnabled(true);
+			ui.checkBox_OnlyChangePermission->setEnabled(true);
+			ui.checkBox_OnlyChangePermission->setChecked(true);
+			ui.lineEdit_newPassWord->setEnabled(false);
+			isOnlyChangePerission=true;
+			for (int i=0;i<=7;i++)
+			{
+				QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
+				if(0x01 & (UserPermission>>i)  )
+					tmpBox->setChecked(true);
+				else
+					tmpBox->setChecked(false);
+				tmpBox->setEnabled(true);
+			}
 		}
+		else
+		{
+			ui.checkBox_OnlyChangePermission->setEnabled(false);
+			ui.checkBox_OnlyChangePermission->setChecked(false);
+			ui.lineEdit_newPassWord->setEnabled(true);
+			isOnlyChangePerission=false;
+			for (int i=0;i<=7;i++)
+			{
+				QCheckBox *tmpBox=findChild<QCheckBox *>(QString("checkBox_%1").arg(i));
+				if(0x01 & (UserPermission>>i)  )
+					tmpBox->setChecked(true);
+				else
+					tmpBox->setChecked(false);
+				tmpBox->setEnabled(false);
+			}
+		}
+		ui.checkBox_0->setEnabled(false);
 	}
 	
 }

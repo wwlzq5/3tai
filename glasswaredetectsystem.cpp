@@ -2047,7 +2047,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 }
 void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock)
 {
-	widget_carveSetting->slots_turnCameraPage(0);
+	//widget_carveSetting->slots_turnCameraPage(0);
 	loginState(nPerm,isUnlock);
 	nUserWidget->iUserPerm = isUnlock;
 }
@@ -2114,6 +2114,7 @@ void GlasswareDetectSystem::loginState(int nPerm,bool isUnlock)
 			pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
 		}
 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
+		slots_turnPage(0);
 	}
 // 	if(nPerm == 3)
 // 	{

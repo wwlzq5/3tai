@@ -337,6 +337,7 @@ void Widget_PLC::slots_readFromPLC()
 		WORD v_Itmps=0;
 		for (;v_bit<18;v_bit+=2)
 		{
+			v_Itmps=0;
 			ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);
 			for(int i=0;i<CUSTOMALERT;i++)
 			{
@@ -352,7 +353,7 @@ void Widget_PLC::slots_readFromPLC()
 			}
 		}
 		j=0;
-		v_bit+=2;
+		v_Itmps=0;
 		ByteToData(v_receive,v_bit,v_bit+1,v_Itmps);//H89
 		if(v_Itmps)
 		{
@@ -360,7 +361,7 @@ void Widget_PLC::slots_readFromPLC()
 		}else{
 			ui.radioButton_3->setChecked(true);
 		}
-		v_bit+=4;//24 
+		v_bit+=6;//24 
 		for (;v_bit<36;v_bit+=2)//24+12
 		{
 			v_Itmps=0;
@@ -530,6 +531,7 @@ void Widget_PLC::slots_readFromPLC()
 				{
 					nErrorType = j;
 					Asert = false;
+					//pMainFrm->Logfile.write(QString("send %1").arg(j),AbnormityLog);
 				}
 				j++;
 			}

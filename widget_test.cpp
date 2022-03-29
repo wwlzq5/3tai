@@ -42,7 +42,10 @@ WidgetTest::WidgetTest(QWidget *parent)
 	//瓶口瓶底增加控件控制PLC通讯
 	connect(ui.pushButton_set,SIGNAL(clicked()),this,SLOT(slot_openPlcSet()));
 	connect(ui.pushButton,SIGNAL(clicked()),this,SLOT(slot_ConnectSever()));
-	
+
+	ui.lineEdit ->setText(QString::number(pMainFrm->m_sSystemInfo.m_iTrackNumber));
+	ui.lineEdit_2->setText(QString::number(pMainFrm->m_sSystemInfo.m_iIsTrackStatistics));
+
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)//隐藏瓶身的按钮，防止前后壁误操作到第二块接口卡
 	{
 		ui.pushButton_set->setVisible(true);

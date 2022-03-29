@@ -327,7 +327,7 @@ void MyImageShowItem::contextMenuEvent(QContextMenuEvent *event)
 	}
 
 	contextMenu->addAction(startFreshAll);
-	if( (1 & (pMainFrm->nUserWidget->nPermission>>2)) && pMainFrm->nUserWidget->iUserPerm)
+	if( (1 & (pMainFrm->nUserWidget->nPermission>>3)) && pMainFrm->nUserWidget->iUserPerm)
 	{
 		contextMenu->addAction(showCheck);
 	}
