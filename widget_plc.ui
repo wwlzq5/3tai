@@ -658,34 +658,6 @@
              </property>
             </widget>
            </item>
-           <item row="10" column="3">
-            <widget class="QComboBox" name="comboBox_2">
-             <item>
-              <property name="text">
-               <string>丹佛斯</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>台达</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="10" column="1">
-            <widget class="QComboBox" name="comboBox">
-             <item>
-              <property name="text">
-               <string>丹佛斯</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>台达</string>
-              </property>
-             </item>
-            </widget>
-           </item>
            <item row="11" column="1">
             <widget class="QComboBox" name="comboBox_3">
              <item>
@@ -707,13 +679,6 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_42">
-             <property name="text">
-              <string>理瓶器启动延迟</string>
-             </property>
-            </widget>
-           </item>
            <item row="13" column="0">
             <widget class="QCheckBox" name="checkBox">
              <property name="text">
@@ -721,8 +686,19 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_32"/>
+           <item row="10" column="1">
+            <widget class="QComboBox" name="comboBox">
+             <item>
+              <property name="text">
+               <string>丹佛斯</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>台达</string>
+              </property>
+             </item>
+            </widget>
            </item>
            <item row="13" column="2">
             <widget class="QRadioButton" name="radioButton_9">
@@ -737,13 +713,6 @@
              </property>
             </widget>
            </item>
-           <item row="10" column="2">
-            <widget class="QLabel" name="label_50">
-             <property name="text">
-              <string>理瓶器变频器品牌</string>
-             </property>
-            </widget>
-           </item>
            <item row="14" column="0">
             <widget class="QCheckBox" name="checkBox_2">
              <property name="text">
@@ -751,18 +720,36 @@
              </property>
             </widget>
            </item>
-           <item row="14" column="3">
-            <widget class="QPushButton" name="pushButton_save">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+           <item row="10" column="2">
+            <widget class="QLabel" name="label_50">
              <property name="text">
-              <string>保存</string>
+              <string>理瓶器变频器品牌</string>
              </property>
             </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="text">
+              <string>理瓶器启动延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="3">
+            <widget class="QComboBox" name="comboBox_2">
+             <item>
+              <property name="text">
+               <string>丹佛斯</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>台达</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEdit_32"/>
            </item>
            <item row="14" column="1">
             <widget class="QPushButton" name="SureButton">
@@ -774,6 +761,43 @@
              </property>
              <property name="text">
               <string>确定</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QLabel" name="label_52">
+             <property name="text">
+              <string>连续倒瓶报警数量</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>瓶底光源吹气时长</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="3">
+            <widget class="QLineEdit" name="lineEdit_39"/>
+           </item>
+           <item row="3" column="3">
+            <widget class="QLineEdit" name="lineEdit_37"/>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_47">
+             <property name="text">
+              <string>理瓶器停止延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="3">
+            <widget class="QLineEdit" name="lineEdit_40"/>
+           </item>
+           <item row="6" column="2">
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>输送线电机最大频率</string>
              </property>
             </widget>
            </item>
@@ -790,45 +814,35 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="1">
-            <widget class="QLabel" name="label_24">
+           <item row="6" column="3">
+            <widget class="QLineEdit" name="lineEdit_26"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_45">
              <property name="text">
-              <string/>
+              <string>前倒瓶剔除编码器延迟</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_38"/>
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_41">
+             <property name="text">
+              <string>输送线停止延迟</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>连续不踢废数量</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QLineEdit" name="lineEdit_34"/>
            </item>
            <item row="3" column="1">
             <widget class="QLineEdit" name="lineEdit_36"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_43">
-             <property name="text">
-              <string>瓶底光源吹气间隔</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="label_46">
-             <property name="text">
-              <string>前倒瓶剔除吹气时长</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QLineEdit" name="lineEdit_39"/>
-           </item>
-           <item row="3" column="3">
-            <widget class="QLineEdit" name="lineEdit_37"/>
-           </item>
-           <item row="3" column="2">
-            <widget class="QLabel" name="label_44">
-             <property name="text">
-              <string>瓶底光源吹气时长</string>
-             </property>
-            </widget>
            </item>
            <item row="7" column="1">
             <widget class="QLineEdit" name="lineEdit_21">
@@ -840,57 +854,43 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_23">
-             <property name="text">
-              <string>连续不踢废数量</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="3">
-            <widget class="QLineEdit" name="lineEdit_26"/>
-           </item>
-           <item row="7" column="2">
-            <widget class="QLabel" name="label_52">
-             <property name="text">
-              <string>连续倒瓶报警数量</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_45">
-             <property name="text">
-              <string>前倒瓶剔除编码器延迟</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QLabel" name="label_27">
-             <property name="text">
-              <string>输送线电机最大频率</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <widget class="QLineEdit" name="lineEdit_40"/>
-           </item>
-           <item row="4" column="2">
-            <widget class="QLabel" name="label_47">
-             <property name="text">
-              <string>理瓶器停止延迟</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QLineEdit" name="lineEdit_34"/>
-           </item>
            <item row="6" column="1">
             <widget class="QLineEdit" name="lineEdit_35"/>
            </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label_41">
+           <item row="2" column="2">
+            <widget class="QLabel" name="label_46">
              <property name="text">
-              <string>输送线停止延迟</string>
+              <string>前倒瓶剔除吹气时长</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QLabel" name="label_24">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_38"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_43">
+             <property name="text">
+              <string>瓶底光源吹气间隔</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="3">
+            <widget class="QPushButton" name="pushButton_save">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>保存</string>
              </property>
             </widget>
            </item>

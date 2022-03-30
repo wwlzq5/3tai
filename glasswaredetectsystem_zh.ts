@@ -4327,12 +4327,12 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="763"/>
+        <location filename="widget_plc.ui" line="893"/>
         <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="776"/>
+        <location filename="widget_plc.ui" line="763"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4387,12 +4387,12 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="893"/>
+        <location filename="widget_plc.ui" line="830"/>
         <source>输送线停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="713"/>
+        <location filename="widget_plc.ui" line="733"/>
         <source>理瓶器启动延迟</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4462,24 +4462,24 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="870"/>
+        <location filename="widget_plc.ui" line="800"/>
         <source>输送线电机最大频率</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="856"/>
+        <location filename="widget_plc.ui" line="770"/>
         <source>连续倒瓶报警数量</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="widget_plc.ui" line="393"/>
-        <location filename="widget_plc.ui" line="750"/>
+        <location filename="widget_plc.ui" line="719"/>
         <source>阈值设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="widget_plc.ui" line="25"/>
-        <location filename="widget_plc.ui" line="720"/>
+        <location filename="widget_plc.ui" line="685"/>
         <source>特殊参数设置</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4499,7 +4499,7 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="816"/>
+        <location filename="widget_plc.ui" line="863"/>
         <source>前倒瓶剔除吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4510,22 +4510,22 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="880"/>
+        <location filename="widget_plc.ui" line="790"/>
         <source>理瓶器停止延迟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="809"/>
+        <location filename="widget_plc.ui" line="880"/>
         <source>瓶底光源吹气间隔</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="829"/>
+        <location filename="widget_plc.ui" line="777"/>
         <source>瓶底光源吹气时长</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="863"/>
+        <location filename="widget_plc.ui" line="823"/>
         <source>前倒瓶剔除编码器延迟</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4536,40 +4536,40 @@ Please check the camera and restart the software!</source>
     </message>
     <message utf8="true">
         <location filename="widget_plc.ui" line="665"/>
-        <location filename="widget_plc.ui" line="679"/>
         <location filename="widget_plc.ui" line="693"/>
+        <location filename="widget_plc.ui" line="741"/>
         <source>丹佛斯</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="widget_plc.ui" line="670"/>
-        <location filename="widget_plc.ui" line="684"/>
         <location filename="widget_plc.ui" line="698"/>
+        <location filename="widget_plc.ui" line="746"/>
         <source>台达</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="743"/>
+        <location filename="widget_plc.ui" line="726"/>
         <source>理瓶器变频器品牌</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="706"/>
+        <location filename="widget_plc.ui" line="678"/>
         <source>前输送变频器品牌</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="846"/>
+        <location filename="widget_plc.ui" line="837"/>
         <source>连续不踢废数量</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="736"/>
+        <location filename="widget_plc.ui" line="712"/>
         <source>左手机</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="789"/>
+        <location filename="widget_plc.ui" line="813"/>
         <source>右手机</source>
         <translation type="unfinished"></translation>
     </message>

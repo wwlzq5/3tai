@@ -153,8 +153,6 @@ Widget_PLC::~Widget_PLC()
 void Widget_PLC::EnableCortol()
 {
 	ui.gridLayout_7->setSpacing(20);
-	ui.groupBox_2->setVisible(false);
-	ui.groupBox_4->setVisible(false);
 	ui.widget->setVisible(false);
 	ui.widget_3->setVisible(true);
 	ui.lineEdit_30->setVisible(false);
@@ -164,6 +162,8 @@ void Widget_PLC::EnableCortol()
 }
 void Widget_PLC::slots_HidePicture()
 {
+	ui.groupBox_2->setVisible(false);
+	ui.groupBox_4->setVisible(false);
 	ui.widget->setVisible(true);
 	ui.widget_3->setVisible(false);
 }
@@ -343,10 +343,10 @@ void Widget_PLC::slots_readFromPLC()
 			{
 				if(v_Itmps >> i & 0x01)
 				{
-					nCustomList[j]=1;
+					//nCustomList[j]=1;
 					nCustomAlert[j]->setChecked(true);
 				}else{
-					nCustomList[j]=0;
+					//nCustomList[j]=0;
 					nCustomAlert[j]->setChecked(false);
 				}
 				j++;
@@ -358,7 +358,9 @@ void Widget_PLC::slots_readFromPLC()
 		if(v_Itmps)
 		{
 			ui.radioButton->setChecked(true);
+			ui.radioButton_3->setChecked(false);
 		}else{
+			ui.radioButton->setChecked(false);
 			ui.radioButton_3->setChecked(true);
 		}
 		v_bit+=6;//24 
@@ -370,10 +372,10 @@ void Widget_PLC::slots_readFromPLC()
 			{
 				if(v_Itmps >> i & 0x01)
 				{
-					nAlertDataList[j]=1;
+					//nAlertDataList[j]=1;
 					nlistCheckBox[j]->setChecked(true);
 				}else{
-					nAlertDataList[j]=0;
+					//nAlertDataList[j]=0;
 					nlistCheckBox[j]->setChecked(false);
 				}
 				j++;
