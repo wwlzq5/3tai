@@ -1503,7 +1503,7 @@
 <context>
     <name>SensorStatusLabel</name>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="262"/>
+        <location filename="Widget_PLCPicture.cpp" line="282"/>
         <source>Hide</source>
         <translation type="unfinished">隐藏</translation>
     </message>
@@ -3926,17 +3926,17 @@ Please check the camera and restart the software!</source>
 <context>
     <name>Widget_PLCImage</name>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="335"/>
+        <location filename="Widget_PLCPicture.cpp" line="355"/>
         <source>ResetSensorPosition</source>
         <translation type="unfinished">重置</translation>
     </message>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="337"/>
+        <location filename="Widget_PLCPicture.cpp" line="357"/>
         <source>SaveSensorPosition</source>
         <translation type="unfinished">保存</translation>
     </message>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="339"/>
+        <location filename="Widget_PLCPicture.cpp" line="359"/>
         <source>SetPLCPara</source>
         <translation type="unfinished">设置参数</translation>
     </message>
@@ -3944,12 +3944,12 @@ Please check the camera and restart the software!</source>
 <context>
     <name>Widget_PLCPicture</name>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="86"/>
+        <location filename="Widget_PLCPicture.cpp" line="88"/>
         <source>PLCIN</source>
         <translation type="unfinished">PLC输入监视</translation>
     </message>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="109"/>
+        <location filename="Widget_PLCPicture.cpp" line="111"/>
         <source>PLCOUT</source>
         <translation type="unfinished">PLC输出监视</translation>
     </message>

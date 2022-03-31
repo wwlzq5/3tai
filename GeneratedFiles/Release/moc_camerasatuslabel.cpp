@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'camerasatuslabel.h'
 **
-** Created: Tue Mar 29 13:59:05 2022
+** Created: Thu Mar 31 09:50:29 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

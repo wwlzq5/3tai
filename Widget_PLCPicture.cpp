@@ -5,8 +5,10 @@ extern GlasswareDetectSystem *pMainFrm;
 Widget_PLCPicture::Widget_PLCPicture(QWidget *parent)
 	: QWidget(parent)
 {
-	m_strSensorPositionPath = "./Config/PLCAlertType.ini";
-	m_strPLCInfoPath = "./Config/PLCAlertType.ini";
+	m_strSensorPositionPath = "Config/PLCAlertType.ini";
+	m_strPLCInfoPath = "Config/PLCAlertType.ini";
+	m_strSensorPositionPath = pMainFrm->m_sConfigInfo.m_strAppPath + m_strSensorPositionPath;
+	m_strPLCInfoPath = pMainFrm->m_sConfigInfo.m_strAppPath + m_strPLCInfoPath;
 	widgetPLCImage = new Widget_PLCImage(this);
 	widgetPLCInfo = new QWidget(this);
 	labelCoderCounter = new QLabel(this);
@@ -154,20 +156,38 @@ void Widget_PLCPicture::slots_SetPLCPara()
 
 void Widget_PLCPicture::slots_SaveSensorPosition()
 {
-	QSettings SensorPoiniset(m_strSensorPositionPath,QSettings::IniFormat);
-	SensorPoiniset.setIniCodec(QTextCodec::codecForName("GBK"));
-	QString strSession;
+	QString Keystr,valstr;
 	for (int i=0;i<10;i++)
 	{
 		SensorPositionX[i] = listStatuslabel.at(i)->pos().x();
 		SensorPositionY[i] = listStatuslabel.at(i)->pos().y();
+		Keystr=QString::number(i);
+		valstr=QString::number(SensorPositionX[i]);
+		wchar_t *key=new wchar_t[Keystr.size()+1];
+		int len = Keystr.toWCharArray(key);
+		key[len] = '\0';
+		wchar_t *valx=new wchar_t[valstr.size()+1];
+		len = valstr.toWCharArray(valx);
+		valx[len] = '\0';
+		WritePrivateProfileString(L"SensorPositionX",key,valx,L"./Config/PLCAlertType.ini");
 
-		strSession = QString("/SensorPositionX/%1").arg(i);
-		SensorPoiniset.setValue(strSession,SensorPositionX[i]);
-		strSession = QString("/SensorPositionY/%1").arg(i);
-		SensorPoiniset.setValue(strSession,SensorPositionY[i]);
-		strSession = QString("/SensorVisable/%1").arg(i);
-		SensorPoiniset.setValue(strSession,listStatuslabel.at(i)->isVisible());
+		valstr=QString::number(SensorPositionY[i]);
+		wchar_t *valy=new wchar_t[valstr.size()+1];
+		len = valstr.toWCharArray(valy);
+		valy[len] = '\0';
+		WritePrivateProfileString(L"SensorPositionY",key,valy,L"./Config/PLCAlertType.ini");
+
+		if(listStatuslabel.at(i)->isVisible())
+			WritePrivateProfileString(L"SensorVisable",key,L"true",L"./Config/PLCAlertType.ini");
+		else
+			WritePrivateProfileString(L"SensorVisable",key,L"false",L"./Config/PLCAlertType.ini");
+
+		delete[] key;
+		delete[] valx;
+		delete[] valy;
+		key=NULL;
+		valx=NULL;
+		valy=NULL;
 	}
 }
 

@@ -534,13 +534,11 @@
     <CustomBuild Include="Widget_PLCPicture.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_iowidget.h">
+      <Filter>Header Files\Generated Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GlasswareDetectSystem.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_iowidget.h">
-      <Filter>Header Files\Generated Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
