@@ -95,7 +95,6 @@ public slots:
 	void slots_ChoseCamera();
 	void slots_ChoseErrorType();
 	void slots_OKSave();
-	void slots_OKCameraSurveillance();
 	void slots_Cancel();
 	void slots_KickModeChanged(int iMode);
 
@@ -113,12 +112,12 @@ public slots:
 	void slots_updateIOcardCounter();
 	void slots_ifCheckShowImage();
 	void slots_CameraOffAreet();
-	void SetCameraMonitorStatus();
 	void slots_EquipAlarmCheckBox(bool);
 	void slots_EquipAlarmInfoShowbtn(bool);
 	void slots_EquipAlarmSave();
 	void slots_EquipAlarmClear();
 	void slots_SetEquipAlarmSatus(int,bool);
+	void slots_UpdateEquipRemainDays(int,int);
 	
 private:
 	int iSaveMode;

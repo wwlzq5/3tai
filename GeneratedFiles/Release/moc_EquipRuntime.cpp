@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'EquipRuntime.h'
 **
-** Created: Thu Mar 31 09:50:30 2022
+** Created: Fri Apr 1 09:47:12 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,25 +23,26 @@ static const uint qt_meta_data_EquipRuntime[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       16,   14,   13,   13, 0x05,
+      37,   14,   13,   13, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      37,   13,   13,   13, 0x09,
+      61,   13,   13,   13, 0x09,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_EquipRuntime[] = {
     "EquipRuntime\0\0,\0SendAlarms(int,bool)\0"
-    "Slots_timer()\0"
+    "SendRemainDays(int,int)\0Slots_timer()\0"
 };
 
 void EquipRuntime::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -51,7 +52,8 @@ void EquipRuntime::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         EquipRuntime *_t = static_cast<EquipRuntime *>(_o);
         switch (_id) {
         case 0: _t->SendAlarms((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 1: _t->Slots_timer(); break;
+        case 1: _t->SendRemainDays((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: _t->Slots_timer(); break;
         default: ;
         }
     }
@@ -89,9 +91,9 @@ int EquipRuntime::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }
@@ -101,5 +103,12 @@ void EquipRuntime::SendAlarms(int _t1, bool _t2)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void EquipRuntime::SendRemainDays(int _t1, int _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_END_MOC_NAMESPACE

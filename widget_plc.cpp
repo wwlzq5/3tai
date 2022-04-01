@@ -343,10 +343,8 @@ void Widget_PLC::slots_readFromPLC()
 			{
 				if(v_Itmps >> i & 0x01)
 				{
-					//nCustomList[j]=1;
 					nCustomAlert[j]->setChecked(true);
 				}else{
-					//nCustomList[j]=0;
 					nCustomAlert[j]->setChecked(false);
 				}
 				j++;
@@ -372,10 +370,8 @@ void Widget_PLC::slots_readFromPLC()
 			{
 				if(v_Itmps >> i & 0x01)
 				{
-					//nAlertDataList[j]=1;
 					nlistCheckBox[j]->setChecked(true);
 				}else{
-					//nAlertDataList[j]=0;
 					nlistCheckBox[j]->setChecked(false);
 				}
 				j++;

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Thu Mar 31 09:49:07 2022
+** Created: Fri Apr 1 09:47:12 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -49,24 +49,10 @@ public:
     QComboBox *comboBox;
     QPushButton *pushButton_2;
     QSpacerItem *horizontalSpacer_11;
-    DHBaseWidget *widget_CameraSurveillance;
-    QVBoxLayout *verticalLayout_18;
-    QVBoxLayout *namelayout_CameraSurveillance;
-    QHBoxLayout *horizontalLayout_27;
-    QVBoxLayout *verticalLayout_19;
-    QHBoxLayout *horizontalLayout_28;
-    QCheckBox *checkBox_CameraOffLine;
-    QWidget *widget_StatisErrorType_4;
-    QGridLayout *gridLayout_25;
-    QHBoxLayout *horizontalLayout_31;
-    QSpacerItem *horizontalSpacer_15;
-    QLabel *CameraMonitor_Status;
-    QPushButton *btnOK_CameraSurveillance;
-    QSpacerItem *horizontalSpacer_16;
     DHBaseWidget *widget_EquipAlarm;
     QVBoxLayout *verticalLayout_17;
     QWidget *widget_2;
-    QHBoxLayout *horizontalLayout_23;
+    QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout_20;
     QHBoxLayout *horizontalLayout_19;
     QCheckBox *checkBox_EquipAlarm;
@@ -75,7 +61,9 @@ public:
     QHBoxLayout *horizontalLayout_20;
     QSpacerItem *horizontalSpacer;
     QGridLayout *gridLayout_EquipAlarm;
+    QComboBox *comboBox_EquipAlarm;
     QPushButton *btn_ClearAlarm;
+    QSpacerItem *horizontalSpacer_10;
     QPushButton *btnOk_EquipAlarm;
     QSpacerItem *horizontalSpacer_9;
     DHBaseWidget *widget_saveImageSet;
@@ -198,7 +186,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(-416, -139, 1707, 973));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1707, 857));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_14 = new QVBoxLayout();
@@ -240,76 +228,6 @@ public:
 
         verticalLayout_14->addWidget(widget_LoginHoldTime);
 
-        widget_CameraSurveillance = new DHBaseWidget(scrollAreaWidgetContents);
-        widget_CameraSurveillance->setObjectName(QString::fromUtf8("widget_CameraSurveillance"));
-        sizePolicy1.setHeightForWidth(widget_CameraSurveillance->sizePolicy().hasHeightForWidth());
-        widget_CameraSurveillance->setSizePolicy(sizePolicy1);
-        verticalLayout_18 = new QVBoxLayout(widget_CameraSurveillance);
-        verticalLayout_18->setObjectName(QString::fromUtf8("verticalLayout_18"));
-        verticalLayout_18->setContentsMargins(-1, 0, -1, -1);
-        namelayout_CameraSurveillance = new QVBoxLayout();
-        namelayout_CameraSurveillance->setObjectName(QString::fromUtf8("namelayout_CameraSurveillance"));
-
-        verticalLayout_18->addLayout(namelayout_CameraSurveillance);
-
-        horizontalLayout_27 = new QHBoxLayout();
-        horizontalLayout_27->setObjectName(QString::fromUtf8("horizontalLayout_27"));
-        verticalLayout_19 = new QVBoxLayout();
-        verticalLayout_19->setObjectName(QString::fromUtf8("verticalLayout_19"));
-        horizontalLayout_28 = new QHBoxLayout();
-        horizontalLayout_28->setObjectName(QString::fromUtf8("horizontalLayout_28"));
-        checkBox_CameraOffLine = new QCheckBox(widget_CameraSurveillance);
-        checkBox_CameraOffLine->setObjectName(QString::fromUtf8("checkBox_CameraOffLine"));
-        sizePolicy.setHeightForWidth(checkBox_CameraOffLine->sizePolicy().hasHeightForWidth());
-        checkBox_CameraOffLine->setSizePolicy(sizePolicy);
-
-        horizontalLayout_28->addWidget(checkBox_CameraOffLine);
-
-
-        verticalLayout_19->addLayout(horizontalLayout_28);
-
-        widget_StatisErrorType_4 = new QWidget(widget_CameraSurveillance);
-        widget_StatisErrorType_4->setObjectName(QString::fromUtf8("widget_StatisErrorType_4"));
-        widget_StatisErrorType_4->setMinimumSize(QSize(0, 0));
-        gridLayout_25 = new QGridLayout(widget_StatisErrorType_4);
-        gridLayout_25->setContentsMargins(2, 2, 2, 2);
-        gridLayout_25->setObjectName(QString::fromUtf8("gridLayout_25"));
-
-        verticalLayout_19->addWidget(widget_StatisErrorType_4);
-
-        horizontalLayout_31 = new QHBoxLayout();
-        horizontalLayout_31->setObjectName(QString::fromUtf8("horizontalLayout_31"));
-        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_31->addItem(horizontalSpacer_15);
-
-        CameraMonitor_Status = new QLabel(widget_CameraSurveillance);
-        CameraMonitor_Status->setObjectName(QString::fromUtf8("CameraMonitor_Status"));
-
-        horizontalLayout_31->addWidget(CameraMonitor_Status);
-
-        btnOK_CameraSurveillance = new QPushButton(widget_CameraSurveillance);
-        btnOK_CameraSurveillance->setObjectName(QString::fromUtf8("btnOK_CameraSurveillance"));
-        btnOK_CameraSurveillance->setMinimumSize(QSize(100, 0));
-
-        horizontalLayout_31->addWidget(btnOK_CameraSurveillance);
-
-
-        verticalLayout_19->addLayout(horizontalLayout_31);
-
-
-        horizontalLayout_27->addLayout(verticalLayout_19);
-
-        horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_27->addItem(horizontalSpacer_16);
-
-
-        verticalLayout_18->addLayout(horizontalLayout_27);
-
-
-        verticalLayout_14->addWidget(widget_CameraSurveillance);
-
         widget_EquipAlarm = new DHBaseWidget(scrollAreaWidgetContents);
         widget_EquipAlarm->setObjectName(QString::fromUtf8("widget_EquipAlarm"));
         widget_EquipAlarm->setMinimumSize(QSize(0, 0));
@@ -319,8 +237,9 @@ public:
         verticalLayout_17->setContentsMargins(0, 25, 0, 0);
         widget_2 = new QWidget(widget_EquipAlarm);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        horizontalLayout_23 = new QHBoxLayout(widget_2);
-        horizontalLayout_23->setObjectName(QString::fromUtf8("horizontalLayout_23"));
+        widget_2->setMinimumSize(QSize(0, 0));
+        horizontalLayout_4 = new QHBoxLayout(widget_2);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         verticalLayout_20 = new QVBoxLayout();
         verticalLayout_20->setObjectName(QString::fromUtf8("verticalLayout_20"));
         horizontalLayout_19 = new QHBoxLayout();
@@ -345,14 +264,16 @@ public:
         verticalLayout_20->addLayout(horizontalLayout_19);
 
         tableWidget_EquipAlarm = new QTableWidget(widget_2);
-        if (tableWidget_EquipAlarm->columnCount() < 3)
-            tableWidget_EquipAlarm->setColumnCount(3);
+        if (tableWidget_EquipAlarm->columnCount() < 4)
+            tableWidget_EquipAlarm->setColumnCount(4);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget_EquipAlarm->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget_EquipAlarm->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         tableWidget_EquipAlarm->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tableWidget_EquipAlarm->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         if (tableWidget_EquipAlarm->rowCount() < 20)
             tableWidget_EquipAlarm->setRowCount(20);
         tableWidget_EquipAlarm->setObjectName(QString::fromUtf8("tableWidget_EquipAlarm"));
@@ -380,10 +301,19 @@ public:
 
         horizontalLayout_20->addLayout(gridLayout_EquipAlarm);
 
+        comboBox_EquipAlarm = new QComboBox(widget_2);
+        comboBox_EquipAlarm->setObjectName(QString::fromUtf8("comboBox_EquipAlarm"));
+
+        horizontalLayout_20->addWidget(comboBox_EquipAlarm);
+
         btn_ClearAlarm = new QPushButton(widget_2);
         btn_ClearAlarm->setObjectName(QString::fromUtf8("btn_ClearAlarm"));
 
         horizontalLayout_20->addWidget(btn_ClearAlarm);
+
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_20->addItem(horizontalSpacer_10);
 
         btnOk_EquipAlarm = new QPushButton(widget_2);
         btnOk_EquipAlarm->setObjectName(QString::fromUtf8("btnOk_EquipAlarm"));
@@ -395,11 +325,11 @@ public:
         verticalLayout_20->addLayout(horizontalLayout_20);
 
 
-        horizontalLayout_23->addLayout(verticalLayout_20);
+        horizontalLayout_4->addLayout(verticalLayout_20);
 
         horizontalSpacer_9 = new QSpacerItem(100, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        horizontalLayout_23->addItem(horizontalSpacer_9);
+        horizontalLayout_4->addItem(horizontalSpacer_9);
 
 
         verticalLayout_17->addWidget(widget_2);
@@ -941,15 +871,40 @@ public:
     {
         WidgetTest->setWindowTitle(QApplication::translate("WidgetTest", "Form", 0, QApplication::UnicodeUTF8));
         pushButton_2->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
-        checkBox_CameraOffLine->setText(QApplication::translate("WidgetTest", "CameraOffLine", 0, QApplication::UnicodeUTF8));
-        CameraMonitor_Status->setText(QApplication::translate("WidgetTest", "TextLabel", 0, QApplication::UnicodeUTF8));
-        btnOK_CameraSurveillance->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         checkBox_EquipAlarm->setText(QApplication::translate("WidgetTest", "Equipment maintenance alarm", 0, QApplication::UnicodeUTF8));
         ShowAlarmSet_btn->setText(QApplication::translate("WidgetTest", "Show", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget_EquipAlarm->horizontalHeaderItem(1);
-        ___qtablewidgetitem->setText(QApplication::translate("WidgetTest", "Alarm Frequency(DAY)", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget_EquipAlarm->horizontalHeaderItem(2);
-        ___qtablewidgetitem1->setText(QApplication::translate("WidgetTest", "Alarm Infomation", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem = tableWidget_EquipAlarm->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("WidgetTest", "Enable", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidget_EquipAlarm->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("WidgetTest", "Alarm Frequency(DAY)", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidget_EquipAlarm->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("WidgetTest", "Remain Days", 0, QApplication::UnicodeUTF8));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidget_EquipAlarm->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("WidgetTest", "Alarm Infomation", 0, QApplication::UnicodeUTF8));
+        comboBox_EquipAlarm->clear();
+        comboBox_EquipAlarm->insertItems(0, QStringList()
+         << QApplication::translate("WidgetTest", "All", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "1", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "2", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "3", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "4", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "5", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "6", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "7", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "8", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "9", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "10", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "11", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "12", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "13", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "14", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "15", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "16", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "17", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "18", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "19", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("WidgetTest", "20", 0, QApplication::UnicodeUTF8)
+        );
         btn_ClearAlarm->setText(QApplication::translate("WidgetTest", "Maintenance Completed", 0, QApplication::UnicodeUTF8));
         btnOk_EquipAlarm->setText(QApplication::translate("WidgetTest", "Save", 0, QApplication::UnicodeUTF8));
         checkBox_saveFailureNormalImage->setText(QApplication::translate("WidgetTest", "SaveFailureNormalImage", 0, QApplication::UnicodeUTF8));

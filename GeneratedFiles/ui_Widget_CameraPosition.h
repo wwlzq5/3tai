@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Widget_CameraPosition.ui'
 **
-** Created: Thu Mar 31 09:49:07 2022
+** Created: Fri Apr 1 09:47:12 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

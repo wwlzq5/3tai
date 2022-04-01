@@ -24,10 +24,7 @@ WidgetTest::WidgetTest(QWidget *parent)
 	CameraOffAreet = new QTimer(this);
 	CameraOffAreet->setInterval(10000);
  	connect(CameraOffAreet, SIGNAL(timeout()), this, SLOT(slots_CameraOffAreet()));   
-	if (pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance)
-	{
-		CameraOffAreet->start();
-	}
+	CameraOffAreet->start();
 
 	//增加图片刷新选择
 	ui.comboBox->insertItem(0,tr("Refresh All")); 
@@ -161,8 +158,6 @@ void WidgetTest::slot_openPlcSet()
 }
 void WidgetTest::slots_intoWidget()
 {	
-	ui.checkBox_CameraOffLine->setChecked(pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance);
-	
 	if (pMainFrm->m_sSystemInfo.m_iSaveNormalErrorImageByTime)
 	{
 		ui.checkBox_saveFailureNormalImage->setChecked(true);
@@ -264,7 +259,6 @@ void WidgetTest::init()
 	connect(ui.btnChoseCamera, SIGNAL(clicked()), this, SLOT(slots_ChoseCamera()));
 	connect(ui.btnChoseErrorType, SIGNAL(clicked()), this, SLOT(slots_ChoseErrorType()));
 	connect(ui.btnOK_Save, SIGNAL(clicked()), this, SLOT(slots_OKSave()));
-	connect(ui.btnOK_CameraSurveillance, SIGNAL(clicked()), this, SLOT(slots_OKCameraSurveillance()));
 	connect(ui.pushButton_2,SIGNAL(clicked()), this, SLOT(slots_ifCheckShowImage()));
 	connect(ui.read, SIGNAL(clicked()), this, SLOT(slots_readDelay()));
 	connect(ui.settocard, SIGNAL(clicked()), this, SLOT(slots_setToCard()));
@@ -281,6 +275,8 @@ void WidgetTest::init()
 	connect(ui.btnOk_EquipAlarm,SIGNAL(clicked()),this,SLOT(slots_EquipAlarmSave()));
 	connect(ui.btn_ClearAlarm,SIGNAL(clicked()),this,SLOT(slots_EquipAlarmClear()));
 	connect(EquipRuntime::Instance(),SIGNAL(SendAlarms(int,bool)),this,SLOT(slots_SetEquipAlarmSatus(int,bool)));
+	connect(EquipRuntime::Instance(),SIGNAL(SendRemainDays(int,int)),this,SLOT(slots_UpdateEquipRemainDays(int,int)));
+	EquipRuntime::Instance()->InitRemainDays();
 	initInformation();
 
 	if(pMainFrm->m_sSystemInfo.m_iSystemType == 1)
@@ -297,12 +293,14 @@ void WidgetTest::init()
 
 void WidgetTest::initEquipAlarmTablewidget()
 {
-	ui.tableWidget_EquipAlarm->setColumnWidth(0,22);
+	ui.tableWidget_EquipAlarm->setColumnWidth(0,50);
 	ui.tableWidget_EquipAlarm->setColumnWidth(1,150);
-	ui.tableWidget_EquipAlarm->setColumnWidth(2,400);
+	ui.tableWidget_EquipAlarm->setColumnWidth(2,120);
+	ui.tableWidget_EquipAlarm->setColumnWidth(3,400);
 	for (int i=0;i<ui.tableWidget_EquipAlarm->rowCount();i++)
 	{
 		QTableWidgetItem *check=new QTableWidgetItem;
+		check->setTextAlignment(Qt::AlignCenter); 
 		check->setCheckState (Qt::Unchecked);
 		check->setFlags(check->flags() & (~Qt::ItemIsEditable) & (~Qt::ItemIsSelectable));
 		ui.tableWidget_EquipAlarm->setItem(i,0,check); //插入复选框
@@ -310,7 +308,11 @@ void WidgetTest::initEquipAlarmTablewidget()
 		m_item1->setTextAlignment(Qt::AlignCenter); 
 		ui.tableWidget_EquipAlarm->setItem(i,1,m_item1); 
 		QTableWidgetItem *m_item2=new QTableWidgetItem;
+		m_item2->setTextAlignment(Qt::AlignCenter); 
+		m_item2->setFlags(check->flags() & (~Qt::ItemIsEditable) & (~Qt::ItemIsSelectable));
 		ui.tableWidget_EquipAlarm->setItem(i,2,m_item2); 
+		QTableWidgetItem *m_item3=new QTableWidgetItem;
+		ui.tableWidget_EquipAlarm->setItem(i,3,m_item3); 
 
 		CameraStatusLabel *pLabel = new CameraStatusLabel(this);
 		pLabel->setAlignment(Qt::AlignCenter);
@@ -335,7 +337,7 @@ void WidgetTest::initEquipAlarmTablewidget()
 		else
 			ui.tableWidget_EquipAlarm->item(i,0)->setCheckState(Qt::Unchecked);
 		ui.tableWidget_EquipAlarm->item(i,1)->setText(QString::number((pMainFrm->m_sRuntimeInfo.AlarmsDays.at(i))));
-		ui.tableWidget_EquipAlarm->item(i,2)->setText(pMainFrm->m_sRuntimeInfo.AlarmsInfo.at(i));
+		ui.tableWidget_EquipAlarm->item(i,3)->setText(pMainFrm->m_sRuntimeInfo.AlarmsInfo.at(i));
 	}
 	slots_EquipAlarmInfoShowbtn(false);
 	slots_EquipAlarmCheckBox(pMainFrm->m_sRuntimeInfo.isEnable);
@@ -374,21 +376,16 @@ void WidgetTest::initInformation()
 		m_nSampleDelay = pMainFrm->m_vIOCard[0]->readParam(42);
 	}
 	updateIOCardParam();
-
 }
 void WidgetTest::initWidgetName()
 {
-	ui.widget_LoginHoldTime->setWidgetName(tr("Login Hold Time"));
+	ui.widget_LoginHoldTime->setWidgetName(tr("reFresh Set"));
 	ui.widget_LoginHoldTime->widgetName->setMaximumHeight(25);
 	ui.namelayout_LoginHoldTime->addWidget(ui.widget_LoginHoldTime->widgetName);//,Qt::AlignTop);
 
 	ui.widget_saveImageSet->setWidgetName(tr("Save Mode"));
 	ui.widget_saveImageSet->widgetName->setMaximumHeight(25);
 	ui.namelayout_saveImage->addWidget(ui.widget_saveImageSet->widgetName);//,Qt::AlignTop);
-
-	ui.widget_CameraSurveillance->setWidgetName(tr("Camera Surveillance"));
-	ui.widget_CameraSurveillance->widgetName->setMaximumHeight(25);
-	ui.namelayout_CameraSurveillance->addWidget(ui.widget_CameraSurveillance->widgetName);
 
 	ui.widget_IOCardSet->setWidgetName(tr("IOCard Delay"));
 	ui.widget_IOCardSet->widgetName->setMaximumHeight(25);
@@ -487,48 +484,6 @@ void WidgetTest::slots_OKSave()
 		pMainFrm->m_sSystemInfo.m_bSaveErrorType[i] = widget_ErrorType->bIsChosed[i];
 	}
 }
-void WidgetTest::slots_OKCameraSurveillance()
-{
-
-	pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance = ui.checkBox_CameraOffLine->isChecked();
-	//pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance = ui.checkBox_CameraContinueReject->isChecked();
-	//pMainFrm->m_sSystemInfo.iCamOfflineNo = ui.spinBox_OffLineNumber->value();
-	//pMainFrm->m_sSystemInfo.iCamContinueRejectNumber = ui.spinBox_RejectNo->value();
-
-
-	QSettings iniStatisSet(pMainFrm->m_sConfigInfo.m_strConfigPath,QSettings::IniFormat);
-	iniStatisSet.setIniCodec(QTextCodec::codecForName("GBK"));
-
-	iniStatisSet.setValue("/system/bCameraOffLineSurveillance",pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance);
-	iniStatisSet.setValue("/system/bCameraContinueRejectSurveillance",pMainFrm->m_sSystemInfo.bCameraContinueRejectSurveillance);	
-	iniStatisSet.setValue("/system/iCamOfflineNo",pMainFrm->m_sSystemInfo.iCamOfflineNo);
-	iniStatisSet.setValue("/system/iCamContinueRejectNumber",pMainFrm->m_sSystemInfo.iCamContinueRejectNumber);
-
-	if(pMainFrm->m_sSystemInfo.bCameraOffLineSurveillance)
-	{
-		if (CameraOffAreet->isActive())
-		{
-			ui.CameraMonitor_Status->setText(tr("Camera Offline monitoring already start"));
-			QTimer::singleShot(1000,this,SLOT(SetCameraMonitorStatus()));
-			return;
-		}
-		CameraOffAreet->start();
-		ui.CameraMonitor_Status->setText(tr("Camera Offline monitoring start"));
-		QTimer::singleShot(1000,this,SLOT(SetCameraMonitorStatus()));
-	}
-	else
-	{
-		if (!CameraOffAreet->isActive())
-		{
-			ui.CameraMonitor_Status->setText(tr("Camera Offline monitoring already stop"));
-			QTimer::singleShot(1000,this,SLOT(SetCameraMonitorStatus()));
-			return;
-		}
-		CameraOffAreet->stop();
-		ui.CameraMonitor_Status->setText(tr("Camera Offline monitoring stop"));
-		QTimer::singleShot(1000,this,SLOT(SetCameraMonitorStatus()));
-	}
-}
 
 void WidgetTest::slots_CameraOffAreet()
 {
@@ -566,10 +521,6 @@ void WidgetTest::slots_CameraOffAreet()
 	}
 }
 
-void WidgetTest::SetCameraMonitorStatus()
-{
-	ui.CameraMonitor_Status->setText("");
-}
 
 void WidgetTest::slots_EquipAlarmCheckBox(bool checked)
 {
@@ -614,6 +565,7 @@ void WidgetTest::slots_EquipAlarmSave()
 		runtimeCfg.setValue(QString("EquipAlarm/Alarm%1_Days").arg(i+1),ui.tableWidget_EquipAlarm->item(i,1)->text());
 		runtimeCfg.setValue(QString("EquipAlarm/Alarm%1_Info").arg(i+1),ui.tableWidget_EquipAlarm->item(i,2)->text());
 	}
+	EquipRuntime::Instance()->InitRemainDays();
 	if (pMainFrm->m_sRuntimeInfo.isEnable)
 	{
 		EquipRuntime::Instance()->start();
@@ -622,11 +574,20 @@ void WidgetTest::slots_EquipAlarmSave()
 	{
 		EquipRuntime::Instance()->stop();
 	}
+	QMessageBox::information(this,tr("Equipment maintenance alarm setting"),tr("Save suceessfully"),QMessageBox::Ok);
 }
 
 void WidgetTest::slots_EquipAlarmClear()
 {
-	EquipRuntime::Instance()->ResetLogFile();
+	int pIndex=ui.comboBox_EquipAlarm->currentItem();
+	if (pIndex == 0)
+	{
+		EquipRuntime::Instance()->ResetLogFile();
+	}
+	else
+	{
+		EquipRuntime::Instance()->ResetLogFile(pIndex -1);
+	}
 	pMainFrm->sVersion = pMainFrm->getVersion(NULL);
 }
 
@@ -638,6 +599,11 @@ void WidgetTest::slots_SetEquipAlarmSatus(int index,bool pStatus)
 	}else{
 		m_EquipAlarmStatusList[index]->SetCameraStatus(0);
 	}
+}
+
+void WidgetTest::slots_UpdateEquipRemainDays(int index,int days)
+{
+	ui.tableWidget_EquipAlarm->item(index,2)->setText(QString::number(days));
 }
 
 void WidgetTest::slots_Cancel()
