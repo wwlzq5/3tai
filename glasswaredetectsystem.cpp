@@ -620,8 +620,6 @@ void GlasswareDetectSystem::ReadIniInformation()
 		m_sSystemInfo.m_iNoRejectIfNoOrigin[i] = iniset.value(strSession,0).toInt();
 		strSession = QString("/NoKickIfROIFail/Device_%1").arg(i+1);
 		m_sSystemInfo.m_iNoRejectIfROIfail[i] = iniset.value(strSession,0).toInt();
-		strSession = QString("/NoStaticIfNoOrigin/Device_%1").arg(i+1);
-		m_sSystemInfo.m_iNoStaticIfNoOrigin[i] = iniset.value(strSession,0).toInt();
 	}
 	
 	int iShift[3];
@@ -1475,6 +1473,7 @@ void GlasswareDetectSystem::slots_turnPage(int current_page, int iPara)
 		statked_widget->setCurrentWidget(widget_carveSetting);
 		m_eLastMainPage = m_eCurrentMainPage;
 		iLastPage = 0;
+		widget_carveSetting->slots_turnCameraPage(widget_carveSetting->iCameraNo);
 		pMainFrm->Logfile.write(("into CarveSetting"),AbnormityLog);
 		break;
 	case 1:
@@ -2047,7 +2046,7 @@ void GlasswareDetectSystem::slot_SockScreen()
 }
 void GlasswareDetectSystem::slots_loginState(int nPerm,bool isUnlock)
 {
-	//widget_carveSetting->slots_turnCameraPage(0);
+	widget_carveSetting->slots_turnCameraPage(0);
 	loginState(nPerm,isUnlock);
 	nUserWidget->iUserPerm = isUnlock;
 }

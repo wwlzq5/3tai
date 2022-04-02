@@ -251,6 +251,14 @@ void WidgetManagement::slots_load(bool bCurModel)
 	pMainFrm->m_sSystemInfo.m_strModelName = strDirPath.section("/",-1);
 	pMainFrm->m_sConfigInfo.m_strGrabInfoPath = pMainFrm->m_sConfigInfo.m_strAppPath + "ModelInfo/" + pMainFrm->m_sSystemInfo.m_strModelName + "/GrabInfo.ini";
 	
+	QSettings iniCameraSet(pMainFrm->m_sConfigInfo.m_strGrabInfoPath,QSettings::IniFormat);
+	QString strShuter,strTrigger;
+	for(int i = 0; i < pMainFrm->m_sSystemInfo.iRealCamCount; i++)
+	{
+		strShuter = QString("/Shuter/Grab_%1").arg(i);
+		pMainFrm->m_sRealCamInfo[i].m_iShuter=iniCameraSet.value(strShuter,20).toInt();
+	}
+	
 	//pMainFrm->ReadCorveConfig();
 	pMainFrm->InitImage();
 	pMainFrm->InitCheckSet();

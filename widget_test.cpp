@@ -490,6 +490,7 @@ void WidgetTest::slots_CameraOffAreet()
 	bool test= false;
 	for(int i=0;i < pMainFrm->m_sSystemInfo.iRealCamCount;i++)
 	{
+		//判断相机是否掉线
 		QString DeviceName = QString(pMainFrm->struGrabCardPara[i].strDeviceName);
 		if ( DeviceName  != "MER" )
 		{
@@ -499,7 +500,9 @@ void WidgetTest::slots_CameraOffAreet()
 		bool ret = true;
 		try
 		{
+			pMainFrm->mutexDetectElement[i].lock();
 			ret = ((CDHGrabberMER*)pMainFrm->m_sRealCamInfo[i].m_pGrabber)->MERGetParamInt(MERExposure,temp,temp,temp);
+			pMainFrm->mutexDetectElement[i].unlock();
 		}
 		catch(...)
 		{
@@ -509,7 +512,6 @@ void WidgetTest::slots_CameraOffAreet()
 		{
 			//相机掉线报警
 			pMainFrm->cameraStatus_list.at(i)->SetCameraStatus(2);
-			//emit signals_ShowWarning(i,QString(tr("Camera %1 Offline ! \nPlease check the camera and restart the software!")).arg(i+1));
 			test = true;
 			pMainFrm->plc_widget->nErrorCameraID = i+1;
 			break;

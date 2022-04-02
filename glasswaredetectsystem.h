@@ -191,6 +191,7 @@ public:
 	int sLanguage;
 public:
 	ImageSave m_SavePicture[CAMERA_MAX_COUNT];
+	int CameraCount[CAMERA_MAX_COUNT];
 	int surplusDays;
 	HANDLE pHandles[CAMERA_MAX_COUNT];
 	MyErrorType nSendData[256];
