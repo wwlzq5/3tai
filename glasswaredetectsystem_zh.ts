@@ -4456,7 +4456,7 @@ Please check the camera and restart the software!</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_plc.ui" line="948"/>
+        <location filename="widget_plc.ui" line="958"/>
         <source>PLC报警设置</source>
         <translation type="unfinished"></translation>
     </message>

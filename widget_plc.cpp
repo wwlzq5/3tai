@@ -170,7 +170,7 @@ void Widget_PLC::slots_HidePicture()
 void Widget_PLC::slots_intoWidget()
 {
 	QByteArray st;
-	SendPLCMessage(87,st,1,2,254);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
+	SendPLCMessage(87,st,1,2,266);//暂时获取界面显示的所有数据2*5+2*6+8*4+8*9+4+3*4+10*8 120+80+12
 	ui.checkBox->setChecked(false);
 	ui.checkBox_2->setChecked(false);
 	ui.widget->setVisible(false);
@@ -328,7 +328,7 @@ void Widget_PLC::SendPLCMessage(int address,QByteArray& send,int state,int id,in
 void Widget_PLC::slots_readFromPLC()
 {
 	QByteArray v_receive = m_pSocket->readAll();
-	if (v_receive.size() == 268)//242+12+4+10
+	if (v_receive.size() == 280)//242+12+4+10+12
 	{
 		double v_douTemp = 0;
 		int v_Itmp = 0;
@@ -514,6 +514,16 @@ void Widget_PLC::slots_readFromPLC()
 		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
 		ui.lineEdit_40->setText(QString::number(v_Itmp));
 		v_bit+=4;
+		QString VeSION;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		VeSION += QString::number(v_Itmp)+".";
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		VeSION += QString::number(v_Itmp)+".";
+		v_bit+=4;
+		ByteToData(v_receive,v_bit,v_bit+3,v_Itmp);
+		VeSION += QString::number(v_Itmp);
+		ui.label_54->setText(QString::fromLocal8Bit("PLC版本:")+VeSION);
 	}else if(v_receive.size() == 22)
 	{
 		WORD v_Itmp=0;
@@ -754,7 +764,14 @@ void Widget_PLC::slots_Pushbuttonsave()
 	TempData = ui.lineEdit_40->text().toInt();
 	DataToByte(TempData,st);
 	//总数
-	SendPLCMessage(87,st,2,1,254);//120+44+64=244+10
+	QString PLCVersion = ui.label_54->text();
+	QStringList list = PLCVersion.split(".");
+	for(int i=0;i<list.count();i++)
+	{
+		TempData = list[i].toInt();
+		DataToByte(TempData,st);
+	}
+	SendPLCMessage(87,st,2,1,266);//120+44+64=244+10
 }
 template<typename T>
 void Widget_PLC::DataToByte(T& xx, QByteArray& st)

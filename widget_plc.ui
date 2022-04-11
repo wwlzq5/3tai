@@ -906,7 +906,7 @@
           <property name="title">
            <string>系统自定义报警设置</string>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,7">
+          <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,7,0">
            <item>
             <widget class="QWidget" name="widget_2" native="true">
              <property name="sizePolicy">
@@ -934,6 +934,16 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_54">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -983,7 +993,6 @@
       </item>
      </layout>
      <zorder></zorder>
-     <zorder>widget_5</zorder>
     </widget>
    </item>
    <item>

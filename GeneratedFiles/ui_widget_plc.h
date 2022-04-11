@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_plc.ui'
 **
-** Created: Fri Apr 1 10:03:23 2022
+** Created: Wed Apr 6 13:47:24 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -160,6 +160,7 @@ public:
     QGridLayout *gridLayout_13;
     QGridLayout *gridLayout_12;
     QSpacerItem *verticalSpacer;
+    QLabel *label_54;
     QGridLayout *gridLayout_11;
     QGroupBox *groupBox_1;
     QVBoxLayout *verticalLayout_3;
@@ -877,6 +878,12 @@ public:
 
         verticalLayout_2->addItem(verticalSpacer);
 
+        label_54 = new QLabel(groupBox_5);
+        label_54->setObjectName(QString::fromUtf8("label_54"));
+        label_54->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        verticalLayout_2->addWidget(label_54);
+
         verticalLayout_2->setStretch(0, 3);
         verticalLayout_2->setStretch(1, 7);
 
@@ -1028,6 +1035,7 @@ public:
         label_43->setText(QApplication::translate("widget_plc", "\347\223\266\345\272\225\345\205\211\346\272\220\345\220\271\346\260\224\351\227\264\351\232\224", 0, QApplication::UnicodeUTF8));
         pushButton_save->setText(QApplication::translate("widget_plc", "\344\277\235\345\255\230", 0, QApplication::UnicodeUTF8));
         groupBox_5->setTitle(QApplication::translate("widget_plc", "\347\263\273\347\273\237\350\207\252\345\256\232\344\271\211\346\212\245\350\255\246\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
+        label_54->setText(QString());
         groupBox_1->setTitle(QApplication::translate("widget_plc", "PLC\346\212\245\350\255\246\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

@@ -6,9 +6,9 @@ Widget_PLCPicture::Widget_PLCPicture(QWidget *parent)
 	: QWidget(parent)
 {
 	m_strSensorPositionPath = "Config/PLCAlertType.ini";
-	m_strPLCInfoPath = "Config/PLCAlertType.ini";
+	//m_strPLCInfoPath = "Config/PLCAlertType.ini";
 	m_strSensorPositionPath = pMainFrm->m_sConfigInfo.m_strAppPath + m_strSensorPositionPath;
-	m_strPLCInfoPath = pMainFrm->m_sConfigInfo.m_strAppPath + m_strPLCInfoPath;
+	//m_strPLCInfoPath = pMainFrm->m_sConfigInfo.m_strAppPath + m_strPLCInfoPath;
 	widgetPLCImage = new Widget_PLCImage(this);
 	widgetPLCInfo = new QWidget(this);
 	labelCoderCounter = new QLabel(this);

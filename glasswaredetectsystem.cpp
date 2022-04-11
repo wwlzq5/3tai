@@ -133,7 +133,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.6");
+	return SysType + QString(tr("Version:")+"6.64.1.6T2");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
