@@ -134,14 +134,14 @@ void WidgetTest::slots_IoSetPam(int temp,int temp2)
 {
 	if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
-		m_vIOCard->writeParam(46,temp);
-		m_vIOCard->writeParam(49,temp2);
+		m_vIOCard->writeParam(45,temp);
+		m_vIOCard->writeParam(32,temp2);
 		QString strValue,strPara;
 		strValue = strValue.setNum(temp,10);
-		strPara = strPara.setNum(46,10);
+		strPara = strPara.setNum(45,10);
 		StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,m_sSystemInfo1.strCardInitFile);
 		strValue = strValue.setNum(temp2,10);
-		strPara = strPara.setNum(49,10);
+		strPara = strPara.setNum(32,10);
 		StateTool::WritePrivateProfileQString("PIO24B",strPara,strValue,m_sSystemInfo1.strCardInitFile);
 	}
 }
@@ -149,8 +149,8 @@ void WidgetTest::slot_openPlcSet()
 {
 	if(pMainFrm->m_sSystemInfo.m_bIsIOCardOK)
 	{
-		int temp = m_vIOCard->readParam(46);
-		int temp2 = m_vIOCard->readParam(49);
+		int temp = m_vIOCard->readParam(45);
+		int temp2 = m_vIOCard->readParam(32);
 		emit signal_ioSetPam(temp,temp2);
 	}
 	nIotest->raise();
