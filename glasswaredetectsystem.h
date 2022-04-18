@@ -65,8 +65,6 @@ public:
 	void InitImage();//初始化图像
 	void CloseCam();//关闭相机
 	void InitIOCard();
-	void ReleaseIOCard();
-	void ReleaseImage();
 	void ReleaseAll();//释放资源
 	void GrabCallBack(const s_GBSIGNALINFO *SigInfo);//采集回调函数
 	QString getVersion(QString strFullName);
@@ -101,7 +99,6 @@ public slots:
 	void slots_UpdateCoderNumber();
 	void slots_updateCameraState(int nCam,int nMode = 0);
 	void slots_SetCameraStatus(int nCam,int mode);
-	void directoryChanged(QString path);
 	void onServerDataReady();
 	void slot_SockScreen();
 	void slots_loginState(int,bool);
@@ -187,7 +184,6 @@ public:
 	CBottleCheck m_cBottleStress[CAMERA_MAX_COUNT];	
 	CBottleCheck m_cBottleRotateCarve;
 	QString sVersion;
-	QString SaveDataPath;
 	int sLanguage;
 public:
 	ImageSave m_SavePicture[CAMERA_MAX_COUNT];

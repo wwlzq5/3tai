@@ -44,6 +44,7 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	QButtonGroup* test4=new QButtonGroup(this);
 	test4->addButton(ui.radioButton_9);
 	test4->addButton(ui.radioButton_10);
+	QGridLayout *Contentlayout = new QGridLayout(ui.scrollAreaWidgetContents);
 	/////////////////////
 	if(nSystemType == 2)
 	{
@@ -60,15 +61,15 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 		QSignalMapper* signalmapper = new QSignalMapper(this);//工具栏的信号管理
 		QCheckBox *checkBox = new QCheckBox(this);
 		checkBox->setText(QString::fromLocal8Bit("是否报警"));//勾选表示要报警
-		ui.gridLayout_7->addWidget(checkBox,0,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+		Contentlayout->addWidget(checkBox,0,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox,SIGNAL(stateChanged(int)),this,SLOT(slots_modify1(int)));
 		QCheckBox *checkBox2 = new QCheckBox(this);
 		checkBox2->setText(QString::fromLocal8Bit("是否停输送线"));//勾选表示要停止输送线
-		ui.gridLayout_7->addWidget(checkBox2,0,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+		Contentlayout->addWidget(checkBox2,0,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox2,SIGNAL(stateChanged(int)),this,SLOT(slots_modify2(int)));
 		QCheckBox *checkBox3 = new QCheckBox(this);
 		checkBox3->setText(QString::fromLocal8Bit("是否停理瓶器"));//勾选表示要停止理瓶器
-		ui.gridLayout_7->addWidget(checkBox3,0,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+		Contentlayout->addWidget(checkBox3,0,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		connect(checkBox3,SIGNAL(stateChanged(int)),this,SLOT(slots_modify3(int)));
 		for (int i = 0;i < 32;i++)
 		{
@@ -90,10 +91,10 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 			signalmapper->setMapping(nlistCheckBox[i+64], i+64);
 			if(ErrorName != "")
 			{
-				ui.gridLayout_7->addWidget(label,i+1,0);
-				ui.gridLayout_7->addWidget(nlistCheckBox[i],i+1,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
-				ui.gridLayout_7->addWidget(nlistCheckBox[i+32],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
-				ui.gridLayout_7->addWidget(nlistCheckBox[i+64],i+1,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+				Contentlayout->addWidget(label,i+1,0);
+				Contentlayout->addWidget(nlistCheckBox[i],i+1,1,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+				Contentlayout->addWidget(nlistCheckBox[i+32],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
+				Contentlayout->addWidget(nlistCheckBox[i+64],i+1,3,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 			}else{
 				label->setVisible(false);
 				nlistCheckBox[i]->setVisible(false);
@@ -134,6 +135,8 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 			ui.gridLayout_12->addWidget(nCustomAlert[i+CUSTOMALERT],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		}
 	}
+	ui.scrollArea->setStyleSheet("QScrollArea {background-color:transparent;}");
+	ui.scrollArea->viewport()->setStyleSheet("background-color:transparent;");
 	m_PlcPicture = new Widget_PLCPicture(ui.widget_3);
 	ui.gridLayout_3->addWidget(m_PlcPicture);
 	connect(m_PlcPicture,SIGNAL(showSetPam()),this,SLOT(slots_HidePicture()));
@@ -152,7 +155,6 @@ Widget_PLC::~Widget_PLC()
 }
 void Widget_PLC::EnableCortol()
 {
-	ui.gridLayout_7->setSpacing(20);
 	ui.widget->setVisible(false);
 	ui.widget_3->setVisible(true);
 	ui.lineEdit_30->setVisible(false);

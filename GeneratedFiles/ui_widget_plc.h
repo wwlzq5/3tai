@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_plc.ui'
 **
-** Created: Wed Apr 6 13:47:24 2022
+** Created: Mon Apr 18 13:56:26 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -24,6 +24,7 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
+#include <QtGui/QScrollArea>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
@@ -164,10 +165,8 @@ public:
     QGridLayout *gridLayout_11;
     QGroupBox *groupBox_1;
     QVBoxLayout *verticalLayout_3;
-    QWidget *widget_4;
-    QGridLayout *gridLayout_14;
-    QGridLayout *gridLayout_7;
-    QSpacerItem *verticalSpacer_2;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
     QWidget *widget_3;
     QGridLayout *gridLayout_8;
     QGridLayout *gridLayout_3;
@@ -898,26 +897,17 @@ public:
         groupBox_1->setObjectName(QString::fromUtf8("groupBox_1"));
         verticalLayout_3 = new QVBoxLayout(groupBox_1);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        widget_4 = new QWidget(groupBox_1);
-        widget_4->setObjectName(QString::fromUtf8("widget_4"));
-        sizePolicy3.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
-        widget_4->setSizePolicy(sizePolicy3);
-        gridLayout_14 = new QGridLayout(widget_4);
-        gridLayout_14->setObjectName(QString::fromUtf8("gridLayout_14"));
-        gridLayout_7 = new QGridLayout();
-        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        scrollArea = new QScrollArea(groupBox_1);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setFrameShape(QFrame::NoFrame);
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 301, 591));
+        scrollArea->setWidget(scrollAreaWidgetContents);
 
-        gridLayout_14->addLayout(gridLayout_7, 0, 0, 1, 1);
+        verticalLayout_3->addWidget(scrollArea);
 
-
-        verticalLayout_3->addWidget(widget_4);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_3->addItem(verticalSpacer_2);
-
-        verticalLayout_3->setStretch(0, 7);
-        verticalLayout_3->setStretch(1, 3);
 
         gridLayout_11->addWidget(groupBox_1, 0, 0, 1, 1);
 

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_Management.h'
 **
-** Created: Fri Apr 1 09:47:12 2022
+** Created: Mon Apr 18 13:52:02 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,38 +23,26 @@ static const uint qt_meta_data_MyCameraPoButton[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       0,    0, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
-
- // signals: signature, parameters, type, tag, flags
-      18,   17,   17,   17, 0x05,
-
- // slots: signature, parameters, type, tag, flags
-      44,   17,   17,   17, 0x0a,
+       0,       // signalCount
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MyCameraPoButton[] = {
-    "MyCameraPoButton\0\0signals_showCameraPo(int)\0"
-    "slots_showCameraPo()\0"
+    "MyCameraPoButton\0"
 };
 
 void MyCameraPoButton::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        MyCameraPoButton *_t = static_cast<MyCameraPoButton *>(_o);
-        switch (_id) {
-        case 0: _t->signals_showCameraPo((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->slots_showCameraPo(); break;
-        default: ;
-        }
-    }
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
+    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData MyCameraPoButton::staticMetaObjectExtraData = {
@@ -88,19 +76,7 @@ int MyCameraPoButton::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QPushButton::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
-    }
     return _id;
-}
-
-// SIGNAL 0
-void MyCameraPoButton::signals_showCameraPo(int _t1)
-{
-    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 static const uint qt_meta_data_WidgetManagement[] = {
 
@@ -108,7 +84,7 @@ static const uint qt_meta_data_WidgetManagement[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -120,32 +96,27 @@ static const uint qt_meta_data_WidgetManagement[] = {
 
  // slots: signature, parameters, type, tag, flags
       39,   17,   17,   17, 0x0a,
-      58,   17,   17,   17, 0x0a,
-      89,   17,   17,   17, 0x0a,
-     132,  124,   17,   17, 0x08,
-     159,   17,   17,   17, 0x08,
-     181,  171,   17,   17, 0x08,
-     198,   17,   17,   17, 0x28,
-     211,   17,   17,   17, 0x08,
-     226,   17,   17,   17, 0x08,
-     241,   17,   17,   17, 0x08,
-     256,   17,   17,   17, 0x08,
-     271,   17,   17,   17, 0x08,
-     298,   17,   17,   17, 0x08,
+      66,   58,   17,   17, 0x08,
+      93,   17,   17,   17, 0x08,
+     115,  105,   17,   17, 0x08,
+     132,   17,   17,   17, 0x28,
+     145,   17,   17,   17, 0x08,
+     160,   17,   17,   17, 0x08,
+     175,   17,   17,   17, 0x08,
+     190,   17,   17,   17, 0x08,
+     205,   17,   17,   17, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_WidgetManagement[] = {
     "WidgetManagement\0\0signals_clearTable()\0"
-    "slots_intoWidget()\0slots_CameraPositionWidgetOK()\0"
-    "slots_CameraPositionWidgetCancel()\0"
-    "row,col\0slots_cellClicked(int,int)\0"
-    "slots_new()\0bCurModel\0slots_load(bool)\0"
-    "slots_load()\0slots_backup()\0slots_delete()\0"
+    "slots_intoWidget()\0row,col\0"
+    "slots_cellClicked(int,int)\0slots_new()\0"
+    "bCurModel\0slots_load(bool)\0slots_load()\0"
+    "slots_backup()\0slots_delete()\0"
     "slots_export()\0slots_import()\0"
     "slots_action_selectImage()\0"
-    "slots_showCameraPo(int)\0"
 };
 
 void WidgetManagement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -156,18 +127,15 @@ void WidgetManagement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         switch (_id) {
         case 0: _t->signals_clearTable(); break;
         case 1: _t->slots_intoWidget(); break;
-        case 2: _t->slots_CameraPositionWidgetOK(); break;
-        case 3: _t->slots_CameraPositionWidgetCancel(); break;
-        case 4: _t->slots_cellClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 5: _t->slots_new(); break;
-        case 6: _t->slots_load((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 7: _t->slots_load(); break;
-        case 8: _t->slots_backup(); break;
-        case 9: _t->slots_delete(); break;
-        case 10: _t->slots_export(); break;
-        case 11: _t->slots_import(); break;
-        case 12: _t->slots_action_selectImage(); break;
-        case 13: _t->slots_showCameraPo((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->slots_cellClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: _t->slots_new(); break;
+        case 4: _t->slots_load((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: _t->slots_load(); break;
+        case 6: _t->slots_backup(); break;
+        case 7: _t->slots_delete(); break;
+        case 8: _t->slots_export(); break;
+        case 9: _t->slots_import(); break;
+        case 10: _t->slots_action_selectImage(); break;
         default: ;
         }
     }
@@ -205,9 +173,9 @@ int WidgetManagement::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 11;
     }
     return _id;
 }

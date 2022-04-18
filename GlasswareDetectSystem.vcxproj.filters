@@ -253,15 +253,6 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_widget_debug.cpp">
       <Filter>Header Files\Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Widget_CameraPosition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Widget_CameraPosition.cpp">
-      <Filter>Header Files\Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Widget_CameraPosition.cpp">
-      <Filter>Header Files\Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_clogFile.cpp">
       <Filter>Header Files\Generated Files\Debug</Filter>
     </ClCompile>
@@ -426,12 +417,6 @@
     <CustomBuild Include="mytableview.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Widget_CameraPosition.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Widget_CameraPosition.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="clogFile.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -457,9 +442,6 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="GeneratedFiles\ui_TestWidget.h">
-      <Filter>Header Files\Generated Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_Widget_CameraPosition.h">
       <Filter>Header Files\Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="GeneratedFiles\ui_widget_test.h">

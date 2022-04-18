@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'glasswaredetectsystem.h'
 **
-** Created: Fri Apr 1 14:12:08 2022
+** Created: Mon Apr 18 13:52:01 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_GlasswareDetectSystem[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -49,12 +49,11 @@ static const uint qt_meta_data_GlasswareDetectSystem[] = {
      387,  376,   22,   22, 0x0a,
      425,  420,   22,   22, 0x2a,
      464,  454,   22,   22, 0x0a,
-     500,  495,   22,   22, 0x0a,
-     526,   22,   22,   22, 0x0a,
-     546,   22,   22,   22, 0x0a,
-     566,  564,   22,   22, 0x0a,
-     593,   22,   22,   22, 0x0a,
-     627,  615,   22,   22, 0x0a,
+     495,   22,   22,   22, 0x0a,
+     515,   22,   22,   22, 0x0a,
+     535,  533,   22,   22, 0x0a,
+     562,   22,   22,   22, 0x0a,
+     596,  584,   22,   22, 0x0a,
 
        0        // eod
 };
@@ -74,7 +73,6 @@ static const char qt_meta_stringdata_GlasswareDetectSystem[] = {
     "nCam,nMode\0slots_updateCameraState(int,int)\0"
     "nCam\0slots_updateCameraState(int)\0"
     "nCam,mode\0slots_SetCameraStatus(int,int)\0"
-    "path\0directoryChanged(QString)\0"
     "onServerDataReady()\0slot_SockScreen()\0"
     ",\0slots_loginState(int,bool)\0"
     "slots_ConnectServer()\0socketState\0"
@@ -103,12 +101,11 @@ void GlasswareDetectSystem::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 13: _t->slots_updateCameraState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 14: _t->slots_updateCameraState((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 15: _t->slots_SetCameraStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 16: _t->directoryChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 17: _t->onServerDataReady(); break;
-        case 18: _t->slot_SockScreen(); break;
-        case 19: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 20: _t->slots_ConnectServer(); break;
-        case 21: _t->slots_SocketStataChanged((*reinterpret_cast< QAbstractSocket::SocketState(*)>(_a[1]))); break;
+        case 16: _t->onServerDataReady(); break;
+        case 17: _t->slot_SockScreen(); break;
+        case 18: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 19: _t->slots_ConnectServer(); break;
+        case 20: _t->slots_SocketStataChanged((*reinterpret_cast< QAbstractSocket::SocketState(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -146,9 +143,9 @@ int GlasswareDetectSystem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 21;
     }
     return _id;
 }

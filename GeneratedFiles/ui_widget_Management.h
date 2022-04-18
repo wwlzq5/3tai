@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_Management.ui'
 **
-** Created: Fri Apr 1 09:47:12 2022
+** Created: Mon Apr 18 13:52:02 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -21,7 +21,6 @@
 #include <QtGui/QTableWidget>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
-#include "widget_cameraposition.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -41,7 +40,6 @@ public:
     QPushButton *btnBackupCate;
     QPushButton *btnExport;
     QPushButton *btnImport;
-    Widget_CameraPosition *widget_CameraPosition;
 
     void setupUi(QWidget *widgetManagement)
     {
@@ -137,11 +135,6 @@ public:
 
 
         verticalLayout_2->addWidget(widget_Managment);
-
-        widget_CameraPosition = new Widget_CameraPosition(widgetManagement);
-        widget_CameraPosition->setObjectName(QString::fromUtf8("widget_CameraPosition"));
-
-        verticalLayout_2->addWidget(widget_CameraPosition);
 
 
         retranslateUi(widgetManagement);

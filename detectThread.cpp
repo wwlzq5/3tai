@@ -2,7 +2,6 @@
 #include <QMessageBox>
 #include "glasswaredetectsystem.h"
 #include <math.h>
-#include <QMessageBox>
 extern GlasswareDetectSystem *pMainFrm;
 DetectThread::DetectThread(QObject *parent,int temp)
 	: QThread(parent),tempOri()
@@ -86,7 +85,6 @@ void DetectThread::ProcessHanlde(int Camera)
 void DetectThread::DetectNormal(CGrabElement *pElement,int nTmp)
 {
 	checkTimecost.StartSpeedTest();
-
 	bCheckResult[iCamera] = false;
 	iErrorType = 0;
 	iMaxErrorType = 0;
@@ -351,11 +349,11 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 			s_ErrorPara sComErrorpara = pMainFrm->m_cCombine.ConbineError(nSignalNo);
 			if (pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].ErrorTypeJudge(sComErrorpara.nErrorType))
 			{
-				pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[sComErrorpara.nErrorType]+=1;
-				pMainFrm->m_sRunningInfo.m_iErrorCamCount[iErrorCamera] += 1;
+				//pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[sComErrorpara.nErrorType]+=1;
+				pMainFrm->m_sRunningInfo.m_iErrorCamCount[iErrorCamera] += 1;//缺陷相机计数
 				//暂时使用无用变量作为总的综合踢废数目 by zl
-				pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0] += 1;//阴同添加
-				pMainFrm->m_sRunningInfo.m_iErrorTypeCount[sComErrorpara.nErrorType] +=1;
+				pMainFrm->m_sRunningInfo.nGSoap_ErrorCamCount[0] += 1;
+				//pMainFrm->m_sRunningInfo.m_iErrorTypeCount[sComErrorpara.nErrorType] +=1;//每种缺陷的计数统计
 				pMainFrm->nSendData[nSignalNo].id = iErrorCamera;
 				pMainFrm->nSendData[nSignalNo].nType = sComErrorpara.nErrorType;
 				pMainFrm->nSendData[nSignalNo].nErrorArea = sComErrorpara.nArea;
@@ -363,8 +361,8 @@ void DetectThread::CountDefectIOCard(int nSignalNo,int tmpResult)
 			}
 			else
 			{
-				pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[0]+=1;
-				pMainFrm->m_sRunningInfo.m_iErrorTypeCount[0] +=1;
+				//pMainFrm->m_sRunningInfo.m_cErrorTypeInfo[iErrorCamera].iErrorCountByType[0]+=1;
+				//pMainFrm->m_sRunningInfo.m_iErrorTypeCount[0] +=1;
 			}
 		}
 	}
