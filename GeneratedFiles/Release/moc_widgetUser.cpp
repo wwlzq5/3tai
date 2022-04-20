@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widgetUser.h'
 **
-** Created: Mon Apr 18 13:52:02 2022
+** Created: Tue Apr 19 13:49:14 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_UserWidget[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -41,6 +41,7 @@ static const uint qt_meta_data_UserWidget[] = {
      149,   11,   11,   11, 0x08,
      165,   11,   11,   11, 0x08,
      184,   11,   11,   11, 0x08,
+     226,  224,   11,   11, 0x08,
 
        0        // eod
 };
@@ -53,6 +54,7 @@ static const char qt_meta_stringdata_UserWidget[] = {
     "slots_CancelchangePassWrod()\0"
     "slots_NewUser()\0slots_deleteUser()\0"
     "slots_OnlyChangePermission_Checked(int)\0"
+    ",\0slots_ShowCount(int,int)\0"
 };
 
 void UserWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -69,6 +71,7 @@ void UserWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->slots_NewUser(); break;
         case 6: _t->slots_deleteUser(); break;
         case 7: _t->slots_OnlyChangePermission_Checked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->slots_ShowCount((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -106,9 +109,9 @@ int UserWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

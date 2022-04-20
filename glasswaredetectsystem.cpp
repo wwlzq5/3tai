@@ -457,12 +457,7 @@ void GlasswareDetectSystem::onServerDataReady()
 			}
 			break;
 		case FRONTSTATE://根据服务器返回的账号权限，隐藏弹窗，设置按钮属性,仅服务器使用
-			if(m_sSystemInfo.m_iSystemType == 2)
-			{
-				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-				//loginState(nClearName.toInt());
-				//nUserWidget->nPermission = nClearName.toInt();
-			}
+			emit signals_ShowCount(((MyStruct*)buffer.data())->nCheckNum,((MyStruct*)buffer.data())->nFail);
 			break;
 		case SYSTEMMODEADD:
 			if(m_sRunningInfo.m_bCheck)//如果是开始检测和开始调试中则自动关闭
@@ -506,16 +501,6 @@ void GlasswareDetectSystem::onServerDataReady()
 		case ONLYSHOWSEVER:
 			if(m_sSystemInfo.m_iSystemType == 2)
 			{
-// 				nClearName = QString(((MyStruct*)buffer.data())->nTemp);
-// 				if(nClearName == "LIMIT")
-// 				{
-// 					title_widget->setState(false);
-// 					nUserWidget->nPermission = 3;
-// 				}else{
-// 					title_widget->setState(true);
-// 					nUserWidget->nPermission = 2;
-// 				}
-// 				Sleep(10);
 				show();
 			}
 			break;
@@ -1194,6 +1179,7 @@ void GlasswareDetectSystem::initInterface()
 	setWindowIcon(icon);
 	nUserWidget = new UserWidget;
 	connect(nUserWidget,SIGNAL(signal_LoginState(int,bool)),this,SLOT(slots_loginState(int,bool)));
+	connect(this,SIGNAL(signals_ShowCount(int,int)),nUserWidget,SLOT(slots_ShowCount(int,int)));
 	/*nUserWidget->hide();*/
 
 	statked_widget = new QStackedWidget();
@@ -1404,7 +1390,6 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 			tempCamera = i;
 		}
 	}
-	
 	int CountNumber = m_sRunningInfo.m_checkedNum;
 	if(CountNumber!=0 && m_sRunningInfo.m_bCheck)
 	{

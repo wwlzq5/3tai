@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'userwidget.ui'
 **
-** Created: Mon Apr 18 13:52:02 2022
+** Created: Tue Apr 19 14:16:53 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -37,21 +37,22 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_3;
     QWidget *widget_LogIn;
-    QGridLayout *gridLayout_4;
-    QSpacerItem *horizontalSpacer;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_login;
-    QPushButton *pushButton_close;
-    QPushButton *pushButton_NewUser;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *pushButton_image;
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_6;
     QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButton_image;
+    QGridLayout *gridLayout_4;
     QLabel *label_user;
     QComboBox *comboBoxUser;
-    QHBoxLayout *horizontalLayout_4;
     QLabel *label_password;
     QLineEdit *lineEdit_passWord;
+    QHBoxLayout *horizontalLayout_3;
+    QPushButton *pushButton_NewUser;
+    QPushButton *pushButton_login;
+    QPushButton *pushButton_close;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
     QWidget *widget_ChangePassWord;
     QVBoxLayout *verticalLayout_2;
     QGridLayout *gridLayout_3;
@@ -83,7 +84,7 @@ public:
     {
         if (UserWidget->objectName().isEmpty())
             UserWidget->setObjectName(QString::fromUtf8("UserWidget"));
-        UserWidget->resize(342, 437);
+        UserWidget->resize(365, 472);
         UserWidget->setMaximumSize(QSize(16777215, 16777215));
         gridLayout_2 = new QGridLayout(UserWidget);
         gridLayout_2->setSpacing(6);
@@ -101,17 +102,65 @@ public:
         verticalLayout_3->setContentsMargins(-1, -1, -1, 0);
         widget_LogIn = new QWidget(groupBox);
         widget_LogIn->setObjectName(QString::fromUtf8("widget_LogIn"));
-        gridLayout_4 = new QGridLayout(widget_LogIn);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
-        horizontalSpacer = new QSpacerItem(166, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout_6 = new QGridLayout(widget_LogIn);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        pushButton_image = new QPushButton(widget_LogIn);
+        pushButton_image->setObjectName(QString::fromUtf8("pushButton_image"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_image->sizePolicy().hasHeightForWidth());
+        pushButton_image->setSizePolicy(sizePolicy);
 
-        gridLayout_4->addItem(horizontalSpacer, 1, 1, 1, 1);
+        horizontalLayout_2->addWidget(pushButton_image);
+
+        gridLayout_4 = new QGridLayout();
+        gridLayout_4->setSpacing(6);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        label_user = new QLabel(widget_LogIn);
+        label_user->setObjectName(QString::fromUtf8("label_user"));
+
+        gridLayout_4->addWidget(label_user, 0, 0, 1, 1);
+
+        comboBoxUser = new QComboBox(widget_LogIn);
+        comboBoxUser->setObjectName(QString::fromUtf8("comboBoxUser"));
+        comboBoxUser->setEditable(true);
+
+        gridLayout_4->addWidget(comboBoxUser, 0, 1, 1, 1);
+
+        label_password = new QLabel(widget_LogIn);
+        label_password->setObjectName(QString::fromUtf8("label_password"));
+
+        gridLayout_4->addWidget(label_password, 1, 0, 1, 1);
+
+        lineEdit_passWord = new QLineEdit(widget_LogIn);
+        lineEdit_passWord->setObjectName(QString::fromUtf8("lineEdit_passWord"));
+
+        gridLayout_4->addWidget(lineEdit_passWord, 1, 1, 1, 1);
+
+        gridLayout_4->setColumnMinimumWidth(0, 1);
+        gridLayout_4->setColumnMinimumWidth(1, 2);
+
+        horizontalLayout_2->addLayout(gridLayout_4);
+
+        horizontalLayout_2->setStretch(0, 2);
+        horizontalLayout_2->setStretch(1, 8);
+
+        gridLayout_6->addLayout(horizontalLayout_2, 0, 0, 1, 1);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        pushButton_NewUser = new QPushButton(widget_LogIn);
+        pushButton_NewUser->setObjectName(QString::fromUtf8("pushButton_NewUser"));
+
+        horizontalLayout_3->addWidget(pushButton_NewUser);
+
         pushButton_login = new QPushButton(widget_LogIn);
         pushButton_login->setObjectName(QString::fromUtf8("pushButton_login"));
 
@@ -123,73 +172,35 @@ public:
         horizontalLayout_3->addWidget(pushButton_close);
 
 
-        gridLayout_4->addLayout(horizontalLayout_3, 1, 2, 1, 1);
-
-        pushButton_NewUser = new QPushButton(widget_LogIn);
-        pushButton_NewUser->setObjectName(QString::fromUtf8("pushButton_NewUser"));
-
-        gridLayout_4->addWidget(pushButton_NewUser, 1, 0, 1, 1);
-
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        pushButton_image = new QPushButton(widget_LogIn);
-        pushButton_image->setObjectName(QString::fromUtf8("pushButton_image"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton_image->sizePolicy().hasHeightForWidth());
-        pushButton_image->setSizePolicy(sizePolicy);
-
-        horizontalLayout_5->addWidget(pushButton_image);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_user = new QLabel(widget_LogIn);
-        label_user->setObjectName(QString::fromUtf8("label_user"));
-
-        horizontalLayout_2->addWidget(label_user);
-
-        comboBoxUser = new QComboBox(widget_LogIn);
-        comboBoxUser->setObjectName(QString::fromUtf8("comboBoxUser"));
-        comboBoxUser->setEditable(true);
-
-        horizontalLayout_2->addWidget(comboBoxUser);
-
-        horizontalLayout_2->setStretch(0, 3);
-        horizontalLayout_2->setStretch(1, 7);
-
-        verticalLayout->addLayout(horizontalLayout_2);
+        gridLayout_6->addLayout(horizontalLayout_3, 1, 0, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        label_password = new QLabel(widget_LogIn);
-        label_password->setObjectName(QString::fromUtf8("label_password"));
+        label = new QLabel(widget_LogIn);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setFrameShape(QFrame::StyledPanel);
+        label->setTextFormat(Qt::AutoText);
+        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        horizontalLayout_4->addWidget(label_password);
+        horizontalLayout_4->addWidget(label);
 
-        lineEdit_passWord = new QLineEdit(widget_LogIn);
-        lineEdit_passWord->setObjectName(QString::fromUtf8("lineEdit_passWord"));
+        label_2 = new QLabel(widget_LogIn);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setFrameShape(QFrame::StyledPanel);
+        label_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        horizontalLayout_4->addWidget(lineEdit_passWord);
-
-        horizontalLayout_4->setStretch(0, 3);
-        horizontalLayout_4->setStretch(1, 7);
-
-        verticalLayout->addLayout(horizontalLayout_4);
+        horizontalLayout_4->addWidget(label_2);
 
 
-        horizontalLayout_5->addLayout(verticalLayout);
+        gridLayout_6->addLayout(horizontalLayout_4, 2, 0, 1, 1);
 
-        horizontalLayout_5->setStretch(0, 3);
-        horizontalLayout_5->setStretch(1, 7);
+        label_3 = new QLabel(widget_LogIn);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFrameShape(QFrame::StyledPanel);
+        label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        gridLayout_4->addLayout(horizontalLayout_5, 0, 0, 1, 3);
+        gridLayout_6->addWidget(label_3, 3, 0, 1, 1);
 
 
         verticalLayout_3->addWidget(widget_LogIn);
@@ -329,7 +340,7 @@ public:
 
         verticalLayout_3->addWidget(widget_ChangePassWord);
 
-        verticalLayout_3->setStretch(0, 3);
+        verticalLayout_3->setStretch(0, 5);
         verticalLayout_3->setStretch(1, 5);
 
         gridLayout->addLayout(verticalLayout_3, 0, 0, 1, 1);
@@ -347,15 +358,18 @@ public:
     {
         UserWidget->setWindowTitle(QApplication::translate("UserWidget", "UserWidget", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QString());
-        pushButton_login->setText(QApplication::translate("UserWidget", "Login", 0, QApplication::UnicodeUTF8));
-        pushButton_close->setText(QApplication::translate("UserWidget", "Cancel", 0, QApplication::UnicodeUTF8));
-        pushButton_NewUser->setText(QApplication::translate("UserWidget", "new user", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         pushButton_image->setToolTip(QApplication::translate("UserWidget", "Change PassWord", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
         pushButton_image->setText(QString());
         label_user->setText(QApplication::translate("UserWidget", "User:", 0, QApplication::UnicodeUTF8));
         label_password->setText(QApplication::translate("UserWidget", "Password:", 0, QApplication::UnicodeUTF8));
+        pushButton_NewUser->setText(QApplication::translate("UserWidget", "new user", 0, QApplication::UnicodeUTF8));
+        pushButton_login->setText(QApplication::translate("UserWidget", "Login", 0, QApplication::UnicodeUTF8));
+        pushButton_close->setText(QApplication::translate("UserWidget", "Cancel", 0, QApplication::UnicodeUTF8));
+        label->setText(QString());
+        label_2->setText(QString());
+        label_3->setText(QString());
         label_password_3->setText(QApplication::translate("UserWidget", "New Password:", 0, QApplication::UnicodeUTF8));
         label_UserName->setText(QApplication::translate("UserWidget", "User Name:", 0, QApplication::UnicodeUTF8));
         label_password_2->setText(QApplication::translate("UserWidget", "Password:", 0, QApplication::UnicodeUTF8));
