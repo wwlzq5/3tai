@@ -227,24 +227,24 @@
         <translation type="obsolete">队列2综合，图像号：%1，结果：%2</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="50"/>
+        <location filename="detectThread.cpp" line="56"/>
         <source>ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3</source>
         <translation>图像尺寸不合适（检测线程），相机%1,图像大小%2，图像内存大小%3</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="378"/>
-        <location filename="detectThread.cpp" line="394"/>
+        <location filename="detectThread.cpp" line="384"/>
+        <location filename="detectThread.cpp" line="400"/>
         <source>SaveImageByTime\</source>
         <translation>按时间保存图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="379"/>
+        <location filename="detectThread.cpp" line="385"/>
         <source>normal image\</source>
         <translation>正常图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="379"/>
-        <location filename="detectThread.cpp" line="395"/>
+        <location filename="detectThread.cpp" line="385"/>
+        <location filename="detectThread.cpp" line="401"/>
         <source>\camera%1</source>
         <translation>\\相机%1</translation>
     </message>
@@ -253,7 +253,7 @@
         <translation type="obsolete">创建路径失败!</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="395"/>
+        <location filename="detectThread.cpp" line="401"/>
         <source>stress image\</source>
         <translation>应力图像\\</translation>
     </message>
@@ -1508,7 +1508,7 @@
 <context>
     <name>SensorStatusLabel</name>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="282"/>
+        <location filename="Widget_PLCPicture.cpp" line="279"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
@@ -2417,23 +2417,18 @@ please input again!</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_test.ui" line="1156"/>
+        <location filename="widget_test.ui" line="1149"/>
         <source>连续补踢报警:</source>
         <translation></translation>
     </message>
     <message utf8="true">
-        <location filename="widget_test.ui" line="1163"/>
+        <location filename="widget_test.ui" line="1156"/>
         <source>补踢最大个数报警:</source>
         <translation></translation>
     </message>
     <message>
         <source>set</source>
         <translation type="obsolete">设置</translation>
-    </message>
-    <message utf8="true">
-        <location filename="widget_test.ui" line="1092"/>
-        <source>网络重连</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="470"/>
@@ -2604,7 +2599,7 @@ please input again!</source>
         <translation type="obsolete">隔瓶剔废</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1149"/>
+        <location filename="widget_test.ui" line="1142"/>
         <source>Continue Good</source>
         <translation>持续好</translation>
     </message>
@@ -2658,7 +2653,7 @@ please input again!</source>
         <translation>第2路:</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1112"/>
+        <location filename="widget_test.ui" line="1105"/>
         <source>Channel3:</source>
         <translation>第3路:</translation>
     </message>
@@ -2679,7 +2674,7 @@ please input again!</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1119"/>
+        <location filename="widget_test.ui" line="1112"/>
         <source>Channel5:</source>
         <oldsource>Channel7:</oldsource>
         <translation>第5路:</translation>
@@ -2691,7 +2686,7 @@ please input again!</source>
         <translation>剔废宽度：</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1136"/>
+        <location filename="widget_test.ui" line="1129"/>
         <source>Kick Delay:</source>
         <oldsource>Kick Delay：</oldsource>
         <translation>剔废延时：</translation>
@@ -2711,31 +2706,31 @@ please input again!</source>
     </message>
     <message>
         <location filename="widget_test.ui" line="928"/>
-        <location filename="widget_test.cpp" line="936"/>
+        <location filename="widget_test.cpp" line="924"/>
         <source>Frequency:</source>
         <translation>一相行频：</translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="976"/>
-        <location filename="widget_test.cpp" line="939"/>
+        <location filename="widget_test.cpp" line="927"/>
         <source>IN0:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="738"/>
-        <location filename="widget_test.cpp" line="942"/>
+        <location filename="widget_test.cpp" line="930"/>
         <source>IN1:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="1003"/>
-        <location filename="widget_test.cpp" line="945"/>
+        <location filename="widget_test.cpp" line="933"/>
         <source>IN2:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="830"/>
-        <location filename="widget_test.cpp" line="948"/>
+        <location filename="widget_test.cpp" line="936"/>
         <source>IN3:</source>
         <translation></translation>
     </message>
@@ -2753,45 +2748,45 @@ please input again!</source>
         <translation type="obsolete">接口卡1输出</translation>
     </message>
     <message>
-        <location filename="widget_test.ui" line="1099"/>
-        <location filename="widget_test.cpp" line="952"/>
+        <location filename="widget_test.ui" line="1092"/>
+        <location filename="widget_test.cpp" line="940"/>
         <source>OUT0:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="762"/>
-        <location filename="widget_test.cpp" line="955"/>
+        <location filename="widget_test.cpp" line="943"/>
         <source>OUT1:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="857"/>
-        <location filename="widget_test.cpp" line="958"/>
+        <location filename="widget_test.cpp" line="946"/>
         <source>OUT2:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="942"/>
-        <location filename="widget_test.cpp" line="961"/>
+        <location filename="widget_test.cpp" line="949"/>
         <source>OUT3:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="823"/>
-        <location filename="widget_test.cpp" line="964"/>
+        <location filename="widget_test.cpp" line="952"/>
         <source>OUT4:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="908"/>
-        <location filename="widget_test.cpp" line="967"/>
+        <location filename="widget_test.cpp" line="955"/>
         <source>OUT5:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="158"/>
-        <location filename="widget_test.cpp" line="531"/>
-        <location filename="widget_test.cpp" line="544"/>
+        <location filename="widget_test.cpp" line="519"/>
+        <location filename="widget_test.cpp" line="532"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
@@ -2806,13 +2801,13 @@ please input again!</source>
     </message>
     <message>
         <location filename="widget_test.ui" line="786"/>
-        <location filename="widget_test.cpp" line="970"/>
+        <location filename="widget_test.cpp" line="958"/>
         <source>OUT6:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="widget_test.ui" line="1075"/>
-        <location filename="widget_test.cpp" line="973"/>
+        <location filename="widget_test.cpp" line="961"/>
         <source>OUT7:</source>
         <translation></translation>
     </message>
@@ -2851,7 +2846,7 @@ please input again!</source>
         <translation type="obsolete">光电1-2距离：</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="386"/>
+        <location filename="widget_test.cpp" line="374"/>
         <source>Save Mode</source>
         <translation>保存图像设置</translation>
     </message>
@@ -2878,7 +2873,7 @@ please input again!</source>
         <translation type="obsolete">接口卡测试</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="390"/>
+        <location filename="widget_test.cpp" line="378"/>
         <source>IOCard Delay</source>
         <translation>接口卡延时设置</translation>
     </message>
@@ -2901,33 +2896,17 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">相机掉线监视开始</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="395"/>
+        <location filename="widget_test.cpp" line="383"/>
         <source>Equipment Maintenance Alarm Set</source>
         <translation>设备维护报警设置</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="59"/>
+        <location filename="widget_test.cpp" line="58"/>
         <source>Error in init IOCard</source>
         <translation>初始化IO卡错误</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="121"/>
-        <location filename="widget_test.cpp" line="123"/>
-        <source>message</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="widget_test.cpp" line="121"/>
-        <source>connect success!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="widget_test.cpp" line="123"/>
-        <source>connect failed!</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="widget_test.cpp" line="382"/>
+        <location filename="widget_test.cpp" line="370"/>
         <source>reFresh Set</source>
         <translation type="unfinished">刷新设置</translation>
     </message>
@@ -2944,17 +2923,17 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">相机掉线监视停止</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="542"/>
+        <location filename="widget_test.cpp" line="530"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="579"/>
+        <location filename="widget_test.cpp" line="567"/>
         <source>Equipment maintenance alarm setting</source>
         <translation>设备维护报警设置</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="579"/>
+        <location filename="widget_test.cpp" line="567"/>
         <source>Save suceessfully</source>
         <translation>保存成功</translation>
     </message>
@@ -3029,8 +3008,8 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">禁止读取！</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="743"/>
-        <location filename="widget_test.cpp" line="775"/>
+        <location filename="widget_test.cpp" line="731"/>
+        <location filename="widget_test.cpp" line="763"/>
         <source>The set value is out of range!</source>
         <translation>设定数值越界！</translation>
     </message>
@@ -4021,17 +4000,17 @@ Please check the camera and restart the software!</source>
 <context>
     <name>Widget_PLCImage</name>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="355"/>
+        <location filename="Widget_PLCPicture.cpp" line="352"/>
         <source>ResetSensorPosition</source>
         <translation>重置</translation>
     </message>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="357"/>
+        <location filename="Widget_PLCPicture.cpp" line="354"/>
         <source>SaveSensorPosition</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="Widget_PLCPicture.cpp" line="359"/>
+        <location filename="Widget_PLCPicture.cpp" line="356"/>
         <source>SetPLCPara</source>
         <translation>设置参数</translation>
     </message>

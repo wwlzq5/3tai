@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_test.ui'
 **
-** Created: Tue Apr 19 09:28:13 2022
+** Created: Thu Apr 28 09:40:53 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -148,7 +148,6 @@ public:
     QLabel *label_19;
     QLabel *label_OUT7;
     QLineEdit *Delay2;
-    QPushButton *pushButton;
     QLabel *label_OUT0;
     QLabel *label_8;
     QLabel *label_10;
@@ -186,7 +185,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1707, 857));
+        scrollAreaWidgetContents->setGeometry(QRect(-337, 0, 1707, 857));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout_14 = new QVBoxLayout();
@@ -771,11 +770,6 @@ public:
 
         gridLayout_15->addWidget(Delay2, 1, 3, 1, 1);
 
-        pushButton = new QPushButton(widget_IOCardSet);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        gridLayout_15->addWidget(pushButton, 4, 1, 1, 1);
-
         label_OUT0 = new QLabel(widget_IOCardSet);
         label_OUT0->setObjectName(QString::fromUtf8("label_OUT0"));
 
@@ -958,7 +952,6 @@ public:
         settocard->setText(QApplication::translate("WidgetTest", "Set to Card", 0, QApplication::UnicodeUTF8));
         label_19->setText(QApplication::translate("WidgetTest", "Kick Width:", 0, QApplication::UnicodeUTF8));
         label_OUT7->setText(QApplication::translate("WidgetTest", "OUT7:", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("WidgetTest", "\347\275\221\347\273\234\351\207\215\350\277\236", 0, QApplication::UnicodeUTF8));
         label_OUT0->setText(QApplication::translate("WidgetTest", "OUT0:", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("WidgetTest", "Channel3:", 0, QApplication::UnicodeUTF8));
         label_10->setText(QApplication::translate("WidgetTest", "Channel5:", 0, QApplication::UnicodeUTF8));

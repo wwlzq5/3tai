@@ -20,6 +20,7 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	m_pSocket = new QUdpSocket();
+	connect(m_pSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState )), this, SLOT(slots_UDPSocketStataChanged( QAbstractSocket::SocketState )));
 	m_pSocket->connectToHost("192.168.250.1", 9600);
 	if (m_pSocket->state() == QAbstractSocket::ConnectedState || m_pSocket->waitForConnected(2000))
 	{
@@ -152,6 +153,17 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 Widget_PLC::~Widget_PLC()
 {
 	delete m_pSocket;
+}
+void Widget_PLC::slots_UDPSocketStataChanged(QAbstractSocket::SocketState socketState)
+{
+	if (socketState == QAbstractSocket::ConnectedState)
+	{
+		connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
+	}
+	else if(socketState == QAbstractSocket::UnconnectedState)
+	{
+		m_pSocket->abort();
+	}
 }
 void Widget_PLC::EnableCortol()
 {

@@ -1,1 +1,32 @@
-﻿  GlasswareDetectSystem.vcxproj -> E:\GlasswareDetectSystem2\.\runR\GlasswareDetectSystem.exe
+﻿  Moc'ing Widget_PLCPicture.h...
+  Qt: Untested Windows version 6.2 detected!
+  EquipRuntime.cpp
+  moc_Widget_PLCPicture.cpp
+  moc_glasswaredetectsystem.cpp
+  moc_widget_plc.cpp
+  LightSource.cpp
+LightSource.cpp(75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  Widget_CarveImage.cpp
+  Widget_CarveInfo.cpp
+  Widget_CarveSetting.cpp
+  Widget_PLCPicture.cpp
+  cerrorimagelist.cpp
+  clogFile.cpp
+  detectThread.cpp
+  glasswaredetectsystem.cpp
+  main.cpp
+  myQueue.cpp
+  myimageshowitem.cpp
+  pushLicense.cpp
+  widget_IoSet.cpp
+  widget_Management.cpp
+  widget_camera.cpp
+  Generating Code...
+  Compiling...
+  widget_errortype.cpp
+  widget_image.cpp
+  widget_plc.cpp
+  widget_test.cpp
+  widget_title.cpp
+  Generating Code...
+  GlasswareDetectSystem.vcxproj -> E:\GlasswareDetectSystem2\.\runR\GlasswareDetectSystem.exe
