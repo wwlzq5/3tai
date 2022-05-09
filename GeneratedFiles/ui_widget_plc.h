@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widget_plc.ui'
 **
-** Created: Tue Apr 19 09:28:13 2022
+** Created: Sat May 7 16:45:06 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,33 +40,37 @@ public:
     QGridLayout *gridLayout_2;
     QGroupBox *groupBox_4;
     QGridLayout *gridLayout_6;
-    QPushButton *pushButton_read;
-    QLineEdit *lineEdit_20;
-    QLabel *label_20;
-    QLineEdit *lineEdit_19;
+    QLabel *label_55;
+    QLabel *label_56;
+    QLineEdit *lineEdit_42;
+    QLineEdit *lineEdit_18;
     QLabel *label_3;
     QLabel *label_2;
-    QLineEdit *lineEdit_18;
     QLineEdit *lineEdit_17;
     QLabel *label_4;
     QLineEdit *lineEdit_16;
     QLabel *label_16;
-    QLineEdit *lineEdit_15;
-    QLabel *label_15;
-    QLineEdit *lineEdit_14;
-    QLabel *label_19;
-    QLineEdit *lineEdit_12;
-    QLineEdit *lineEdit_11;
-    QLabel *label_13;
-    QLabel *label_14;
+    QLineEdit *lineEdit_19;
+    QLineEdit *lineEdit_20;
+    QLabel *label_20;
     QLineEdit *lineEdit_13;
-    QLabel *label_18;
+    QLabel *label_13;
+    QLabel *label;
+    QLabel *label_15;
+    QLabel *label_17;
+    QLineEdit *lineEdit_15;
     QLineEdit *lineEdit_10;
+    QLineEdit *lineEdit_8;
+    QLabel *label_18;
+    QLineEdit *lineEdit_11;
+    QLabel *label_14;
+    QLineEdit *lineEdit_12;
     QLineEdit *lineEdit_9;
     QLabel *label_6;
-    QLabel *label_17;
-    QLineEdit *lineEdit_8;
-    QLabel *label;
+    QLabel *label_19;
+    QLineEdit *lineEdit_14;
+    QPushButton *pushButton_read;
+    QLineEdit *lineEdit_41;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_4;
     QLabel *label_26;
@@ -188,38 +192,32 @@ public:
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
         gridLayout_6 = new QGridLayout(groupBox_4);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        pushButton_read = new QPushButton(groupBox_4);
-        pushButton_read->setObjectName(QString::fromUtf8("pushButton_read"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        label_55 = new QLabel(groupBox_4);
+        label_55->setObjectName(QString::fromUtf8("label_55"));
+
+        gridLayout_6->addWidget(label_55, 8, 2, 1, 1);
+
+        label_56 = new QLabel(groupBox_4);
+        label_56->setObjectName(QString::fromUtf8("label_56"));
+
+        gridLayout_6->addWidget(label_56, 8, 0, 1, 1);
+
+        lineEdit_42 = new QLineEdit(groupBox_4);
+        lineEdit_42->setObjectName(QString::fromUtf8("lineEdit_42"));
+        lineEdit_42->setEnabled(false);
+
+        gridLayout_6->addWidget(lineEdit_42, 8, 1, 1, 1);
+
+        lineEdit_18 = new QLineEdit(groupBox_4);
+        lineEdit_18->setObjectName(QString::fromUtf8("lineEdit_18"));
+        lineEdit_18->setEnabled(false);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton_read->sizePolicy().hasHeightForWidth());
-        pushButton_read->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(lineEdit_18->sizePolicy().hasHeightForWidth());
+        lineEdit_18->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(pushButton_read, 8, 3, 1, 1);
-
-        lineEdit_20 = new QLineEdit(groupBox_4);
-        lineEdit_20->setObjectName(QString::fromUtf8("lineEdit_20"));
-        lineEdit_20->setEnabled(false);
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(lineEdit_20->sizePolicy().hasHeightForWidth());
-        lineEdit_20->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(lineEdit_20, 7, 1, 1, 1);
-
-        label_20 = new QLabel(groupBox_4);
-        label_20->setObjectName(QString::fromUtf8("label_20"));
-
-        gridLayout_6->addWidget(label_20, 7, 0, 1, 1);
-
-        lineEdit_19 = new QLineEdit(groupBox_4);
-        lineEdit_19->setObjectName(QString::fromUtf8("lineEdit_19"));
-        sizePolicy1.setHeightForWidth(lineEdit_19->sizePolicy().hasHeightForWidth());
-        lineEdit_19->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(lineEdit_19, 7, 3, 1, 1);
+        gridLayout_6->addWidget(lineEdit_18, 6, 1, 1, 1);
 
         label_3 = new QLabel(groupBox_4);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -231,18 +229,10 @@ public:
 
         gridLayout_6->addWidget(label_2, 6, 2, 1, 1);
 
-        lineEdit_18 = new QLineEdit(groupBox_4);
-        lineEdit_18->setObjectName(QString::fromUtf8("lineEdit_18"));
-        lineEdit_18->setEnabled(false);
-        sizePolicy1.setHeightForWidth(lineEdit_18->sizePolicy().hasHeightForWidth());
-        lineEdit_18->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(lineEdit_18, 6, 1, 1, 1);
-
         lineEdit_17 = new QLineEdit(groupBox_4);
         lineEdit_17->setObjectName(QString::fromUtf8("lineEdit_17"));
-        sizePolicy1.setHeightForWidth(lineEdit_17->sizePolicy().hasHeightForWidth());
-        lineEdit_17->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_17->sizePolicy().hasHeightForWidth());
+        lineEdit_17->setSizePolicy(sizePolicy);
 
         gridLayout_6->addWidget(lineEdit_17, 6, 3, 1, 1);
 
@@ -254,8 +244,8 @@ public:
         lineEdit_16 = new QLineEdit(groupBox_4);
         lineEdit_16->setObjectName(QString::fromUtf8("lineEdit_16"));
         lineEdit_16->setEnabled(false);
-        sizePolicy1.setHeightForWidth(lineEdit_16->sizePolicy().hasHeightForWidth());
-        lineEdit_16->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_16->sizePolicy().hasHeightForWidth());
+        lineEdit_16->setSizePolicy(sizePolicy);
 
         gridLayout_6->addWidget(lineEdit_16, 4, 1, 1, 1);
 
@@ -264,78 +254,104 @@ public:
 
         gridLayout_6->addWidget(label_16, 4, 0, 1, 1);
 
-        lineEdit_15 = new QLineEdit(groupBox_4);
-        lineEdit_15->setObjectName(QString::fromUtf8("lineEdit_15"));
-        sizePolicy1.setHeightForWidth(lineEdit_15->sizePolicy().hasHeightForWidth());
-        lineEdit_15->setSizePolicy(sizePolicy1);
+        lineEdit_19 = new QLineEdit(groupBox_4);
+        lineEdit_19->setObjectName(QString::fromUtf8("lineEdit_19"));
+        sizePolicy.setHeightForWidth(lineEdit_19->sizePolicy().hasHeightForWidth());
+        lineEdit_19->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(lineEdit_15, 5, 3, 1, 1);
+        gridLayout_6->addWidget(lineEdit_19, 7, 3, 1, 1);
 
-        label_15 = new QLabel(groupBox_4);
-        label_15->setObjectName(QString::fromUtf8("label_15"));
+        lineEdit_20 = new QLineEdit(groupBox_4);
+        lineEdit_20->setObjectName(QString::fromUtf8("lineEdit_20"));
+        lineEdit_20->setEnabled(false);
+        sizePolicy.setHeightForWidth(lineEdit_20->sizePolicy().hasHeightForWidth());
+        lineEdit_20->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(label_15, 5, 2, 1, 1);
+        gridLayout_6->addWidget(lineEdit_20, 7, 1, 1, 1);
 
-        lineEdit_14 = new QLineEdit(groupBox_4);
-        lineEdit_14->setObjectName(QString::fromUtf8("lineEdit_14"));
-        sizePolicy1.setHeightForWidth(lineEdit_14->sizePolicy().hasHeightForWidth());
-        lineEdit_14->setSizePolicy(sizePolicy1);
+        label_20 = new QLabel(groupBox_4);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
 
-        gridLayout_6->addWidget(lineEdit_14, 4, 3, 1, 1);
+        gridLayout_6->addWidget(label_20, 7, 0, 1, 1);
 
-        label_19 = new QLabel(groupBox_4);
-        label_19->setObjectName(QString::fromUtf8("label_19"));
+        lineEdit_13 = new QLineEdit(groupBox_4);
+        lineEdit_13->setObjectName(QString::fromUtf8("lineEdit_13"));
+        lineEdit_13->setEnabled(false);
+        sizePolicy.setHeightForWidth(lineEdit_13->sizePolicy().hasHeightForWidth());
+        lineEdit_13->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(label_19, 4, 2, 1, 1);
-
-        lineEdit_12 = new QLineEdit(groupBox_4);
-        lineEdit_12->setObjectName(QString::fromUtf8("lineEdit_12"));
-        sizePolicy1.setHeightForWidth(lineEdit_12->sizePolicy().hasHeightForWidth());
-        lineEdit_12->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(lineEdit_12, 3, 3, 1, 1);
-
-        lineEdit_11 = new QLineEdit(groupBox_4);
-        lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
-        sizePolicy1.setHeightForWidth(lineEdit_11->sizePolicy().hasHeightForWidth());
-        lineEdit_11->setSizePolicy(sizePolicy1);
-
-        gridLayout_6->addWidget(lineEdit_11, 2, 3, 1, 1);
+        gridLayout_6->addWidget(lineEdit_13, 2, 1, 1, 1);
 
         label_13 = new QLabel(groupBox_4);
         label_13->setObjectName(QString::fromUtf8("label_13"));
 
         gridLayout_6->addWidget(label_13, 3, 2, 1, 1);
 
-        label_14 = new QLabel(groupBox_4);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label = new QLabel(groupBox_4);
+        label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout_6->addWidget(label_14, 2, 2, 1, 1);
+        gridLayout_6->addWidget(label, 0, 0, 1, 1);
 
-        lineEdit_13 = new QLineEdit(groupBox_4);
-        lineEdit_13->setObjectName(QString::fromUtf8("lineEdit_13"));
-        lineEdit_13->setEnabled(false);
-        sizePolicy1.setHeightForWidth(lineEdit_13->sizePolicy().hasHeightForWidth());
-        lineEdit_13->setSizePolicy(sizePolicy1);
+        label_15 = new QLabel(groupBox_4);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
 
-        gridLayout_6->addWidget(lineEdit_13, 2, 1, 1, 1);
+        gridLayout_6->addWidget(label_15, 5, 2, 1, 1);
+
+        label_17 = new QLabel(groupBox_4);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+
+        gridLayout_6->addWidget(label_17, 0, 2, 1, 1);
+
+        lineEdit_15 = new QLineEdit(groupBox_4);
+        lineEdit_15->setObjectName(QString::fromUtf8("lineEdit_15"));
+        sizePolicy.setHeightForWidth(lineEdit_15->sizePolicy().hasHeightForWidth());
+        lineEdit_15->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(lineEdit_15, 5, 3, 1, 1);
+
+        lineEdit_10 = new QLineEdit(groupBox_4);
+        lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
+        sizePolicy.setHeightForWidth(lineEdit_10->sizePolicy().hasHeightForWidth());
+        lineEdit_10->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(lineEdit_10, 1, 3, 1, 1);
+
+        lineEdit_8 = new QLineEdit(groupBox_4);
+        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
+        lineEdit_8->setEnabled(false);
+        sizePolicy.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
+        lineEdit_8->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(lineEdit_8, 0, 1, 1, 1);
 
         label_18 = new QLabel(groupBox_4);
         label_18->setObjectName(QString::fromUtf8("label_18"));
 
         gridLayout_6->addWidget(label_18, 2, 0, 1, 1);
 
-        lineEdit_10 = new QLineEdit(groupBox_4);
-        lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
-        sizePolicy1.setHeightForWidth(lineEdit_10->sizePolicy().hasHeightForWidth());
-        lineEdit_10->setSizePolicy(sizePolicy1);
+        lineEdit_11 = new QLineEdit(groupBox_4);
+        lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
+        sizePolicy.setHeightForWidth(lineEdit_11->sizePolicy().hasHeightForWidth());
+        lineEdit_11->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(lineEdit_10, 1, 3, 1, 1);
+        gridLayout_6->addWidget(lineEdit_11, 2, 3, 1, 1);
+
+        label_14 = new QLabel(groupBox_4);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+
+        gridLayout_6->addWidget(label_14, 2, 2, 1, 1);
+
+        lineEdit_12 = new QLineEdit(groupBox_4);
+        lineEdit_12->setObjectName(QString::fromUtf8("lineEdit_12"));
+        sizePolicy.setHeightForWidth(lineEdit_12->sizePolicy().hasHeightForWidth());
+        lineEdit_12->setSizePolicy(sizePolicy);
+
+        gridLayout_6->addWidget(lineEdit_12, 3, 3, 1, 1);
 
         lineEdit_9 = new QLineEdit(groupBox_4);
         lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
-        sizePolicy1.setHeightForWidth(lineEdit_9->sizePolicy().hasHeightForWidth());
-        lineEdit_9->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_9->sizePolicy().hasHeightForWidth());
+        lineEdit_9->setSizePolicy(sizePolicy);
 
         gridLayout_6->addWidget(lineEdit_9, 0, 3, 1, 1);
 
@@ -344,23 +360,32 @@ public:
 
         gridLayout_6->addWidget(label_6, 1, 2, 1, 1);
 
-        label_17 = new QLabel(groupBox_4);
-        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_19 = new QLabel(groupBox_4);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
 
-        gridLayout_6->addWidget(label_17, 0, 2, 1, 1);
+        gridLayout_6->addWidget(label_19, 4, 2, 1, 1);
 
-        lineEdit_8 = new QLineEdit(groupBox_4);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        lineEdit_8->setEnabled(false);
-        sizePolicy1.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
-        lineEdit_8->setSizePolicy(sizePolicy1);
+        lineEdit_14 = new QLineEdit(groupBox_4);
+        lineEdit_14->setObjectName(QString::fromUtf8("lineEdit_14"));
+        sizePolicy.setHeightForWidth(lineEdit_14->sizePolicy().hasHeightForWidth());
+        lineEdit_14->setSizePolicy(sizePolicy);
 
-        gridLayout_6->addWidget(lineEdit_8, 0, 1, 1, 1);
+        gridLayout_6->addWidget(lineEdit_14, 4, 3, 1, 1);
 
-        label = new QLabel(groupBox_4);
-        label->setObjectName(QString::fromUtf8("label"));
+        pushButton_read = new QPushButton(groupBox_4);
+        pushButton_read->setObjectName(QString::fromUtf8("pushButton_read"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton_read->sizePolicy().hasHeightForWidth());
+        pushButton_read->setSizePolicy(sizePolicy1);
 
-        gridLayout_6->addWidget(label, 0, 0, 1, 1);
+        gridLayout_6->addWidget(pushButton_read, 9, 3, 1, 1);
+
+        lineEdit_41 = new QLineEdit(groupBox_4);
+        lineEdit_41->setObjectName(QString::fromUtf8("lineEdit_41"));
+
+        gridLayout_6->addWidget(lineEdit_41, 8, 3, 1, 1);
 
 
         gridLayout_2->addWidget(groupBox_4, 2, 1, 1, 1);
@@ -528,8 +553,8 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         lineEdit_7 = new QLineEdit(groupBox_8);
         lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
-        sizePolicy1.setHeightForWidth(lineEdit_7->sizePolicy().hasHeightForWidth());
-        lineEdit_7->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_7->sizePolicy().hasHeightForWidth());
+        lineEdit_7->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_7, 2, 1, 1, 1);
 
@@ -560,8 +585,8 @@ public:
 
         lineEdit_4 = new QLineEdit(groupBox_8);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        sizePolicy1.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
-        lineEdit_4->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
+        lineEdit_4->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_4, 4, 1, 1, 1);
 
@@ -592,8 +617,8 @@ public:
 
         lineEdit_5 = new QLineEdit(groupBox_8);
         lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        sizePolicy1.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
+        lineEdit_5->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_5, 5, 1, 1, 1);
 
@@ -619,8 +644,8 @@ public:
 
         lineEdit_3 = new QLineEdit(groupBox_8);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        sizePolicy1.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
-        lineEdit_3->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
+        lineEdit_3->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_3, 3, 1, 1, 1);
 
@@ -631,15 +656,15 @@ public:
 
         lineEdit_2 = new QLineEdit(groupBox_8);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        sizePolicy1.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_2, 1, 1, 1, 1);
 
         lineEdit_1 = new QLineEdit(groupBox_8);
         lineEdit_1->setObjectName(QString::fromUtf8("lineEdit_1"));
-        sizePolicy1.setHeightForWidth(lineEdit_1->sizePolicy().hasHeightForWidth());
-        lineEdit_1->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_1->sizePolicy().hasHeightForWidth());
+        lineEdit_1->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_1, 0, 1, 1, 1);
 
@@ -650,8 +675,8 @@ public:
 
         lineEdit_6 = new QLineEdit(groupBox_8);
         lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-        sizePolicy1.setHeightForWidth(lineEdit_6->sizePolicy().hasHeightForWidth());
-        lineEdit_6->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(lineEdit_6->sizePolicy().hasHeightForWidth());
+        lineEdit_6->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(lineEdit_6, 6, 1, 1, 1);
 
@@ -696,8 +721,8 @@ public:
 
         radioButton_9 = new QRadioButton(groupBox_3);
         radioButton_9->setObjectName(QString::fromUtf8("radioButton_9"));
-        sizePolicy.setHeightForWidth(radioButton_9->sizePolicy().hasHeightForWidth());
-        radioButton_9->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(radioButton_9->sizePolicy().hasHeightForWidth());
+        radioButton_9->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(radioButton_9, 13, 2, 1, 1);
 
@@ -728,8 +753,8 @@ public:
 
         SureButton = new QPushButton(groupBox_3);
         SureButton->setObjectName(QString::fromUtf8("SureButton"));
-        sizePolicy.setHeightForWidth(SureButton->sizePolicy().hasHeightForWidth());
-        SureButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(SureButton->sizePolicy().hasHeightForWidth());
+        SureButton->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(SureButton, 14, 1, 1, 1);
 
@@ -770,8 +795,8 @@ public:
 
         radioButton_10 = new QRadioButton(groupBox_3);
         radioButton_10->setObjectName(QString::fromUtf8("radioButton_10"));
-        sizePolicy.setHeightForWidth(radioButton_10->sizePolicy().hasHeightForWidth());
-        radioButton_10->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(radioButton_10->sizePolicy().hasHeightForWidth());
+        radioButton_10->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(radioButton_10, 13, 3, 1, 1);
 
@@ -839,8 +864,8 @@ public:
 
         pushButton_save = new QPushButton(groupBox_3);
         pushButton_save->setObjectName(QString::fromUtf8("pushButton_save"));
-        sizePolicy.setHeightForWidth(pushButton_save->sizePolicy().hasHeightForWidth());
-        pushButton_save->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(pushButton_save->sizePolicy().hasHeightForWidth());
+        pushButton_save->setSizePolicy(sizePolicy1);
 
         gridLayout_5->addWidget(pushButton_save, 14, 3, 1, 1);
 
@@ -942,20 +967,22 @@ public:
     {
         widget_plc->setWindowTitle(QApplication::translate("widget_plc", "Form", 0, QApplication::UnicodeUTF8));
         groupBox_4->setTitle(QApplication::translate("widget_plc", "\351\230\210\345\200\274\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
-        pushButton_read->setText(QApplication::translate("widget_plc", "\350\257\273\345\217\226", 0, QApplication::UnicodeUTF8));
-        label_20->setText(QApplication::translate("widget_plc", "\345\220\216\345\240\265\347\223\266\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
+        label_55->setText(QApplication::translate("widget_plc", "\345\215\212\347\223\266\345\211\224\351\231\244\347\274\226\347\240\201\345\231\250\345\273\266\350\277\237", 0, QApplication::UnicodeUTF8));
+        label_56->setText(QApplication::translate("widget_plc", "\345\215\212\347\223\266\345\211\224\351\231\244\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("widget_plc", "\345\220\216\345\240\265\347\223\266\351\230\210\345\200\274", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("widget_plc", "\345\211\215\345\200\222\347\223\266\351\230\210\345\200\274", 0, QApplication::UnicodeUTF8));
         label_4->setText(QApplication::translate("widget_plc", "\345\211\215\345\200\222\347\223\266\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
         label_16->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2273\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
-        label_15->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2273\351\230\210\345\200\274\344\270\213\351\231\220", 0, QApplication::UnicodeUTF8));
-        label_19->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2273\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
+        label_20->setText(QApplication::translate("widget_plc", "\345\220\216\345\240\265\347\223\266\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2272\351\230\210\345\200\274\344\270\213\351\231\220", 0, QApplication::UnicodeUTF8));
-        label_14->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2272\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
-        label_18->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2272\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
-        label_6->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2271\351\230\210\345\200\274\344\270\213\351\231\220", 0, QApplication::UnicodeUTF8));
-        label_17->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2271\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2271\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
+        label_15->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2273\351\230\210\345\200\274\344\270\213\351\231\220", 0, QApplication::UnicodeUTF8));
+        label_17->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2271\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
+        label_18->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2272\346\265\213\350\257\225\345\200\274", 0, QApplication::UnicodeUTF8));
+        label_14->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2272\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
+        label_6->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2271\351\230\210\345\200\274\344\270\213\351\231\220", 0, QApplication::UnicodeUTF8));
+        label_19->setText(QApplication::translate("widget_plc", "\351\230\237\345\210\2273\351\230\210\345\200\274\344\270\212\351\231\220", 0, QApplication::UnicodeUTF8));
+        pushButton_read->setText(QApplication::translate("widget_plc", "\350\257\273\345\217\226", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("widget_plc", "\347\211\271\346\256\212\345\217\202\346\225\260\350\256\276\347\275\256", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("widget_plc", "\350\276\223\351\200\201\347\272\277\344\270\273\345\212\250\351\275\277\350\275\256\346\225\260", 0, QApplication::UnicodeUTF8));
         label_39->setText(QApplication::translate("widget_plc", "\345\244\271\347\223\266\345\270\246\351\275\277\350\275\256\346\225\260", 0, QApplication::UnicodeUTF8));

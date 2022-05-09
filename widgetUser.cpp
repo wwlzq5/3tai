@@ -79,14 +79,14 @@ void UserWidget::initialUserInfo()
 		strPasswordList.clear();
 		nPermissionsList.clear();
 		strUserList.append("Admin");
-		strUserList.append("daheng");
-		strUserList.append("user");
+		//strUserList.append("daheng");
+		//strUserList.append("user");
 		strPasswordList.append("daheng");
-		strPasswordList.append("");
-		strPasswordList.append("");
+		//strPasswordList.append("");
+		//strPasswordList.append("");
 		nPermissionsList.append(0xFF);
-		nPermissionsList.append(0xFF);
-		nPermissionsList.append(0x90);
+		//nPermissionsList.append(0xFF);
+		//nPermissionsList.append(0x90);
 		//±£´æµ½×¢²á±í
 		QString strUsers;
 		QString strPassword;
@@ -157,7 +157,8 @@ void UserWidget::slots_login()
 	{
 		nPermission = nPermissionsList.at(nUser);
 	}
-	emit signal_LoginState(nPermission,iUserPerm);
+	
+	emit signal_LoginState(nPermission,iUserPerm,strUserName);
 }
 void UserWidget::slots_changePassWrod()
 {
@@ -398,10 +399,7 @@ void UserWidget::slots_loginChangePassWrod()
 	}
 	else
 	{
-		if(curUserName.compare("daheng",Qt::CaseInsensitive) == 0)
-			ui.pushButton_deleteUser->setVisible(false);
-		else
-			ui.pushButton_deleteUser->setVisible(true);
+		ui.pushButton_deleteUser->setVisible(true);
 		int UserPermission=nPermissionsList.at(nUser);
 		if(	0x01 & UserPermission)
 		{

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widgetUser.h'
 **
-** Created: Tue Apr 19 13:49:14 2022
+** Created: Mon May 9 13:47:27 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,25 +31,25 @@ static const uint qt_meta_data_UserWidget[] = {
        1,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
-      27,   12,   11,   11, 0x05,
+      28,   12,   11,   11, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      55,   11,   11,   11, 0x08,
-      69,   11,   11,   11, 0x08,
-      92,   11,   11,   11, 0x08,
-     120,   11,   11,   11, 0x08,
-     149,   11,   11,   11, 0x08,
-     165,   11,   11,   11, 0x08,
-     184,   11,   11,   11, 0x08,
-     226,  224,   11,   11, 0x08,
+      64,   11,   11,   11, 0x08,
+      78,   11,   11,   11, 0x08,
+     101,   11,   11,   11, 0x08,
+     129,   11,   11,   11, 0x08,
+     158,   11,   11,   11, 0x08,
+     174,   11,   11,   11, 0x08,
+     193,   11,   11,   11, 0x08,
+     235,  233,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_UserWidget[] = {
-    "UserWidget\0\0nPerm,isUnlock\0"
-    "signal_LoginState(int,bool)\0slots_login()\0"
-    "slots_changePassWrod()\0"
+    "UserWidget\0\0nPerm,isUnlock,\0"
+    "signal_LoginState(int,bool,QString)\0"
+    "slots_login()\0slots_changePassWrod()\0"
     "slots_loginChangePassWrod()\0"
     "slots_CancelchangePassWrod()\0"
     "slots_NewUser()\0slots_deleteUser()\0"
@@ -63,7 +63,7 @@ void UserWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_ASSERT(staticMetaObject.cast(_o));
         UserWidget *_t = static_cast<UserWidget *>(_o);
         switch (_id) {
-        case 0: _t->signal_LoginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 0: _t->signal_LoginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 1: _t->slots_login(); break;
         case 2: _t->slots_changePassWrod(); break;
         case 3: _t->slots_loginChangePassWrod(); break;
@@ -117,9 +117,9 @@ int UserWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void UserWidget::signal_LoginState(int _t1, bool _t2)
+void UserWidget::signal_LoginState(int _t1, bool _t2, QString _t3)
 {
-    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

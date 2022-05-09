@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'userwidget.ui'
 **
-** Created: Tue Apr 19 14:16:53 2022
+** Created: Sat May 7 16:45:06 2022
 **      by: Qt User Interface Compiler version 4.8.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

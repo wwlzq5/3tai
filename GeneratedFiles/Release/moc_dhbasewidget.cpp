@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'dhbasewidget.h'
 **
-** Created: Tue Apr 19 09:28:12 2022
+** Created: Sat May 7 16:45:06 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

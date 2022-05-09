@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'glasswaredetectsystem.h'
 **
-** Created: Tue Apr 19 13:49:14 2022
+** Created: Mon May 9 13:47:27 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -52,9 +52,9 @@ static const uint qt_meta_data_GlasswareDetectSystem[] = {
      493,  483,   22,   22, 0x0a,
      524,   22,   22,   22, 0x0a,
      544,   22,   22,   22, 0x0a,
-     562,  167,   22,   22, 0x0a,
-     589,   22,   22,   22, 0x0a,
-     623,  611,   22,   22, 0x0a,
+     565,  562,   22,   22, 0x0a,
+     600,   22,   22,   22, 0x0a,
+     634,  622,   22,   22, 0x0a,
 
        0        // eod
 };
@@ -76,7 +76,7 @@ static const char qt_meta_stringdata_GlasswareDetectSystem[] = {
     "nCam\0slots_updateCameraState(int)\0"
     "nCam,mode\0slots_SetCameraStatus(int,int)\0"
     "onServerDataReady()\0slot_SockScreen()\0"
-    "slots_loginState(int,bool)\0"
+    ",,\0slots_loginState(int,bool,QString)\0"
     "slots_ConnectServer()\0socketState\0"
     "slots_SocketStataChanged(QAbstractSocket::SocketState)\0"
 };
@@ -106,7 +106,7 @@ void GlasswareDetectSystem::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 16: _t->slots_SetCameraStatus((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 17: _t->onServerDataReady(); break;
         case 18: _t->slot_SockScreen(); break;
-        case 19: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 19: _t->slots_loginState((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3]))); break;
         case 20: _t->slots_ConnectServer(); break;
         case 21: _t->slots_SocketStataChanged((*reinterpret_cast< QAbstractSocket::SocketState(*)>(_a[1]))); break;
         default: ;
