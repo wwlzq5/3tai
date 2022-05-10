@@ -48,6 +48,13 @@ void DetectThread::ProcessHanlde(int Camera)
 		{
 			memcpy(pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), DetectElement.ImageNormal->SourceImage->bits(), pMainFrm->m_sRealCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sRealCamInfo[iCamera].m_iImageHeight);
 		}
+		if(!pMainFrm->m_sSystemInfo.m_iTest)//夹持使用镜像，前后壁使用原始图
+		{
+			if(pMainFrm->m_sSystemInfo.m_iSystemType != 2)
+			{
+				*pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage = pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->mirrored();
+			}
+		}
 		//裁剪原始图片
 		pMainFrm->m_mutexmCarve[iCamera].lock();
 		long lImageSize = pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageWidth * pMainFrm->m_sCarvedCamInfo[iCamera].m_iImageHeight;
