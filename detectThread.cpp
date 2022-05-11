@@ -38,7 +38,6 @@ void DetectThread::ProcessHanlde(int Camera)
 		pMainFrm->nQueue[Camera].mDetectLocker.unlock();
 		iCamera = DetectElement.iCameraNormal;
 		//旋转原始图片
-		//旋转原始图片
 		if (90 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle || 180 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle || 270 == pMainFrm->m_sRealCamInfo[iCamera].m_iImageRoAngle)
 		{
 			pMainFrm->RoAngle(DetectElement.ImageNormal->SourceImage->bits(), pMainFrm->m_sRealCamInfo[iCamera].m_pRealImage->bits(), \

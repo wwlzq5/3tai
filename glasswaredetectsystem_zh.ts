@@ -227,24 +227,24 @@
         <translation type="obsolete">队列2综合，图像号：%1，结果：%2</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="63"/>
+        <location filename="detectThread.cpp" line="62"/>
         <source>ImageSize unsuitable, Thread:Grab, camera:%1.lImageSize = %2,myImage byteCount = %3</source>
         <translation>图像尺寸不合适（检测线程），相机%1,图像大小%2，图像内存大小%3</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="391"/>
-        <location filename="detectThread.cpp" line="407"/>
+        <location filename="detectThread.cpp" line="390"/>
+        <location filename="detectThread.cpp" line="406"/>
         <source>SaveImageByTime\</source>
         <translation>按时间保存图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="392"/>
+        <location filename="detectThread.cpp" line="391"/>
         <source>normal image\</source>
         <translation>正常图像\\</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="392"/>
-        <location filename="detectThread.cpp" line="408"/>
+        <location filename="detectThread.cpp" line="391"/>
+        <location filename="detectThread.cpp" line="407"/>
         <source>\camera%1</source>
         <translation>\\相机%1</translation>
     </message>
@@ -253,7 +253,7 @@
         <translation type="obsolete">创建路径失败!</translation>
     </message>
     <message>
-        <location filename="detectThread.cpp" line="408"/>
+        <location filename="detectThread.cpp" line="407"/>
         <source>stress image\</source>
         <translation>应力图像\\</translation>
     </message>
