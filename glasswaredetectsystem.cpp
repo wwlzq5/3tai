@@ -443,6 +443,12 @@ void GlasswareDetectSystem::onServerDataReady()
 				strSession = QString("/system/SeverFailureNum");
 				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
 
+				for (int i=0;i< m_sSystemInfo.iCamCount;i++)
+				{
+					strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
+					iniDataSet.setValue(strSession,m_sRunningInfo.m_iErrorCamCount[i]);
+				}
+
 				pMainFrm->nCountNumber = 0;
 			}
 			break;
