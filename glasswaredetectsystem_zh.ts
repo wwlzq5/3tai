@@ -2790,8 +2790,8 @@ please input again!</source>
     </message>
     <message>
         <location filename="widget_test.ui" line="158"/>
-        <location filename="widget_test.cpp" line="519"/>
-        <location filename="widget_test.cpp" line="532"/>
+        <location filename="widget_test.cpp" line="520"/>
+        <location filename="widget_test.cpp" line="533"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
@@ -2851,7 +2851,7 @@ please input again!</source>
         <translation type="obsolete">光电1-2距离：</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="374"/>
+        <location filename="widget_test.cpp" line="375"/>
         <source>Save Mode</source>
         <translation>保存图像设置</translation>
     </message>
@@ -2878,7 +2878,7 @@ please input again!</source>
         <translation type="obsolete">接口卡测试</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="378"/>
+        <location filename="widget_test.cpp" line="379"/>
         <source>IOCard Delay</source>
         <translation>接口卡延时设置</translation>
     </message>
@@ -2901,7 +2901,7 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">相机掉线监视开始</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="383"/>
+        <location filename="widget_test.cpp" line="384"/>
         <source>Equipment Maintenance Alarm Set</source>
         <translation>设备维护报警设置</translation>
     </message>
@@ -2911,7 +2911,7 @@ Please check the camera and restart the software!</source>
         <translation>初始化IO卡错误</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="370"/>
+        <location filename="widget_test.cpp" line="371"/>
         <source>reFresh Set</source>
         <translation type="unfinished">刷新设置</translation>
     </message>
@@ -2928,17 +2928,17 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">相机掉线监视停止</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="530"/>
+        <location filename="widget_test.cpp" line="531"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="567"/>
+        <location filename="widget_test.cpp" line="568"/>
         <source>Equipment maintenance alarm setting</source>
         <translation>设备维护报警设置</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="567"/>
+        <location filename="widget_test.cpp" line="568"/>
         <source>Save suceessfully</source>
         <translation>保存成功</translation>
     </message>
@@ -3013,8 +3013,8 @@ Please check the camera and restart the software!</source>
         <translation type="obsolete">禁止读取！</translation>
     </message>
     <message>
-        <location filename="widget_test.cpp" line="731"/>
-        <location filename="widget_test.cpp" line="763"/>
+        <location filename="widget_test.cpp" line="732"/>
+        <location filename="widget_test.cpp" line="765"/>
         <source>The set value is out of range!</source>
         <translation>设定数值越界！</translation>
     </message>
