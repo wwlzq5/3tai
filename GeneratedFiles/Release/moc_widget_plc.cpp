@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_plc.h'
 **
-** Created: Sat May 7 16:45:06 2022
+** Created: Wed May 25 09:35:15 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Widget_PLC[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -48,7 +48,6 @@ static const uint qt_meta_data_Widget_PLC[] = {
      261,   11,   11,   11, 0x0a,
      282,   11,   11,   11, 0x0a,
      301,   11,   11,   11, 0x0a,
-     333,  321,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -62,8 +61,6 @@ static const char qt_meta_stringdata_Widget_PLC[] = {
     "slots_modify1(int)\0slots_modify2(int)\0"
     "slots_modify3(int)\0slots_AutoAlert(int)\0"
     "slots_showPamSet()\0slots_HidePicture()\0"
-    "socketState\0"
-    "slots_UDPSocketStataChanged(QAbstractSocket::SocketState)\0"
 };
 
 void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -87,7 +84,6 @@ void Widget_PLC::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->slots_AutoAlert((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 13: _t->slots_showPamSet(); break;
         case 14: _t->slots_HidePicture(); break;
-        case 15: _t->slots_UDPSocketStataChanged((*reinterpret_cast< QAbstractSocket::SocketState(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -125,9 +121,9 @@ int Widget_PLC::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 15;
     }
     return _id;
 }

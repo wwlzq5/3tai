@@ -20,12 +20,10 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
 	m_pSocket = new QUdpSocket();
-	connect(m_pSocket, SIGNAL(stateChanged(QAbstractSocket::SocketState )), this, SLOT(slots_UDPSocketStataChanged( QAbstractSocket::SocketState )));
-	m_pSocket->connectToHost("192.168.250.1", 9600);
-	if (m_pSocket->state() == QAbstractSocket::ConnectedState || m_pSocket->waitForConnected(2000))
-	{
-		connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
-	}
+	
+	m_pSocket->bind(QHostAddress("192.168.250.1"), 9600);
+	connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
+	
 	QIntValidator* IntValidator = new QIntValidator;
 	IntValidator->setRange(1, 60);
 	//ui.lineEdit_2->setValidator(IntValidator);
@@ -38,6 +36,7 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	nSystemType = pMainFrm->m_sSystemInfo.m_iSystemType;
 	m_CrashTimer = new QTimer(this);
 	connect(m_CrashTimer,SIGNAL(timeout()),this,SLOT(slots_CrashTimeOut()));
+	slots_CrashTimeOut();
 	m_CrashTimer->start(10000);
 	//获取PLC报警信息
 	nErrorType = 0;
@@ -152,18 +151,7 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 }
 Widget_PLC::~Widget_PLC()
 {
-	delete m_pSocket;
-}
-void Widget_PLC::slots_UDPSocketStataChanged(QAbstractSocket::SocketState socketState)
-{
-	if (socketState == QAbstractSocket::ConnectedState)
-	{
-		connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
-	}
-	else if(socketState == QAbstractSocket::UnconnectedState)
-	{
-		m_pSocket->abort();
-	}
+	//delete m_pSocket;
 }
 void Widget_PLC::EnableCortol()
 {
@@ -331,12 +319,11 @@ void Widget_PLC::SendDataToPLCHead(int address, QByteArray& st, int state,int id
 void Widget_PLC::SendPLCMessage(int address,QByteArray& send,int state,int id,int DataSize) //异步发送数据改变PLC参数
 {
 	SendDataToPLCHead(address,send,state,id,DataSize);
-	if (m_pSocket->state() == QAbstractSocket::ConnectedState)
+	if (m_pSocket->isValid())
 	{
-		if (NULL != m_pSocket)
-		{
-			m_pSocket->write(send);
-		}
+		m_pSocket->writeDatagram(send,send.length(),QHostAddress("192.168.250.1"),9600);
+	}else{
+		pMainFrm->Logfile.write("udpSocket failed!",CheckLog);
 	}
 }
 void Widget_PLC::slots_readFromPLC()

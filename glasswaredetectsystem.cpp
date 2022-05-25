@@ -133,7 +133,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.8");
+	return SysType + QString(tr("Version:")+"6.64.1.9");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -425,30 +425,7 @@ void GlasswareDetectSystem::onServerDataReady()
 				{
 					test_widget->m_vIOCard->m_Pio24b.softReset();
 				}
-				QSettings iniDataSet(m_sConfigInfo.m_strDataPath,QSettings::IniFormat);
-				iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
-				QString strSession;
-				strSession=QString("/system/checkedNum");
-				iniDataSet.setValue(strSession,m_sRunningInfo.m_checkedNum);
-
-				strSession = QString("/system/failureNum");
-				iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
-
-				strSession = QString("/system/KickNum");
-				iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNum2);
-
-				strSession=QString("/system/SeverCheckedNum");
-				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
-
-				strSession = QString("/system/SeverFailureNum");
-				iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
-
-				for (int i=0;i< m_sSystemInfo.iCamCount;i++)
-				{
-					strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
-					iniDataSet.setValue(strSession,m_sRunningInfo.m_iErrorCamCount[i]);
-				}
-
+				SaveLastData();
 				pMainFrm->nCountNumber = 0;
 			}
 			break;
@@ -1796,32 +1773,24 @@ void GlasswareDetectSystem::ShowCheckSet(int nCamIdx,int signalNumber)
 	pMainFrm->Logfile.write(("Into Alg Page")+QString("CamraNo:%1").arg(nCamIdx+1),OperationLog,0);
 	return;	
 }
-void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
+void GlasswareDetectSystem::SaveLastData()
 {
 	QSettings iniDataSet(m_sConfigInfo.m_strDataPath,QSettings::IniFormat);
 	iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
-	QString strSession;
-	strSession=QString("/system/checkedNum");
-	iniDataSet.setValue(strSession,m_sRunningInfo.m_checkedNum);
-
-	strSession = QString("/system/failureNum");
-	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNumFromIOcard);
-
-	strSession = QString("/system/KickNum");
-	iniDataSet.setValue(strSession,m_sRunningInfo.m_failureNum2);
-
-	strSession=QString("/system/SeverCheckedNum");
-	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum);
-
-	strSession = QString("/system/SeverFailureNum");
-	iniDataSet.setValue(strSession,test_widget->nInfo.m_checkedNum2);
-
+	iniDataSet.setValue("system/checkedNum",m_sRunningInfo.m_checkedNum);
+	iniDataSet.setValue("system/failureNum",m_sRunningInfo.m_failureNumFromIOcard);
+	iniDataSet.setValue("system/KickNum",m_sRunningInfo.m_failureNum2);
+	iniDataSet.setValue("system/SeverCheckedNum",test_widget->nInfo.m_checkedNum);
+	iniDataSet.setValue("system/SeverFailureNum",test_widget->nInfo.m_checkedNum2);
 	for (int i=0;i< m_sSystemInfo.iCamCount;i++)
 	{
-		strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
-		iniDataSet.setValue(strSession,m_sRunningInfo.m_iErrorCamCount[i]);
+		iniDataSet.setValue(QString("LastTimeDate/ErrorCamera_%1_count").arg(i),m_sRunningInfo.m_iErrorCamCount[i]);
 	}
-
+	EquipRuntime::Instance()->EquipExitLogFile();
+}
+void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
+{
+	SaveLastData();
 	if (ifyanz || QMessageBox::Yes == QMessageBox::question(this,tr("Exit"),
 		tr("Are you sure to exit?"),
 		QMessageBox::Yes | QMessageBox::No))	
@@ -1836,8 +1805,6 @@ void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 			QMessageBox::information(this,tr("Infomation"),tr("Please Stop Detection First!"));
 			return;		
 		}
-		EquipRuntime::Instance()->EquipExitLogFile();
-		ToolButton *TBtn = title_widget->button_list.at(4);
 		pMainFrm->Logfile.write(("Close ModelDlg!"),OperationLog);
 		s_Status  sReturnStatus = m_cBottleModel.CloseModelDlg();
 		if (sReturnStatus.nErrorID != RETURN_OK)

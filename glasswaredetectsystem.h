@@ -84,6 +84,7 @@ public:
 	DWORD GetProcessIdFromName(const char*processName);
 	void loginState(int nPerm,bool isUnlock);
 	void initSocket();
+	void SaveLastData();
 signals:
 	void signals_intoManagementWidget();
 	void signals_intoTestWidget();

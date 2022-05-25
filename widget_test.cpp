@@ -727,7 +727,7 @@ void WidgetTest::slots_readDelay()
 void WidgetTest::slots_setToCard()
 {
 	getIOCardParam();
-	if (m_nDelay1>0xFFFF||m_nDelay2>0xFFFF||m_nDelay3>0xFFFF||m_nDelay4>0xFFFF||m_nDelay5>0xFFFF||m_nDelay6>0xFFFF||m_nKickWidth>0xFFFF||m_nKickDelay>0xFFFF)
+	if (m_nDelay1>0xFFFF||m_nDelay2>0xFFFF||m_nDelay3>0xFFFF||m_nDelay4>0xFFFF||m_nDelay5>0xFFFF||m_nDelay6>0xFFFF||m_nKickWidth>0xFFFF||m_nKickDelay>30000)
 	{
 		QString str(tr("The set value is out of range!"));
 		QMessageBox::information(this,"Error",str);	
