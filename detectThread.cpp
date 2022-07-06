@@ -465,7 +465,7 @@ void DetectThread::saveImage(CGrabElement *pElement)
 		if (0 == pMainFrm->m_sSystemInfo.m_bSaveErrorType[iErrorType])
 		{
 			return;
-		}
+		}		
 		QTime time = QTime::currentTime();
 		QString strSaveImagePath = QString(pMainFrm->m_sConfigInfo.m_strAppPath + "SaveImage/Failure-image/camera%1").arg(iCamera+1);
 		bool exist = dirSaveImagePath->exists(strSaveImagePath);
@@ -587,7 +587,6 @@ void DetectThread::CountRuningData( int cameraNumber )
 			lastSpeed = nCurTime;
 			nSpeedCount = 0;
 			pMainFrm->m_sRunningInfo.strSpeed = QString::number(nCurSpeed);
-			emit signals_showspeed(nCurSpeed);
 		}
 	}
 }

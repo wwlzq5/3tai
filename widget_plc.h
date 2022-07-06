@@ -44,6 +44,7 @@ public:
 	void SendDataToPLCHead(int nAddr, QByteArray& st, int state,int id,int DataSize);
 	void SendCustomAlert(int,int);
 	void EnableCortol();
+	void initInterfence();
 public:
 	Widget_PLCPicture* m_PlcPicture;
 	QUdpSocket* m_pSocket;

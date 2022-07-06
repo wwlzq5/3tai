@@ -1,9 +1,0 @@
-[CheckInfo]
-INFO_1=2021-12-14 14:17:56 into onlyshow
-INFO_2=2021-12-14 14:18:6 ClosingState
-INFO_3=2021-12-14 14:18:6 UnconnectedState
-INFO_4=2021-12-14 14:18:30 into onlyshow
-INFO_5=2021-12-14 14:18:40 into onlyshow
-
-[setup]
-total=5

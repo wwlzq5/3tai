@@ -133,7 +133,7 @@ QString GlasswareDetectSystem::getVersion(QString strFullName)
 	{
 		SysType = QString(tr("GoDown"));
 	}
-	return SysType + QString(tr("Version:")+"6.64.1.9");
+	return SysType + QString(tr("Version:")+"6.64.1");
 }
 GlasswareDetectSystem::~GlasswareDetectSystem()
 {
@@ -415,6 +415,7 @@ void GlasswareDetectSystem::onServerDataReady()
 			test_widget->nInfo.m_checkedNum2 = 0;
 			test_widget->nInfo.m_passNum = 0;
 			test_widget->nInfo.m_failureNum = 0;
+			m_sRunningInfo.nModelCheckedCount=0;
 			nLastCheckNum=0;
 			nLastFailedNum = 0;
 			nClearName = QString(((MyStruct*)buffer.data())->nTemp);
@@ -443,43 +444,28 @@ void GlasswareDetectSystem::onServerDataReady()
 			emit signals_ShowCount(((MyStruct*)buffer.data())->nCheckNum,((MyStruct*)buffer.data())->nFail);
 			break;
 		case SYSTEMMODEADD:
-			if(m_sRunningInfo.m_bCheck)//如果是开始检测和开始调试中则自动关闭
-			{
-				slots_OnBtnStar();
-			}
-			if(m_sSystemInfo.m_bIsTest)
-			{
-				widget_carveSetting->widgetCarveImage->slots_startTest();
-			}
+			setRunState(false);
 			//创建新的模板函数
 			nAddModeName = QString::fromLocal8Bit(((MyStruct*)buffer.data())->nTemp);
 			widget_Management->SeverAdd(nAddModeName);
 			break;
 		case SYSTEMMODESELECT:
-			if(m_sRunningInfo.m_bCheck)//如果是开始检测和开始调试中则自动关闭
-			{
-				slots_OnBtnStar();
-			}
-			if(m_sSystemInfo.m_bIsTest)
-			{
-				widget_carveSetting->widgetCarveImage->slots_startTest();
-			}
+			setRunState(false);
 			//创建新的模板函数
 			nAddModeName = QString::fromLocal8Bit(((MyStruct*)buffer.data())->nTemp);
 			widget_Management->SeverSelect(nAddModeName);
 			break;
 		case SYSTEMMODEDELTE:
-			if(m_sRunningInfo.m_bCheck)//如果是开始检测和开始调试中则自动关闭
-			{
-				slots_OnBtnStar();
-			}
-			if(m_sSystemInfo.m_bIsTest)
-			{
-				widget_carveSetting->widgetCarveImage->slots_startTest();
-			}
+			setRunState(false);
 			//创建新的模板函数
 			nAddModeName = QString::fromLocal8Bit(((MyStruct*)buffer.data())->nTemp);
 			widget_Management->SeverDelete(nAddModeName);
+			break;
+		case ALLSTART:
+			setRunState(true);
+			break;
+		case ALLSTOP:
+			setRunState(false);
 			break;
 		case ONLYSHOWSEVER:
 			if(m_sSystemInfo.m_iSystemType == 2)
@@ -493,6 +479,29 @@ void GlasswareDetectSystem::onServerDataReady()
 		totalLen = buffer.size();
 		//更新多余数据
 		m_buffer = buffer;
+	}
+}
+void GlasswareDetectSystem::setRunState(bool nState)
+{
+	if(nState)
+	{
+		if(m_sSystemInfo.m_bIsTest)
+		{
+			widget_carveSetting->widgetCarveImage->slots_startTest();
+		}
+		if(!m_sRunningInfo.m_bCheck)
+		{
+			slots_OnBtnStar();
+		}
+	}else{
+		if(m_sRunningInfo.m_bCheck)
+		{
+			slots_OnBtnStar();
+		}
+		if(m_sSystemInfo.m_bIsTest)
+		{
+			widget_carveSetting->widgetCarveImage->slots_startTest();
+		}
 	}
 }
 //读取配置信息
@@ -1336,12 +1345,10 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 	int nCodeNum=0,nCheckNum=0,nSignNum=0,nKickNum=0;
 	if (m_sRunningInfo.m_bCheck && m_sSystemInfo.m_bIsIOCardOK)
 	{
-		m_vIOCard[0]->m_mutexmIOCard.lock();
 		nCheckNum = m_vIOCard[0]->ReadCounter(0);
 		nSignNum = m_vIOCard[0]->ReadCounter(4);
 		nCodeNum = m_vIOCard[0]->ReadCounter(13);
 		nKickNum = m_vIOCard[0]->ReadCounter(36)&0x1F;//0x0f
-		m_vIOCard[0]->m_mutexmIOCard.unlock();
 		//过检总数
 		if((nCheckNum - m_sRunningInfo.m_passNum>0)&&(nCheckNum - m_sRunningInfo.m_passNum<50))
 		{
@@ -1385,24 +1392,25 @@ void GlasswareDetectSystem::slots_UpdateCoderNumber()
 		labelCoder->setText(strEncoder+strTime);
 	}
 	//保存IO卡的数据准备发送
+	
+	MyStruct nTempStruct;
+	nTempStruct.nUnit = CLAMPING;
+	char* nTPIOtr;
+	nTempStruct.nState = ALERT;
+	nTempStruct.nCount = 24*sizeof(int)+sizeof(MyStruct);
+	memcpy(m_ptr,&nTempStruct,sizeof(MyStruct));
+	nTPIOtr = m_ptr;
+	nTPIOtr+=sizeof(MyStruct);
 	if(m_sSystemInfo.m_iSystemType == 2)
 	{
-		MyStruct nTempStruct;
-		nTempStruct.nUnit = CLAMPING;
-		char* nTPIOtr;
-		nTempStruct.nState = ALERT;
-		nTempStruct.nCount = 24*sizeof(int)+sizeof(MyStruct);
-		memcpy(m_ptr,&nTempStruct,sizeof(MyStruct));
-		nTPIOtr = m_ptr;
-		nTPIOtr+=sizeof(MyStruct);
 		nIOCard[21] = test_widget->nInfo.m_checkedNum;//表示第四块接口卡的过检总数
 		nIOCard[22] = test_widget->nInfo.m_checkedNum2;//表示第四块接口卡的踢废数目
 		nIOCard[23] = plc_widget->nErrorType;
-		memcpy(nTPIOtr,nIOCard,24*sizeof(int));
-		memset(nIOCard,0,24*sizeof(int));
-		QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
-		SendDataToSever(0,ALERT,ba,true);
 	}
+	memcpy(nTPIOtr,nIOCard,24*sizeof(int));
+	memset(nIOCard,0,24*sizeof(int));
+	QByteArray ba(m_ptr,24*sizeof(int)+sizeof(MyStruct));
+	SendDataToSever(0,ALERT,ba,true);
 }
 
 void GlasswareDetectSystem::slots_updateCameraState(int nCam,int mode)
@@ -1782,6 +1790,7 @@ void GlasswareDetectSystem::SaveLastData()
 	iniDataSet.setValue("system/KickNum",m_sRunningInfo.m_failureNum2);
 	iniDataSet.setValue("system/SeverCheckedNum",test_widget->nInfo.m_checkedNum);
 	iniDataSet.setValue("system/SeverFailureNum",test_widget->nInfo.m_checkedNum2);
+	iniDataSet.setValue("system/ModelCheckedCount",m_sRunningInfo.nModelCheckedCount);
 	for (int i=0;i< m_sSystemInfo.iCamCount;i++)
 	{
 		iniDataSet.setValue(QString("LastTimeDate/ErrorCamera_%1_count").arg(i),m_sRunningInfo.m_iErrorCamCount[i]);
@@ -1791,9 +1800,7 @@ void GlasswareDetectSystem::SaveLastData()
 void GlasswareDetectSystem::slots_OnExit(bool ifyanz)
 {
 	SaveLastData();
-	if (ifyanz || QMessageBox::Yes == QMessageBox::question(this,tr("Exit"),
-		tr("Are you sure to exit?"),
-		QMessageBox::Yes | QMessageBox::No))	
+	if(ifyanz || QMessageBox::Yes == QMessageBox::question(this,tr("Exit"),tr("Are you sure to exit?"),QMessageBox::Yes | QMessageBox::No))	
 	{
 		if (m_sSystemInfo.m_bIsTest)
 		{
@@ -1972,21 +1979,18 @@ void GlasswareDetectSystem::slot_SockScreen()
 	if((tgcPosition.x == gcPosition.x) && (tgcPosition.y == gcPosition.y) && !isHidden())
 	{
 		nUserWidget->nScreenCount++;
-		if(nUserWidget->nScreenCount == 5)
+		if(nUserWidget->nScreenCount%5 == 0)
 		{
 			if(nUserWidget->iUserPerm)
 			{
 				slots_loginState(nUserWidget->nPermission,false,"NULL");
-				nUserWidget->nScreenCount=0;
 			}
-// 			if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
-// 			{
-// 				pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
-// 			}
-// 			nUserWidget->nScreenCount=0;
-// 			title_widget->setState(false);
-// 			pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
-// 			pMainFrm->nUserWidget->nPermission = 3;
+		}
+		//每10分钟记录一次速度
+		if(nUserWidget->nScreenCount%10 == 0)
+		{
+			Logfile.write(QString("speed:%1!").arg(m_sRunningInfo.strSpeed),CheckLog);
+			nUserWidget->nScreenCount = 0;
 		}
 	}else{
 		gcPosition.x = tgcPosition.x;
@@ -2065,11 +2069,11 @@ void GlasswareDetectSystem::slots_SocketStataChanged(QAbstractSocket::SocketStat
 
 void GlasswareDetectSystem::loginState(int nPerm,bool isUnlock)
 {
-	if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
+	/*if(pMainFrm->widget_carveSetting->image_widget->bIsCarveWidgetShow)
 	{
 		pMainFrm->widget_carveSetting->image_widget->slots_showCarve();
 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
-	}
+	}*/
 	title_widget->setState(nPerm,isUnlock);
 	if(isUnlock)
 	{
@@ -2085,16 +2089,6 @@ void GlasswareDetectSystem::loginState(int nPerm,bool isUnlock)
 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
 		slots_turnPage(0);
 	}
-// 	if(nPerm == 3)
-// 	{
-// 		title_widget->setState(false);//菜单栏置灰
-// 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(false);
-// 	}else{
-// 		title_widget->setState(true);
-// 		pMainFrm->widget_carveSetting->image_widget->buttonShowCarve->setVisible(true);
-// 	}	
-//	nUserWidget->hide();
-	//nUserWidget->nPermission = nPerm;
 }
 
 void GlasswareDetectSystem::initSocket()
@@ -2115,36 +2109,23 @@ void GlasswareDetectSystem::initSocket()
 		n_NetConnectState = false;
 		m_tcpSocket->abort();
 	}
-	//m_tcpSocket->connectToHost("127.0.0.1",8088);
-	//m_tcpSocket->waitForConnected(3000);
 }
 
 void GlasswareDetectSystem::InitLastData()
 {
 	QSettings iniDataSet(m_sConfigInfo.m_strDataPath,QSettings::IniFormat);
 	iniDataSet.setIniCodec(QTextCodec::codecForName("GBK"));
-	QString strSession;
-	strSession=QString("/system/checkedNum");
-	m_sRunningInfo.m_checkedNum=iniDataSet.value(strSession,0).toInt();
-
-	strSession=QString("/system/failureNum");
-	m_sRunningInfo.m_failureNumFromIOcard=iniDataSet.value(strSession,0).toInt();
-
-	strSession=QString("/system/KickNum");
-	m_sRunningInfo.m_failureNum2 = iniDataSet.value(strSession,0).toInt();
-	nLastKick = m_sRunningInfo.m_failureNum2;
-
-	strSession=QString("/system/SeverCheckedNum");
-	test_widget->nInfo.m_checkedNum=iniDataSet.value(strSession,0).toInt();
-
-	strSession=QString("/system/SeverFailureNum");
-	test_widget->nInfo.m_checkedNum2=iniDataSet.value(strSession,0).toInt();
-
+	m_sRunningInfo.m_checkedNum = iniDataSet.value("system/checkedNum",0).toInt();
+	m_sRunningInfo.m_failureNumFromIOcard = iniDataSet.value("system/failureNum",0).toInt();
+	m_sRunningInfo.m_failureNum2 = iniDataSet.value("system/KickNum",0).toInt();
+	test_widget->nInfo.m_checkedNum = iniDataSet.value("system/SeverCheckedNum",0).toInt();
+	test_widget->nInfo.m_checkedNum2 = iniDataSet.value("system/SeverFailureNum",0).toInt();
+	m_sRunningInfo.nModelCheckedCount = iniDataSet.value("system/ModelCheckedCount",0).toInt();
 	for (int i=0;i<m_sSystemInfo.iCamCount;i++)
 	{
-		strSession = QString("LastTimeDate/ErrorCamera_%1_count").arg(i);
-		m_sRunningInfo.m_iErrorCamCount[i] = iniDataSet.value(strSession,0).toInt();
+		m_sRunningInfo.m_iErrorCamCount[i] = iniDataSet.value(QString("LastTimeDate/ErrorCamera_%1_count").arg(i),0).toInt();
 	}
+	nLastKick = m_sRunningInfo.m_failureNum2;
 }
 #ifdef JIAMI_INITIA
 void GlasswareDetectSystem::MonitorLicense()
@@ -2210,13 +2191,13 @@ bool GlasswareDetectSystem::CheckLicense()
 		s_KeyVerfResult res = m_ProgramLicense.CheckLicenseValid(true);
 		if (res.nError <= 0)//未超时
 		{
-			int nDogValue = (int)m_ProgramLicense.ReadDog();
-			if (nDogValue == 0)
-			{
-				//读取加密狗参数异常 代码：22
-				QMessageBox::information(this,tr("Error"),tr("License expired or dongle abnormal! Error code: 22"));//License过期或加密狗异常！错误代码：22
-				return false;
-			}
+			//int nDogValue = (int)m_ProgramLicense.ReadDog();
+			//if (nDogValue == 0)
+			//{
+			//	//读取加密狗参数异常 代码：22
+			//	QMessageBox::information(this,tr("Error"),tr("License expired or dongle abnormal! Error code: 22"));//License过期或加密狗异常！错误代码：22
+			//	return false;
+			//}
 			int m_nLicenseDays = m_ProgramLicense.ReadHardwareID("getexpdate");
 			//m_nLicenseDays = res.nDays;
 			surplusDays = m_nLicenseDays;

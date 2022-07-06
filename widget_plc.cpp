@@ -14,40 +14,50 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	connect(ui.SureButton,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsure()));
-	connect(ui.pushButton_save,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsave()));
-	connect(ui.pushButton_read,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonread()));
-	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
-	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
-	m_pSocket = new QUdpSocket();
-	
-	m_pSocket->bind(QHostAddress("192.168.250.1"), 9600);
-	connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
-	
-	QIntValidator* IntValidator = new QIntValidator;
-	IntValidator->setRange(1, 60);
-	//ui.lineEdit_2->setValidator(IntValidator);
-	ui.lineEdit_3->setValidator(IntValidator);
-	ui.lineEdit_4->setValidator(IntValidator);
-	ui.lineEdit_5->setValidator(IntValidator);
-	ui.lineEdit_6->setValidator(IntValidator);
-	IntValidator->setRange(1,450);
-	ui.lineEdit_1->setValidator(IntValidator);
 	nSystemType = pMainFrm->m_sSystemInfo.m_iSystemType;
+	m_pSocket = new QUdpSocket();
+	m_pSocket->bind(QHostAddress("192.168.250.1"), 9600);
+	//判断是否崩溃
 	m_CrashTimer = new QTimer(this);
-	connect(m_CrashTimer,SIGNAL(timeout()),this,SLOT(slots_CrashTimeOut()));
 	slots_CrashTimeOut();
 	m_CrashTimer->start(10000);
-	//获取PLC报警信息
+	//PLC增加图片控件
 	nErrorType = 0;
 	nErrorCameraID = 0;
 	QButtonGroup* test4=new QButtonGroup(this);
 	test4->addButton(ui.radioButton_9);
 	test4->addButton(ui.radioButton_10);
-	QGridLayout *Contentlayout = new QGridLayout(ui.scrollAreaWidgetContents);
-	/////////////////////
+	ui.scrollArea->setStyleSheet("QScrollArea {background-color:transparent;}");
+	ui.scrollArea->viewport()->setStyleSheet("background-color:transparent;");
+	m_PlcPicture = new Widget_PLCPicture(ui.widget_3);
+	ui.gridLayout_3->addWidget(m_PlcPicture);
+
+	connect(ui.SureButton,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsure()));
+	connect(ui.pushButton_save,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonsave()));
+	connect(ui.pushButton_read,SIGNAL(clicked()),this,SLOT(slots_Pushbuttonread()));
+	connect(ui.checkBox,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
+	connect(ui.checkBox_2,SIGNAL(clicked()),this,SLOT(slots_showPamSet()));
+	connect(m_CrashTimer,SIGNAL(timeout()),this,SLOT(slots_CrashTimeOut()));
+	connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slots_readFromPLC()));
+	connect(m_PlcPicture,SIGNAL(showSetPam()),this,SLOT(slots_HidePicture()));
+	connect(this,SIGNAL(signal_updatePLCInfo(WORD)),m_PlcPicture,SLOT(slots_updatePLCInfo(WORD)));
+	//初始化其他PLC涉及模块
+	initInterfence();
+	EnableCortol();
+}
+Widget_PLC::~Widget_PLC()
+{
+	//delete m_pSocket;
+}
+void Widget_PLC::initInterfence()
+{
 	if(nSystemType == 2)
 	{
+		QGridLayout *Contentlayout = new QGridLayout(ui.scrollAreaWidgetContents);
+		m_zTimer = new QTimer(this);
+		connect(m_zTimer,SIGNAL(timeout()),this,SLOT(slots_TimeOut()));
+		m_zTimer->start(1000);
+
 		nAlertDataList = new int[96];
 		memset(nAlertDataList,0,96*sizeof(int));
 		nCustomList = new int[CUSTOMALERT*2];
@@ -135,23 +145,6 @@ Widget_PLC::Widget_PLC(QWidget *parent)
 			ui.gridLayout_12->addWidget(nCustomAlert[i+CUSTOMALERT],i+1,2,1,1,Qt::AlignLeft | Qt::AlignVCenter);
 		}
 	}
-	ui.scrollArea->setStyleSheet("QScrollArea {background-color:transparent;}");
-	ui.scrollArea->viewport()->setStyleSheet("background-color:transparent;");
-	m_PlcPicture = new Widget_PLCPicture(ui.widget_3);
-	ui.gridLayout_3->addWidget(m_PlcPicture);
-	connect(m_PlcPicture,SIGNAL(showSetPam()),this,SLOT(slots_HidePicture()));
-	connect(this,SIGNAL(signal_updatePLCInfo(WORD)),m_PlcPicture,SLOT(slots_updatePLCInfo(WORD)));
-	if(nSystemType == 2)
-	{
-		m_zTimer = new QTimer(this);
-		connect(m_zTimer,SIGNAL(timeout()),this,SLOT(slots_TimeOut()));
-		m_zTimer->start(1000);
-	}
-	EnableCortol();
-}
-Widget_PLC::~Widget_PLC()
-{
-	//delete m_pSocket;
 }
 void Widget_PLC::EnableCortol()
 {
@@ -161,6 +154,14 @@ void Widget_PLC::EnableCortol()
 	ui.label_39->setVisible(false);
 	ui.lineEdit_31->setVisible(false);
 	ui.label_40->setVisible(false);
+	QIntValidator* IntValidator = new QIntValidator;
+	IntValidator->setRange(1, 60);
+	ui.lineEdit_3->setValidator(IntValidator);
+	ui.lineEdit_4->setValidator(IntValidator);
+	ui.lineEdit_5->setValidator(IntValidator);
+	ui.lineEdit_6->setValidator(IntValidator);
+	IntValidator->setRange(1,450);
+	ui.lineEdit_1->setValidator(IntValidator);
 }
 void Widget_PLC::slots_HidePicture()
 {

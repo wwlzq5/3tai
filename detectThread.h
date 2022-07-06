@@ -20,7 +20,6 @@ signals:
 	void signals_upDateCamera(int nCam,int nMode = 0);
 	void signals_updateCameraFailureRate();
 	void signals_updateImage(QImage*, QString, QString, QString, QString, QString, QList<QRect> ,int );
-	void signals_showspeed(int);
 private:
 	void DetectNormal(CGrabElement *pElement,int pLocation);
 	void rotateImage(CGrabElement *pElement);

@@ -32,17 +32,20 @@ CErrorImageList::CErrorImageList(QWidget *parent)
 	labelFailur = new QLabel(this);
 	labelFailurRate = new QLabel(this);
 	labelModleRate = new QLabel(this);
+	labelContinueKick = new QLabel(this);
 
 	labelTotal->setAlignment(Qt::AlignCenter);
 	labelFailur->setAlignment(Qt::AlignCenter);
 	labelFailurRate->setAlignment(Qt::AlignCenter);
 	labelModleRate->setAlignment(Qt::AlignCenter);
+	labelContinueKick->setAlignment(Qt::AlignCenter);
 	QFont fontLable("宋体",9,QFont::DemiBold,false);
 	//fontLable.setPixelSize(15);
 	labelTotal->setFont(fontLable);
 	labelFailur->setFont(fontLable);
 	labelFailurRate->setFont(fontLable);
 	labelModleRate->setFont(fontLable);
+	labelContinueKick->setFont(fontLable);
 
 	QHBoxLayout *hLayoutName = new QHBoxLayout;
 	hLayoutName->addWidget(widgetName);
@@ -56,6 +59,8 @@ CErrorImageList::CErrorImageList(QWidget *parent)
 	frame2->setFrameShape(QFrame::VLine);
 	QFrame *frame3 = new QFrame(this);
 	frame3->setFrameShape(QFrame::VLine);
+	QFrame *frame4 = new QFrame(this);
+	frame4->setFrameShape(QFrame::VLine);
 	hLayoutCount->addWidget(labelTotal);
 	hLayoutCount->addWidget(frame);
 	hLayoutCount->addWidget(labelFailur);
@@ -63,6 +68,8 @@ CErrorImageList::CErrorImageList(QWidget *parent)
 	hLayoutCount->addWidget(labelFailurRate);
 	hLayoutCount->addWidget(frame3);
 	hLayoutCount->addWidget(labelModleRate);
+	hLayoutCount->addWidget(frame4);
+	hLayoutCount->addWidget(labelContinueKick);
 
 	QVBoxLayout *vLayoutListError = new QVBoxLayout(this);
 	vLayoutListError->addLayout(hLayoutName);
@@ -234,5 +241,6 @@ void CErrorImageList::slots_updateInfo()
 	labelTotal->setText(QString::fromLocal8Bit("总数:")+"\n"+QString::number(total));
 	labelFailur->setText(QString::fromLocal8Bit("踢废数:")+"\n"+QString::number(failur));
 	labelFailurRate->setText(QString::fromLocal8Bit("踢废率:")+"\n"+QString::number(failurRate,'f',2)+"%");
-	labelModleRate->setText(QString::fromLocal8Bit("补踢数:")+"\n"+QString::number(KickNum));
+	labelModleRate->setText(QString::fromLocal8Bit("读模率:")+"\n"+QString::number(ModleRate,'f',2)+"%");
+	labelContinueKick->setText(QString::fromLocal8Bit("补踢数:")+"\n"+QString::number(KickNum));
 }

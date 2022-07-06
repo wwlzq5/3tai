@@ -225,9 +225,9 @@ void MyImageShowItem::paintEvent(QPaintEvent *event)
 	//}else{
 	//	painter.drawText(0, 100, tr("Kick Rate:%1%").arg(QString::number((double)FailNumber,'f',2)));
 	//}
-	// Æ¿µ×Ä£µã£¬20180528£¬by wenfan
-	/*int nMouldID = strMouldID.toInt();
-	if(strCamera=="8")
+
+	int nMouldID = strMouldID.toInt();
+	if(pMainFrm->m_sSystemInfo.m_iSystemType == 2)
 	{
 		if (nMouldID > 0 && nMouldID < 100)
 		{
@@ -235,10 +235,8 @@ void MyImageShowItem::paintEvent(QPaintEvent *event)
 		}else if(-1 == nMouldID || nMouldID ==0 )
 		{
 			painter.drawText(0, 100, tr("MouldID: unknown"));
-		}else{
-
 		}
-	}*/
+	}
 
 	//µ­À¶»­±Ê
 	pen.setColor(Qt::magenta);

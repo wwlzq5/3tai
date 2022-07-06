@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_camera.h'
 **
-** Created: Sat May 7 16:45:05 2022
+** Created: Tue Jun 7 10:15:28 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

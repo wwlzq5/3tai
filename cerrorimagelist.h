@@ -49,6 +49,7 @@ private:
 	QLabel *labelFailur;
 	QLabel *labelFailurRate;
 	QLabel *labelModleRate;
+	QLabel *labelContinueKick;
 };
 
 #endif // CERRORIMAGELIST_H

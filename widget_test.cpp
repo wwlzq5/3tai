@@ -191,7 +191,7 @@ void WidgetTest::slots_intoWidget()
 		}
 	}
 	ui.spinBox_Number->setValue(iSaveImgCount);
-	initInformation();//更新接口卡配置
+	updateIOCardParam();//更新接口卡配置
 	ui.comboBox->setCurrentIndex(ifshowImage);
 }
 bool WidgetTest::leaveWidget()

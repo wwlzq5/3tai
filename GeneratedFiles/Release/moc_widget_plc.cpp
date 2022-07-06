@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'widget_plc.h'
 **
-** Created: Wed May 25 09:35:15 2022
+** Created: Tue Jun 7 10:15:30 2022
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -122,6 +122,7 @@ public:
 	int ReadImageSignal(int nImageNum,int camera=0);
 	void SetLanguage(int pLang);
 	bool SendDataToSever(int,StateEnum,QByteArray,bool);
+	void setRunState(bool);
 public:
 	QStackedWidget *statked_widget;
 	WidgetTitle *title_widget;				//标题栏 
